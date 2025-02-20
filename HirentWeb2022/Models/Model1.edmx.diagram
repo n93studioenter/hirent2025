@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0b915631006b4246b9608bcf484d1158" Name="Diagram1">
+        <EntityTypeShape EntityType="hirentModel.Country" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_About" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_Access" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_CategoryMain" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_CategorySub1" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_CategorySub2" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_CategorySub3" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_ContactMessage" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_ContactUs" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_Counteronline" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_Country" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_Customer" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_DeliverySelection" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_Deposit" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_District" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_DocumentSelection" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_GetLinkImage" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_GroupCustomer" Width="1.5" PointX="13.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_HomeBanner" Width="1.5" PointX="6.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_HomeMainBanner" Width="1.5" PointX="8.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_HomeProductGroup" Width="1.5" PointX="13.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_Language" Width="1.5" PointX="10.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_LocalAccount" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_Order" Width="1.5" PointX="14.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_OrderAccessorySelection" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_OrderTrackingUpdate" Width="1.5" PointX="2.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_Permission" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_Pre_Order" Width="1.5" PointX="15.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_Pre_Order_accompanying" Width="1.5" PointX="15.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_Product" Width="1.5" PointX="16.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_Product_Translation" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_ProductAccessorySelection" Width="1.5" PointX="17.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_ProductAccompany" Width="1.5" PointX="6.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_ProductCategorySelection" Width="1.5" PointX="17.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_ProductGallery" Width="1.5" PointX="8.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_ProductHomeProductGroup" Width="1.5" PointX="0.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_ProductPricePerDay" Width="1.5" PointX="10.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_ProductPricePerHour" Width="1.5" PointX="18.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_ProductPricePerMonth" Width="1.5" PointX="18.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_ProductTermConditionDetails" Width="1.5" PointX="19.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_ProductTermConditionDetails_Translation" Width="1.5" PointX="20.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_Promotion" Width="1.5" PointX="6.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_Province" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_ServiceSelection" Width="1.5" PointX="20.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_SiteMap" Width="1.5" PointX="20.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_stockTemp" Width="1.5" PointX="20.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_stockTempLog" Width="1.5" PointX="21.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_Ward" Width="1.5" PointX="7.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_WareHouse" Width="1.5" PointX="0.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_WareHouse_Day" Width="1.5" PointX="21.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.tb_WishList" Width="1.5" PointX="22.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hirentModel.TimeBlock" Width="1.5" PointX="12.75" PointY="22.75" IsExpanded="true" />
+        <AssociationConnector Association="hirentModel.FK_Province_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="hirentModel.FK_District_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="hirentModel.FK_Ward_District" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="hirentModel.tb_Pre_Order_Details" Width="1.5" PointX="3.375" PointY="18.75" />
+        <EntityTypeShape EntityType="hirentModel.district" Width="1.5" PointX="25.625" PointY="15" />
+        <EntityTypeShape EntityType="hirentModel.province" Width="1.5" PointX="23.375" PointY="15.125" />
+        <EntityTypeShape EntityType="hirentModel.ward" Width="1.5" PointX="27.875" PointY="15.125" />
+        <AssociationConnector Association="hirentModel.districts_province_code_fkey" />
+        <AssociationConnector Association="hirentModel.wards_district_code_fkey" />
+        <EntityTypeShape EntityType="hirentModel.tb_CustomerDeliveryAddress" Width="1.5" PointX="15.375" PointY="23.75" />
+        <EntityTypeShape EntityType="hirentModel.administrative_regions" Width="1.5" PointX="21.125" PointY="23.625" />
+        <EntityTypeShape EntityType="hirentModel.administrative_units" Width="1.5" PointX="18.125" PointY="24.125" />
+        <EntityTypeShape EntityType="hirentModel.tb_WareHouse_Time" Width="1.5" PointX="23.375" PointY="6.75" />
+        <AssociationConnector Association="hirentModel.provinces_administrative_region_id_fkey" />
+        <AssociationConnector Association="hirentModel.districts_administrative_unit_id_fkey" />
+        <AssociationConnector Association="hirentModel.provinces_administrative_unit_id_fkey" />
+        <AssociationConnector Association="hirentModel.wards_administrative_unit_id_fkey" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

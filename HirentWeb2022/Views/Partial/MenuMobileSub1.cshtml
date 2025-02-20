@@ -1,0 +1,11 @@
+﻿@if (Model != null)
+{
+    foreach (HirentWeb2022.Models.tb_CategorySub1 item in Model)
+    {
+        <li>
+            <a href="productcate?ProductSubCate1=@item.SubCate1ID">
+                @item.SubCate1Name
+            </a>
+        </li>
+    }
+}

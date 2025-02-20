@@ -1,0 +1,32 @@
+﻿
+
+<div class="custom-menu">
+    <div class="row row-eq-height">
+        @if (ViewBag.tb_CategorySub1 != null)
+        {
+            foreach (HirentWeb2022.Models.tb_CategorySub1 item in ViewBag.tb_CategorySub1)
+            {
+                <div class="col-md-3" style="margin-top:18px;min-height:250px;">
+                    <ul class="list-links listfirst">
+                        <li>
+                            <a href="productcate?ProductSubCate1=@item.SubCate1ID">
+                                @if (ViewBag.lang == "vi")
+                                {
+                                    <h3 class="list-links-title">@item.SubCate1Name</h3>
+                                }
+                                else
+                                {
+                                    <h3 class="list-links-title">@item.Language</h3>
+                                }
+                            </a>
+                        </li>
+                    </ul><hr class="hidden-md hidden-lg">
+                      @Html.Action("MenuSub2", "Partial", new { SubCate1ID = item.SubCate1ID })
+                </div>
+              
+            }
+
+        }
+    </div>
+    @*<div class="row hidden-sm hidden-xs"><div class="col-md-12"><hr><a class="banner banner-1" href="#"><img src="../image_banner/banner_maincate_default.jpg" alt=""></a></div></div>*@
+</div>

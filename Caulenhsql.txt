@@ -1,0 +1,15 @@
+truncate table tb_Pre_Order
+truncate table tb_Pre_Order_accompanying
+truncate table tb_Pre_Order_Details
+truncate table tb_Order
+truncate table tb_OrderAccessorySelection
+
+
+select * from tb_Pre_Order
+select * from tb_Pre_Order_accompanying
+select * from tb_Pre_Order_Details
+ select * from tb_Order
+ select * from tb_OrderAccessorySelection
+
+
+tb_ProductTermConditionDetails  //Bảng thông tin order 1

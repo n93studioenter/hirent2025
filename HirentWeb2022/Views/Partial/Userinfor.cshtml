@@ -1,0 +1,200 @@
+﻿
+<div class="from_register_container">
+    <div class="from_register">
+        @{ 
+            var user = (HirentWeb2022.Models.tb_Customer)ViewBag.Info;
+        }
+        <div class="form_register_title">
+            @(ViewBag.lang == "vi"? "Thông tin tài khoản" : "Account Info")
+        </div>
+        <hr />  
+        <form class="">
+            <div class="form-group row">
+                <label style=" top: 5px;" for="inputEmail3" class="col-sm-2 col-form-label">@(ViewBag.lang == "vi"? "Họ tên" : "Full name")</label>
+                <div class="col-sm-10 formninput">
+                    <input value="@user.CustomerID" type="hidden" id="txtCustomerID" />
+                    <input type="text" value="@user.FirstName" class="form-control" id="txtFirstName" placeholder="@(ViewBag.lang == "vi"? "Họ tên" : "Full name")">
+                    <i class="fa fa-user"></i>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label style=" top: 5px;" for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10 formninput">
+                    <input type="email" class="form-control" value="@user.Email" id="txtEmail" placeholder="Email">
+                    <i class="fa fa-envelope"></i>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label style=" top: 5px;" for="inputPassword3" class="col-sm-2 col-form-label"> @(ViewBag.lang == "vi"? "Điện thoại" : "Phone")</label>
+                <div class="col-sm-10 formninput">
+                    <input type="text" class="form-control" id="txtPhone" value="@user.Phone" placeholder="@(ViewBag.lang == "vi"? "Điện thoại" : "Phone")">
+                    <i class="fa fa-phone"></i>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label style=" top: 5px;" for="inputPassword3" class="col-sm-2 col-form-label"> @(ViewBag.lang == "vi"? "Ngày sinh" : "Birthday")</label>
+                <div class="col-sm-10 formninput">
+                    <input type="text" class="form-control" value="@(user.Birthday.HasValue? user.Birthday.Value.ToShortDateString():"")" id="txtBirthday" placeholder="@(ViewBag.lang == "vi"? "Ngày sinh" : "Birthday")">
+                    <i class="fa fa-calendar"></i>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label style=" top: 5px;" for="inputPassword3" class="col-sm-2 col-form-label"> @(ViewBag.lang == "vi"? "Địa chỉ" : "Address")</label>
+                <div class="col-sm-10 formninput">
+                    <input disabled style="width:80%;float:left" type="text" class="form-control" value="@(ViewBag.Address!=null? ViewBag.Address.Address:"")" id="txtAddress" placeholder="@(ViewBag.lang == "vi"? "Địa chỉ" : "Address")">
+                    <i class="fa fa-map-marker"></i>
+                    <div class="addAddress">
+                        <a class="btn btn-sm " onclick="addDress()"> @(ViewBag.lang == "vi"? "Thêm địa chỉ" : "Add address")</a>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12 text-right">
+                    <button onclick="updateInfo()" type="button" class="btn btngreen">@(ViewBag.lang == "vi"? "Cập nhật" : "Update")</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    let addDress = () => {
+        $("#modalAddress").modal("toggle");
+    }
+    const updateInfo = () => {
+        var param = {
+            CustomerID: $("#txtCustomerID").val(),
+            FirstName: $("#txtFirstName").val(),
+            Email: $("#txtEmail").val(),
+            Phone: $("#txtPhone").val(),
+            Birthday: $("#txtBirthday").val(),
+            Address: $("#txtAddress").val()
+        }
+        $.ajax({
+            url: '/Partial/UpdateUserInfo',
+            type: "POST",
+            dataType: 'html',
+            data: param,
+            success: function (data, status, xhr) {
+                if (data === 'True') {
+                     if ('@ViewBag.lang' === 'vi')
+ {
+                         showToast("Thông báo", "Cập nhật thành công!",1);
+ }
+ else
+ {
+       showToast("Message", "Update successful!", 1);
+}
+                    location.reload();
+                }
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+    let selectGender = 1;
+    function rad(id) {
+        selectGender = id;
+    }
+</script>
+@Html.Action("CustomerAddressInfo", "Partial")
+<script>
+    loadDanhsachdiachi()
+    $('.tab2').hide();
+    function loadDanhsachdiachi() {
+        $.ajax({
+            url: '/Order/LoadListAddrress',
+            dataType: 'html',
+            type: "GET",
+            async: false,
+            success: function (data, status, xhr) {
+                $("#tbody").html(data);
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+    function themdiachi() {
+        $("#txtcustomerid2").val(0)
+        $(".tab1").hide();
+        $(".tab2").show();
+        $("#txtName2").val('');
+        $("#txtAddress2").val('');
+        $("#txtPhone2").val('');
+        changeProvinces();
+    }
+    function insertHuyAdress() {
+        $(".tab1").show();
+        $(".tab2").hide();
+    }
+    function insertAdress() {
+        if ($("#slDistricts").val() == null) {
+            alert("Vui lòng nhập thông tin địa chỉ");
+            return;
+        }
+         if ($("#slWards").val() == null) {
+             alert("Vui lòng nhập thông tin địa chỉ");
+             return;
+         }
+         var param = {
+             "ID": $("#txtcustomerid2").val(),
+         "CustomerID": '@ViewBag.CustomerID',
+         "Address": $("#txtAddress2").val(),
+         "FullName": $("#txtName2").val(),
+         "PhoneNumber": $("#txtPhone2").val(),
+             "provinces": $("#slProvinces").val(),
+             "districts": $("#slDistricts").val(),
+             "wards": $("#slWards").val(),
+     }
+     $.ajax({
+         url: '/Order/InsertAdress',
+         dataType: 'html',
+         data:param,
+         type: "POST",
+         async: false,
+         success: function (data, status, xhr) {
+             loadDanhsachdiachi();
+             $(".tab1").show();
+             $(".tab2").hide();
+              LoadMacDinh('@ViewBag.CustomerID')
+         },
+         error: function (xhr, status, error) {
+             alert(status);
+         }
+     });
+
+    }
+
+     function LoadMacDinh() {
+      var param = {
+         "CustomerID": '@ViewBag.CustomerID',
+     }
+     $.ajax({
+         url: '/Order/LoadMacDinh',
+         dataType: 'html',
+         data:param,
+         type: "POST",
+         async: false,
+         success: function (data, status, xhr) {
+             $("#txtAddress").val(data)
+         },
+         error: function (xhr, status, error) {
+             alert(status);
+         }
+     });
+ }
+</script>
+<style>
+   @@media (min-width: 768px) {
+    .modal-dialog {
+        width: 669px;
+        margin: 30px auto;
+    }
+}
+</style>
+

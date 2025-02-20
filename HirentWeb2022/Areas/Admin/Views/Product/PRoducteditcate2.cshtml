@@ -1,0 +1,12 @@
+﻿
+@{
+    Layout = null;
+}
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <option value="@item.SubCate2ID">@item.SubCate2Name</option>
+    }
+}

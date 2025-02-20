@@ -1,0 +1,311 @@
+﻿@using HirentWeb2022.ViewModel
+@if (Model != null)
+{
+    foreach (var item in (IEnumerable<ProductVM>)Model)
+    {
+
+
+        if (ViewBag.lang == "vi")
+        {
+            <div class="index_productlistbox">
+                <div class="product-btns">
+                    <span class="product-statuspercentage">Mới&nbsp;@item.tb_Product.StatusPercentage %</span>
+                </div>
+                <div class="index_productlistimage">
+                    <a href="/ProductDetail?productID=@item.tb_Product.ProductID">
+                        <img src="@item.tb_Product.ProductAvatar" class="img-responsive" />
+                    </a>
+                </div>
+                <div class="index_productlistcontent">
+                    <div class="index_productlistcontent_title">
+                        <a href="/ProductDetail?productID=@item.tb_Product.ProductID">
+                            @item.tb_Product.ProductName
+                        </a>
+                    </div>
+                </div>
+                <div class="index_productpriceblock">
+                    @{
+                        <span>@item.tb_Product.PricePerBlock</span>
+                    }
+                </div>
+                <div class="index_productpriceday">
+                    @{
+                        <span>@item.tb_Product.PricePerDay</span>
+                    }
+                </div> 
+                <div class="index_map">
+                    <i class="fas fa-map-marker"></i> <span>@item.tb_WareHouse.WarehouseName</span>
+                </div>
+            </div>
+          
+        }
+        else
+        {
+<div class="index_productlistbox">
+    <div class="product-btns">
+        <span class="product-statuspercentage">New&nbsp;@item.tb_Product.StatusPercentage %</span>
+    </div>
+    <div class="index_productlistimage">
+        <a href="/ProductDetail?productID=@item.tb_Product.ProductID">
+            <img src="@item.tb_Product.ProductAvatar" class="img-responsive" />
+        </a>
+    </div>
+    <div class="index_productlistcontent">
+        <div class="index_productlistcontent_title">
+            <a href="/ProductDetail?productID=@item.tb_Product.ProductID">
+                @item.tb_Product_Translation.ProductName_EN
+            </a>
+        </div>
+    </div>
+    <div class="index_productpriceblock">
+        @{
+            <span>@item.tb_Product_Translation.PricePerBlock_EN</span>
+        }
+    </div>
+    <div class="index_productpriceday">
+        @{
+            <span>@item.tb_Product_Translation.PricePerDay_EN</span>
+        }
+    </div>
+    <div class="index_map">
+        <i class="fas fa-map-marker"></i> <span>@item.tb_WareHouse.WarehouseName</span>
+    </div>
+</div>
+        }
+
+    }
+}
+
+<script src="~/Assets/js/Slick/slick.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.spMoiNhat').slick({
+            infinite: true,
+            speed: 300,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            autoplay: false,
+            arrows: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 5,
+                        slidesToScroll: 1,
+                        infinite: false,
+                    }
+                },
+                {
+                    breakpoint: 640,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        infinite: false,
+                        arrows: false,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        infinite: false, arrows: false,
+                    }
+                }
+            ]
+        });
+        $('.spNhieuNguoiTim').slick({
+            infinite: true,
+            speed: 300,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            autoplay: false,
+            arrows: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 5,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 640,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1, infinite: false, arrows: false,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        autoplay: true, infinite: false, arrows: false,
+                    }
+                }
+            ]
+        });
+        $('.autospChatLuong').slick({
+            infinite: true,
+            speed: 300,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            autoplay: false,
+            arrows: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 5,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 640,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1, infinite: false, arrows: false,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        autoplay: true, infinite: false, arrows: false,
+                    }
+                }
+            ]
+        });
+        $('.autospReNhat').slick({
+            infinite: true,
+            speed: 300,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            autoplay: false,
+            arrows: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 5,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 640,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1, infinite: false, arrows: false,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        autoplay: true, infinite: false, arrows: false,
+                    }
+                }
+            ]
+        });
+        $('.autospGanBan').slick({
+            infinite: true,
+            speed: 300,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            autoplay: false,
+            arrows: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 5,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 640,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1, infinite: false, arrows: false,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        autoplay: true, infinite: false, arrows: false,
+                    }
+                }
+            ]
+        });
+        $('.autospMienPhi').slick({
+            infinite: true,
+            speed: 300,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            autoplay: false,
+            arrows: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 5,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 640,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1, infinite: false, arrows: false,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        autoplay: true, infinite: false, arrows: false,
+                    }
+                }
+            ]
+        });
+        $('.autospChoTang').slick({
+            infinite: true,
+            speed: 300,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            autoplay: false,
+            arrows: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 5,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1, infinite: false, arrows: false,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        autoplay: true, infinite: false, arrows: false,
+                    }
+                }
+            ]
+        });
+    })
+   
+</script>

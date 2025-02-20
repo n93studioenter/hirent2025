@@ -1,0 +1,533 @@
+﻿<div class="container">
+    <div class="ttctsp">
+        @(ViewBag.lang == "vi"? "Thông tin chi tiết sản phẩm" : "Detailed product information")
+    </div>
+    <div class="vuilongxemttdh">
+        @(ViewBag.lang == "vi"? "Vui lòng xem lại thông tin đơn hàng và giá trị thanh toán trước khi tiến hành tạo đơn hàng" : "Please review the order details and payment amount before proceeding to create the order")
+    </div>
+    <div class="orderbox">
+        @if (Model != null)
+        {
+            foreach (HirentWeb2022.ViewModel.ProductOrder item in Model)
+            {
+                if (item != null)
+                {
+                    <input id="orderid" value="@item.tb_Pre_Order.pOrderId" type="hidden" />
+                    double productTotal = 0;
+                    double producdetailtotal = 0;
+                    double giatrisp = 0;
+                    double giatrispdt = 0;
+
+                    long n = long.Parse(item.tb_Pre_Order.createTime.Value.ToString("yyyyMMddHHmmss"));
+                    <div class="ordertitle">
+                        <span>@(ViewBag.lang == "vi"? "Đơn hàng" : "Order")</span> @n
+                    </div>
+                    <div class="ordercontents table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @(ViewBag.lang == "vi"? "Hình MH" : "Image")
+                                    </th>
+                                    <th>
+                                        @(ViewBag.lang == "vi"? "Tên sản phẩm/dịch vụ" : "Product/Service Name")
+                                    </th>
+                                    <th>
+                                        @(ViewBag.lang == "vi"? "Loại" : "Product/Type")
+                                    </th>
+
+                                    <th>
+                                        @(ViewBag.lang == "vi"? "Thời gian nhận" : "Pick-up Time")
+                                    </th>
+                                    <th>
+                                        @(ViewBag.lang == "vi"? "Thời gian trả" : "Return Time")
+                                    </th>
+                                    <th>
+                                        @(ViewBag.lang == "vi"? "Thời gian thuê" : "Rental Period")
+                                    </th>
+                                    <th>
+                                        @(ViewBag.lang == "vi"? "Số lượng" : "Count")
+                                    </th>
+
+                                    <th>@(ViewBag.lang == "vi"? "Giá dịch vụ" : "Service Price")</th>
+                                    <th>@(ViewBag.lang == "vi"? "Giá thuê" : "Rental Price")</th>
+                                    <th>@(ViewBag.lang == "vi"? "Giá trị sản phẩm" : "Product Value")</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img src="@item.tb_Product.ProductAvatar" class="img-responsive order_prodimg" />
+                                    </td>
+                                    <td>
+                                        @item.tb_Product.ProductName
+                                    </td>
+                                    <td>
+                                        @if (item.tb_Pre_Order_Details.rentalType.Value == 1)
+                                        {
+                                            <span>
+                                                @(ViewBag.lang == "vi"? "Thuê theo giờ" : "Hourly rental")
+                                            </span>
+                                        }
+                                        @if (item.tb_Pre_Order_Details.rentalType.Value == 2)
+                                        {
+                                            <span>
+                                                @(ViewBag.lang == "vi"? "Thuê theo ngày" : "Daily rental")
+                                            </span>
+                                        }
+                                        @if (item.tb_Pre_Order_Details.rentalType.Value == 3)
+                                        {
+                                            <span>
+                                                @(ViewBag.lang == "vi"? "Thuê theo tháng" : "Monthly rental")
+                                            </span>
+                                        }
+                                    </td>
+                                    <td>
+                                        @item.tb_Pre_Order_Details.timePickup.Value.ToString("dd/MM/yyyy HH:ss")
+                                    </td>
+                                    <td>
+                                        @item.tb_Pre_Order_Details.timeReturn.Value.ToString("dd/MM/yyyy HH:ss")
+                                    </td>
+                                    <td>
+                                        @{
+                                            var timepsan = item.tb_Pre_Order_Details.timeReturn.Value - item.tb_Pre_Order_Details.timePickup.Value;
+                                            if (item.tb_Pre_Order_Details.rentalType.Value == 1)
+                                            {
+                                                <span>@timepsan.TotalHours</span> <span>  @(ViewBag.lang == "vi"? "Giờ" : "Hour")</span>
+                                            }
+                                            if (item.tb_Pre_Order_Details.rentalType.Value == 2)
+                                            {
+                                                <span>@timepsan.Days</span> <span>  @(ViewBag.lang == "vi"? "Ngày" : "Day")</span>
+                                            }
+                                        }
+                                    </td>
+                                    <td>
+                                        <input type="number" onchange="changepdMain(this,'@item.tb_Pre_Order_Details.pOrderDetailId')" style="text-align:center;" value=" @item.tb_Pre_Order_Details.productQty" />
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td class="text-right">
+
+                                        @{
+                                            productTotal = item.tb_Pre_Order_Details.Totals.Value * item.tb_Pre_Order_Details.productQty.Value;
+                                        }
+                                        <span class="priceRed">
+                                            @productTotal.ToString("#,##0")
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+
+                                        @{
+                                            giatrisp = item.tb_Product.ProductValue.Value * item.tb_Pre_Order_Details.productQty.Value;
+                                        }
+                                        <span class="priceGreen">
+                                            @giatrisp.ToString("#,##0") 
+                                        </span>
+                                    </td>
+                                </tr>
+                                @foreach (HirentWeb2022.Models.tb_Pre_Order_accompanying it in item.tb_Pre_Order_Accompanying.ToList())
+                                {
+                                    <tr>
+                                        @{
+                                            HirentWeb2022.Models.HirentEntities db = new HirentWeb2022.Models.HirentEntities();
+                                            var prod = db.tb_Product.Find(it.productId);
+
+                                        }
+                                        <td>
+                                            <img src="@prod.ProductAvatar" class="img-responsive order_prodimg" />
+                                        </td>
+                                        <td>@prod.ProductName</td>
+                                        <td>
+                                            @if (item.tb_Pre_Order_Details.rentalType.Value == 1)
+                                            {
+                                                <span>
+                                                    @(ViewBag.lang == "vi"? "Thuê theo giờ" : "Rent by the hour")
+                                                </span>
+                                            }
+                                            @if (item.tb_Pre_Order_Details.rentalType.Value == 2)
+                                            {
+                                                <span>
+                                                    @(ViewBag.lang == "vi"? "Thuê theo ngày" : "Rent by the day")
+                                                </span>
+                                            }
+                                            @if (item.tb_Pre_Order_Details.rentalType.Value == 3)
+                                            {
+                                                <span>
+                                                    @(ViewBag.lang == "vi"? "Thuê theo tháng" : "Rent by the month")
+                                                </span>
+                                            }
+                                        </td>
+                                        <td>
+                                            @item.tb_Pre_Order_Details.timePickup.Value.ToString("dd/MM/yyyy HH:ss")
+                                        </td>
+                                        <td>
+                                            @item.tb_Pre_Order_Details.timeReturn.Value.ToString("dd/MM/yyyy HH:ss")
+                                        </td>
+                                        <td>
+                                            @{
+                                                if (item.tb_Pre_Order_Details.rentalType.Value == 1)
+                                                {
+                                                    <span>@timepsan.TotalHours</span> <span> @(ViewBag.lang == "vi"? "Giờ" : "Hour")</span>
+                                                }
+                                                if (item.tb_Pre_Order_Details.rentalType.Value == 2)
+                                                {
+                                                    <span>@timepsan.Days</span> <span> @(ViewBag.lang == "vi"? "Ngày" : "Day")</span>
+                                                }
+                                            }
+                                        </td>
+                                        <td>
+                                            <input type="number" onchange="changepdMain2(this,'@it.pAccompId')" style="text-align:center;" value="@it.accompanyingQty" />
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td class="text-right">
+
+                                            @{
+                                                producdetailtotal += it.Totals.Value * it.accompanyingQty.Value;
+                                            }
+                                            <span class="priceRed">
+                                                @producdetailtotal.ToString("#,##0") 
+                                            </span>
+                                        </td>
+                                        <td class="text-right">
+                                            @{
+                                                giatrispdt += prod.ProductValue.Value * it.accompanyingQty.Value;
+                                            }
+                                            <span class="priceGreen">
+                                                @giatrispdt.ToString("#,##0")
+                                            </span>
+
+                                        </td>
+                                    </tr>
+                                }
+                                @*Vận chuyển*@
+                                @if (item != null)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="~/Assets/Images/yourcart/giao hang.png" class="order_prodimg img-responsive" />
+                                        </td>
+                                        <td>
+                                            @item.tb_CustomerDeliveryAddress.FullName  <span> |</span> @item.tb_CustomerDeliveryAddress.PhoneNumber <span> | </span>  @item.tb_CustomerDeliveryAddress.Address
+                                        </td>
+                                        <td>
+                                            @(ViewBag.lang == "vi"? "Vận chuyển" : "Shipping")
+                                        </td>
+                                        <td colspan="4"></td>
+                                        @if (item.tb_Pre_Order_Details.TotalDelivery.HasValue)
+                                        {
+                                            <td class="priceRed">@item.tb_Pre_Order_Details.TotalDelivery.Value.ToString("#,##0")</td>
+                                        }
+                                        else
+                                        {
+                                            <td>0</td>
+                                        }
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="~/Assets/Images/yourcart/tho den lap va go.png" class="order_prodimg img-responsive" />
+                                        </td>
+                                        <td>
+                                            @item.tb_CustomerDeliveryAddress.FullName  <span> |</span> @item.tb_CustomerDeliveryAddress.PhoneNumber <span> | </span>  @item.tb_CustomerDeliveryAddress.Address
+                                        </td>
+                                        <td>
+                                            @(ViewBag.lang == "vi"? "Lắp đặt" : "Installation")
+                                        </td>
+                                        <td colspan="4"></td>
+                                        @if (item.tb_Pre_Order_Details.TotalInstall.HasValue)
+                                        {
+                                            <td class="priceRed">@item.tb_Pre_Order_Details.TotalInstall.Value.ToString("#,##0")</td>
+                                        }
+                                        else
+                                        {
+                                            <td class="text-right">0</td>
+                                        }
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="~/Assets/Images/yourcart/datcoc.png" class="order_prodimg" />
+                                        </td>
+                                        <td>
+                                            @if (item.tb_Pre_Order_Details.hinhthuc == 1)
+                                            {
+                                                @(ViewBag.lang == "vi"? "Cọc bằng tiền mặt" : "Cash deposit")
+                                            }
+                                            @if (item.tb_Pre_Order_Details.hinhthuc == 2)
+                                            {
+                                                @(ViewBag.lang == "vi"? "Cọc bằng tiền mặt kết hợp giấy tờ" : "Cash deposit combined with documents")
+                                            }
+                                            @if (item.tb_Pre_Order_Details.hinhthuc == 3)
+                                            {
+                                                @(ViewBag.lang == "vi"? "Cọc bằng tiền mặt kết hợp giấy tờ và hợp đồng dân sự" : "Cash deposit combined with documents and a civil contrac")
+                                            }
+                                            @if (item.tb_Pre_Order_Details.hinhthuc == 4)
+                                            {
+                                                @(ViewBag.lang == "vi"? "Cọc bằng tài sản" : "Property deposit")
+                                            }
+                                        </td>
+                                        <td>
+                                            @(ViewBag.lang == "vi"? "Đặt cọc" : "Deposit")
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        @if (item.tb_Pre_Order_Details.hinhthuc == 1)
+                                        {
+                                            <td>
+                                            </td>
+
+                                            <td></td>
+
+                                            <td></td>
+                                            <td></td>
+                                        }
+                                        @if (item.tb_Pre_Order_Details.hinhthuc == 2)
+                                        {
+                                            HirentWeb2022.Models.HirentEntities db = new HirentWeb2022.Models.HirentEntities();
+
+                                            HirentWeb2022.Models.tb_Deposit tb_Deposit = db.tb_Deposit.Where(m => m.DepositId == item.tb_Pre_Order_Details.depositId).FirstOrDefault();
+
+                                            var getSplit = tb_Deposit.DepositName.Split('|');
+                                            if (ViewBag.lang == "vi")
+                                            {
+                                                <td colspan="2">@getSplit[0]</td>
+                                            }
+                                            else
+                                            {
+                                                <td colspan="2">@getSplit[1]</td>
+                                            }
+                                            <td></td>
+                                            <td></td>
+                                            <td class="text-right">
+
+                                                @if (tb_Deposit != null)
+                                                {
+                                                    <span class="priceGreen">- @tb_Deposit.Prices.Value.ToString("#,##0")</span>
+                                                }
+                                            </td>
+                                        }
+                                        @if (item.tb_Pre_Order_Details.hinhthuc == 3)
+                                        {
+                                            <td colspan="2">
+                                                <div class="btnhopdongthue">
+                                                    @{
+                                                        HirentWeb2022.Models.HirentEntities db2 = new @HirentWeb2022.Models.HirentEntities();
+                                                        HirentWeb2022.Models.tb_ProductTermConditionDetails tb_ProductTermConditionDetails = db2.tb_ProductTermConditionDetails.Where(m => m.ProductId == item.tb_Product.ProductID).FirstOrDefault();
+                                                        HirentWeb2022.Models.tb_WareHouse tb_WareHouse = db2.tb_WareHouse.Find(tb_ProductTermConditionDetails.WarehouseId);
+                                                        <a href="@tb_WareHouse.Hopdong" target="_blank">
+                                                            @(ViewBag.lang == "vi"? "Hợp đồng thuê" : "Rental agreement")
+                                                        </a>
+                                                    }
+
+
+                                                </div>
+                                            </td>
+
+                                            <td></td>
+                                            <td></td>
+                                            <td class="priceGreen">-@item.tb_Product.Cocbanggiaytovahopdongprice.Value.ToString("#,##0")</td>
+                                        }
+                                        @if (item.tb_Pre_Order_Details.hinhthuc == 4)
+                                        {
+                                            <td colspan="2">
+                                                @if (!string.IsNullOrEmpty(item.tb_Pre_Order_Details.Imagegc1))
+                                                {
+                                                    <img src="@item.tb_Pre_Order_Details.Imagegc1" class="img-responsive" width="100" />
+                                                }
+                                                @if (!string.IsNullOrEmpty(item.tb_Pre_Order_Details.Imagegc2))
+                                                {
+                                                    <img src="@item.tb_Pre_Order_Details.Imagegc2" class="img-responsive" width="100" />
+                                                }
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                        </td>
+                                        <td colspan="3" class="text-right">
+                                            @(ViewBag.lang == "vi"? "Tổng" : "Total")
+                                        </td>
+                                        <td class="text-right">
+                                            @{
+                                                var value = item.tb_Pre_Order_Details.TotalDelivery.Value + item.tb_Pre_Order_Details.TotalInstall.Value;
+
+                                            }
+                                            <span class="priceRed">@value.ToString("#,##0")</span>
+                                        </td>
+                                        <td class="text-right">
+                                            @{
+                                                var gettotal = productTotal + producdetailtotal;
+                                                <span class="priceRed">@gettotal.ToString("#,##0")</span>
+                                            }
+                                        </td>
+                                        <td class="text-right">
+                                            @{
+                                                double conlai = 0;
+                                                if (item.tb_Pre_Order_Details.hinhthuc == 2)
+                                                {
+                                                    HirentWeb2022.Models.HirentEntities db = new HirentWeb2022.Models.HirentEntities();
+                                                    HirentWeb2022.Models.tb_Deposit tb_Deposit = db.tb_Deposit.Where(m => m.DepositId == item.tb_Pre_Order_Details.depositId).FirstOrDefault();
+                                                    conlai = tb_Deposit.Prices.Value;
+                                                }
+                                                if (item.tb_Pre_Order_Details.hinhthuc == 3)
+                                                {
+
+                                                    conlai = item.tb_Product.Cocbanggiaytovahopdongprice.Value;
+                                                }
+                                                var gettotal2 = giatrisp + giatrispdt- conlai;
+
+                                                <span class="priceGreen">@gettotal2.ToString("#,##0")</span>
+                                            }
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                        </td>
+                                        <td colspan="3" class="text-right">
+                                            @(ViewBag.lang == "vi"? "Tiền thuê và dịch vụ tạm tính" : "Subtotal for rental and services")
+                                        </td>
+                                        <td colspan="2" class="text-center">
+                                            @{
+                                                var gettotal3 = value + gettotal;
+                                                <span class="priceRed">@gettotal3.ToString("#,##0")</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                        </td>
+                                        <td colspan="3" class="text-right">
+                                            @(ViewBag.lang == "vi"? "Số tiền đật cọc là" : "The deposit amount is")
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td class="text-right">
+                                            @{
+                                                var gettotal4 = gettotal - gettotal2;
+                                                <span class="priceGreen">@Math.Abs(gettotal4).ToString("#,##0")</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="text-right" style="margin-bottom:30px;">
+                        <a class="btn btn-danger" onclick="huydonhang()"> @(ViewBag.lang == "vi"? "Hủy đơn hàng" : "Cancel order") </a>
+                        <a class="btn btngreen" onclick="hoantatdonhang()">@(ViewBag.lang == "vi"? "Hoàn tất đơn hàng" : "Complete order")</a>
+                    </div>
+                }
+
+            }
+
+        }
+
+    </div>
+
+</div>
+<script>
+    //orderid
+    function huydonhang() {
+        if (confirm("@(ViewBag.lang == "vi"? "Bạn có muốn hủy đơn hàng này" : "Do you want to cancel this order")!") == true) {
+            var param = {
+                "pOrderId": $("#orderid").val()
+            }
+            $.ajax({
+                url: '/Order/HuyDonHang',
+                dataType: 'html',
+                data: param,
+                type: "POST",
+                async: false,
+                success: function (data, status, xhr) {
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    alert(status);
+                }
+            });
+        }
+    }
+    var textAlert = "Bạn có muốn hoàn tất đơn hàng này?";
+    function hoantatdonhang() {
+
+        if (confirm(`@(ViewBag.lang == "vi" ? "Bạn có muốn hoàn tất đơn hàng này?" : "Do you want to complete this order?")`) == true)
+        {
+
+            var param = {
+                "pOrderId": $("#orderid").val()
+            }
+            $.ajax({
+                url: '/Order/HoanTatDonHang',
+                dataType: 'html',
+                data: param,
+                type: "POST",
+                async: false,
+                success: function (data, status, xhr) {
+                    // alert("Đơn hàng của bạn đã được gửi đi, chúng tôi sẽ liên hệ lại trong thời gian sớm nhất");
+                    if ('@ViewBag.lang' === 'vi') {
+                        showToast("Thông tin", "Đơn hàng của bạn đã được gửi đi, chúng tôi sẽ liên hệ lại trong thời gian sớm nhất!", 1);
+ }
+ else {
+                        showToast("MEssage", "Your order has been submitted. We will contact you as soon as possible!",1);
+ }
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    alert(status);
+                }
+            });
+        }
+    }
+
+
+    function changepdMain(dis, id) {
+        var getQty = $(dis).val(); 
+        var param =
+        {
+            "id": id,
+            "qty": getQty
+        }
+        $.ajax({
+            url: '/Order/changepdMain',
+            dataType: 'html',
+            data: param,
+            type: "POST",
+            async: false,
+            success: function (data, status, xhr) {
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+    function changepdMain2(dis, id) {
+        var getQty = $(dis).val();
+        var param =
+        {
+            "id": id,
+            "qty": getQty
+        }
+        $.ajax({    
+            url: '/Order/changepdMain2',
+            dataType: 'html',
+            data: param,
+            type: "POST",
+            async: false,
+            success: function (data, status, xhr) {
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+</script>

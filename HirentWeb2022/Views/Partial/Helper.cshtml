@@ -1,0 +1,101 @@
+﻿<div class="ai_helper_icon">
+    <a onclick="toogle_heperbox()">
+        <img src="~/Assets/Images/ai_helper.png" />
+    </a>
+</div>
+<div class="helper_container">
+    <div class="heper_top">
+        <div class="heper_top_img">
+            <img src="~/Assets/Images/ai_helper.png" />
+        </div>
+        <divx class="helper_chatbottitle">
+            Chatbot
+        </divx>
+        <div class="helper_close_container">
+            <a onclick="close_helperbox()"><i class="fas fa-close"></i></a>
+        </div>
+    </div>
+    <div class="helper_center">
+        <div class="helper_contents_container" id="chatbox">
+            @*<div class="helper_content_ai">
+              
+            </div>*@
+            @*<div class="helper_content_box">
+                <div class="helper_content_user">
+                    Chào bạn
+                </div>
+            </div>*@
+
+        </div>
+    </div>
+    <div class="helper_bottom">
+        <div class="helper_input_container">
+            <input placeholder="Type your message here" id="chatInput" />
+            <svg onclick="sendchat()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" xml:space="preserve"><path fill="#d7d7d7" d="M22,11.7V12h-0.1c-0.1,1-17.7,9.5-18.8,9.1c-1.1-0.4,2.4-6.7,3-7.5C6.8,12.9,17.1,12,17.1,12H17c0,0,0-0.2,0-0.2c0,0,0,0,0,0c0-0.4-10.2-1-10.8-1.7c-0.6-0.7-4-7.1-3-7.5C4.3,2.1,22,10.5,22,11.7z"></path></svg>
+
+        </div>
+        <div class="helper_powered_container">
+            <span class="helper_powered_titleleft">Powered by</span> <span class="helper_powered_titleright">Hirent</span>
+        </div>
+    </div>
+</div>
+<script>
+    function toogle_heperbox() {
+        $(".helper_container").addClass("transactionhelper");
+        $(".ai_helper_icon").hide();
+    }
+    function close_helperbox() {
+        $(".helper_container").removeClass("transactionhelper");
+        $(".ai_helper_icon").show();
+    }
+    const chatbox = document.getElementById('chatbox');
+   
+    const chatInput = document.getElementById('chatInput');
+
+    const SendData = () => {
+        if (chatInput.value.length == 0)
+            return;
+        $("#chatbox").append(`
+
+        <div class="helper_content_box">
+
+            <div class="helper_content_user">
+                 ${chatInput.value}
+            </div>
+
+        </div>
+      `);
+        chatbox.scrollTop = chatbox.scrollHeight;
+        callAjax();
+    }
+    const callAjax = () => {
+        chatInput.disabled = true; 
+        var getDatainput = chatInput.value;
+        chatInput.value = '';
+        var param = {
+            question: getDatainput
+        }
+        $.ajax({
+            url: '/Partial/Botanswer',
+            data: param,
+            dataType: 'text',
+            type: 'POST',
+            success: function (result) {
+                $("#chatbox").append(result);
+                chatInput.disabled = false; 
+                chatbox.scrollTop = chatbox.scrollHeight;
+                chatInput.focus();
+            }
+        });
+    }
+    chatInput.addEventListener('keypress', function (event) {
+        // Kiểm tra xem phím Enter (mã ASCII 13) đã được nhấn không
+        if (event.key === 'Enter') {
+            SendData();
+        }
+    });
+
+    function sendchat() {
+        SendData();
+    } 
+</script>

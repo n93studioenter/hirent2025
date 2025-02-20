@@ -1,0 +1,91 @@
+﻿@using HirentWeb2022.ViewModel
+<div class="container">
+    <div class="dssp_title">
+        Danh sách sản phẩm
+    </div>
+
+    <div class="totalproduct">
+        <span>Có tổng cộng </span>  <span>@ViewBag.Count</span> <span> sản phẩm</span>
+    </div>
+    <div class="row">
+        @if (Model != null)
+        {
+            foreach (var item in (IEnumerable<ProductVM>)Model)
+            {
+
+
+                if (ViewBag.lang == "vi")
+                {
+                    <div class="col-md-15">
+                        <div class="index_productlistbox productseach_box">
+                            <div class="product-btns">
+                                <span class="product-statuspercentage">Mới&nbsp;90 %</span>
+                            </div>
+                            <div class="index_productlistimage">
+                                <a href="/ProductDetail?productID=@item.tb_Product.ProductID">
+                                    <img src="@item.tb_Product.ProductAvatar" class="img-responsive" />
+                                </a>
+                            </div>
+                            <div class="index_productlistcontent">
+                                <div class="index_productlistcontent_title">
+                                    <a href="/ProductDetail?productID=@item.tb_Product.ProductID">
+                                        @item.tb_Product.ProductName
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="index_productpriceblock">
+                                @{
+                                    <span>@item.tb_Product.PricePerBlock</span>
+                                }
+                            </div>
+                            <div class="index_productpriceday">
+                                @{
+                                    <span>@item.tb_Product.PricePerDay</span>
+                                }
+                            </div>
+                            <div class="index_map">
+                                <i class="fas fa-map-marker"></i> <span>@item.tb_WareHouse.WarehouseName</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                }
+                else
+                {
+                    <div class="col-md-15">
+                        <div class="index_productlistbox">
+                            <div class="index_productlistimage">
+                                <a href="/ProductDetail?productID=@item.tb_Product.ProductID">
+                                    <img src="@item.tb_Product.ProductAvatar" class="img-responsive" />
+                                </a>
+                            </div>
+                            <div class="index_productlistcontent">
+                                <div class="index_productlistcontent_title">
+                                    <a href="/ProductDetail?productID=@item.tb_Product.ProductID">
+                                        @item.tb_Product_Translation.ProductName_EN
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="index_productpriceblock">
+                                @{
+                                    <span>@item.tb_Product_Translation.PricePerBlock_EN</span>
+                                }
+                            </div>
+                            <div class="index_productpriceday">
+                                @{
+                                    <span>@item.tb_Product_Translation.PricePerDay_EN</span>
+                                }
+                            </div>
+                            @*<div class="index_map">
+                                   <i class="fas fa-map-marker"></i> <span>@item.WarehouseName</span>
+                                </div>*@
+                        </div>
+                    </div>
+
+                }
+
+            }
+        }
+    </div>
+</div>

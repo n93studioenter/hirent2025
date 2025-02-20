@@ -1,0 +1,72 @@
+﻿<div class="menu_section">
+    <h3>General</h3>
+    <ul class="nav side-menu">
+        @if (ViewBag.PermissionID == 0)
+        {
+            <li>
+                <a href="/administrator"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+            </li>
+            <li>
+                <a><i class="fa fa-list"></i> Quản lý Category <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="/Admin/ProductCategory/Category_main">Category Main</a></li>
+                    <li><a href="/Admin/ProductCategory/CategorySub1">Category Sub 1</a></li>
+                    <li><a href="/Admin/ProductCategory/CategorySub2">Category Sub 2</a></li>
+                </ul>
+            </li>
+        }
+
+        @*<li><a href="Sitemap_management"><i class="fa fa-list"></i> Quản lý Sitemap </a></li>*@
+        <li>
+            <a><i class="fa fa-cubes"></i> Quản lý sản phẩm <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+                <li><a href="/Admin/Product/product_edit">Tạo sản phẩm</a></li>
+                <li><a href="/Admin/Product/ProductList">Danh sách sản phẩm</a></li>
+
+            </ul>
+        </li>
+        <li>
+            <a><i class="fa fa-suitcase"></i> Quản lý đơn hàng <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+                @*<li><a href="order_createnew">Tạo đơn hàng</a></li>*@
+                <li><a href="/Admin/Orders/OrderList">Danh sách đơn hàng</a></li>
+            </ul>
+        </li>
+        <li>
+            <a><i class="fa fa-users"></i> Quản lý kho <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+                <li><a href="/Admin/Warehouse/Info">Tạo địa chỉ kho</a></li>
+            </ul>
+        </li>
+        @if (ViewBag.PermissionID == 0)
+        {
+            <li>
+                <a><i class="fa fa-file-image-o"></i> Quản lý các banner <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="home_slider_management">Main slider trang Homepage</a></li>
+                    <li><a href="banner_management">Các banner quảng cáo</a></li>
+                    <li><a href="banner_mainCategory">Các banner của maincategory</a></li>
+                </ul>
+            </li>
+        }
+
+        @*<li>
+            <a><i class="fa fa-envelope-o"></i> Quản lý tin nhắn  <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+                <li><a href="message_contact">Tin nhắn từ Contact</a></li>
+                <li><a href="message_chat">Tin nhắn từ CHAT</a></li>
+                <li><a href="message_other">Tin nhắn khác</a></li>
+            </ul>
+        </li>*@
+        @*<li>
+            <a><i class="fa fa-cogs"></i>Quản lý hệ thống <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+                <li><a href="account_group">Tạo nhóm TK local</a></li>
+                <li><a href="account_createnew">Tạo TK backend local</a></li>
+                <li><a href="tracklogs">Tracking logs</a></li>
+                <li><a href="get_link">Get link image</a></li>
+                <li><a href="seo_management">Quản lý SEO</a></li>
+            </ul>
+        </li>*@
+    </ul>
+</div>

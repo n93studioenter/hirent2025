@@ -1,0 +1,173 @@
+﻿<div class="right_col" role="main" style="min-height: 668.8px;">
+    <form method="post" class="form-horizontal form-label-left">
+
+        <div class="page-title">
+            <div class="title_left">
+                <h3>ĐỊNH NGHĨA GIẤY TỜ</h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <!-- Create new category -->
+                <div class="x_panel">
+                    <!-- add thông tin chung -->
+                    <div class="x_content">
+                        <br>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <input id="txtDepositId" type="hidden" value="0">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Tên giấy tờ</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input type="text" id="txtDepositName" name="txtDepositName" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Số tiền cọc</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input type="text" id="txtPrices" name="txtPrices" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+
+                                <input type="button" id="btnReset_Check" onclick="javascript: return btnReset_click();" class="btn btn-danger" value="RESET" fdprocessedid="mv34xg">
+                                <input type="submit" id="btnSave_Check" class="btn btn-success" value="Tạo mới">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+               
+            </div>
+
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <!-- Table  -->
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h3>DANH SÁCH GIẤY TỜ</h3>
+                    </div>
+                    <div class="x_content">
+                        <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                            <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Tên
+                                        </th>
+                                        <th>
+                                            Giá
+                                        </th>
+                                        <th>
+                                            Thao tác
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tblWarehouse">
+                                    @if (Model != null)
+                                    {
+                                        foreach (var item in (IEnumerable<HirentWeb2022.Models.tb_Deposit>)Model)
+                                        {
+                                            <tr>
+                                                <td class="columnCenter">@item.DepositName</td>
+                                                <td class="columnCenter">@item.Prices</td>
+                                                <td>
+                                                    <a onclick="callEdit('@item.DepositId')" class="btn btn-success btn-xs" style="font-size:11px;padding: 4px 10px;"><i class="fa fa-eye"></i>&nbsp; Xem</a>
+                                                    <a class="btn btn-danger btn-xs" style="font-size:11px;padding: 4px 5px;" onclick=" callDelete('@item.DepositId')"><i class="fa fa-remove"></i>&nbsp; Xóa</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    function callDelete(id) {
+        if (confirm('Bạn có chắc muốn xóa giấy tờ này?')) {
+            var param = {
+                "DepositId": id
+            }
+            $.ajax({
+                url: '/Warehouse/DeleteWasehouseDeposit',
+                dataType: 'html',
+                data: param,
+                success: function (data, status, xhr) {
+                    if (data == 'True') {
+                        window.location.reload();
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert(status);
+                }
+            });
+        }
+    }
+    function callEdit(id) {
+        $("#btnSave_Check").val("Cập nhật");
+        var param = {
+            "DepositId": id
+        }
+        $.ajax({
+            url: '/Warehouse/GetWasehouseDepositById',
+            dataType: 'json',
+            data: param,
+            success: function (data, status, xhr) {
+                $("#txtDepositId").val(data.DepositId);
+                $("#txtWishId").val(data.WishId);
+                $("#txtDepositName").val(data.DepositName);
+                $("#txtPrices").val(data.Prices);
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+    function btnReset_click() {
+        $("#txtDepositId").val(0);
+        $("#txtDepositName").val('');
+
+        $("#txtPrices").val('');
+
+    }
+    $(document).ready(function () {
+        $("form").submit(function (event) {
+            var param =
+                {
+                "DepositId": $("#txtDepositId").val(),
+                "WishId":'@ViewBag.whId',
+                "DepositName": $("#txtDepositName").val(),
+                "Prices": $("#txtPrices").val()
+            }
+            $.ajax({
+                url: '/Admin/Warehouse/SaveData3',
+                type: "POST",
+                dataType: 'html',
+                data: param,
+                success: function (data, status, xhr) {
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    alert(status);
+                }
+            });
+            event.preventDefault();
+        });
+    });
+
+</script>

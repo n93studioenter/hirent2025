@@ -1,0 +1,479 @@
+﻿<div class="clearfix">
+
+</div>
+
+<section id="slide">
+    @if (ViewBag.ListSlide != null)
+    {
+        <div class="container">
+            <div class="slide-containner">
+                <div class="col-slide-left">
+                    <div class="autoplay">
+                        @foreach (var item in ViewBag.ListSlide)
+                        {
+                            <div class="index_slide">
+                                <img src="@item.BannerPath" class="img-responsive" />
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="col-slide-right">
+                    <div class="col-slide-right_up">
+                        <img src="~/image_banner/banner_right1.png" />
+                    </div>
+                    <div class="col-slide-right_down">
+                        <img src="~/image_banner/banner_right2.png" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix">
+
+            </div>
+        </div>
+    }
+
+</section>
+
+<section id="contents">
+    <div class="container contents_container">
+        <div class="contents_container_contents">
+            <div class="index_Category">
+                <div class="index_Category_left">
+                    <div class="dvHomeBGTitle">
+                        @if (ViewBag.lang == "vi")
+                        {
+                            <h2 class="titleHome"><span>SẢN PHẨM MỚI NHẤT</span></h2>
+                        }
+                        else
+                        {
+                            <h2 class="titleHome"><span>NEW PRODUCT</span></h2>
+                        }
+                    </div>
+                </div>
+                <div class="index_Category_right autoplay2">
+                    @if (ViewBag.ListCategory != null)
+                    {
+                        if (ViewBag.lang == "vi")
+                        {
+                            <div>
+                                <a onclick="GetSanPhamByDanhMuc(0,1)">
+                                    <span class="item_icon"><i class="fas fa-hospital"></i>Tất cả</span>
+                                </a>
+                            </div>
+                            foreach (var item in ViewBag.ListCategory)
+                            {
+                                <div>
+                                    <a onclick="GetSanPhamByDanhMuc(@item.MainCateID,1)">
+                                        <span class="item_icon"><i class="fas @item.MainCateIcon"></i>@item.MainCateName</span>
+                                    </a>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div>
+                                <a onclick="GetSanPhamByDanhMuc(0,1)">
+                                    <span class="item_icon"><i class="fas fa-hospital"></i>ALL</span>
+                                </a>
+                            </div>
+                            foreach (var item in ViewBag.ListCategory)
+                            {
+                                <div>
+                                    <a onclick="GetSanPhamByDanhMuc(@item.MainCateID,1)">
+                                        <span class="item_icon"><i class="fas @item.MainCateIcon"></i>@item.Language</span>
+                                    </a>
+                                </div>
+                            }
+                        }
+
+                    }
+                </div>
+                <div class="clearfix">
+
+                </div>
+            </div>
+            <div class="index_ListProductByCate">
+                <div class="">
+                    <div class="spMoiNhat spchung ">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contents_container_contents">
+            <div class="index_Category">
+                <div class="index_Category_left">
+                    <div class="dvHomeBGTitle SPTimNhieu">
+                        <h2 class="titleHome"><span> @(ViewBag.lang == "vi"? "NHIỀU NGƯỜI TÌM NHẤT" : "MOST SEARCHED")</span></h2>
+                    </div>
+                </div>
+                <div class="index_Category_right autoplay2">
+                    @if (ViewBag.ListCategory != null)
+                    {
+                        <div>
+                            <a onclick="GetSanPhamByDanhMuc(0,2)">
+                                <span class="item_icon"><i class="fas fa-hospital"></i>@(ViewBag.lang == "vi"? "Tất cả" : "All")</span>
+                            </a>
+                        </div>
+                        foreach (var item in ViewBag.ListCategory)
+                        {
+                            <div>
+                                <a onclick="GetSanPhamByDanhMuc(@item.MainCateID,2)">
+                                    <span class="item_icon"><i class="fas @item.MainCateIcon"></i>@(ViewBag.lang == "vi"? item.MainCateName : item.Language)</span>
+                                </a>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="clearfix">
+
+                </div>
+            </div>
+            <div class="index_ListProductByCate">
+                <div class="">
+                    <div class="spNhieuNguoiTim spchung">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contents_container_contents">
+            <div class="index_Category">
+                <div class="index_Category_left">
+                    <div class="dvHomeBGTitle spChatLuong">
+                        <h2 class="titleHome"><span>@(ViewBag.lang == "vi"? "SẢN PHẨM CHẤT LƯỢNG" : "QUALITY PRODUCTS")</span></h2>
+                    </div>
+                </div>
+                <div class="index_Category_right autoplay2">
+                    @if (ViewBag.ListCategory != null)
+                    {
+                        <div>
+                            <a onclick="GetSanPhamByDanhMuc(0,3)">
+                                <span class="item_icon"><i class="fas fa-hospital"></i>@(ViewBag.lang == "vi"? "Tất cả" : "All")</span>
+                            </a>
+                        </div>
+                        foreach (var item in ViewBag.ListCategory)
+                        {
+                            <div>
+                                <a onclick="GetSanPhamByDanhMuc(@item.MainCateID,3)">
+                                    <span class="item_icon"><i class="fas @item.MainCateIcon"></i>@(ViewBag.lang == "vi"? item.MainCateName : item.Language)</span>
+                                </a>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="clearfix">
+
+                </div>
+            </div>
+            <div class="index_ListProductByCate">
+                <div class="">
+                    <div class="autospChatLuong spchung">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="contents_container_contents">
+            <div class="index_Category">
+                <div class="index_Category_left">
+                    <div class="dvHomeBGTitle SPReNhat">
+                        <h2 class="titleHome"><span>@(ViewBag.lang == "vi"? "CÓ GIÁ THUÊ RẺ NHẤT" : "CHEAPEST RENTAL PRICE")</span></h2>
+                    </div>
+                </div>
+                <div class="index_Category_right autoplay2">
+                    @if (ViewBag.ListCategory != null)
+                    {
+                        <div>
+                            <a onclick="GetSanPhamByDanhMuc(0,4)">
+                                <span class="item_icon"><i class="fas fa-hospital"></i>@(ViewBag.lang == "vi"? "Tất cả" : "All")</span>
+                            </a>
+                        </div>
+                        foreach (var item in ViewBag.ListCategory)
+                        {
+                            <div>
+                                <a onclick="GetSanPhamByDanhMuc(@item.MainCateID,4)">
+                                    <span class="item_icon"><i class="fas @item.MainCateIcon"></i>@(ViewBag.lang == "vi"? item.MainCateName : item.Language)</span>
+                                </a>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="clearfix">
+
+                </div>
+            </div>
+            <div class="index_ListProductByCate">
+                <div class="">
+                    <div class="autospReNhat spchung">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contents_container_contents">
+            <div class="index_Category">
+                <div class="index_Category_left">
+                    <div class="dvHomeBGTitle SPGanBan">
+                        <h2 class="titleHome">
+                            <span>
+                                @(ViewBag.lang == "vi"? "SẢN PHẨM GẦN BẠN" : "PRODUCTS NEAR YOU")
+                            </span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="index_Category_right autoplay2">
+                    @if (ViewBag.ListCategory != null)
+                    {
+                        <div>
+                            <a onclick="GetSanPhamByDanhMuc(0,5)">
+                                <span class="item_icon"><i class="fas fa-hospital"></i>@(ViewBag.lang == "vi"? "Tất cả" : "All")</span>
+                            </a>
+                        </div>
+                        foreach (var item in ViewBag.ListCategory)
+                        {
+                            <div>
+                                <a onclick="GetSanPhamByDanhMuc(@item.MainCateID,5)">
+                                    <span class="item_icon"><i class="fas @item.MainCateIcon"></i>@(ViewBag.lang == "vi"? item.MainCateName : item.Language)</span>
+
+                                </a>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="clearfix">
+
+                </div>
+            </div>
+            <div class="index_ListProductByCate">
+                <div class="">
+                    <div class="autospGanBan spchung">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contents_container_contents">
+            <div class="index_Category">
+                <div class="index_Category_left">
+                    <div class="dvHomeBGTitle SPRaoVat">
+                        <h2 class="titleHome">
+                            <span>
+                                RAO VẶT MIỄN PHÍ
+                            </span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="index_Category_right autoplay2">
+                    @if (ViewBag.ListCategory != null)
+                    {
+                        <div>
+                            <a onclick="GetSanPhamByDanhMuc(0,6)">
+                                <span class="item_icon"><i class="fas fa-hospital"></i>@(ViewBag.lang == "vi"? "Tất cả" : "All")</span>
+                            </a>
+                        </div>
+                        foreach (var item in ViewBag.ListCategory)
+                        {
+                            <div>
+                                <a onclick="GetSanPhamByDanhMuc(@item.MainCateID,6)">
+                                    <span class="item_icon"><i class="fas @item.MainCateIcon"></i>@(ViewBag.lang == "vi"? item.MainCateName : item.Language)</span>
+
+                                </a>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="clearfix">
+
+                </div>
+            </div>
+            <div class="index_ListProductByCate">
+                <div class="container">
+                    <div class="autospMienPhi spchung">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contents_container_contents">
+            <div class="index_Category">
+                <div class="index_Category_left">
+                    <div class="dvHomeBGTitle SPRaoVat">
+                        <h2 class="titleHome">
+                            <span>
+                                SẢN PHẨM CHO TẶNG
+                            </span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="index_Category_right autoplay2">
+                    @if (ViewBag.ListCategory != null)
+                    {
+                        <div>
+                            <a onclick="GetSanPhamByDanhMuc(0,7)">
+                                <span class="item_icon"><i class="fas fa-hospital"></i>@(ViewBag.lang == "vi"? "Tất cả" : "All")</span>
+                            </a>
+                        </div>
+                        foreach (var item in ViewBag.ListCategory)
+                        {
+                            <div>
+                                <a onclick="GetSanPhamByDanhMuc(@item.MainCateID,7)">
+                                    <span class="item_icon"><i class="fas @item.MainCateIcon"></i>@(ViewBag.lang == "vi"? item.MainCateName : item.Language)</span>
+
+                                </a>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="clearfix">
+
+                </div>
+            </div>
+            <div class="index_ListProductByCate">
+                <div class="">
+                    <div class="autospChoTang spchung">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<script>
+
+    $(document).ready(function () {
+        
+        GetSanPhamByDanhMuc(0, 1);
+        GetSanPhamByDanhMuc(0, 2);
+        GetSanPhamByDanhMuc(0, 3);
+        GetSanPhamByDanhMuc(0, 4);
+        GetSanPhamByDanhMuc(0, 5);
+        GetSanPhamByDanhMuc(0, 6);
+        GetSanPhamByDanhMuc(0, 7);
+    });
+    $('.autoplay').slick({
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        arrows: false,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                }
+            }
+        ]
+    });
+    $('.autoplay2').slick({
+        infinite: true,
+        speed: 300,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: false,
+        arrows: true,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 640,
+                settings: {
+                    arrows: false,
+                    autoplay: false,
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    autoplay: false,
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                }
+            }
+        ]
+    });
+
+    function GetSanPhamByDanhMuc(id, type) {
+
+        var param = {
+            "MainCateID": id,
+            "Type": type
+        }
+        $.ajax({
+            url: '/Home/LoadProductByCate',
+            dataType: 'html',
+            data: param,
+            async: false,
+            success: function (data, status, xhr) {
+                if (type == 1) {
+                    $(".spMoiNhat").removeClass("slick-initialized slick-slider");
+                    $(".spMoiNhat").html(data);
+                }
+                if (type == 2) {
+                    $(".spNhieuNguoiTim").removeClass("slick-initialized slick-slider");
+                    $(".spNhieuNguoiTim").html(data);
+                }
+                if (type == 3) {
+                    $(".autospChatLuong").removeClass("slick-initialized slick-slider");
+                    $(".autospChatLuong").html(data);
+                }
+                if (type == 4) {
+                    $(".autospReNhat").removeClass("slick-initialized slick-slider");
+                    $(".autospReNhat").html(data);
+                }
+                if (type == 5) {
+                    $(".autospGanBan").removeClass("slick-initialized slick-slider");
+                    $(".autospGanBan").html(data);
+                }
+                if (type == 6) {
+                    $(".autospMienPhi").removeClass("slick-initialized slick-slider");
+                    $(".autospMienPhi").html(data);
+                }
+                if (type == 7) {
+                    $(".autospChoTang").removeClass("slick-initialized slick-slider");
+                    $(".autospChoTang").html(data);
+                }
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+</script>

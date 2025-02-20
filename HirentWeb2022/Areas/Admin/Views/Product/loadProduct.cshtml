@@ -1,0 +1,158 @@
+﻿
+@{
+    Layout = null;
+}
+
+@if (Model != null)
+{
+    foreach (HirentWeb2022.ViewModel.ProductInfo item in Model)
+    {
+        <tr role="row" class="odd">
+            <td class="sorting_1">@item.ProductID</td>
+            <td><input type="checkbox"></td>
+            <td>@item.ProductCode</td>
+            <td>@item.ProductName</td>
+            <td>@item.ProductName_EN</td>
+            <td>@item.Soluongton</td>
+            <td style="text-align: right;">@item.PricePerBlock</td>
+            <td style="text-align: right;">@item.PricePerDay</td>
+            <td width="10%">
+                <span>
+                    @{
+                        if (item.ListBy1 == "active")
+                        {
+                            <a class="btn btn-info btn-xs fontCatNumber" style="background-color: #5bc0de;" onclick="SelectGroup('@item.ProductID',1)">1</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-info btn-xs fontCatNumber" style="background-color: grey;" onclick="SelectGroup('@item.ProductID',1)">1</a>
+                        }
+                    }
+                </span>
+                <span>
+                    @{
+                        if (item.ListBy2 == "active")
+                        {
+                            <a class="btn btn-info btn-xs fontCatNumber" style="background-color: #5bc0de;" onclick="SelectGroup('@item.ProductID',2)">2</a>
+
+                        }
+                        else
+                        {
+                            <a class="btn btn-info btn-xs fontCatNumber" style="background-color: grey;" onclick="SelectGroup('@item.ProductID',2)">2</a>
+                        }
+                    }
+                </span>
+                <span>
+                    @{
+                        if (item.ListBy3 == "active")
+                        {
+                            <a class="btn btn-info btn-xs fontCatNumber" style="background-color: #5bc0de;" onclick="SelectGroup('@item.ProductID',3)">3</a>
+
+                        }
+                        else
+                        {
+                            <a class="btn btn-info btn-xs fontCatNumber" style="background-color: grey;" onclick="SelectGroup('@item.ProductID',3)">3</a>
+                        }
+                    }
+                </span>
+                <span>
+                    @{
+                        if (item.ListBy4 == "active")
+                        {
+                            <a class="btn btn-info btn-xs fontCatNumber" style="background-color: #5bc0de;" onclick="SelectGroup('@item.ProductID',4)">4</a>
+
+                        }
+                        else
+                        {
+                            <a class="btn btn-info btn-xs fontCatNumber" style="background-color: grey;" onclick="SelectGroup('@item.ProductID',4)">4</a>
+                        }
+                    }
+                </span>
+                <span>
+                    @{
+                        if (item.ListBy5 == "active")
+                        {
+                            <a class="btn btn-info btn-xs fontCatNumber" style="background-color: #5bc0de;" onclick="SelectGroup('@item.ProductID',5)">5</a>
+
+                        }
+                        else
+                        {
+                            <a class="btn btn-info btn-xs fontCatNumber" style="background-color: grey;" onclick="SelectGroup('@item.ProductID',5)">5</a>
+                        }
+                    }
+                </span>
+                <span>
+                    @{
+                        if (item.ListBy6 == "active")
+                        {
+                            <a class="btn btn-info btn-xs fontCatNumber" style="background-color: #5bc0de;" onclick="SelectGroup('@item.ProductID',6)">6</a>
+
+                        }
+                        else
+                        {
+                            <a class="btn btn-info btn-xs fontCatNumber" style="background-color: grey;" onclick="SelectGroup('@item.ProductID',6)">6</a>
+                        }
+                    }
+                </span>
+                <span>
+                    @{
+                        if (item.ListBy7 == "active")
+                        {
+                            <a class="btn btn-info btn-xs fontCatNumber" style="background-color: #5bc0de;" onclick="SelectGroup('@item.ProductID',7)">7</a>
+
+                        }
+                        else
+                        {
+                            <a class="btn btn-info btn-xs fontCatNumber" style="background-color: grey;" onclick="SelectGroup('@item.ProductID',7)">7</a>
+                        }
+                    }
+                </span>
+            </td>
+            <td><img src="@item.ProductAvatar" class="imgBannerInTable"></td>
+            <td>
+                <span><a href="product_edit?productID=@item.ProductID" class="btn btn-info btn-xs"><i class="fa fa-edit"></i>&nbsp; Sửa</a></span>
+                @*<span><a class="btn btn-warning btn-xs" onclick="ViewCategory()"><i class="fa fa-edit"></i>&nbsp; Thuộc Category</a></span>*@
+                <span>
+                    <a class="btn btn-danger btn-xs" onclick="Delete('@item.ProductID')"><i class="fa fa-remove"></i>&nbsp; Xóa SP</a>
+                </span>
+                <button type="button" class="btn btn-primary" onclick="nhapkho('385','1000')" data-toggle="modal" data-target="#exampleModal">Nhập kho</button>
+            </td>
+        </tr>
+
+    }
+
+}
+
+<script>
+    function SelectGroup(id, type) {
+        var param = {
+            "id": id,
+            "type": type
+        }
+        $.ajax({
+            url: '/Admin/Product/SelectGroup',
+            data: param,
+            dataType: 'html',
+            type: 'POST',
+            cache: false,
+            success: function (result) {
+                loaddata();
+            }
+        });
+    }
+    function Delete(id) {
+        var param = {
+            "id": id
+        }
+        $.ajax({
+            url: '/Admin/Product/DeleteProduct',
+            data: param,
+            dataType: 'html',
+            type: 'POST',
+            cache: false,
+            success: function (result) {
+                loaddata();
+            }
+        });
+    }
+</script>

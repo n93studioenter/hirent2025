@@ -1,0 +1,83 @@
+﻿<li>
+    <div id="welcomes" style="display: inline-block; position: relative">
+        <a onclick="openModalLoginForm()">
+            <img id="loginsvg" src="/image_product/LogoIcons/Log%20out.svg" style="width:auto">
+        </a>
+
+        @if (ViewBag.UserName != null)
+        {
+            if (ViewBag.UserName.Length >= 13)
+            {
+                <span title="@ViewBag.UserName">@ViewBag.UserName.Substring(0, 13)</span>
+            }
+            else
+            {
+                <span title="@ViewBag.UserName">@ViewBag.UserName</span>
+            }
+
+        }
+        else
+        {
+            <a id="lgdnagnhap" onclick="openModalLoginForm()">
+                <span id="lbdangnhap">@(ViewBag.lang == "vi"? "Đăng nhập" : "Login")</span>
+            </a>
+        }
+
+
+        @if (ViewBag.UserName != null)
+        {
+            <ul class="welcome_ul">
+                <li><a href="/userinfo"><i class="fa fa-user-o"></i>@(ViewBag.lang == "vi"? "Tài khoản của tôi" : "My account")</a></li>
+                <li><a href="/ordermanagement"><i class="fa fa-user-o"></i>@(ViewBag.lang == "vi"? "Quản lý đơn hàng" : "Order Management")</a></li>
+                <li><a onclick="logout()"><i class="fa fa-user-circle-o "></i>@(ViewBag.lang == "vi"? "Đăng xuất" : "Logout")</a></li>
+            </ul>
+        }
+
+    </div>
+</li>
+<li class="hidden-xs">
+    <div style="position: relative; display: inline-block">
+        <a href="/order">
+            <img id="shopcardsvg" src="/image_product/LogoIcons/gio%20hang.svg" style="width:auto">
+        </a>
+
+        <span id="cartExistingQty" class="qty" style="position: absolute; top: 19px; font-weight: bold; left: 50%; font-size: 12px; transform: translate(0px,-50%);">0</span>
+    </div>
+    <a href="/order">
+        <span id="lbgiohang"><span>@(ViewBag.lang == "vi"?"Giỏ hàng":"Cart")</span></span>
+    </a>
+
+</li>
+
+@*<li style="margin-right: 20px" class="hidden-xs">
+    <img id="thongbaosvg" src="/image_product/LogoIcons/chuong.svg" style="width: 27px;">
+    <span id="lbthongbao">Thông báo</span>
+</li>*@
+
+
+<li style="margin: 0px 0px;">
+    <a onclick="setLanguage('vi')" style="cursor: pointer;">
+        @if (ViewBag.lang == "vi")
+        {
+            <img src="~/Assets/Images/flag-VN.jpg" style="margin-right: 10px;">
+        }
+        else
+        {
+            <img src="~/Assets/Images/flag-VN.jpg" style="margin-right: 10px; filter: grayscale(90%);">
+        }
+
+    </a>
+</li>
+<li style="margin: 0px 0px;">
+    <a onclick="setLanguage('en')" style="cursor: pointer;">
+        @if (ViewBag.lang == "vi")
+        {
+            <img src="~/Assets/Images/flag-US.jpg" style="filter: grayscale(90%);">
+        }
+        else
+        {
+            <img src="~/Assets/Images/flag-US.jpg" style="">
+        }
+
+    </a>
+</li>

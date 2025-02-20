@@ -1,0 +1,60 @@
+﻿ @if (Model != null)
+ {
+     foreach (var it in (IEnumerable<HirentWeb2022.Models.tb_Product>)Model)
+     {
+         <div class="row">
+             <div class="col-md-5 col-xs-12 BookAccessories-productName">
+                 <div class="accessories-checkbox">
+                     <input onchange="lkchange(@it.ProductID)" type="checkbox" id="accessoriesCheckbox_@it.ProductID" class="selectedAccessories" value="@it.ProductID">
+                 </div>
+                 <h3 class="productDetail-lable-accessories" style="display:inline;">
+                     @if (ViewBag.lang == "vi")
+                     {
+                         <a data-name="@it.ProductName" href="../productdetail?productID=350" target="_blank">
+                             @it.ProductName
+                         </a>
+                     }
+                     else
+                     {
+                         HirentWeb2022.Models.HirentEntities db = new HirentWeb2022.Models.HirentEntities();
+                         HirentWeb2022.Models.tb_Product_Translation tb_Product_Translation = db.tb_Product_Translation.Where(m => m.Idproduct.Value == it.ProductID).FirstOrDefault();
+                         if (tb_Product_Translation != null)
+                         {
+                             <a data-name="@it.ProductName" href="../productdetail?productID=350" target="_blank">
+                                 @tb_Product_Translation.ProductName_EN
+                             </a>
+                         }
+
+                     }
+
+                 </h3>
+             </div>
+             <div class="col-md-7 col-xs-12">
+                 <div class="row">
+                     <div class="col-sm-4 col-xs-4 text-center">
+                         <div class="qty-input">
+                             <div class="myinput">
+                                 <div class="asubtract"><a onclick="doSubtract('access_qty_@it.ProductID')">-</a></div>
+                                 <input disabled class="input inputQuality inputQtyAccessory" onchange="changeck('@it.ProductID')" type="number" id="access_qty_@it.ProductID" min="1" max="100" value="0" fdprocessedid="snl6g8">
+                                 <div class="aplus"><a onclick="doPlus('access_qty_@it.ProductID')">+</a></div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="col-sm-4 col-xs-3 text-center ">
+                         <div class="dvPriceTamTinh gtttc3" style="display: inline-block;">
+                             <p style="display: inline-block;" id="access_tempDisplay_@it.ProductID">0</p> <span>đ</span>
+                             <input type="hidden" style="display: inline-block;" id="tongcon_@it.ProductID">
+                         </div>
+                     </div>
+                     <div class="col-sm-4 col-xs-5 text-center">
+                         <div class="dvProductValue" style="display: inline-block;">
+                             <p datacheck="0" style="display: inline-block;" id="access_valueDisplay_@it.ProductID">@it.ProductValue.Value.ToString("#,##0")</p><span> đ</span>
+                             <input style="display: none;" id="access_value_@it.ProductID" value="@it.ProductValue" />
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     }
+
+ }

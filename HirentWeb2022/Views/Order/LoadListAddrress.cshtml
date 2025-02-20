@@ -1,0 +1,113 @@
+﻿@if (Model != null)
+{
+    foreach (HirentWeb2022.Models.tb_CustomerDeliveryAddress item in Model)
+    {
+        <tr>
+            <td>
+                @item.FullName
+            </td>
+            <td>
+                @item.Address
+            </td>
+            <td>
+                @item.PhoneNumber
+            </td>
+            <td>
+                @if (item.IsMacdinh == 1)
+                {
+                    <input type="radio" name="radAddress" checked onclick="setMacdinh('@item.ID')" />
+                }
+                else
+                {
+                    <input type="radio" name="radAddress" onclick="setMacdinh('@item.ID')" />
+                }
+            </td>
+            <td>
+                <a style="cursor:pointer;" onclick="EditAdress('@item.ID')">@(ViewBag.lang == "vi"? "Sửa" : "Edit") | </a>
+                <a style="cursor:pointer;" onclick="DeleteAdress('@item.ID')">@(ViewBag.lang == "vi"? "Xóa" : "Delete")</a>
+            </td>
+        </tr>
+    }
+}
+<script>
+    function EditAdress(id) {
+        $("#txtcustomerid2").val(id)
+        $(".tab1").hide();
+        $(".tab2").show();
+        var param = {
+            "id": id
+        }
+        $.ajax({
+            url: '/Order/GetAddress',
+            dataType: 'html',
+            data: param,
+            async: false,
+            success: function (data, status, xhr) {
+                var spl = data.split('|');
+                $("#txtName2").val(spl[0]);
+                $("#txtPhone2").val(spl[1]);
+                $("#txtAddress2").val(spl[2]);
+                $("#txtName").val(spl[0]);
+                $("#txtPhone").val(spl[1]);
+                $("#txtAddress").val(spl[2]);
+                $("#slProvinces").val(spl[3]);
+                $("#txtdistricts").val(spl[4]);
+                $("#txtwards").val(spl[5]);
+                changeProvinces();
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+  });
+    }
+    function DeleteAdress(id) {
+        var param = {
+            "ID": id
+        }
+        $.ajax({
+            url: '/Order/DeleteAddress',
+            dataType: 'html',
+            data: param,
+            type: "POST",
+            async: false,
+            success: function (data, status, xhr) {
+                loadDanhsachdiachi();
+                LoadMacDinh('@ViewBag.CustomerID')
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+    function setMacdinh(id) {
+        var param = {
+            "ID":id
+        }
+        $.ajax({
+            url: '/Order/SetActive',
+            dataType: 'html',
+            data: param,
+            type: "POST",
+            async: false,
+            success: function (data, status, xhr) {
+                loadDanhsachdiachi();
+                LoadMacDinh('@ViewBag.CustomerID');
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+</script>
+<style>
+    @@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    input[type='radio']:after {
+        width: 13px;
+        height: 14px;
+        background-color: #214F39;
+        border-radius: 50%;
+        opacity: 0;
+        transform: scale(var(--s, 0.5));
+    }
+}
+</style>

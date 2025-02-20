@@ -1,0 +1,67 @@
+﻿@{
+    if (Model != null)
+    {
+        HirentWeb2022.Models.HirentEntities db = new HirentWeb2022.Models.HirentEntities();
+
+        foreach (HirentWeb2022.Models.tb_Product item in Model)
+        {
+            var getlang = db.tb_Product_Translation.Where(m => m.Idproduct == item.ProductID).FirstOrDefault();
+            <div class="md_productshop_box">
+                <div class="md_productshop_left">
+                    <img src="@item.ProductAvatar" class="img-responsive" />
+                </div>
+                <div class="md_productshop_right">
+                    @if (ViewBag.lang == "vi")
+                    {
+                        <div class="md_productshop_title">
+                            @item.ProductName
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="md_productshop_title">
+                            @(getlang!=null? getlang.ProductName_EN:"")
+                        </div>
+                    }
+                    <div data-id="@item.ProductID" class="md_productshop_title2" onclick="slmore(this)">
+                      <i class="fa fa-plus"></i>  @(ViewBag.lang == "vi"? "Chọn thêm cùng sản phẩm chính" : "Add more items related to the main product")
+                    </div>
+                    <div class="clearfix">
+
+                    </div>
+                    <div class="md_productshop_soluongton">
+                        @(ViewBag.lang == "vi" ? "Số lượng có thể thuê" : "Quantity available") : @item.Soluongton
+                    </div>
+                    @if (ViewBag.lang == "vi")
+                    {
+                        <div class="md_productshop_des">
+                            @item.ShortDescription
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="md_productshop_des">
+                            @(getlang!=null? getlang.ShortDescription:"")
+                        </div>
+                    }
+                    <div>
+                        @(ViewBag.lang == "vi" ? "Giá trị đặt cọc" : "Quantity available"): <span class="md_productshop_pricehourvalue">@item.ProductValue.Value.ToString("#,##0") đ</span>
+                    </div>
+                    <div class="md_productshop_pricehour">
+                        <span>@(ViewBag.lang == "vi" ? "Giá thuê theo giờ" : "Cost of rental per hour.")</span> :  <span class="md_productshop_pricehourred">@item.PricePerBlock</span>
+                    </div>
+                    <div class="md_productshop_pricehour">
+                        <span>@(ViewBag.lang == "vi" ? "Giá thuê theo ngày" : "Cost of rental per day.")</span> :  <span class="md_productshop_pricehourred">@item.PricePerDay</span>
+                    </div>
+                    <div class="md_productshop_pricehour">
+                        <span>@(ViewBag.lang == "vi" ? "Giá thuê theo tháng" : "Cost of rental per month.")</span> :  <span class="md_productshop_pricehourred">@item.PricePerMonth</span>
+                    </div>
+                </div>
+                <div class="clearfix">
+
+                </div>
+            </div>
+        }
+    }
+}

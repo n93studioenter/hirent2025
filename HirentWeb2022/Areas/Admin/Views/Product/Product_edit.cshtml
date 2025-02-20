@@ -1,0 +1,2505 @@
+﻿
+@{
+    ViewBag.Title = "Product_edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css" />
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+<script src="../backend/js/jquery.selectlistactions.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+<div class="right_col" role="main" style="min-height: 684px;">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Chỉnh sửa sản phẩm</h3>
+        </div>
+       
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="w3-bar w3-black">
+        <button class="w3-bar-item w3-button tablink" onclick="openCity('London')">Tiếng việt</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openCity('Paris')">Tiếng anh</button>
+    </div>
+    <form method="post" action="./product_edit?productID=385" id="form2" class="form-horizontal form-label-left" enctype="multipart/form-data">
+
+        <div id="London" class="w3-container w3-border city" style="display: block;">
+
+            <div class="">
+
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <!-- Create new category -->
+                        <div class="x_panel">
+                            <!-- add thông tin chung -->
+                            <div class="x_content">
+                                <br>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <input name="ctl00$ContentPlaceHolder1$avatarPathTemp" type="text" id="ContentPlaceHolder1_avatarPathTemp" style="display:none;" value="@(Model!=null?@Model.tb_Product.ProductAvatar:"")">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Mã sản phẩm</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input name="ctl00$ContentPlaceHolder1$ProductID" type="hidden" id="ContentPlaceHolder1_ProductID" required="required" class="form-control col-md-7 col-xs-12" value="@(Model!=null?@Model.tb_Product.ProductID:0)">
+
+                                            <input name="ctl00$ContentPlaceHolder1$productCode" type="text" id="ContentPlaceHolder1_productCode" required="required" class="form-control col-md-7 col-xs-12" value="@(Model!=null?@Model.tb_Product.ProductCode:"")">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Tên sản phẩm</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input name="ctl00$ContentPlaceHolder1$productName" type="text" id="ContentPlaceHolder1_productName" required="required" class="form-control col-md-7 col-xs-12" value="@(Model!=null?@Model.tb_Product.ProductName:"")">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Giá thuê theo block</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input name="ctl00$ContentPlaceHolder1$priceByBlock" type="text" id="ContentPlaceHolder1_priceByBlock" required="required" class="form-control col-md-7 col-xs-12" value="@(Model!=null?@Model.tb_Product.PricePerBlock:"")">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Giá thuê theo ngày</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input name="ctl00$ContentPlaceHolder1$priceByDay" type="text" id="ContentPlaceHolder1_priceByDay" required="required" class="form-control col-md-7 col-xs-12" value="@(Model!=null?@Model.tb_Product.PricePerDay:"")">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Giá thuê theo tháng</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input name="ctl00$ContentPlaceHolder1$priceByMonth" type="text" id="ContentPlaceHolder1_priceByMonth" required="required" class="form-control col-md-7 col-xs-12" value="@(Model!=null?@Model.tb_Product.PricePerMonth:"")">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Chon thay hinh đại diện</label>
+                                        <div class="btn-group">
+
+                                            <div class="hidden">
+                                                <input type="file" name="ctl00$ContentPlaceHolder1$productAvatarFile" id="ContentPlaceHolder1_productAvatarFile" class="btn-group btn btn-info btn-xs">
+                                                <div id="ContentPlaceHolder1_thumnail_avatar" class="thumnail_avatar"><img src="" style="width:100%"></div>
+                                            </div>
+
+                                            <input type="file" class="btn-group btn btn-info btn-xs upload" id="uploadAvatar" accept="image/png, image/jpeg"><br>
+                                            <div class="myUploadedAvatar" style="margin-top: 20px;">
+                                                <img src="@(Model!=null?@Model.tb_Product.ProductAvatar:"/Assets/Images/No_Image_Available.jpg")" id="BannerImage" alt="Photo" style="width: 110px;  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!------Temporary not show all CATEGORY-------------->
+
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Mô tả nhanh</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <textarea name="ctl00$ContentPlaceHolder1$productDescription" id="ContentPlaceHolder1_productDescription" class="resizable_textarea form-control" placeholder="độ dài trường nhập liệu tự động mở rộng...">@(Model!=null?@Model.tb_Product.ShortDescription : "")</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Còn mới %</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input name="ctl00$ContentPlaceHolder1$productStatus" type="number" id="ContentPlaceHolder1_productStatus" min="1" max="100" onchange="numberlimiter(this);" required="required" class="form-control col-md-7 col-xs-12" value="@(Model!=null?@Model.tb_Product.StatusPercentage : "")">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Tình trạng </label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <select name="ctl00$ContentPlaceHolder1$productAvailability" id="ContentPlaceHolder1_productAvailability" class="form-control">
+                                                <option selected="selected" value="ProductStatus1">Đang có sẵn</option>
+                                                <option value="ProductStatus2">Đã cho thuê </option>
+                                                <option value="ProductStatus3">Ngưng kinh doanh </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Giá trị sản phẩm</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input name="ctl00$ContentPlaceHolder1$productValue" type="text" id="ContentPlaceHolder1_productValue" required="required" class="form-control col-md-7 col-xs-12 numberFormat" value="@(Model!=null?@Model.tb_Product.ProductValue :0)">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group" style="margin-top: 79px;">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Add hình vào gallery</label>
+                                        <div class="btn-group">
+                                            <input multiple="multiple" type="file" class="btn-group btn btn-info btn-xs upload" id="uploadGallery" accept="image/png, image/jpeg"><br>
+
+                                            <div id="ContentPlaceHolder1_thumnail_gallery" class="row thumnail_gallery">
+                                               
+                                            </div>
+                                            <input style="display:none;" name="ctl00$ContentPlaceHolder1$listimg" type="text" id="ContentPlaceHolder1_listimg" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- add thông tin chung -->
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <!-- 3 dropdownlist to select CATEGORY -->
+                                <div class="form-group col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-12 col-sm-12 col-xs-12">Chọn Main Category</label>
+                                    <div class="col-md-12 col-sm-12 col-xs-12" id="dvMainCate">
+                                        <select id="sltMainCate" onchange="mainCateOnChange()" class="form-control">
+                                            <option value="0">Lựa chọn Main Category<!-- option --></option>
+                                            @if (ViewBag.maincate != null)
+                                            {
+                                                foreach (var item in ViewBag.maincate)
+                                                {
+                                                    <option value="@item.MainCateID">@item.MainCateName</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-12 col-sm-12 col-xs-12">Chọn Sub Category 1</label>
+                                    <div class="col-md-12 col-sm-12 col-xs-12" id="dvSubCate1">
+                                        <select id="sltSubCate1" onchange="subCate1OnChange()" class="form-control">
+                                            <option value="-1">Lựa chọn Sub Category 1<!-- option --></option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-12 col-sm-12 col-xs-12">Chọn Sub Category 2</label>
+                                    <div class="col-md-12 col-sm-12 col-xs-12" id="dvSubCate2">
+                                        <select id="sltSubCate2" class="form-control"><option value="-1">Lựa chọn Sub Category 2<!-- option --></option></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+
+                                    <a class="btn btn-warning" id="btnAddCategory" onclick="add_category_to_list()"><i class="fa fa-plus"></i>&nbsp;Thêm</a>
+                                    <a class="btn btn-danger" id="btnResetCategory" onclick="remove_category_out_list()"><i class="fa fa-remove"></i>&nbsp;Reset</a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- // 3 dropdownlist to select CATEGORY -->
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <!--list Category selected -->
+                            <h4>Category đã chọn:</h4>
+                            <div class="showCategorySelected">
+                                @*<div id="" class="row">
+                                        <div class="form-group col-md-3 col-sm-3 col-xs-12">
+                                            <input type="text" class="form-control" disabled="" value="Dụng cụ, thiết bị" id="mainCateAdded2">
+                                            <input type="text" class="form-control" style="display:none;" name="mainCateAddedVal2" value="4" id="mainCateAddedVal2">
+                                        </div>
+                                        <div class="form-group col-md-3 col-sm-3 col-xs-12">
+                                            <input type="text" class="form-control" disabled="" value="Dụng cụ sửa chữa" id="subCate1Added2">
+                                            <input type="text" class="form-control" style="display:none;" name="subCate1AddedVal2" value="20" id="subCate1AddedVal2">
+                                        </div>
+                                        <div class="form-group col-md-3 col-sm-3 col-xs-12">
+                                            <input type="text" class="form-control" disabled="" value="Sửa nhà cửa" id="subCate1Added2">
+                                            <input type="text" class="form-control" style="display:none;" name="subCate2AddedVal2" value="29" id="subCate2AddedVal2">
+                                        </div><div class="form-group col-md-3 col-sm-3 col-xs-12">
+                                            <a href="javascript:xoasp('840')" style="font-size: 25px;color: #585858;top: 0px;position: relative;"><i class="fa fa-remove"></i></a>
+                                        </div>
+                                    </div>*@
+                            </div>
+                        </div>
+                        <div class="x_panel">
+                            <!-- add sản phẩm đính kèm và cho linh kiện -->
+                            <div class="x_title">
+                                <h2>Thêm sản phẩm đi kèm và linh kiện chọn thêm </h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <!-- Sản phẩm đính kèm -->
+                                            <label class="control-label">Chọn kho cho sản phẩm này:</label>
+                                            <select id="slwh" class="form-control" onchange="selectWarehouse()">
+                                                <option value="0">
+                                                    Chọn một kho hàng cho sản phẩm
+                                                </option>
+                                                @if (ViewBag.Warehouse != null)
+                                                {
+                                                    foreach (var item in ViewBag.Warehouse)
+                                                    {
+                                                        <option value="@item.whId">
+                                                            @item.WarehouseName
+                                                        </option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                        <!-- /Sản phẩm đính kèm -->
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <!-- Linh  kiện chọn thêm -->
+                                            <label class="control-label">Chọn linh kiện chọn thêm</label>
+                                            <div class="form-control">
+                                                <input id="mtsl" placeholder="Notthing selected" onclick="toggleselect()" />
+                                            </div>
+                                            <div id="ProAccessoryList">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /Linh  kiện chọn thêm -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /add sản phẩm đính kèm và cho linh kiện -->
+
+                        <div class="x_panel">
+                            <!-- add sản phẩm đính kèm và cho linh kiện -->
+                            <div class="x_title">
+                                <h2>Chi phí Lắp ráp, vận chuyển và đặt cọc </h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Công lắp ráp</label>
+                                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                                    <input name="ctl00$ContentPlaceHolder1$WhCostInstall" type="text" id="ContentPlaceHolder1_WhCostInstall" class="form-control has-feedback-right numberFormat" value="6868">
+                                                    <span class="form-control-feedback right width50" aria-hidden="true">VND</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Công tháo</label>
+                                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                                    <input name="ctl00$ContentPlaceHolder1$WhCostDelivery" type="text" id="ContentPlaceHolder1_WhCostDelivery" class="form-control has-feedback-right numberFormat" value="6868">
+                                                    <span class="form-control-feedback right width50" aria-hidden="true">VND</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Công vận chuyển/(1 lượt):</label>
+                                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                                    <input name="ctl00$ContentPlaceHolder1$WhCostInstallDelivery" type="text" id="ContentPlaceHolder1_WhCostInstallDelivery" class="form-control has-feedback-right numberFormat" value="6868">
+                                                    <span class="form-control-feedback right width50" aria-hidden="true">VND</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 hidden">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Cọc giữ chỗ</label>
+                                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                                    <input name="ctl00$ContentPlaceHolder1$WhCostReserve" type="text" id="ContentPlaceHolder1_WhCostReserve" class="form-control has-feedback-right numberFormat">
+                                                    <span class="form-control-feedback right width50" aria-hidden="true">VND</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Cọc giá trị</label>
+                                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                                    <input name="ctl00$ContentPlaceHolder1$WhCostValue" type="text" id="ContentPlaceHolder1_WhCostValue" class="form-control has-feedback-right numberFormat">
+                                                    <span class="form-control-feedback right width50" aria-hidden="true">VND</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Cọc giấy tờ</label>
+                                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                                    <input name="ctl00$ContentPlaceHolder1$WhCostDocument" type="text" id="ContentPlaceHolder1_WhCostDocument" class="form-control has-feedback-right numberFormat">
+                                                    <span class="form-control-feedback right width50" aria-hidden="true">VND</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Thông tin Delivery, Deposit -->
+
+                        <div class="x_panel">
+                            <!-- add sản phẩm đính kèm và cho linh kiện -->
+                            <div class="x_title">
+                                <h2>Mô tả chi tiết Dịch Vụ đi kèm và vận chuyển và giấy tờ </h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Tự lặp đặt</label>
+                                            <div class="col-md-8 col-sm-8 col-xs-12"> 
+                                                <textarea name="ctl00$ContentPlaceHolder1$Tulapdat" id="ContentPlaceHolder1_Tulapdat" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@((Model!=null && Model.tb_ProductTermConditionDetails != null) ?Model.tb_ProductTermConditionDetails.Tulapdat:"")</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Hướng dẫn sử dụng</label>
+                                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                                <textarea name="ctl00$ContentPlaceHolder1$Huongdansudung" id="ContentPlaceHolder1_Huongdansudung" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@(Model!=null && Model.tb_ProductTermConditionDetails!=null?Model.tb_ProductTermConditionDetails.Huongdansudung : "")</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Thợ đến lắp</label>
+                                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                                <textarea name="ctl00$ContentPlaceHolder1$Thotoilap" id="ContentPlaceHolder1_Thotoilap" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@(Model!=null && Model.tb_ProductTermConditionDetails!=null?Model.tb_ProductTermConditionDetails.Thotoilap : "")</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Thợ đến tháo</label>
+                                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                                <textarea name="ctl00$ContentPlaceHolder1$Thotoithao" id="ContentPlaceHolder1_Thotoithao" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@(Model!=null && Model.tb_ProductTermConditionDetails!=null?Model.tb_ProductTermConditionDetails.Thotoithao : "")</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Thợ đến lắp và tháo</label>
+                                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                                <textarea name="ctl00$ContentPlaceHolder1$Thodenlapvathao" id="ContentPlaceHolder1_Thodenlapvathao" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@(Model!=null && Model.tb_ProductTermConditionDetails!=null?Model.tb_ProductTermConditionDetails.Thodenlapvathao : "")</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Tự vận chuyển</label>
+                                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                                <textarea name="ctl00$ContentPlaceHolder1$Tuvanchuyen" id="ContentPlaceHolder1_Tuvanchuyen" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@(Model!=null && Model.tb_ProductTermConditionDetails!=null?Model.tb_ProductTermConditionDetails.Tuvanchuyen : "")</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Giao tận nhà</label>
+                                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                                <textarea name="ctl00$ContentPlaceHolder1$Giaotannha" id="ContentPlaceHolder1_Giaotannha" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@(Model != null && Model.tb_ProductTermConditionDetails!=null?Model.tb_ProductTermConditionDetails.Giaotannha : "")</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Nhận trả tận nhà</label>
+                                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                                <textarea name="ctl00$ContentPlaceHolder1$Nhantratannha" id="ContentPlaceHolder1_Nhantratannha" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@(Model != null && Model.tb_ProductTermConditionDetails!=null?Model.tb_ProductTermConditionDetails.Nhantratannha : "")</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Giao và nhận trả tận nhà</label>
+                                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                                <textarea name="ctl00$ContentPlaceHolder1$Giaovanhantratannha" id="ContentPlaceHolder1_Giaovanhantratannha" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@(Model != null && Model.tb_ProductTermConditionDetails!=null?Model.tb_ProductTermConditionDetails.Giaovanhantratannha : "")</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Gửi giấy tờ </label>
+                                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                                <textarea name="ctl00$ContentPlaceHolder1$DescDepositDocument" id="ContentPlaceHolder1_DescDepositDocument" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Gửi tài sản</label>
+                                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                                <textarea name="ctl00$ContentPlaceHolder1$DescDepositProperty" id="ContentPlaceHolder1_DescDepositProperty" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Gửi tiền cọc</label>
+                                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                                <textarea name="ctl00$ContentPlaceHolder1$DescDeposit" id="ContentPlaceHolder1_DescDeposit" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="x_panel">
+                            <!-- Add các mô tả -->
+                            <div class="x_title" style="margin-bottom:0px;">
+                                <h2>Thêm nội dung mô ta, hướng dẫn sử dụng </h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <br />
+                                <div class="form-group">
+                                    <label class="control-label">Mô tả sản phẩm chi tiết</label>
+                                    <textarea tabindex="2" cols="50" rows="5" class="field textarea small content_Preditor" name="content_PrFullDesc" id="content_PrFullDesc" runat="server" style="width: 100%">@(Model!=null && Model!=null?Html.Raw(Model.tb_Product.FullDescription) :"")</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Thông số kỹ thuật</label>
+                                    <textarea tabindex="3" cols="50" rows="5" class="field textarea small content_Preditor" name="content_PrSpec" id="content_PrSpec" runat="server" style="width: 100%">@(Model!=null && Model!=null?Html.Raw(Model.tb_Product.ProductSpecification) :"")</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Hướng dẫn sử dụng</label>
+                                    <textarea tabindex="3" cols="50" rows="5" class="field textarea small content_Preditor" name="content_PrInstruction" id="content_PrInstruction" runat="server" style="width: 100%">@(Model!=null && Model!=null?Html.Raw(Model.tb_Product.ProductInstruction) :"")</textarea>
+
+                                </div>
+                                <div class="form-group" style="margin-top:20px;">
+                                    <div class="col-md-3 col-sm-3 col-xs-12" style="margin-top: 15px;">
+                                        <label class="control-label col-md-12 col-sm-12 col-xs-12">Add link video youtube  <a href="https://www.youtube.com/" target="_blank"><img class="img-responsive col-md-6 col-sm-6 col-xs-12" style="width: 82px;float: right;" src="images/youtubeicon.png" /></a></label>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input style="margin-top: 12px;" type="text" id="productYoutube" runat="server" name="product-youtube" required="required" class="form-control col-md-7 col-xs-12" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Add các mô tả -->
+
+                        <div class="x_panel">
+                            <!-- Add cách tinh giá -->
+                            <div class="">
+                                <div>
+                                    <div>
+                                        <h2>Định nghĩa cách tính giá theo thời gian tự động </h2>
+                                    </div>
+                                </div>
+                                <div>
+                                    <input type="file" class="btn-group btn btn-info btn-xs upload" id="myUploadedFileExcel" accept="xls" style="display: inline-block">
+                                    <span style="color: #999; font-style: italic;">Vui lòng đóng file trước khi import </span>
+                                    <input id="pathexcel" type="hidden">
+                                </div>
+                            </div>
+                            <div class="x_content">
+                                <br>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <!-- Cách tính giá theo block -->
+                                    <div class="form-group">
+                                        <label class="control-label col-md-5 col-sm-5 col-xs-12" for="first-name">
+                                            Theo giờ
+                                        </label>
+
+                                    </div>
+                                    <div class="form-group set-price-per-hour">
+                                        <table class="table table-striped table-bordered">
+                                            <tbody>
+                                                <tr class="block-1">
+                                                    <td>block 1</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block1" name="ctl00$ContentPlaceHolder1$priceblock1" type="text" id="ContentPlaceHolder1_priceblock1" class="has-feedback-right  numberFormat">
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock1" type="text" id="ContentPlaceHolder1_priceblock1" class="has-feedback-right  numberFormat">
+                                                        }
+                                                        <a onclick="syncHour()" style="margin-left:5px;cursor:pointer">
+                                                        <i class="fa fa-arrow-down"></i>
+                                                        </a>
+                                                    </td>
+
+                                                </tr>
+                                                <tr class="block-2">
+                                                    <td>block 2</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block2" name="ctl00$ContentPlaceHolder1$priceblock2" type="text" id="ContentPlaceHolder1_priceblock2" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock2" type="text" id="ContentPlaceHolder1_priceblock2" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-3">
+                                                    <td>block 3</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block3" name="ctl00$ContentPlaceHolder1$priceblock3" type="text" id="ContentPlaceHolder1_priceblock3" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock3" type="text" id="ContentPlaceHolder1_priceblock3" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-4">
+                                                    <td>block 4</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block4" name="ctl00$ContentPlaceHolder1$priceblock4" type="text" id="ContentPlaceHolder1_priceblock4" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock4" type="text" id="ContentPlaceHolder1_priceblock4" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-5">
+                                                    <td>block 5</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block5" name="ctl00$ContentPlaceHolder1$priceblock5" type="text" id="ContentPlaceHolder1_priceblock5" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock5" type="text" id="ContentPlaceHolder1_priceblock5" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-6">
+                                                    <td>block 6</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block6" name="ctl00$ContentPlaceHolder1$priceblock6" type="text" id="ContentPlaceHolder1_priceblock6" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock6" type="text" id="ContentPlaceHolder1_priceblock6" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-7">
+                                                    <td>block 7</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block7" name="ctl00$ContentPlaceHolder1$priceblock7" type="text" id="ContentPlaceHolder1_priceblock7" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock7" type="text" id="ContentPlaceHolder1_priceblock7" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-8">
+                                                    <td>block 8</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block8" name="ctl00$ContentPlaceHolder1$priceblock8" type="text" id="ContentPlaceHolder1_priceblock8" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock8" type="text" id="ContentPlaceHolder1_priceblock8" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-9">
+                                                    <td>block 9</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block9" name="ctl00$ContentPlaceHolder1$priceblock9" type="text" id="ContentPlaceHolder1_priceblock9" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock9" type="text" id="ContentPlaceHolder1_priceblock9" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-10">
+                                                    <td>block 10</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block10" name="ctl00$ContentPlaceHolder1$priceblock10" type="text" id="ContentPlaceHolder1_priceblock10" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock10" type="text" id="ContentPlaceHolder1_priceblock10" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-11">
+                                                    <td>block 11</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block11" name="ctl00$ContentPlaceHolder1$priceblock11" type="text" id="ContentPlaceHolder1_priceblock11" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock11" type="text" id="ContentPlaceHolder1_priceblock11" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-12">
+                                                    <td>block 12</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block12" name="ctl00$ContentPlaceHolder1$priceblock12" type="text" id="ContentPlaceHolder1_priceblock12" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock12" type="text" id="ContentPlaceHolder1_priceblock12" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-13">
+                                                    <td>block 13</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block13" name="ctl00$ContentPlaceHolder1$priceblock13" type="text" id="ContentPlaceHolder1_priceblock13" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock13" type="text" id="ContentPlaceHolder1_priceblock13" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-14">
+                                                    <td>block 14</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block14" name="ctl00$ContentPlaceHolder1$priceblock14" type="text" id="ContentPlaceHolder1_priceblock14" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock14" type="text" id="ContentPlaceHolder1_priceblock14" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-15">
+                                                    <td>block 15</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block15" name="ctl00$ContentPlaceHolder1$priceblock15" type="text" id="ContentPlaceHolder1_priceblock15" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock15" type="text" id="ContentPlaceHolder1_priceblock15" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-16">
+                                                    <td>block 16</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block16" name="ctl00$ContentPlaceHolder1$priceblock16" type="text" id="ContentPlaceHolder1_priceblock16" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock16" type="text" id="ContentPlaceHolder1_priceblock16" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-17">
+                                                    <td>block 17</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block17" name="ctl00$ContentPlaceHolder1$priceblock17" type="text" id="ContentPlaceHolder1_priceblock17" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock17" type="text" id="ContentPlaceHolder1_priceblock17" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-18">
+                                                    <td>block 18</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block18" name="ctl00$ContentPlaceHolder1$priceblock18" type="text" id="ContentPlaceHolder1_priceblock18" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock18" type="text" id="ContentPlaceHolder1_priceblock18" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-19">
+                                                    <td>block 19</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block19" name="ctl00$ContentPlaceHolder1$priceblock19" type="text" id="ContentPlaceHolder1_priceblock19" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock19" type="text" id="ContentPlaceHolder1_priceblock19" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-20">
+                                                    <td>block 20</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block20" name="ctl00$ContentPlaceHolder1$priceblock20" type="text" id="ContentPlaceHolder1_priceblock20" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock20" type="text" id="ContentPlaceHolder1_priceblock20" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-21">
+                                                    <td>block 21</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block21" name="ctl00$ContentPlaceHolder1$priceblock21" type="text" id="ContentPlaceHolder1_priceblock21" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock21" type="text" id="ContentPlaceHolder1_priceblock21" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-22">
+                                                    <td>block 22</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block22" name="ctl00$ContentPlaceHolder1$priceblock22" type="text" id="ContentPlaceHolder1_priceblock22" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock22" type="text" id="ContentPlaceHolder1_priceblock22" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-23">
+                                                    <td>block 23</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block23" name="ctl00$ContentPlaceHolder1$priceblock23" type="text" id="ContentPlaceHolder1_priceblock23" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock23" type="text" id="ContentPlaceHolder1_priceblock23" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-24">
+                                                    <td>block 24</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerHour != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerHour.Block24" name="ctl00$ContentPlaceHolder1$priceblock24" type="text" id="ContentPlaceHolder1_priceblock24" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceblock24" type="text" id="ContentPlaceHolder1_priceblock24" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <!--Define price per day-->
+                                    <div class="form-group">
+                                        <label class="control-label col-md-5 col-sm-5 col-xs-12" for="first-name">
+                                            Theo ngày
+                                        </label>
+
+                                    </div>
+                                    <div class="form-group set-price-per-day">
+                                        <table class="table table-striped table-bordered">
+                                            <tbody>
+                                                <tr class="block-1">
+                                                    <td>block 1</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block1" name="ctl00$ContentPlaceHolder1$priceDayBlock1" type="text" id="ContentPlaceHolder1_priceDayBlock1" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock1" type="text" id="ContentPlaceHolder1_priceDayBlock1" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    <a onclick="syncDay()" style="margin-left:5px;cursor:pointer">
+                                                        <i class="fa fa-arrow-down"></i>
+                                                    </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-2">
+                                                    <td>block 2</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block2" name="ctl00$ContentPlaceHolder1$priceDayBlock2" type="text" id="ContentPlaceHolder1_priceDayBlock2" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock2" type="text" id="ContentPlaceHolder1_priceDayBlock2" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-3">
+                                                    <td>block 3</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block3" name="ctl00$ContentPlaceHolder1$priceDayBlock3" type="text" id="ContentPlaceHolder1_priceDayBlock3" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock3" type="text" id="ContentPlaceHolder1_priceDayBlock3" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-4">
+                                                    <td>block 4</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block4" name="ctl00$ContentPlaceHolder1$priceDayBlock4" type="text" id="ContentPlaceHolder1_priceDayBlock4" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock4" type="text" id="ContentPlaceHolder1_priceDayBlock4" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-5">
+                                                    <td>block 5</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block5" name="ctl00$ContentPlaceHolder1$priceDayBlock5" type="text" id="ContentPlaceHolder1_priceDayBlock5" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock5" type="text" id="ContentPlaceHolder1_priceDayBlock5" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-6">
+                                                    <td>block 6</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block6" name="ctl00$ContentPlaceHolder1$priceDayBlock6" type="text" id="ContentPlaceHolder1_priceDayBlock6" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock6" type="text" id="ContentPlaceHolder1_priceDayBlock6" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-7">
+                                                    <td>block 7</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block7" name="ctl00$ContentPlaceHolder1$priceDayBlock7" type="text" id="ContentPlaceHolder1_priceDayBlock7" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock7" type="text" id="ContentPlaceHolder1_priceDayBlock7" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-8">
+                                                    <td>block 8</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block8" name="ctl00$ContentPlaceHolder1$priceDayBlock8" type="text" id="ContentPlaceHolder1_priceDayBlock8" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock8" type="text" id="ContentPlaceHolder1_priceDayBlock8" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-9">
+                                                    <td>block 9</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block9" name="ctl00$ContentPlaceHolder1$priceDayBlock9" type="text" id="ContentPlaceHolder1_priceDayBlock9" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock9" type="text" id="ContentPlaceHolder1_priceDayBlock9" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-10">
+                                                    <td>block 10</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block10" name="ctl00$ContentPlaceHolder1$priceDayBlock10" type="text" id="ContentPlaceHolder1_priceDayBlock10" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock10" type="text" id="ContentPlaceHolder1_priceDayBlock10" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-11">
+                                                    <td>block 11</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block11" name="ctl00$ContentPlaceHolder1$priceDayBlock11" type="text" id="ContentPlaceHolder1_priceDayBlock11" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock11" type="text" id="ContentPlaceHolder1_priceDayBlock11" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-12">
+                                                    <td>block 12</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block12" name="ctl00$ContentPlaceHolder1$priceDayBlock12" type="text" id="ContentPlaceHolder1_priceDayBlock12" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock12" type="text" id="ContentPlaceHolder1_priceDayBlock12" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-13">
+                                                    <td>block 13</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block13" name="ctl00$ContentPlaceHolder1$priceDayBlock13" type="text" id="ContentPlaceHolder1_priceDayBlock13" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock13" type="text" id="ContentPlaceHolder1_priceDayBlock13" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-14">
+                                                    <td>block 14</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block14" name="ctl00$ContentPlaceHolder1$priceDayBlock14" type="text" id="ContentPlaceHolder1_priceDayBlock14" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock14" type="text" id="ContentPlaceHolder1_priceDayBlock14" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-15">
+                                                    <td>block 15</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block15" name="ctl00$ContentPlaceHolder1$priceDayBlock15" type="text" id="ContentPlaceHolder1_priceDayBlock15" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock15" type="text" id="ContentPlaceHolder1_priceDayBlock15" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-16">
+                                                    <td>block 16</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block16" name="ctl00$ContentPlaceHolder1$priceDayBlock16" type="text" id="ContentPlaceHolder1_priceDayBlock16" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock16" type="text" id="ContentPlaceHolder1_priceDayBlock16" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-17">
+                                                    <td>block 17</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block17" name="ctl00$ContentPlaceHolder1$priceDayBlock17" type="text" id="ContentPlaceHolder1_priceDayBlock17" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock17" type="text" id="ContentPlaceHolder1_priceDayBlock17" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-18">
+                                                    <td>block 18</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block18" name="ctl00$ContentPlaceHolder1$priceDayBlock18" type="text" id="ContentPlaceHolder1_priceDayBlock18" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock18" type="text" id="ContentPlaceHolder1_priceDayBlock18" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-19">
+                                                    <td>block 19</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block19" name="ctl00$ContentPlaceHolder1$priceDayBlock19" type="text" id="ContentPlaceHolder1_priceDayBlock19" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock19" type="text" id="ContentPlaceHolder1_priceDayBlock19" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-20">
+                                                    <td>block 20</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block20" name="ctl00$ContentPlaceHolder1$priceDayBlock20" type="text" id="ContentPlaceHolder1_priceDayBlock20" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock20" type="text" id="ContentPlaceHolder1_priceDayBlock20" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-21">
+                                                    <td>block 21</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block21" name="ctl00$ContentPlaceHolder1$priceDayBlock21" type="text" id="ContentPlaceHolder1_priceDayBlock21" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock21" type="text" id="ContentPlaceHolder1_priceDayBlock21" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-22">
+                                                    <td>block 22</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block22" name="ctl00$ContentPlaceHolder1$priceDayBlock22" type="text" id="ContentPlaceHolder1_priceDayBlock22" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock22" type="text" id="ContentPlaceHolder1_priceDayBlock22" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-23">
+                                                    <td>block 23</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block23" name="ctl00$ContentPlaceHolder1$priceDayBlock23" type="text" id="ContentPlaceHolder1_priceDayBlock23" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock23" type="text" id="ContentPlaceHolder1_priceDayBlock23" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-24">
+                                                    <td>block 24</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block24" name="ctl00$ContentPlaceHolder1$priceDayBlock24" type="text" id="ContentPlaceHolder1_priceDayBlock24" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock24" type="text" id="ContentPlaceHolder1_priceDayBlock24" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-25">
+                                                    <td>block 25</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block25" name="ctl00$ContentPlaceHolder1$priceDayBlock25" type="text" id="ContentPlaceHolder1_priceDayBlock25" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock25" type="text" id="ContentPlaceHolder1_priceDayBlock25" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-26">
+                                                    <td>block 26</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block26" name="ctl00$ContentPlaceHolder1$priceDayBlock26" type="text" id="ContentPlaceHolder1_priceDayBlock26" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock26" type="text" id="ContentPlaceHolder1_priceDayBlock26" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-27">
+                                                    <td>block 27</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block27" name="ctl00$ContentPlaceHolder1$priceDayBlock27" type="text" id="ContentPlaceHolder1_priceDayBlock27" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock27" type="text" id="ContentPlaceHolder1_priceDayBlock27" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-28">
+                                                    <td>block 28</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block28" name="ctl00$ContentPlaceHolder1$priceDayBlock28" type="text" id="ContentPlaceHolder1_priceDayBlock28" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock28" type="text" id="ContentPlaceHolder1_priceDayBlock28" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-29">
+                                                    <td>block 29</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block29" name="ctl00$ContentPlaceHolder1$priceDayBlock29" type="text" id="ContentPlaceHolder1_priceDayBlock29" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock29" type="text" id="ContentPlaceHolder1_priceDayBlock29" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-30">
+                                                    <td>block 30</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerDay != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerDay.Block30" name="ctl00$ContentPlaceHolder1$priceDayBlock30" type="text" id="ContentPlaceHolder1_priceDayBlock30" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceDayBlock30" type="text" id="ContentPlaceHolder1_priceDayBlock30" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <!--Define price per day-->
+                                    <div class="form-group">
+                                        <label class="control-label col-md-5 col-sm-5 col-xs-12" for="first-name">
+                                            Theo tháng
+                                        </label>
+
+                                    </div>
+                                    <div class="form-group set-price-per-day">
+                                        <table class="table table-striped table-bordered">
+                                            <tbody>
+                                                <tr class="block-1">
+                                                    <td>block 1</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerMonth != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerMonth.Block1" name="ctl00$ContentPlaceHolder1$priceMonthBlock1" type="text" id="ContentPlaceHolder1_priceMonthBlock1" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceMonthBlock1" type="text" id="ContentPlaceHolder1_priceMonthBlock1" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        <a onclick="syncMonth()" style="margin-left:5px;cursor:pointer">
+                                                            <i class="fa fa-arrow-down"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-2">
+                                                    <td>block 2</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerMonth != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerMonth.Block2" name="ctl00$ContentPlaceHolder1$priceMonthBlock2" type="text" id="ContentPlaceHolder1_priceMonthBlock2" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceMonthBlock2" type="text" id="ContentPlaceHolder1_priceMonthBlock2" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-3">
+                                                    <td>block 3</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerMonth != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerMonth.Block3" name="ctl00$ContentPlaceHolder1$priceMonthBlock3" type="text" id="ContentPlaceHolder1_priceMonthBlock3" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceMonthBlock3" type="text" id="ContentPlaceHolder1_priceMonthBlock3" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-4">
+                                                    <td>block 4</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerMonth != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerMonth.Block4" name="ctl00$ContentPlaceHolder1$priceMonthBlock4" type="text" id="ContentPlaceHolder1_priceMonthBlock4" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceMonthBlock4" type="text" id="ContentPlaceHolder1_priceMonthBlock4" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-5">
+                                                    <td>block 5</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerMonth != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerMonth.Block5" name="ctl00$ContentPlaceHolder1$priceMonthBlock5" type="text" id="ContentPlaceHolder1_priceMonthBlock5" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceMonthBlock5" type="text" id="ContentPlaceHolder1_priceMonthBlock5" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-6">
+                                                    <td>block 6</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerMonth != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerMonth.Block6" name="ctl00$ContentPlaceHolder1$priceMonthBlock6" type="text" id="ContentPlaceHolder1_priceMonthBlock6" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceMonthBlock6" type="text" id="ContentPlaceHolder1_priceMonthBlock6" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-7">
+                                                    <td>block 7</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerMonth != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerMonth.Block7" name="ctl00$ContentPlaceHolder1$priceMonthBlock7" type="text" id="ContentPlaceHolder1_priceMonthBlock7" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceMonthBlock7" type="text" id="ContentPlaceHolder1_priceMonthBlock7" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-8">
+                                                    <td>block 8</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerMonth != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerMonth.Block8" name="ctl00$ContentPlaceHolder1$priceMonthBlock8" type="text" id="ContentPlaceHolder1_priceMonthBlock8" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceMonthBlock8" type="text" id="ContentPlaceHolder1_priceMonthBlock8" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-9">
+                                                    <td>block 9</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerMonth != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerMonth.Block9" name="ctl00$ContentPlaceHolder1$priceMonthBlock9" type="text" id="ContentPlaceHolder1_priceMonthBlock9" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceMonthBlock9" type="text" id="ContentPlaceHolder1_priceMonthBlock9" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-10">
+                                                    <td>block 10</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerMonth != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerMonth.Block10" name="ctl00$ContentPlaceHolder1$priceMonthBlock10" type="text" id="ContentPlaceHolder1_priceMonthBlock10" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceMonthBlock10" type="text" id="ContentPlaceHolder1_priceMonthBlock10" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-11">
+                                                    <td>block 11</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerMonth != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerMonth.Block11" name="ctl00$ContentPlaceHolder1$priceMonthBlock11" type="text" id="ContentPlaceHolder1_priceMonthBlock11" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceMonthBlock11" type="text" id="ContentPlaceHolder1_priceMonthBlock11" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr class="block-12">
+                                                    <td>block 12</td>
+                                                    <td>
+                                                        @if (ViewBag.tb_ProductPricePerMonth != null)
+                                                        {
+                                                            <input value="@ViewBag.tb_ProductPricePerMonth.Block12" name="ctl00$ContentPlaceHolder1$priceMonthBlock12" type="text" id="ContentPlaceHolder1_priceMonthBlock12" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="ctl00$ContentPlaceHolder1$priceMonthBlock12" type="text" id="ContentPlaceHolder1_priceMonthBlock12" class="has-feedback-right  numberFormat">
+
+                                                        }
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add cách tinh giá -->
+                        <div class="x_panel">
+                            <div>
+                                <div>
+                                    <h2>Chọn hình thức đặt cọc </h2>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>
+                                            @if (Model!=null && Model.tb_Product.Cocbangtienmat == 1)
+                                            {
+                                                <input checked name="ctl00$ContentPlaceHolder1$chk1" type="checkbox" id="ContentPlaceHolder1_chk1" value="0" />
+                                            }
+                                            else
+                                            {
+                                                <input name="ctl00$ContentPlaceHolder1$chk1" type="checkbox" id="ContentPlaceHolder1_chk1" value="0" />
+
+                                            }
+                                            <span>Cọc bằng tiền mặt</span>
+                                        </li>
+                                        <li>
+                                            @if (Model != null && Model.tb_Product.Cocbanggiayto == 1)
+                                            {
+                                                <input checked name="ctl00$ContentPlaceHolder1$chk2" type="checkbox" id="ContentPlaceHolder1_chk2" value="0">
+                                            }
+                                            else
+                                            {
+                                                <input name="ctl00$ContentPlaceHolder1$chk2" type="checkbox" id="ContentPlaceHolder1_chk2" value="0">
+                                            }
+                                            <span>Cọc bằng tiền mặt kết hợp giấy tờ</span>
+                                        </li>
+                                        <li>
+                                            @if (Model!=null && Model.tb_Product.Cocbanggiaytovahopdong == 1)
+                                            {
+                                                <input checked name="ctl00$ContentPlaceHolder1$chk3" type="checkbox" id="ContentPlaceHolder1_chk3" value="0">
+
+                                            }
+                                            else
+                                            {
+                                                <input name="ctl00$ContentPlaceHolder1$chk3" type="checkbox" id="ContentPlaceHolder1_chk3" value="0">
+                                            }
+                                            <span>Cọc bằng tiền mặt kết hợp giấy tờ và hợp đồng dân sự</span>
+                                            <input name="ctl00$ContentPlaceHolder1$chkinput" type="text" id="ContentPlaceHolder1_chkinput" placeholder="Số tiền cọc hợp đồng..." value="@(Model!=null?Model.tb_Product.Cocbanggiaytovahopdongprice:0)">
+                                        </li>
+                                        <li>
+                                            @if (Model != null && Model.tb_Product.Cocbangtaisan == 1)
+                                            {
+                                                <input checked name="ctl00$ContentPlaceHolder1$chk4" type="checkbox" id="ContentPlaceHolder1_chk4" value="">
+
+                                            }
+                                            else
+                                            {
+                                                <input name="ctl00$ContentPlaceHolder1$chk4" type="checkbox" id="ContentPlaceHolder1_chk4" value="">
+                                            }
+                                            <span>Cọc bằng tài sản</span>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!---->
+
+                        <div class="ln_solid"></div>
+
+                        <div class="form-group fixsave">
+                            <div class="col-md-12 col-sm-6 col-txs-12 text-center" style="top: -3px;">
+                                <button class="btn btn-primary" type="button">Hủy</button>
+                                <button class="btn btn-primary" type="reset">Reset</button>
+                                <input type="button" id="btnSave" onclick="javascript: return Savedata();" class="btn btn-success" value="SAVE &amp; CONTINUE">
+                                <input onclick="__doPostBack('ctl00$ContentPlaceHolder1$btnSave_Display','')" name="ctl00$ContentPlaceHolder1$btnSave_Display" type="button" id="ContentPlaceHolder1_btnSave_Display" class="btnSave_Display" style="display: none">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Create new category -->
+                </div>
+            </div>
+        </div>
+       <div id="Paris" class="w3-container w3-border city">
+
+            <div class="x_panel">
+                <div class="x_content">
+                    <br>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Product name</label>
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <input name="ctl00$ContentPlaceHolder1$productNameENs" type="text" id="ContentPlaceHolder1_productNameENs" class="form-control col-md-7 col-xs-12" value="@(ViewBag.tb_Product_Translation!=null?ViewBag.tb_Product_Translation.ProductName_EN:"")">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Rent by hour</label>
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <input name="ctl00$ContentPlaceHolder1$priceByBlockEN" type="text" id="ContentPlaceHolder1_priceByBlockEN" class="form-control col-md-7 col-xs-12" value="@(ViewBag.tb_Product_Translation!=null?ViewBag.tb_Product_Translation.PricePerBlock_EN:"")">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Rent by month</label>
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <input name="ctl00$ContentPlaceHolder1$priceByMonthEN" type="text" id="ContentPlaceHolder1_priceByMonthEN" class="form-control col-md-7 col-xs-12" value="@(ViewBag.tb_Product_Translation!=null?ViewBag.tb_Product_Translation.PricePerMonth_EN:"")">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label col-md-5 col-sm-5 col-xs-12">Description</label>
+                            <div class="col-md-7 col-sm-7 col-xs-12">
+                                <input name="ctl00$ContentPlaceHolder1$productDescriptionEN" type="text" id="ContentPlaceHolder1_productDescriptionEN" onchange="numberlimiter(this);" class="form-control col-md-7 col-xs-12" value="@(ViewBag.tb_Product_Translation1 != null? ViewBag.tb_Product_Translation.ShortDescription:"")">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-5 col-sm-5 col-xs-12">Rent by day</label>
+                            <div class="col-md-7 col-sm-7 col-xs-12">
+
+                                <input name="ctl00$ContentPlaceHolder1$priceByDayEN" type="text" id="ContentPlaceHolder1_priceByDayEN" class="form-control has-feedback-right" value="@(ViewBag.tb_Product_Translation!=null ? ViewBag.tb_Product_Translation.PricePerDay_EN:"")">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Tự lặp đặt</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <textarea id="ContentPlaceHolder1_TulapdatEN" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@(Model!=null && Model.tb_ProductTermConditionDetails_Translation != null?Model.tb_ProductTermConditionDetails_Translation.Tulapdat:"")</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Hướng dẫn sử dụng</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <textarea id="ContentPlaceHolder1_HuongdansudungEN" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@(Model != null && Model.tb_ProductTermConditionDetails_Translation != null?Model.tb_ProductTermConditionDetails_Translation.Huongdansudung : "")</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Thợ đến lắp</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <textarea id="ContentPlaceHolder1_ThotoilapEN" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@(Model != null && Model.tb_ProductTermConditionDetails_Translation != null ? Model.tb_ProductTermConditionDetails_Translation.Thotoilap : "")</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Thợ đến tháo</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <textarea id="ContentPlaceHolder1_ThotoithaoEN" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@(Model!=null && Model.tb_ProductTermConditionDetails_Translation != null ? Model.tb_ProductTermConditionDetails_Translation.Thotoithao : "")</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Thợ đến lắp và tháo</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <textarea id="ContentPlaceHolder1_ThodenlapvathaoEN" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@(Model!=null && Model.tb_ProductTermConditionDetails_Translation != null? Model.tb_ProductTermConditionDetails_Translation.Thodenlapvathao : "")</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Tự vận chuyển</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <textarea id="ContentPlaceHolder1_TuvanchuyeneEN" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@(Model!=null && Model.tb_ProductTermConditionDetails_Translation != null? Model.tb_ProductTermConditionDetails_Translation.Tuvanchuyen : "")</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Giao tận nhà</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <textarea id="ContentPlaceHolder1_GiaotannhaEN" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@(Model != null && Model.tb_ProductTermConditionDetails_Translation != null? Model.tb_ProductTermConditionDetails_Translation.Giaotannha : "")</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Nhận trả tận nhà</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <textarea id="ContentPlaceHolder1_NhantratannhaEN" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@(Model != null && Model.tb_ProductTermConditionDetails_Translation != null? Model.tb_ProductTermConditionDetails_Translation.Nhantratannha : "")</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Giao và nhận trả tận nhà</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <textarea id="ContentPlaceHolder1_GiaovanhantratannhaEN" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung">@(Model != null && Model.tb_ProductTermConditionDetails_Translation != null? Model.tb_ProductTermConditionDetails_Translation.Giaovanhantratannha : "")</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 hidden">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Gửi giấy tờ </label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <textarea name="ctl00$ContentPlaceHolder1$Textarea10" id="ContentPlaceHolder1_Textarea10" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Gửi tài sản</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <textarea name="ctl00$ContentPlaceHolder1$Textarea11" id="ContentPlaceHolder1_Textarea11" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Gửi tiền cọc</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <textarea name="ctl00$ContentPlaceHolder1$Textarea12" id="ContentPlaceHolder1_Textarea12" class="resizable_textarea form-control" cols="20" placeholder="Nhập nội dung"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="x_content">
+                            <div class="form-group">
+                                <label class="control-label">Mô tả sản phẩm chi tiết</label>
+                                <textarea tabindex="2" cols="50" rows="5" class="field textarea small content_Preditor" name="content_PrFullDesc_EN" id="content_PrFullDesc_EN" runat="server" style="width: 100%">@(Model!=null? Html.Raw(Model.tb_Product.FullDescription) :"")</textarea>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Thông số kỹ thuật</label>
+                                <div id="mceu_220" class="mce-tinymce mce-container mce-panel" hidefocus="1" tabindex="-1" role="application" style="visibility: hidden; border-width: 1px; width: 100%;"><div id="mceu_220-body" class="mce-container-body mce-stack-layout"><div id="mceu_221" class="mce-top-part mce-container mce-stack-layout-item mce-first"><div id="mceu_221-body" class="mce-container-body"><div id="mceu_222" class="mce-container mce-menubar mce-toolbar mce-first" role="menubar" style="border-width: 0px 0px 1px;"><div id="mceu_222-body" class="mce-container-body mce-flow-layout"><div id="mceu_223" class="mce-widget mce-btn mce-menubtn mce-flow-layout-item mce-first mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_223" role="menuitem" aria-haspopup="true"><button id="mceu_223-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">File</span> <i class="mce-caret"></i></button></div><div id="mceu_224" class="mce-widget mce-btn mce-menubtn mce-flow-layout-item mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_224" role="menuitem" aria-haspopup="true"><button id="mceu_224-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">Edit</span> <i class="mce-caret"></i></button></div><div id="mceu_225" class="mce-widget mce-btn mce-menubtn mce-flow-layout-item mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_225" role="menuitem" aria-haspopup="true"><button id="mceu_225-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">View</span> <i class="mce-caret"></i></button></div><div id="mceu_226" class="mce-widget mce-btn mce-menubtn mce-flow-layout-item mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_226" role="menuitem" aria-haspopup="true"><button id="mceu_226-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">Insert</span> <i class="mce-caret"></i></button></div><div id="mceu_227" class="mce-widget mce-btn mce-menubtn mce-flow-layout-item mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_227" role="menuitem" aria-haspopup="true"><button id="mceu_227-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">Format</span> <i class="mce-caret"></i></button></div><div id="mceu_228" class="mce-widget mce-btn mce-menubtn mce-flow-layout-item mce-last mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_228" role="menuitem" aria-haspopup="true"><button id="mceu_228-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">Table</span> <i class="mce-caret"></i></button></div></div></div><div id="mceu_229" class="mce-toolbar-grp mce-container mce-panel mce-last" hidefocus="1" tabindex="-1" role="group"><div id="mceu_229-body" class="mce-container-body mce-stack-layout"><div id="mceu_230" class="mce-container mce-toolbar mce-stack-layout-item mce-first" role="toolbar"><div id="mceu_230-body" class="mce-container-body mce-flow-layout"><div id="mceu_231" class="mce-container mce-flow-layout-item mce-first mce-btn-group" role="group"><div id="mceu_231-body"><div id="mceu_196" class="mce-widget mce-btn mce-first mce-disabled" tabindex="-1" role="button" aria-label="Undo" aria-disabled="true"><button id="mceu_196-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-undo"></i></button></div><div id="mceu_197" class="mce-widget mce-btn mce-last mce-disabled" tabindex="-1" role="button" aria-label="Redo" aria-disabled="true"><button id="mceu_197-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-redo"></i></button></div></div></div><div id="mceu_232" class="mce-container mce-flow-layout-item mce-btn-group" role="group"><div id="mceu_232-body"><div id="mceu_198" class="mce-widget mce-btn mce-menubtn mce-first mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_198" role="button" aria-haspopup="true"><button id="mceu_198-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">Formats</span> <i class="mce-caret"></i></button></div><div id="mceu_199" class="mce-widget mce-btn mce-menubtn mce-fixed-width mce-listbox mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_199" role="button" aria-haspopup="true"><button id="mceu_199-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">Paragraph</span> <i class="mce-caret"></i></button></div><div id="mceu_200" class="mce-widget mce-btn mce-menubtn mce-fixed-width mce-listbox mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_200" role="button" aria-label="Font Family" aria-haspopup="true"><button id="mceu_200-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">Verdana</span> <i class="mce-caret"></i></button></div><div id="mceu_201" class="mce-widget mce-btn mce-menubtn mce-fixed-width mce-listbox mce-last mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_201" role="button" aria-label="Font Sizes" aria-haspopup="true"><button id="mceu_201-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">14px</span> <i class="mce-caret"></i></button></div></div></div><div id="mceu_233" class="mce-container mce-flow-layout-item mce-btn-group" role="group"><div id="mceu_233-body"><div id="mceu_202" class="mce-widget mce-btn mce-first" tabindex="-1" aria-pressed="false" role="button" aria-label="Bold"><button id="mceu_202-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-bold"></i></button></div><div id="mceu_203" class="mce-widget mce-btn mce-last" tabindex="-1" aria-pressed="false" role="button" aria-label="Italic"><button id="mceu_203-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-italic"></i></button></div></div></div><div id="mceu_234" class="mce-container mce-flow-layout-item mce-last mce-btn-group" role="group"><div id="mceu_234-body"><div id="mceu_204" class="mce-widget mce-btn mce-first" tabindex="-1" aria-pressed="false" role="button" aria-label="Align left"><button id="mceu_204-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-alignleft"></i></button></div><div id="mceu_205" class="mce-widget mce-btn" tabindex="-1" aria-pressed="false" role="button" aria-label="Align center"><button id="mceu_205-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-aligncenter"></i></button></div><div id="mceu_206" class="mce-widget mce-btn" tabindex="-1" aria-pressed="false" role="button" aria-label="Align right"><button id="mceu_206-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-alignright"></i></button></div><div id="mceu_207" class="mce-widget mce-btn mce-last" tabindex="-1" aria-pressed="false" role="button" aria-label="Justify"><button id="mceu_207-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-alignjustify"></i></button></div></div></div></div></div><div id="mceu_235" class="mce-container mce-toolbar mce-stack-layout-item mce-last" role="toolbar"><div id="mceu_235-body" class="mce-container-body mce-flow-layout"><div id="mceu_236" class="mce-container mce-flow-layout-item mce-first mce-btn-group" role="group"><div id="mceu_236-body"><div id="mceu_208" class="mce-widget mce-btn mce-splitbtn mce-menubtn mce-first" role="button" aria-pressed="false" tabindex="-1" aria-label="Bullet list" aria-haspopup="true"><button type="button" hidefocus="1" tabindex="-1"><i class="mce-ico mce-i-bullist"></i></button><button type="button" class="mce-open" hidefocus="1" tabindex="-1"> <i class="mce-caret"></i></button></div><div id="mceu_209" class="mce-widget mce-btn mce-splitbtn mce-menubtn" role="button" aria-pressed="false" tabindex="-1" aria-label="Numbered list" aria-haspopup="true"><button type="button" hidefocus="1" tabindex="-1"><i class="mce-ico mce-i-numlist"></i></button><button type="button" class="mce-open" hidefocus="1" tabindex="-1"> <i class="mce-caret"></i></button></div><div id="mceu_210" class="mce-widget mce-btn" tabindex="-1" role="button" aria-label="Decrease indent"><button id="mceu_210-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-outdent"></i></button></div><div id="mceu_211" class="mce-widget mce-btn mce-last" tabindex="-1" role="button" aria-label="Increase indent"><button id="mceu_211-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-indent"></i></button></div></div></div><div id="mceu_237" class="mce-container mce-flow-layout-item mce-btn-group" role="group"><div id="mceu_237-body"><div id="mceu_212" class="mce-widget mce-btn mce-first" tabindex="-1" aria-pressed="false" role="button" aria-label="Insert/edit link"><button id="mceu_212-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-link"></i></button></div><div id="mceu_213" class="mce-widget mce-btn mce-last" tabindex="-1" aria-pressed="false" role="button" aria-label="Insert/edit image"><button id="mceu_213-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-image"></i></button></div></div></div><div id="mceu_238" class="mce-container mce-flow-layout-item mce-btn-group" role="group"><div id="mceu_238-body"><div id="mceu_214" class="mce-widget mce-btn mce-first" tabindex="-1" role="button" aria-label="Print"><button id="mceu_214-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-print"></i></button></div><div id="mceu_215" class="mce-widget mce-btn" tabindex="-1" role="button" aria-label="Preview"><button id="mceu_215-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-preview"></i></button></div><div id="mceu_216" class="mce-widget mce-btn mce-last" tabindex="-1" aria-pressed="false" role="button" aria-label="Insert/edit media"><button id="mceu_216-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-media"></i></button></div></div></div><div id="mceu_239" class="mce-container mce-flow-layout-item mce-last mce-btn-group" role="group"><div id="mceu_239-body"><div id="mceu_217" class="mce-widget mce-btn mce-splitbtn mce-colorbutton mce-first" role="button" tabindex="-1" aria-haspopup="true" aria-label="Text color"><button role="presentation" hidefocus="1" type="button" tabindex="-1"><i class="mce-ico mce-i-forecolor"></i><span id="mceu_217-preview" class="mce-preview"></span></button><button type="button" class="mce-open" hidefocus="1" tabindex="-1"> <i class="mce-caret"></i></button></div><div id="mceu_218" class="mce-widget mce-btn mce-splitbtn mce-colorbutton" role="button" tabindex="-1" aria-haspopup="true" aria-label="Background color"><button role="presentation" hidefocus="1" type="button" tabindex="-1"><i class="mce-ico mce-i-backcolor"></i><span id="mceu_218-preview" class="mce-preview"></span></button><button type="button" class="mce-open" hidefocus="1" tabindex="-1"> <i class="mce-caret"></i></button></div><div id="mceu_219" class="mce-widget mce-btn mce-last" tabindex="-1" role="button" aria-label="Emoticons" aria-haspopup="true"><button id="mceu_219-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-emoticons"></i></button></div></div></div></div></div></div></div></div></div><div id="mceu_240" class="mce-edit-area mce-container mce-panel mce-stack-layout-item" hidefocus="1" tabindex="-1" role="group" style="border-width: 1px 0px 0px;"><iframe id="ContentPlaceHolder1_Textarea14_ifr" frameborder="0" allowtransparency="true" title="Rich Text Area. Press ALT-F9 for menu. Press ALT-F10 for toolbar. Press ALT-0 for help" style="width: 100%; height: 100px; display: block;"></iframe></div><div id="mceu_241" class="mce-statusbar mce-container mce-panel mce-stack-layout-item mce-last" hidefocus="1" tabindex="-1" role="group" style="border-width: 1px 0px 0px;"><div id="mceu_241-body" class="mce-container-body mce-flow-layout"><div id="mceu_242" class="mce-path mce-flow-layout-item mce-first"><div class="mce-path-item">&nbsp;</div></div><span id="mceu_298" class="mce-wordcount mce-widget mce-label mce-flow-layout-item">0 words</span><div id="mceu_243" class="mce-flow-layout-item mce-resizehandle"><i class="mce-ico mce-i-resize"></i></div><span id="mceu_244" class="mce-branding mce-widget mce-label mce-flow-layout-item mce-last"> Powered by <a href="https://www.tinymce.com/?utm_campaign=editor_referral&amp;utm_medium=poweredby&amp;utm_source=tinymce" rel="noopener" target="_blank" role="presentation" tabindex="-1">tinymce</a></span></div></div></div></div><textarea name="ctl00$ContentPlaceHolder1$Textarea14" id="ContentPlaceHolder1_Textarea14" tabindex="2" cols="50" rows="5" class="field textarea small content_Preditor" style="width: 100%; display: none;" aria-hidden="true"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Hướng dẫn sử dụng</label>
+                                <div id="mceu_269" class="mce-tinymce mce-container mce-panel" hidefocus="1" tabindex="-1" role="application" style="visibility: hidden; border-width: 1px; width: 100%;"><div id="mceu_269-body" class="mce-container-body mce-stack-layout"><div id="mceu_270" class="mce-top-part mce-container mce-stack-layout-item mce-first"><div id="mceu_270-body" class="mce-container-body"><div id="mceu_271" class="mce-container mce-menubar mce-toolbar mce-first" role="menubar" style="border-width: 0px 0px 1px;"><div id="mceu_271-body" class="mce-container-body mce-flow-layout"><div id="mceu_272" class="mce-widget mce-btn mce-menubtn mce-flow-layout-item mce-first mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_272" role="menuitem" aria-haspopup="true"><button id="mceu_272-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">File</span> <i class="mce-caret"></i></button></div><div id="mceu_273" class="mce-widget mce-btn mce-menubtn mce-flow-layout-item mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_273" role="menuitem" aria-haspopup="true"><button id="mceu_273-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">Edit</span> <i class="mce-caret"></i></button></div><div id="mceu_274" class="mce-widget mce-btn mce-menubtn mce-flow-layout-item mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_274" role="menuitem" aria-haspopup="true"><button id="mceu_274-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">View</span> <i class="mce-caret"></i></button></div><div id="mceu_275" class="mce-widget mce-btn mce-menubtn mce-flow-layout-item mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_275" role="menuitem" aria-haspopup="true"><button id="mceu_275-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">Insert</span> <i class="mce-caret"></i></button></div><div id="mceu_276" class="mce-widget mce-btn mce-menubtn mce-flow-layout-item mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_276" role="menuitem" aria-haspopup="true"><button id="mceu_276-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">Format</span> <i class="mce-caret"></i></button></div><div id="mceu_277" class="mce-widget mce-btn mce-menubtn mce-flow-layout-item mce-last mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_277" role="menuitem" aria-haspopup="true"><button id="mceu_277-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">Table</span> <i class="mce-caret"></i></button></div></div></div><div id="mceu_278" class="mce-toolbar-grp mce-container mce-panel mce-last" hidefocus="1" tabindex="-1" role="group"><div id="mceu_278-body" class="mce-container-body mce-stack-layout"><div id="mceu_279" class="mce-container mce-toolbar mce-stack-layout-item mce-first" role="toolbar"><div id="mceu_279-body" class="mce-container-body mce-flow-layout"><div id="mceu_280" class="mce-container mce-flow-layout-item mce-first mce-btn-group" role="group"><div id="mceu_280-body"><div id="mceu_245" class="mce-widget mce-btn mce-first mce-disabled" tabindex="-1" role="button" aria-label="Undo" aria-disabled="true"><button id="mceu_245-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-undo"></i></button></div><div id="mceu_246" class="mce-widget mce-btn mce-last mce-disabled" tabindex="-1" role="button" aria-label="Redo" aria-disabled="true"><button id="mceu_246-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-redo"></i></button></div></div></div><div id="mceu_281" class="mce-container mce-flow-layout-item mce-btn-group" role="group"><div id="mceu_281-body"><div id="mceu_247" class="mce-widget mce-btn mce-menubtn mce-first mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_247" role="button" aria-haspopup="true"><button id="mceu_247-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">Formats</span> <i class="mce-caret"></i></button></div><div id="mceu_248" class="mce-widget mce-btn mce-menubtn mce-fixed-width mce-listbox mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_248" role="button" aria-haspopup="true"><button id="mceu_248-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">Paragraph</span> <i class="mce-caret"></i></button></div><div id="mceu_249" class="mce-widget mce-btn mce-menubtn mce-fixed-width mce-listbox mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_249" role="button" aria-label="Font Family" aria-haspopup="true"><button id="mceu_249-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">Verdana</span> <i class="mce-caret"></i></button></div><div id="mceu_250" class="mce-widget mce-btn mce-menubtn mce-fixed-width mce-listbox mce-last mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_250" role="button" aria-label="Font Sizes" aria-haspopup="true"><button id="mceu_250-open" role="presentation" type="button" tabindex="-1"><span class="mce-txt">14px</span> <i class="mce-caret"></i></button></div></div></div><div id="mceu_282" class="mce-container mce-flow-layout-item mce-btn-group" role="group"><div id="mceu_282-body"><div id="mceu_251" class="mce-widget mce-btn mce-first" tabindex="-1" aria-pressed="false" role="button" aria-label="Bold"><button id="mceu_251-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-bold"></i></button></div><div id="mceu_252" class="mce-widget mce-btn mce-last" tabindex="-1" aria-pressed="false" role="button" aria-label="Italic"><button id="mceu_252-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-italic"></i></button></div></div></div><div id="mceu_283" class="mce-container mce-flow-layout-item mce-last mce-btn-group" role="group"><div id="mceu_283-body"><div id="mceu_253" class="mce-widget mce-btn mce-first" tabindex="-1" aria-pressed="false" role="button" aria-label="Align left"><button id="mceu_253-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-alignleft"></i></button></div><div id="mceu_254" class="mce-widget mce-btn" tabindex="-1" aria-pressed="false" role="button" aria-label="Align center"><button id="mceu_254-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-aligncenter"></i></button></div><div id="mceu_255" class="mce-widget mce-btn" tabindex="-1" aria-pressed="false" role="button" aria-label="Align right"><button id="mceu_255-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-alignright"></i></button></div><div id="mceu_256" class="mce-widget mce-btn mce-last" tabindex="-1" aria-pressed="false" role="button" aria-label="Justify"><button id="mceu_256-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-alignjustify"></i></button></div></div></div></div></div><div id="mceu_284" class="mce-container mce-toolbar mce-stack-layout-item mce-last" role="toolbar"><div id="mceu_284-body" class="mce-container-body mce-flow-layout"><div id="mceu_285" class="mce-container mce-flow-layout-item mce-first mce-btn-group" role="group"><div id="mceu_285-body"><div id="mceu_257" class="mce-widget mce-btn mce-splitbtn mce-menubtn mce-first" role="button" aria-pressed="false" tabindex="-1" aria-label="Bullet list" aria-haspopup="true"><button type="button" hidefocus="1" tabindex="-1"><i class="mce-ico mce-i-bullist"></i></button><button type="button" class="mce-open" hidefocus="1" tabindex="-1"> <i class="mce-caret"></i></button></div><div id="mceu_258" class="mce-widget mce-btn mce-splitbtn mce-menubtn" role="button" aria-pressed="false" tabindex="-1" aria-label="Numbered list" aria-haspopup="true"><button type="button" hidefocus="1" tabindex="-1"><i class="mce-ico mce-i-numlist"></i></button><button type="button" class="mce-open" hidefocus="1" tabindex="-1"> <i class="mce-caret"></i></button></div><div id="mceu_259" class="mce-widget mce-btn" tabindex="-1" role="button" aria-label="Decrease indent"><button id="mceu_259-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-outdent"></i></button></div><div id="mceu_260" class="mce-widget mce-btn mce-last" tabindex="-1" role="button" aria-label="Increase indent"><button id="mceu_260-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-indent"></i></button></div></div></div><div id="mceu_286" class="mce-container mce-flow-layout-item mce-btn-group" role="group"><div id="mceu_286-body"><div id="mceu_261" class="mce-widget mce-btn mce-first" tabindex="-1" aria-pressed="false" role="button" aria-label="Insert/edit link"><button id="mceu_261-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-link"></i></button></div><div id="mceu_262" class="mce-widget mce-btn mce-last" tabindex="-1" aria-pressed="false" role="button" aria-label="Insert/edit image"><button id="mceu_262-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-image"></i></button></div></div></div><div id="mceu_287" class="mce-container mce-flow-layout-item mce-btn-group" role="group"><div id="mceu_287-body"><div id="mceu_263" class="mce-widget mce-btn mce-first" tabindex="-1" role="button" aria-label="Print"><button id="mceu_263-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-print"></i></button></div><div id="mceu_264" class="mce-widget mce-btn" tabindex="-1" role="button" aria-label="Preview"><button id="mceu_264-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-preview"></i></button></div><div id="mceu_265" class="mce-widget mce-btn mce-last" tabindex="-1" aria-pressed="false" role="button" aria-label="Insert/edit media"><button id="mceu_265-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-media"></i></button></div></div></div><div id="mceu_288" class="mce-container mce-flow-layout-item mce-last mce-btn-group" role="group"><div id="mceu_288-body"><div id="mceu_266" class="mce-widget mce-btn mce-splitbtn mce-colorbutton mce-first" role="button" tabindex="-1" aria-haspopup="true" aria-label="Text color"><button role="presentation" hidefocus="1" type="button" tabindex="-1"><i class="mce-ico mce-i-forecolor"></i><span id="mceu_266-preview" class="mce-preview"></span></button><button type="button" class="mce-open" hidefocus="1" tabindex="-1"> <i class="mce-caret"></i></button></div><div id="mceu_267" class="mce-widget mce-btn mce-splitbtn mce-colorbutton" role="button" tabindex="-1" aria-haspopup="true" aria-label="Background color"><button role="presentation" hidefocus="1" type="button" tabindex="-1"><i class="mce-ico mce-i-backcolor"></i><span id="mceu_267-preview" class="mce-preview"></span></button><button type="button" class="mce-open" hidefocus="1" tabindex="-1"> <i class="mce-caret"></i></button></div><div id="mceu_268" class="mce-widget mce-btn mce-last" tabindex="-1" role="button" aria-label="Emoticons" aria-haspopup="true"><button id="mceu_268-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-emoticons"></i></button></div></div></div></div></div></div></div></div></div><div id="mceu_289" class="mce-edit-area mce-container mce-panel mce-stack-layout-item" hidefocus="1" tabindex="-1" role="group" style="border-width: 1px 0px 0px;"><iframe id="ContentPlaceHolder1_Textarea15_ifr" frameborder="0" allowtransparency="true" title="Rich Text Area. Press ALT-F9 for menu. Press ALT-F10 for toolbar. Press ALT-0 for help" style="width: 100%; height: 100px; display: block;"></iframe></div><div id="mceu_290" class="mce-statusbar mce-container mce-panel mce-stack-layout-item mce-last" hidefocus="1" tabindex="-1" role="group" style="border-width: 1px 0px 0px;"><div id="mceu_290-body" class="mce-container-body mce-flow-layout"><div id="mceu_291" class="mce-path mce-flow-layout-item mce-first"><div class="mce-path-item">&nbsp;</div></div><span id="mceu_299" class="mce-wordcount mce-widget mce-label mce-flow-layout-item">0 words</span><div id="mceu_292" class="mce-flow-layout-item mce-resizehandle"><i class="mce-ico mce-i-resize"></i></div><span id="mceu_293" class="mce-branding mce-widget mce-label mce-flow-layout-item mce-last"> Powered by <a href="https://www.tinymce.com/?utm_campaign=editor_referral&amp;utm_medium=poweredby&amp;utm_source=tinymce" rel="noopener" target="_blank" role="presentation" tabindex="-1">tinymce</a></span></div></div></div></div><textarea name="ctl00$ContentPlaceHolder1$Textarea15" id="ContentPlaceHolder1_Textarea15" tabindex="2" cols="50" rows="5" class="field textarea small content_Preditor" style="width: 100%; display: none;" aria-hidden="true"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="x_content">
+
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<script type="text/javascript">
+    tinymce.init({
+        //selector: "textarea",
+        mode: "specific_textareas",
+        editor_selector: "content_Preditor",
+        //editor_selector: "content_PrSpec",
+
+        fontsize_formats: "8px 9px 10px 11px 12px 13px 14px 15px 16px 17px 18px 19px 20px 21px 22px 23px 24px 26px 27px 28px 29px 30px 31px 32px 33px 34px 35px 36px",
+        theme: "modern",
+        plugins: 'image code',
+        plugins: [
+            "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars code fullscreen",
+            "insertdatetime media nonbreaking save table contextmenu directionality",
+            "emoticons template paste textcolor colorpicker textpattern imagetools"
+        ],
+        font_formats: "Roboto-Regular=Roboto-Regular;" +
+            "Roboto-Medium=Roboto-Medium;" +
+            "Roboto-Bold=Roboto-Bold;" +
+            "Roboto-Regular=Roboto-Regular;" +
+            "Wingdings=wingdings,zapf dingbats",
+        toolbar1: "insertfile undo redo | styleselect formatselect fontselect fontsizeselect | bold italic | alignleft aligncenter alignright alignjustify",
+        toolbar2: "bullist numlist outdent indent | link image | print preview media | forecolor backcolor emoticons",
+        image_advtab: true,
+        templates: [
+            { title: 'Test template 1', content: 'Test 1' },
+            { title: 'Test template 2', content: 'Test 2' }
+        ],
+        image_title: true,
+        // enable automatic uploads of images represented by blob or data URIs
+        automatic_uploads: true,
+        file_picker_types: 'image',
+        file_picker_callback: function (cb, value, meta) {
+            var input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+
+            input.onchange = function () {
+                var file = this.files[0];
+
+                var reader = new FileReader();
+                reader.onload = function () {
+                    var id = 'blobid' + (new Date()).getTime();
+                    var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                    var base64 = reader.result.split(',')[1];
+                    var blobInfo = blobCache.create(id, file, base64);
+                    blobCache.add(blobInfo);
+
+                    cb(blobInfo.blobUri(), { title: file.name });
+                };
+                reader.readAsDataURL(file);
+            };
+
+            input.click();
+        }
+
+    });
+
+    function SubCate_getData($id_mCate) {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                if (xmlhttp.responseText != "") {
+                    $(".dv_subCate1Select").html(xmlhttp.responseText);
+                    $('.subarea').change(function (e) {
+                        var id_subarea = $('.subarea').val();
+                        $('.ip_subarea').val(id_subarea);
+                    });
+                }
+            }
+        }
+        xmlhttp.open("GET", "../backend/adAjax.aspx?action=SubCate_getData&id_mCate=" + $id_mCate, true);
+        xmlhttp.send();
+    }
+
+</script>
+<style>
+    .w3-bar.w3-black {
+        background-color: #636363;
+        margin-bottom: 4px;
+        padding: 5px 10px;
+    }
+
+    button.w3-bar-item.w3-button.tablink {
+        background-color: red;
+        color: white;
+    }
+
+    .fixsave {
+        position: fixed;
+        bottom: 0px;
+        background-color: white;
+        left: 16.4%;
+        width: 82%;
+        padding: 20px 0px;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 20%);
+    }
+</style>
+<script>
+    var _URL = window.URL || window.webkitURL;
+    var _URL2 = window.URL || window.webkitURL;
+    $("#uploadAvatar").on('change', function () {
+        var file, img;
+
+        if ((file = this.files[0])) {
+            img = new Image();
+            img.onload = function () {
+                sendFile(file);
+            };
+            img.onerror = function () {
+                alert("Not a valid file:" + file.type);
+            };
+            img.src = _URL.createObjectURL(file);
+        }
+    });
+    function sendFile(file) {
+        var formData = new FormData();
+        formData.append('file', $('#uploadAvatar')[0].files[0]);
+        $.ajax({
+            url: "/Tools/UploadProductAvatar.ashx",
+            type: "POST",
+            data: formData,
+            success: function (status) {
+                if (status != 'error') {
+                    var my_path = "/image_product/" + status;
+                    $("#BannerImage").attr("src", my_path);
+                    $(".myUploadedAvatar").css("display", "block");
+                    $("#ContentPlaceHolder1_avatarPathTemp").val(my_path).change();
+
+
+                }
+            },
+            processData: false,
+            contentType: false,
+            error: function () {
+                alert("Whoops something went wrong!");
+            }
+        });
+    }
+    //
+    $("#uploadGallery").on('change', function () {
+        var file, img;
+        if ((file = this.files[0])) {
+            img = new Image();
+            img.onload = function () {
+                sendFileGallery(file);
+            };
+            img.onerror = function () {
+                alert("Not a valid file:" + file.type);
+            };
+            img.src = _URL2.createObjectURL(file);
+        }
+    });
+    function sendFileGallery(file) {
+        var input = document.getElementById('uploadGallery');
+        var getImages = input.files;
+        var i = 0;
+        $("#btnSave").attr('disabled', 'disabled');
+        function uploadGalleryInterval() {
+            setTimeout(function () {
+                if (i < getImages.length) {
+                    var formData = new FormData();
+                    formData.append('file', getImages[i]);
+                    $.ajax({
+                        url: "/Tools/UploadProductGallery.ashx",
+                        type: "POST",
+                        data: formData,
+                        success: function (status) {
+                            if (status != 'error') {
+                                var my_path = "/image_product/" + status;
+                                var test = "<div  class=\"col-md-3 col-sm-3 col-xs-4\" style=\"padding:3px;margin-top:20px;\"><img src='" + my_path + "' style='width:50px;'><a class=\"productdetail_img\"><i class=\"fa fa-times\"></i></a></div>";
+                                $("#ContentPlaceHolder1_thumnail_gallery").append(test);
+                                lstarray.push(my_path);
+                                //Cập nhật lại input images
+                                $("#ContentPlaceHolder1_listimg").val('').change();
+                                var str = "";
+                                for (i = 0; i < lstarray.length; i++) {
+                                    if (lstarray[i] != "") {
+                                        str += lstarray[i] + ",";
+                                    }
+                                }
+                                $("#ContentPlaceHolder1_listimg").val(str).change();
+                            }
+                        },
+                        processData: false,
+                        contentType: false,
+                        error: function () {
+                            alert("Whoops something went wrong!");
+                        }
+                    });
+                    i++;
+                    uploadGalleryInterval();
+                }
+                else {
+                    $("#btnSave").removeAttr('disabled');
+                }
+            }, 2000);
+        }
+        uploadGalleryInterval();
+
+        //if (getImages.length > 0) {
+        //    for (var i = 0; i < getImages.length; i++) {
+
+        //    }
+        //}
+    }
+    //function sendFileGallery(file) {
+    //    var formData = new FormData();
+    //    formData.append('file', $('#uploadGallery')[0].files[0]);
+    //    $.ajax({
+    //        url: "../UploadProductGallery.ashx",
+    //        type: "POST",
+    //        data: formData,
+    //        success: function (status) {
+    //            if (status != 'error') {
+    //                var my_path = "../image_product/" + status;
+
+    //                var test = "<div  class=\"col-md-3 col-sm-3 col-xs-4\" style=\"padding:3px;margin-top:20px;\"><img src='" + my_path+"' style='width:50px;'><a class=\"productdetail_img\"><i class=\"fa fa-times\"></i></a></div>";
+    //                $("#ContentPlaceHolder1_thumnail_gallery").append(test);
+
+    //            }
+    //        },
+    //        processData: false,
+    //        contentType: false,
+    //        error: function () {
+    //            alert("Whoops something went wrong!");
+    //        }
+    //    });
+    //}
+
+    var lstarray = [];
+    loadimg();
+    function loadimg() {
+        var lstsplit = $("#ContentPlaceHolder1_listimg").val().split(",");
+        for (i = 0; i < lstsplit.length; i++) {
+            if (lstsplit[i] != "") {
+                lstarray.push(lstsplit[i])
+            }
+        }
+    }
+
+    function delete_img(dis) {
+        var name = $(dis).attr("data-id");
+        $.ajax({
+            url: "../DeleteFile.ashx",
+            data: 'name=' + name,
+            dataType: 'text',
+            type: 'GET',
+            cache: false,
+            success: function (status) {
+                if (status != 'error') {
+                    $(dis).parent().remove();
+                }
+            },
+            processData: false,
+            contentType: false,
+            error: function () {
+                alert("Whoops something went wrong!");
+            }
+        });
+    }
+</script>
+<script>
+    function mainCateOnChange() {
+        var id = $("#sltMainCate").val();
+        var param = {
+            "MainCateID": id,
+        }
+        $.ajax({
+            url: '/Admin/Product/PRoducteditcate1',
+            data: param,
+            dataType: 'html',
+            type: 'GET',
+            cache: false,
+            success: function (result) {
+                var str = '<option value="0">Lựa chọn Sub Category 1</option>';
+                str += result;
+                $("#sltSubCate1").html(str)
+            }
+        });
+    }
+
+    function subCate1OnChange() {
+        var id = $("#sltSubCate1").val();
+        var param = {
+            "SubCate1ID": id,
+        }
+        $.ajax({
+            url: '/Admin/Product/PRoducteditcate2',
+            data: param,
+            dataType: 'html',
+            type: 'GET',
+            cache: false,
+            success: function (result) {
+                var str = '<option value="0">Lựa chọn Sub Category 2</option>';
+                str += result;
+                $("#sltSubCate2").html(str)
+            }
+        });
+    }
+
+    function openCity(cityName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("city");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " w3-red";
+    }
+
+
+    function Savedata() {
+
+        
+        //Price by block
+        var strpblock = "";
+        for (i = 1; i <= 24; i++) {
+            if (i < 24) {
+                strpblock += $("#ContentPlaceHolder1_priceblock" + i).val() + ",";
+
+            }
+            else {
+                strpblock += $("#ContentPlaceHolder1_priceblock" + i).val();
+            }
+        }
+        //Price by day
+        var strpday = "";
+        for (i = 1; i <= 30; i++) {
+            if (i < 30) {
+                strpday += $("#ContentPlaceHolder1_priceDayBlock" + i).val() + ",";
+
+            }
+            else {
+                strpday += $("#ContentPlaceHolder1_priceDayBlock" + i).val();
+            }
+        }
+        //Price by day
+        var strpmonth = "";
+        for (i = 1; i <= 12; i++) {
+            if (i < 12) {
+                strpmonth += $("#ContentPlaceHolder1_priceMonthBlock" + i).val() + ",";
+
+            }
+            else {
+                strpmonth += $("#ContentPlaceHolder1_priceMonthBlock" + i).val();
+            }
+        }
+        //Validate
+       
+        if ($('#ContentPlaceHolder1_productCode').val() == '')
+        {
+            alert("Vui lòng nhập mã sản phẩm");
+            return;
+        }
+        if ($('#ContentPlaceHolder1_productName').val() == '') {
+            alert("Vui lòng nhập mã sản phẩm");
+            return;
+        }
+        if (lstRowcate.length === 0) {
+            if ($("#sltMainCate").val() == 0) {
+                alert("Vui lòng chọn Main Category");
+                return;
+            }
+            if ($("#sltSubCate1").val() == 0) {
+                alert("Vui lòng chọn Sub Category 1");
+                return;
+            }
+            if ($("#sltSubCate2").val() == 0) {
+                alert("Vui lòng chọn Sub Category 2");
+                return;
+            }
+        }
+       
+        if ($("#slwh").val() == 0) {
+            alert("Vui lòng chọn kho hàng");
+            return;
+        }
+        //Validate Price
+        //ContentPlaceHolder1_priceblock1
+        for (i = 1; i < 25; i++) {
+            let val = $("#ContentPlaceHolder1_priceblock" + i).val();
+            if (val == '') {
+                alert("Vui lòng nhập giá thuê theo giờ");
+                return;
+            }
+        }
+        for (i = 1; i < 31; i++) {
+            let val = $("#ContentPlaceHolder1_priceDayBlock" + i).val();
+            if (val == '') {
+                alert("Vui lòng nhập giá thuê theo ngày");
+                return;
+            }
+        }
+        for (i = 1; i < 13; i++) {
+            let val = $("#ContentPlaceHolder1_priceMonthBlock" + i).val();
+            if (val == '') {
+                alert("Vui lòng nhập giá thuê theo tháng");
+                return;
+            }
+        }
+        var chk1, chk2, chk3, chk4;
+        if ($('#ContentPlaceHolder1_chk1').is(':checked')) {
+            chk1 = 1;
+        } else {
+            chk1 = 0;
+        }
+        if ($('#ContentPlaceHolder1_chk2').is(':checked')) {
+            chk2 = 1;
+        } else {
+            chk2 = 0;
+        }
+        if ($('#ContentPlaceHolder1_chk3').is(':checked')) {
+            chk3 = 1;
+        } else {
+            chk3 = 0;
+        }
+        if ($('#ContentPlaceHolder1_chk4').is(':checked')) {
+            chk4 = 1;
+        } else {
+            chk4 = 0;
+        }
+        var param = {
+            //tinymce.get("content_PrFullDesc").getContent()
+            //tb_Product
+            "ProductID": $("#ContentPlaceHolder1_ProductID").val(),
+            "FullDescription": tinymce.get("content_PrFullDesc").getContent(),
+            "ProductSpecification": tinymce.get("content_PrSpec").getContent(),
+            "ProductInstruction": tinymce.get("content_PrInstruction").getContent(),
+            "ProductCode": $("#ContentPlaceHolder1_productCode").val(),
+            "ProductName": $("#ContentPlaceHolder1_productName").val(),
+            "PricePerBlock": $("#ContentPlaceHolder1_priceByBlock").val(),
+            "PricePerDay": $("#ContentPlaceHolder1_priceByDay").val(),
+            "PricePerMonth": $("#ContentPlaceHolder1_priceByMonth").val(),
+            "ShortDescription": $("#ContentPlaceHolder1_productDescription").val(),
+            "StatusPercentage": $("#ContentPlaceHolder1_productStatus").val(),
+            "ProductValue": $("#ContentPlaceHolder1_productValue").val(),
+            "ProductAvatar": $("#ContentPlaceHolder1_avatarPathTemp").val(),
+            "lstsub": lstRowcate,
+            "strPriceByBlock": strpblock,
+            "strPriceByDay": strpday,
+            "strPriceByMonth": strpmonth,
+            "lstProductAccessorySelection": lstSelect,
+            "CostInstallation": $("#ContentPlaceHolder1_WhCostInstall").val(),
+            "CostDelivery": $("#ContentPlaceHolder1_WhCostDelivery").val(),
+            "CostInstallAndDelivery": $("#ContentPlaceHolder1_WhCostInstallDelivery").val(),
+            "Tulapdat": $("#ContentPlaceHolder1_Tulapdat").val(),
+            "Huongdansudung": $("#ContentPlaceHolder1_Huongdansudung").val(),
+            "Thotoilap": $("#ContentPlaceHolder1_Thotoilap").val(),
+            "Thotoithao": $("#ContentPlaceHolder1_Thotoithao").val(),
+            "Thodenlapvathao": $("#ContentPlaceHolder1_Thodenlapvathao").val(),
+            "Tuvanchuyen": $("#ContentPlaceHolder1_Tuvanchuyen").val(),
+            "Giaotannha": $("#ContentPlaceHolder1_Giaotannha").val(),
+            "Nhantratannha": $("#ContentPlaceHolder1_Nhantratannha").val(),
+            "Giaovanhantratannha": $("#ContentPlaceHolder1_Giaovanhantratannha").val(),
+            //
+            "CostInstallationEN": $("#ContentPlaceHolder1_WhCostInstallEN").val(),
+            "CostDeliveryEN": $("#ContentPlaceHolder1_WhCostDeliveryEN").val(),
+            "CostInstallAndDeliveryEN": $("#ContentPlaceHolder1_WhCostInstallDeliveryEN").val(),
+            "TulapdatEN": $("#ContentPlaceHolder1_TulapdatEN").val(),
+            "HuongdansudungEN": $("#ContentPlaceHolder1_HuongdansudungEN").val(),
+            "ThotoilapEN": $("#ContentPlaceHolder1_ThotoilapEN").val(),
+            "ThotoithaoEN": $("#ContentPlaceHolder1_ThotoithaoEN").val(),
+            "ThodenlapvathaoEN": $("#ContentPlaceHolder1_ThodenlapvathaoEN").val(),
+            "TuvanchuyenEN": $("#ContentPlaceHolder1_TuvanchuyeneEN").val(),
+            "GiaotannhaEN": $("#ContentPlaceHolder1_GiaotannhaEN").val(),
+            "NhantratannhaEN": $("#ContentPlaceHolder1_NhantratannhaEN").val(),
+            "GiaovanhantratannhaEN": $("#ContentPlaceHolder1_GiaovanhantratannhaEN").val(),
+            //
+            "WarehouseId": $("#slwh").val(),
+            "ProductName_EN": $("#ContentPlaceHolder1_productNameENs").val(),
+            "ShortDescription_EN": $("#ContentPlaceHolder1_productDescriptionEN").val(),
+            "PricePerBlock_EN": $("#ContentPlaceHolder1_priceByBlockEN").val(),
+            "PricePerDay_EN": $("#ContentPlaceHolder1_priceByDayEN").val(),
+            "PricePerMonth_EN": $("#ContentPlaceHolder1_priceByMonthEN").val(),
+
+            "Cocbangtienmat": chk1,
+            "Cocbanggiayto": chk2,
+            "Cocbanggiaytovahopdong": chk3,
+            "Cocbanggiaytovahopdongprice": $("#ContentPlaceHolder1_chkinput").val(),
+            "Cocbangtaisan": chk4,
+        }
+
+        $.post("/Admin/Product/SaveData", { "data": "" + JSON.stringify(param) + "" }, function (result) {
+            window.location.href= "/Admin/Product/ProductList";
+        });
+    }
+
+    var lstRowcate = [];
+    function add_category_to_list() {
+        var objmain = {
+            "id": $("#sltMainCate").val(),
+            "name": $("#sltMainCate option:selected").text()
+        }
+        var objsub1 = {
+            "id": $("#sltSubCate1").val(),
+            "name": $("#sltSubCate1 option:selected").text()
+        }
+        var objsub2 = {
+            "id": $("#sltSubCate2").val(),
+            "name": $("#sltSubCate2 option:selected").text()
+        }
+        var maincate = {
+            "id": id,
+            "submain": objmain,
+            "sub1": objsub1,
+            "sub2": objsub2
+        }
+        lstRowcate.push(maincate);
+        loadlist();
+    }
+    function loadlist() {
+        var strhtml = "";
+        for (i = 0; i < lstRowcate.length; i++) {
+            strhtml += "<div id=" + lstRowcate[i].id + " class=\"row\">";
+            strhtml += '<div class="form-group col-md-3 col-sm-3 col-xs-12">';
+            strhtml += "<input type=\"text\" class=\"form-control\" disabled=\"\" value='" + lstRowcate[i].submain.name + "'>";
+            strhtml += '</div>';
+            strhtml += '<div class="form-group col-md-3 col-sm-3 col-xs-12">';
+            strhtml += "<input type=\"text\" class=\"form-control\" disabled=\"\" value='" + lstRowcate[i].sub1.name + "'>";
+            strhtml += '</div>';
+            strhtml += '<div class="form-group col-md-3 col-sm-3 col-xs-12">';
+            strhtml += "<input type=\"text\" class=\"form-control\" disabled=\"\" value='" + lstRowcate[i].sub2.name + "'>";
+            strhtml += '</div><div class="form-group col-md-3 col-sm-3 col-xs-12">';
+            strhtml += "<a href=\"javascript: xoasp(" + lstRowcate[i].id + ")\" style=\"font-size: 25px; color:#585858; top:0px; position:relative;\"><i class=\"fa fa-remove\"></i></a>";
+            strhtml += '</div>';
+            strhtml += '</div>';
+        }
+
+        //showCategorySelected
+
+        console.log(lstRowcate)
+        $(".showCategorySelected").html(strhtml);
+    }
+    function xoasp(id) {
+        for (i = 0; i < lstRowcate.length; i++) {
+            if (lstRowcate[i].id == id) {
+                lstRowcate.splice(i, 1);
+            }
+        }
+        loadlist();
+    }
+
+    function selectWarehouse() {
+        var param = {
+            "WarehouseId": $("#slwh").val(),
+        }
+        $.ajax({
+            url: '/Admin/Product/Loadwarehouse',
+            data: param,
+            dataType: 'html',
+            type: 'GET',
+            cache: false,
+            success: function (result) {
+                $("#ProAccessoryList").html(result);
+                 var jsonObj2 = @Html.Raw(Json.Encode(ViewBag.ListAcess));
+        for (i = 0;i< jsonObj2.length; i++){
+            var obj = {
+                "id": jsonObj2[i].id,
+                "name": jsonObj2[i].name
+        }
+            lstSelect.push(obj);
+         //   console.log(lstSelect)
+
+    }
+        var str = "";
+        for (i = 0; i < lstSelect.length; i++) {
+            str += lstSelect[i].name + ",";
+            $("#spanchild_" + lstSelect[i].id).addClass("mycheckedspanafter");
+            $("#ip_" + lstSelect[i].id).prop("checked",true);
+        }
+        $("#mtsl").val(str);
+            }
+        });
+    }
+    function toggleselect() {
+        $("#ipProductAccessorySelection").toggle();
+    }
+    var lstarray = [];
+    var lstSelect = [];
+    function addlist(dis) {
+        var checked = $(dis).prop("checked");
+        if (checked == true) {
+            var obj = {
+                "id": $(dis).attr("data-id"),
+                "name": $(dis).attr("data-name")
+            }
+            lstSelect.push(obj);
+        }
+        else {
+           
+            for (i = 0; i < lstSelect.length; i++) {
+                if (lstSelect[i].id == $(dis).attr("data-id")) {
+                    lstSelect.splice(i, 1);
+                }
+            }
+        }
+        //Load cho input
+        //mtsl
+        var str = "";
+        for (i = 0; i < lstSelect.length; i++) {
+            str += lstSelect[i].name + ",";
+        }
+        $("#mtsl").val(str);
+        console.log(lstSelect)
+    }
+    //Import Sản phẩm
+    $("#myUploadedFileExcel").on('change', function () {
+        var file, img;
+        if ((file = this.files[0])) {
+            sendFile2(file);
+        }
+    });
+    function sendFile2(file) {
+        console.log(file);
+        var formData = new FormData();
+        formData.append('file', $('#myUploadedFileExcel')[0].files[0]);
+        $.ajax({
+            url: "/ImportExcelBlock.ashx",
+            type: "POST",
+            data: formData,
+            success: function (status) {
+                var param = {
+                    "path": status,
+                }
+                $.ajax({
+                    url: '/Admin/Product/ImportExcel',
+                    data: param,
+                    dataType: 'html',
+                    type: 'GET',
+                    cache: false,
+                    success: function (result) {
+                        var rtong = result.split(".");
+                        if (rtong[0] != "") {
+                            var arraygio = rtong[0].split('_');
+                            for (i = 0; i < arraygio.length; i++) {
+                                if (arraygio[i] != "") {
+                                    $('#ContentPlaceHolder1_priceblock' + (i + 1)).val(arraygio[i]);
+                                }
+                                else {
+                                    $('#ContentPlaceHolder1_priceblock' + (i + 1)).val('');
+                                }
+                            }
+
+                        }
+                        if (rtong[1] != "") {
+                            var arrayngay = rtong[1].split('_');
+                            for (i = 0; i < arrayngay.length; i++) {
+                                if (arrayngay[i] != "") {
+                                    $('#ContentPlaceHolder1_priceDayBlock' + (i + 1)).val(arrayngay[i]);
+                                }
+                                else {
+                                    $('#ContentPlaceHolder1_priceDayBlock' + (i + 1)).val('');
+                                }
+                            }
+                        }
+                        if (rtong[2] != "") {
+                            var arraythang = rtong[2].split('_');
+                            for (i = 0; i < arraythang.length; i++) {
+                                if (arraythang[i] != "") {
+                                    $('#ContentPlaceHolder1_priceMonthBlock' + (i + 1)).val(arraythang[i]);
+                                }
+                                else {
+                                    $('#ContentPlaceHolder1_priceMonthBlock' + (i + 1)).val('');
+                                }
+                            }
+                        }
+                    }
+                });
+            },
+            processData: false,
+            contentType: false,
+            error: function () {
+                alert("Whoops something went wrong!");
+            }
+        });
+    }
+
+</script>
+<style>
+    #mtsl {
+        width: 100%;
+        background-color: transparent;
+        border: none;
+    }
+
+</style>
+<script>
+    var id = 1;
+    $("document").ready(function () {
+        var jsonObj = @Html.Raw(Json.Encode(ViewBag.lsttb_ProductCategorySelection));
+
+        for (i = 0; i < jsonObj.length; i++) {
+            var objmain = {
+                "id": jsonObj[i].ProductMainCateID,
+                "name": jsonObj[i].ProductMainCateName
+            }
+            var objsub1 = {
+                "id": jsonObj[i].ProductSubCate1ID,
+                "name": jsonObj[i].ProductSubCate1Name
+            }
+            var objsub2 = {
+                "id": jsonObj[i].ProductSubCate2ID,
+                "name": jsonObj[i].ProductSubCate2Name
+            }
+            var maincate = {
+                "id": id,
+                "submain": objmain,
+                "sub1": objsub1,
+                "sub2": objsub2
+            }
+            lstRowcate.push(maincate);
+            id += 1;
+        }
+        loadlist();
+
+        var jsonObj2 = @Html.Raw(Json.Encode(ViewBag.tb_ProductGallery));
+        for (i = 0; i < jsonObj2.length; i++) {
+            if (jsonObj2[i] != "") {
+                lstarray.push(jsonObj2[i]);
+                var my_path =jsonObj2[i].ImagePath;
+                var test = "<div  class=\"col-md-3 col-sm-3 col-xs-4\" style=\"padding:3px;margin-top:20px;\"><img src='" + my_path + "' style='width:50px;'><a class=\"productdetail_img\"><i class=\"fa fa-times\"></i></a></div>";
+                $("#ContentPlaceHolder1_thumnail_gallery").append(test);
+            }
+        }
+    });
+
+    $("document").ready(function () {
+        if ('@ViewBag.IdWareHouse' != '') {
+            $("#slwh").val('@ViewBag.IdWareHouse').change();
+        }
+        
+    });
+</script>
+<script>
+    function syncHour() {
+        let value = $("#ContentPlaceHolder1_priceblock1").val();
+        if (value != '') {
+            for (i = 2; i < 25; i++) {
+                $("#ContentPlaceHolder1_priceblock" + i).val(value)
+            }
+        }
+        
+    }
+    function syncDay() {
+        let value = $("#ContentPlaceHolder1_priceDayBlock1").val();
+        if (value != '') {
+            for (i = 2; i < 31; i++) {
+                $("#ContentPlaceHolder1_priceDayBlock" + i).val(value)
+            }
+        }
+            
+    }
+    function syncMonth() {
+        let value = $("#ContentPlaceHolder1_priceMonthBlock1").val();
+        if (value != '') {
+            for (i = 2; i <13; i++) {
+                $("#ContentPlaceHolder1_priceMonthBlock" + i).val(value)
+            }
+        }
+
+    }
+</script>

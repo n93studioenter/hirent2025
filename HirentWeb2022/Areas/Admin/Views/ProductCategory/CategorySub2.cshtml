@@ -1,0 +1,389 @@
+﻿@{
+    ViewBag.Title = "CategorySub1";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="right_col" role="main" style="min-height: 699px;">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>QUẢN LÝ CATEGORY SUB 2</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Search!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <!-- Create new category -->
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Tạo Sub-2 mới</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br>
+                        <form id="demo-form2" data-parsley-validate="1" class="form-horizontal form-label-left">
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Tên Category Sub-2 <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="hidden" id="ipSubCate2ID" value="0"/>
+                                    <input type="text" id="ipSubCate2Name" required="required" class="form-control col-md-7 col-xs-12 mycontrol">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Category Sub-2 Name  <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="ipSubCate2Nameen" required="required" class="form-control col-md-7 col-xs-12 mycontrol">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                    Mô tả nhanh <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="ipSubCate2Desc" name="last-name" required="required" class="form-control col-md-7 col-xs-12 mycontrol">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Thuộc Main Category <span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6 col-xs-12" id="dvMainCate">
+                                    <select id="sltMainCate" onchange="mainCateOnChange()" class="form-control">
+                                        <option value="-1">Lựa chọn Main Category<!-- option --></option>
+                                        @if (ViewBag.ListCatemain != null)
+                                        {
+                                            foreach (var item in ViewBag.ListCatemain)
+                                            {
+                                                <option value="@item.MainCateID">@item.MainCateName</option>
+                                            }
+                                        }
+                                    </select>
+
+                                    <div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Thuộc Sub Category 1 <span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6 col-xs-12" id="dvSubCate1">
+                                    <select id="sltSubCate1" onchange="subCate1OnChange(this)" class="form-control">
+                                    <option value="-1">Lựa chọn Sub Category 1<!-- option --></option></select>
+                                    <div>
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="sort-arrange">
+                                    Sort thứ tự <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="number" id="ipSubCate2Sort" name="sort-arrange" required="required" class="form-control col-md-7 col-xs-12 mycontrol">
+                                </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                    <button class="btn btn-primary" type="button">Hủy</button>
+                                    <button class="btn btn-primary" type="reset">Reset</button>
+                                    <button id="btnCreate" type="button" class="btn btn-success">Lưu</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- /Create new category -->
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <!-- Table  -->
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>DANH SÁCH CATEGORY ĐANG CÓ</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row" style="margin-bottom:20px;">
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-6" style="padding-top: 8px;">Search theo Main Cate</label>
+                                <div class="col-md-3 col-sm-3 col-xs-6">
+
+                                    <div id="ContentPlaceHolder1_data_MainCate">
+                                        <select class="form-control" onchange="DDLMainCate_Selected()" name="data_MainCate_filter" id="data_MainCate_filter">
+                                            <option value="0"> Filter Main Category</option>
+                                            @if (ViewBag.ListCatemain != null)
+                                            {
+                                                foreach (var item in ViewBag.ListCatemain)
+                                                {
+                                                    <option value="@item.MainCateID">@item.MainCateName</option>
+                                                }
+                                            }
+                                        </select></div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-6">
+
+                                    <div id="data_SubCate1">
+                                        <select onchange="DDLMainSub1_Selected()" id="data_SubCate1_filter" class="form-control"><option value="0">Filter Sub Cate 1<!-- option --></option></select>
+                                        <div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-6">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="x_content" id="dvSubCate2List" >
+                        <table id="datatable" class="table table-striped table-bordered">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Sort: activate to sort column descending" style="width: 32px;">Sort</th>
+                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Tên Sub-2: activate to sort column ascending" style="width: 90px;">Tên Sub-2</th>
+                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Tên Sub-2 English: activate to sort column ascending" style="width: 154px;">Tên Sub-2 English</th>
+                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Mô tả nhanh: activate to sort column ascending" style="width: 171px;">Mô tả nhanh</th>
+                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Mô tả by English: activate to sort column ascending" style="width: 62px;">Mô tả by English</th>
+                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Thuộc Sub-1: activate to sort column ascending" style="width: 68px;">Thuộc Sub-1</th>
+                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Thuộc MainCategory: activate to sort column ascending" style="width: 97px;">Thuộc MainCategory</th>
+                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Tình trạng: activate to sort column ascending" style="width: 59px;">Tình trạng</th>
+                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Ngày tạo: activate to sort column ascending" style="width: 73px;">Ngày tạo</th>
+                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Thao tác: activate to sort column ascending" style="width: 88px;">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+
+                        </table>
+                    </div>
+                </div>
+            </div>  <!-- /Table -->
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        loaddata(0);
+
+    });
+    function DDLMainCate_Selected() {
+        loaddata($("#data_MainCate_filter").val());
+    }
+    function loaddata(id) {
+        var param = {
+            "SubCate1ID": id,
+        }
+        $.ajax({
+            url: '/Admin/ProductCategory/loadCateSub2',
+            data: param,
+            dataType: 'html',
+            type: 'GET',
+            cache: false,
+            success: function (result) {
+                $("#tbody").html(result);
+                $("#datatable").DataTable();
+            }
+        });
+    }
+
+    $("#btnCreate").click(function () {
+        var isEmpty = false;
+        //Check empty
+        $('input.mycontrol').each(function () {
+            var value = $(this).val();
+            if (value == "") {
+                alert("Vui lòng điền đầy đủ các thông tin!");
+                $(this).focus();
+                isEmpty = true;
+                return false;
+            }
+        })
+        //Save data
+        if (isEmpty == false) {
+            var param = {
+                "SubCate1ID": $("#ipSubCate1ID").val(),
+                "SubCate1Name": $("#ipSubCat1Name").val(),
+                "Language": $("#ipSubCat1Nameen").val(),
+                "SubCate1Desc": $("#ipSubCat1Desc").val(),
+                "MainCateID": $("#sltMainCate").val(),
+                "Sort": $("#ipSubCat1Sort").val(),
+            }
+
+            $.post("/Admin/ProductCategory/SaveDatasub1", { "data": "" + JSON.stringify(param) + "" }, function (result) {
+                window.location.reload();
+            });
+        }
+    });
+
+    function Edit(SubCate1ID) {
+        var param = {
+            "SubCate1ID": SubCate1ID,
+        }
+        $.ajax({
+            url: '/Admin/ProductCategory/GetValuesub1',
+            data: param,
+            dataType: 'html',
+            type: 'GET',
+            cache: false,
+            success: function (result) {
+                var obj = jQuery.parseJSON(result);
+                $("#ipSubCate1ID").val(obj.SubCate1ID);
+                $("#ipSubCat1Name").val(obj.SubCate1Name);
+                $("#ipSubCat1Nameen").val(obj.Language);
+                $("#ipSubCat1Desc").val(obj.SubCate1Desc);
+                $("#sltMainCate").val(obj.MainCateID);
+                $("#ipSubCat1Sort").val(obj.Sort);
+            }
+        });
+
+    }
+
+    function DDLMainCate_Selected() {
+        var param = {
+            "MainCateID": $("#data_MainCate_filter").val(),
+        }
+        $.ajax({
+            url: '/Admin/ProductCategory/loadselectcate1',
+            data: param,
+            dataType: 'html',
+            type: 'GET',
+            cache: false,
+            success: function (result) {
+                // 
+                $("#data_SubCate1_filter").empty();
+                $("#data_SubCate1_filter").append('<option value="0"> Filter Main Category</option>');
+                $("#data_SubCate1_filter").append(result);
+            }
+        });
+        if ($("#data_MainCate_filter").val() == 0) {
+            loaddata(0);
+        }
+    }
+    function DDLMainSub1_Selected() {
+        loaddata($("#data_SubCate1_filter").val());
+    }
+    function mainCateOnChange() {
+        var param = {
+            "MainCateID": $("#sltMainCate").val(),
+        }
+        $.ajax({
+            url: '/Admin/ProductCategory/loadselectcate1',
+            data: param,
+            dataType: 'html',
+            type: 'GET',
+            cache: false,
+            success: function (result) {
+                var str = "";
+                str += '<option value="0"> Lựa chọn Sub Category 1</option>';
+                str += result;
+                $("#sltSubCate1").html(str);
+                if (isEdit == true) {
+                    isEdit = false;
+                    $("#sltSubCate1").val(sl2).change();
+
+                }
+            }
+        });
+    }
+
+
+    $("#btnCreate").click(function () {
+        var isEmpty = false;
+        //Check empty
+        $('input.mycontrol').each(function () {
+            var value = $(this).val();
+            if (value == "") {
+                alert("Vui lòng điền đầy đủ các thông tin!");
+                $(this).focus();
+                isEmpty = true;
+                return false;
+            }
+        })
+        //Save data
+        if (isEmpty == false) {
+            var param = {
+                "SubCate2ID": $("#ipSubCate2ID").val(),
+                "SubCate2Name": $("#ipSubCate2Name").val(),
+                "Language": $("#ipSubCate2Nameen").val(),
+                "SubCate2Desc": $("#ipSubCate2Desc").val(),
+                "SubCate1ID": $("#sltSubCate1").val(),
+                "Sort": $("#ipSubCate2Sort").val(),
+            } 
+            $.post("/Admin/ProductCategory/SaveDatasub2", { "data": "" + JSON.stringify(param) + "" }, function (result) {
+                window.location.reload();
+            });
+        }
+    });
+
+    var isEdit = false;
+    var sl2 = 0;
+    function Edit(SubCate1ID) {
+        var param = {
+            "SubCate2ID": SubCate1ID,
+        }
+        $.ajax({
+            url: '/Admin/ProductCategory/GetValuesub2',
+            data: param,
+            dataType: 'html',
+            type: 'GET',
+            cache: false,
+            success: function (result) {
+                var obj = jQuery.parseJSON(result);
+                $("#ipSubCate2ID").val(obj.SubCate2ID);
+                $("#ipSubCate2Name").val(obj.SubCate2Name);
+                $("#ipSubCate2Nameen").val(obj.Language);
+                $("#ipSubCate2Desc").val(obj.SubCate2Desc);
+                $("#sltMainCate").val(obj.MainCateID).change();
+                isEdit = true;
+               // mainCateOnChange();
+               // $("#sltSubCate1").val(obj.SubCate1ID);
+                sl2 = obj.SubCate1ID;
+                $("#ipSubCate2Sort").val(obj.Sort);
+            }
+        });
+
+    }
+</script>
+

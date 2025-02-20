@@ -1,0 +1,81 @@
+﻿@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <link href="~/Content/login.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="login">
+    <form  method="post">
+
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+
+                    <h1>LOGIN</h1>
+                    <div>
+                        <input type="text" id="txtUsername" class="form-control" placeholder="Username" required />
+                    </div>
+                    <div style="margin-top:5px;">
+                        <input type="password" id="txtPassword" class="form-control" placeholder="Password" required />
+                    </div>
+                    <div>
+                        <input type="submit" name="btnLogin" value="Đăng nhập" id="btnLogin" class="btn btn-danger" style="margin-top:10px;" />
+                        <div id="Div1" class="bodymodal" style="display: block; color: red; font-size:12px; margin-top:5px;"></div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="separator">
+                        <div class="clearfix"></div>
+                        <br />
+
+                        <div>
+                            <h1><i class="fa fa-user"></i> HIRENT</h1>
+                            <p>©2025 All Rights Reserved.</p>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+
+        </div>
+    </form>
+</body>
+</html>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("form").submit(function (event) {
+            var param = {
+                "username": $("#txtUsername").val(),
+                "password": $("#txtPassword").val()
+            }
+            $.ajax({
+                url: '/Admin/Dashboard/Login',
+                type: "POST",
+                dataType: 'html',
+                data: param,
+                success: function (data, status, xhr) {
+                    if (data == 1) {
+                        location.href = "/Admin/Dashboard/"
+                    }
+                    else {
+                        alert("Đăng nhập thất bại");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert(status);
+                }
+            });
+            event.preventDefault();
+        });
+    });
+</script>

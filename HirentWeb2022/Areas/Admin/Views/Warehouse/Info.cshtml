@@ -1,0 +1,439 @@
+﻿<div class="right_col" role="main" style="min-height: 668.8px;">
+    <form method="post" class="form-horizontal form-label-left">
+
+        <div class="page-title">
+            <div class="title_left" id="tkhang">
+                <h3>TẠO KHO HÀNG</h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <!-- Create new category -->
+                <div class="x_panel">
+                    <!-- add thông tin chung -->
+                    <div class="x_content">
+                        <br>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <input id="whId" type="hidden" value="0">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Mã kho hàng</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input type="text" id="WarehouseCode" name="warehouse-code" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Tên kho hàng</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input type="text" id="WarehouseName" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top:2%">
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">Địa chỉ kho hàng</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input type="text" id="WarehouseAddress" class="form-control col-md-7 col-xs-12">
+                                </div>
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">Google Map ID</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input type="text" id="LocationMap" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">Điện thoại</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input type="text" id="Phone" class="form-control col-md-7 col-xs-12">
+                                </div>
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">Zalo</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input type="text" id="Zalo" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">Messenger</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input type="text" id="Messenger" class="form-control col-md-7 col-xs-12">
+                                </div>
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">Skype</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input type="text" id="Skype" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">Email</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input type="text" id="Email" class="form-control col-md-7 col-xs-12">
+                                </div>
+
+                            </div>
+                            <div class="form-group hidden">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">Chính sách cửa hàng</label>
+                                <div class="col-md-10 col-sm-10 col-xs-12">
+                                    <textarea tabindex="2" cols="50" rows="5" class="field textarea small content_Preditor" id="content_Policy" name="content_Policy" style="width: 100%"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-2">Chọn banner</label>
+                                <input type="file" class="btn-group btn btn-info btn-xs upload" id="uploadAvatar" accept="image/png, image/jpeg"><br>
+                                <div class="myUploadedAvatar" style="margin-top: 20px;display:none;">
+                                    <img src="" id="BannerImage" alt="Photo" style="width: 110px;  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-2">Chọn hình đại diện</label>
+                                <input type="file" class="btn-group btn btn-info btn-xs upload" id="uploadAvatar2" accept="image/png, image/jpeg"><br>
+                                <div class="myUploadedAvatar2" style="margin-top: 20px;display:none;">
+                                    <img src="" id="Images" alt="Photo" style="width: 110px;  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-2">Chọn hợp đồng</label>
+                                <input type="hidden" id="txtHopdong" />
+                                <a id="ahopdong" href="" target="_blank"></a>
+                                <input style="display:inline-block" type="file" class="btn-group btn btn-info btn-xs upload" id="uploadHopdong" accept=".doc,.docx,application/mswordapplication/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf,"><br>
+                                <div class="col-md-10 col-sm-10 col-xs-10 myUploadedChinhsach" style="margin-top: 20px; display: none;">
+                                    <strong><a id="myUploadedChinhsach" download=""></a></strong> <span> ( Nhấn vào để tải xuống )</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-2">Chính sách cửa hàng</label>
+                                <input type="hidden" id="txtChinhsach" />
+                                <a id="achinhsich" href="" target="_blank"></a>
+                                <input style="display:inline-block" type="file" class="btn-group btn btn-info btn-xs upload" id="uploadChinhsach" accept=".doc,.docx,application/mswordapplication/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf,"><br>
+                                <div class="col-md-10 col-sm-10 col-xs-10 myUploadedChinhsach" style="margin-top: 20px; display: none;">
+                                    <strong><a id="myUploadedChinhsach" download=""></a></strong> <span> ( Nhấn vào để tải xuống )</span>
+                                </div>
+                            </div>
+                        </div>   <!-- /địa chỉ -->
+
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top:2%">
+                            <div class="ln_solid"></div>
+
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+
+                                    <input type="button" id="btnReset_Check" onclick="javascript: return btnReset_click();" class="btn btn-danger" value="RESET" fdprocessedid="mv34xg">
+                                    <input type="submit" id="btnSave_Check" class="btn btn-success" value="Tạo mới">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <!-- Table  -->
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h3>DANH SÁCH KHO</h3>
+                    </div>
+                    <div class="x_content">
+                        <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                            <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Hình ảnh
+                                        </th>
+                                        <th>
+                                            Mã
+                                        </th>
+                                        <th>
+                                            Tên kho
+                                        </th>
+                                        <th>
+                                            Địa chỉ
+                                        </th>
+                                        <th>
+                                            Thao tác
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tblWarehouse">
+                                    @if (Model != null)
+                                    {
+                                        foreach (var item in (IEnumerable<HirentWeb2022.Models.tb_WareHouse>)Model)
+                                        {
+                                            <tr>
+                                                <td class="columnCenter"><img style="width: 100px;padding: 10px;" src="@item.Images"></td>
+                                                <td class="columnCenter">@item.WarehouseCode</td>
+                                                <td class="columnCenter" style="color: darksalmon; text-decoration: underline; ">@item.WarehouseName</td>
+                                                <td class="columnCenter">@item.WarehouseAddress</td>
+                                                <td>
+                                                    <a onclick="callEdit('@item.whId')" class="btn btn-success btn-xs" style="font-size:11px;padding: 4px 10px;"><i class="fa fa-eye"></i>&nbsp; Xem</a>
+                                                    <a class="btn btn-danger btn-xs" style="font-size:11px;padding: 4px 5px;" onclick=" callDelete('@item.whId')"><i class="fa fa-remove"></i>&nbsp; Xóa</a>
+                                                    <a href="/Admin/Warehouse/WasehouseTime?whId=@item.whId" target="blank">Thời gian hoạt động</a><span> | </span>
+                                                    @*<a href="/backend/warehouse_Day?idWare=4" target="blank">Ngày nghỉ</a><span> | </span>*@
+                                                    <a href="/Admin/Warehouse/Warehouse_Deposit?WishId=@item.whId" target="blank">Định nghĩa giấy tờ</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    function callDelete(id) {
+        if (confirm('Bạn có chắc muốn xóa shop này?')) {
+            var param = {
+                "whId": id
+            }
+            $.ajax({
+                url: '/Warehouse/DeleteWasehouse',
+                dataType: 'html',
+                data: param,
+                success: function (data, status, xhr) {
+                    if (data == 'True') {
+                        window.location.reload();
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert(status);
+                }
+            });
+        } 
+    }
+    function callEdit(id) {
+        $("#btnSave_Check").val("Cập nhật");
+        var param = {
+            "whId": id
+        }
+        $.ajax({
+            url: '/Warehouse/GetWasehouseById',
+            dataType: 'json',
+            data: param,
+            success: function (data, status, xhr) {
+
+
+
+                $("#whId").val(data.whId);
+                $("#WarehouseCode").val(data.WarehouseCode);
+                $("#WarehouseName").val(data.WarehouseName);
+                $("#WarehouseAddress").val(data.WarehouseAddress);
+                $("#Phone").val(data.Phone);
+                $("#Zalo").val(data.Zalo);
+                $("#Messenger").val(data.Messenger);
+                $("#Skype").val(data.Skype);
+                $("#Email").val(data.Email);
+                $("#txtChinhsach").val(data.ChinhSach);
+                $("#txtHopdong").val(data.Hopdong);
+                $("#LocationMap").val(data.LocationMap);
+                //Images
+                $(".myUploadedAvatar2").show();
+                $("#Images").attr("src", data.Images);
+                //Images Banner
+                $(".myUploadedAvatar").show();
+                $("#BannerImage").attr("src", data.BannerImage);
+                $("#achinhsich").html(data.ChinhSach);
+                $("#achinhsich").attr("href", data.ChinhSach);
+                $("#ahopdong").html(data.Hopdong);
+                $("#ahopdong").attr("href", data.Hopdong);
+
+
+                $('html, body').animate({
+                    scrollTop: $('#tkhang').offset().top
+                }, 300); // 1000ms = 1 giây 
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $("form").submit(function (event) {
+            var param = {
+                "whId": $("#whId").val(),
+                "WarehouseCode": $("#WarehouseCode").val(),
+                "WarehouseName": $("#WarehouseName").val(),
+                "WarehouseAddress": $("#WarehouseAddress").val(),
+                "BannerImage": $("#BannerImage").attr("src"),
+                "Images": $("#Images").attr("src"),
+                "Phone": $("#Phone").val(),
+                "Zalo": $("#Zalo").val(),
+                "Messenger": $("#Messenger").val(),
+                "Skype": $("#Skype").val(),
+                "Email": $("#Email").val(),
+                "LocationMap": $("#LocationMap").val(),
+                "ChinhSach": $("#txtChinhsach").val(),
+                "Hopdong": $("#txtHopdong").val(),
+            }
+            $.ajax({
+                url: '/Admin/Warehouse/SaveData',
+                type: "POST",
+                dataType: 'html',
+                data: param,
+                success: function (data, status, xhr) {
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    alert(status);
+                }
+            });
+            event.preventDefault();
+        });
+    });
+
+    var _URL = window.URL || window.webkitURL;
+    $("#uploadAvatar").on('change', function () {
+        var file, img;
+
+        if ((file = this.files[0])) {
+            img = new Image();
+            img.onload = function () {
+                sendFile(file);
+            };
+            img.onerror = function () {
+                alert("Not a valid file:" + file.type);
+            };
+            img.src = _URL.createObjectURL(file);
+        }
+    });
+    function sendFile(file) {
+        var formData = new FormData();
+        formData.append('file', $('#uploadAvatar')[0].files[0]);
+        $.ajax({
+            url: "/Tools/UploadWasehouseBanner.ashx",
+            type: "POST",
+            data: formData,
+            success: function (status) {
+                if (status != 'error') {
+                    var my_path = "/image_Waswhouse/" + status;
+                    $("#BannerImage").attr("src", my_path);
+                    $(".myUploadedAvatar").css("display", "block");
+                }
+            },
+            processData: false,
+            contentType: false,
+            error: function () {
+                alert("Whoops something went wrong!");
+            }
+        });
+    }
+
+    //
+    $("#uploadAvatar2").on('change', function () {
+        var file, img;
+
+        if ((file = this.files[0])) {
+            img = new Image();
+            img.onload = function () {
+                sendFile2(file);
+            };
+            img.onerror = function () {
+                alert("Not a valid file:" + file.type);
+            };
+            img.src = _URL.createObjectURL(file);
+        }
+    });
+    function sendFile2(file) {
+        var formData = new FormData();
+        formData.append('file', $('#uploadAvatar2')[0].files[0]);
+        $.ajax({
+            url: "/Tools/UploadWasehouseBanner.ashx",
+            type: "POST",
+            data: formData,
+            success: function (status) {
+                if (status != 'error') {
+                    var my_path = "/image_Waswhouse/" + status;
+                    $("#Images").attr("src", my_path);
+                    $(".myUploadedAvatar2").css("display", "block");
+                }
+            },
+            processData: false,
+            contentType: false,
+            error: function () {
+                alert("Whoops something went wrong!");
+            }
+        });
+    }
+
+    //
+    $("#uploadChinhsach").on('change', function () {
+        var file;
+
+        if ((file = this.files[0])) {
+            // Kiểm tra loại file
+            if (file.type === "application/pdf") {
+                // Gọi hàm sendFile3 với file PDF
+                sendFile3(file);
+            } else {
+                alert("Not a valid file: " + file.type);
+            }
+        }
+    });
+    function sendFile3(file) {
+        var formData = new FormData();
+        formData.append('file', $('#uploadChinhsach')[0].files[0]);
+        $.ajax({
+            url: "/Tools/UploadWasehouseBanner.ashx",
+            type: "POST",
+            data: formData,
+            success: function (status) {
+                if (status != 'error') {
+                   var my_path = "/image_Waswhouse/" + status;
+                //    $("#Images").attr("src", my_path);
+                    //    $(".myUploadedAvatar2").css("display", "block");
+                    $("#txtChinhsach").val(my_path)
+                }
+            },
+            processData: false,
+            contentType: false,
+            error: function () {
+                alert("Whoops something went wrong!");
+            }
+        });
+    }
+
+    $("#uploadHopdong").on('change', function () {
+        var file;
+
+        if ((file = this.files[0])) {
+            // Kiểm tra loại file
+            if (file.type === "application/pdf") {
+                // Gọi hàm sendFile3 với file PDF
+                sendFile4(file);
+            } else {
+                alert("Not a valid file: " + file.type);
+            }
+        }
+    });
+    function sendFile4(file) {
+        var formData = new FormData();
+        formData.append('file', $('#uploadHopdong')[0].files[0]);
+        $.ajax({
+            url: "/Tools/UploadWasehouseBanner.ashx",
+            type: "POST",
+            data: formData,
+            success: function (status) {
+                if (status != 'error') {
+                    var my_path = "/image_Waswhouse/" + status;
+                    //    $("#Images").attr("src", my_path);
+                    //    $(".myUploadedAvatar2").css("display", "block");
+                    alert(my_path)
+                    $("#txtHopdong").val(my_path)
+                }
+            },
+            processData: false,
+            contentType: false,
+            error: function () {
+                alert("Whoops something went wrong!");
+            }
+        });
+    }
+</script>

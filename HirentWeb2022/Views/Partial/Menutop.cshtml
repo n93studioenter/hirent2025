@@ -1,0 +1,521 @@
+﻿<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="~/Content/Responsive.css" rel="stylesheet" />
+<link href="~/backend/css/bootstrap.min.css" rel="stylesheet" />
+<div class="col_box">
+    <div class="container">
+        <div class="">
+            <div class=" ">
+                <div class="col1">
+                    <div class="row">
+                        <div class="col-xs-2 hidden-lg hidden-md nav-toggle">
+                            <button onclick="ShowMenu()" class="button_menu nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+
+                        </div>
+                        <div class="col-xs-6 col-md-12">
+                            <div class="header_logo">
+                                <a href="/">
+                                    <img src="/image_product/LogoIcons/Hirent.svg" class="img-responsive">
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-3 hidden-lg hidden-md text-alight-mb hidden-sm hidden-xs">
+                            <a href="../your-cart-2">
+                                <img src="Hirent/logo%20gio-hang.png" class="giohangmb" style="width: 44px;">
+                            </a>
+                            <span>
+                                <img src="Hirent/logo%20chuong-chua-co-tin.png" class="noticemb" style="width: 27px;">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col2 hidden-sm hidden-xs">
+                    <ul>
+                        <li class="lidanhmuc text-capitalize">
+                            <a onclick="toogle_menu()" id="toggleButton">
+                                <i class="fa fa-bars lidanhmuc_i" id="lidanhmuc_i"></i>
+                                @if (ViewBag.lang == "vi")
+                                {
+                                    <span id="lidanhmuc_span" class="lidanhmuc_span">
+                                        Danh mục
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span id="lidanhmuc_span" class="lidanhmuc_span">Category</span>
+                                }
+
+                            </a>
+                            <div class="category-nav text-left">
+                                <span class="category-header" style="display: none"><span id="mnCategory">Danh mục</span> <i class="fa fa-list"></i></span>
+                                <ul id="ulMainCateList" class="category-list open">
+                                    @*<li class="dropdown side-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span><i class="fa fa-gear category-icon"></i>Dụng cụ, thiết bị</span> <i class="fa fa-angle-right"></i></a><div class="custom-menu"><div class="row row-eq-height"><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=20"><h3 class="list-links-title">Dụng cụ sửa chữa</h3></a></li><li><a href="productsearch?idcate2=27">Sửa điện</a></li><li><a href="productsearch?idcate2=28">Sửa nước</a></li><li><a href="productsearch?idcate2=29">Sửa nhà cửa</a></li><li><a href="productsearch?idcate2=31">Vệ sinh nhà cửa</a></li><li><a href="productsearch?idcate2=10145">Sân vườn, hồ bơi</a></li><li><a href="productsearch?idcate2=10143">Sửa xe</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=26"><h3 class="list-links-title">Thiết bị văn phòng</h3></a></li><li><a href="productsearch?idcate2=35">Máy tính</a></li><li><a href="productsearch?idcate2=34">In - Scan - Photocopy</a></li><li><a href="productsearch?idcate2=39">Mạng viễn thông</a></li><li><a href="productsearch?idcate2=37">Bàn ghế văn phòng</a></li><li><a href="productsearch?idcate2=36">Thiết bị khác</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=27"><h3 class="list-links-title">Thiết bị Nghe Nhìn</h3></a></li><li><a href="productsearch?idcate2=71">Trình chiếu</a></li><li><a href="productsearch?idcate2=72">Âm thanh</a></li><li><a href="productsearch?idcate2=73">Ánh sáng</a></li><li><a href="productsearch?idcate2=10149">Camera</a></li><li><a href="productsearch?idcate2=74">Thiết bị khác</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=30"><h3 class="list-links-title">Vui chơi, Giải trí, Dã ngoại</h3></a></li><li><a href="productsearch?idcate2=10147">Liên hoan - sự kiện</a></li><li><a href="productsearch?idcate2=76">Thiết bị giải trí</a></li><li><a href="productsearch?idcate2=10148">Đồ chơi</a></li><li><a href="productsearch?idcate2=77">Dã ngoại</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=69"><h3 class="list-links-title">Thiết bị hỗ trợ</h3></a></li><li><a href="productsearch?idcate2=10191">Dụng cụ hỗ trợ</a></li><li><a href="productsearch?idcate2=10176">Thiết bị đo</a></li><li><a href="productsearch?idcate2=10177">Thiết bị làm mát</a></li><li><a href="productsearch?idcate2=10178">Xe đẩy hàng</a></li><li><a href="productsearch?idcate2=10190">Thang, dàn giáo</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=42"><h3 class="list-links-title">Máy công cụ, công trình</h3></a></li><li><a href="productsearch?idcate2=10192">Máy cầm tay</a></li><li><a href="productsearch?idcate2=10236">Máy hàn</a></li><li><a href="productsearch?idcate2=10237">Máy phát điện</a></li><li><a href="productsearch?idcate2=10238">Máy xây dựng</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=28"><h3 class="list-links-title">Đồ gia dụng</h3></a></li><li><a href="productsearch?idcate2=78">Thiết bị nấu ăn</a></li><li><a href="productsearch?idcate2=79">Thiết bị vệ sinh</a></li></ul><hr class="hidden-md hidden-lg"></div></div><div class="row hidden-sm hidden-xs"><div class="col-md-12"><hr><a class="banner banner-1" href="#"><img src="../image_banner/banner_maincate_default.jpg" alt=""></a></div></div></div></li>
+                                        <li class="dropdown side-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span><i class="fa fa-book category-icon"></i>Sách, tranh, hoa</span> <i class="fa fa-angle-right"></i></a><div class="custom-menu"><div class="row row-eq-height"><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=60"><h3 class="list-links-title">Sách khoa học, xã hội</h3></a></li><li><a href="productsearch?idcate2=10239">cate sub 2</a></li><li><a href="productsearch?idcate2=10151">Xã hội, chính trị</a></li><li><a href="productsearch?idcate2=10152">Kinh tế, pháp luật</a></li><li><a href="productsearch?idcate2=10153">Khoa học, Kỹ thuật</a></li><li><a href="productsearch?idcate2=10154">Văn hóa, du lịch, ẩm thực</a></li><li><a href="productsearch?idcate2=10155">Kiến trúc, hội họa</a></li><li><a href="productsearch?idcate2=10156">Tôn giáo, tâm linh</a></li><li><a href="productsearch?idcate2=10157">Sách nước ngoài</a></li><li><a href="productsearch?idcate2=10150">cate sub 2</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=68"><h3 class="list-links-title">Sách giáo dục</h3></a></li><li><a href="productsearch?idcate2=10158">Tâm lý, Kỹ năng sống</a></li><li><a href="productsearch?idcate2=10159">Nuôi dạy con</a></li><li><a href="productsearch?idcate2=10160">Ngoại ngữ - Từ điển</a></li><li><a href="productsearch?idcate2=10161">Giáo khoa, tham khảo</a></li><li><a href="productsearch?idcate2=10162">Giáo trình, tài liệu</a></li><li><a href="productsearch?idcate2=10163">Sách thiếu nhi</a></li><li><a href="productsearch?idcate2=10164">Sách nước ngoài</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=61"><h3 class="list-links-title">Tranh</h3></a></li><li><a href="productsearch?idcate2=10165">Tranh vẽ hội họa</a></li><li><a href="productsearch?idcate2=10166">Tranh thêu tay</a></li><li><a href="productsearch?idcate2=10167">Tranh sơn mài</a></li><li><a href="productsearch?idcate2=10168">Tranh ảnh</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=62"><h3 class="list-links-title">Tượng, điêu khắc</h3></a></li><li><a href="productsearch?idcate2=10169">Tượng đá</a></li><li><a href="productsearch?idcate2=10170">Tượng gỗ</a></li><li><a href="productsearch?idcate2=10171">Tượng đúc</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=63"><h3 class="list-links-title">Cây, hoa</h3></a></li><li><a href="productsearch?idcate2=10172">Cây hoa, bình hoa</a></li><li><a href="productsearch?idcate2=10173">Cây bon sai</a></li><li><a href="productsearch?idcate2=10174">Cây xanh, cây cảnh</a></li><li><a href="productsearch?idcate2=10175">Hoa giả, cây giả</a></li></ul><hr class="hidden-md hidden-lg"></div></div><div class="row hidden-sm hidden-xs"><div class="col-md-12"><hr><a class="banner banner-1" href="#"><img src="../image_banner/banner_congcu_1.jpg" alt=""></a></div></div></div></li>
+                                        <li class="dropdown side-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span><i class="fa fa-diamond category-icon"></i>Thời trang - Phụ kiện</span> <i class="fa fa-angle-right"></i></a><div class="custom-menu"><div class="row row-eq-height"><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=43"><h3 class="list-links-title">Dụng cụ sửa chữa	</h3></a></li><li><a href="productsearch?idcate2=85">Áo dài</a></li><li><a href="productsearch?idcate2=88">Trang phục truyền thống</a></li><li><a href="productsearch?idcate2=87">Lễ hội, sự kiện</a></li><li><a href="productsearch?idcate2=86"> Công Sở</a></li><li><a href="productsearch?idcate2=90">Thể thao</a></li><li><a href="productsearch?idcate2=89">Thời trang nhóm</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=44"><h3 class="list-links-title">Phụ kiện - trang sức Nữ</h3></a></li><li><a href="productsearch?idcate2=92">Phụ kiện đầu tóc</a></li><li><a href="productsearch?idcate2=93">Phụ kiện cài áo</a></li><li><a href="productsearch?idcate2=94">Trang sức đeo tay</a></li><li><a href="productsearch?idcate2=91">Túi xách</a></li><li><a href="productsearch?idcate2=10193">Giầy</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=45"><h3 class="list-links-title">Thời trang Nam</h3></a></li><li><a href="productsearch?idcate2=95">Vest</a></li><li><a href="productsearch?idcate2=10194">Trang phục truyền thống</a></li><li><a href="productsearch?idcate2=97">Lễ hội, sự kiện</a></li><li><a href="productsearch?idcate2=96">Thể Thao</a></li><li><a href="productsearch?idcate2=98">Thời trang nhóm</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=46"><h3 class="list-links-title">Phụ kiện - trang sức Nam</h3></a></li><li><a href="productsearch?idcate2=10216">Nón</a></li><li><a href="productsearch?idcate2=101">Phụ kiện cài áo</a></li><li><a href="productsearch?idcate2=102">Trang sức đeo tay</a></li><li><a href="productsearch?idcate2=100">Túi xách, Balô, vali</a></li><li><a href="productsearch?idcate2=10223">Phụ kiện khác</a></li><li><a href="productsearch?idcate2=99">Giầy</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=47"><h3 class="list-links-title">Thời trang trẻ em gái</h3></a></li><li><a href="productsearch?idcate2=103"> Lễ Hội</a></li><li><a href="productsearch?idcate2=104">Thể Thao</a></li><li><a href="productsearch?idcate2=105">Thời trang nhóm</a></li><li><a href="productsearch?idcate2=106">Giầy</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=48"><h3 class="list-links-title">Thời trang trẻ em trai</h3></a></li><li><a href="productsearch?idcate2=107"> Lễ Hội</a></li><li><a href="productsearch?idcate2=108"> Thể Thao</a></li><li><a href="productsearch?idcate2=109">Thời trang nhóm</a></li><li><a href="productsearch?idcate2=110">Giầy</a></li></ul><hr class="hidden-md hidden-lg"></div></div><div class="row hidden-sm hidden-xs"><div class="col-md-12"><hr><a class="banner banner-1" href="#"><img src="../image_banner/bannerMaincate_fashion.jpg" alt=""></a></div></div></div></li>
+                                        <li class="dropdown side-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span><i class="fa fa-tree category-icon"></i>Sự kiện, lễ hội</span> <i class="fa fa-angle-right"></i></a><div class="custom-menu"><div class="row row-eq-height"><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=66"><h3 class="list-links-title">Đám cưới, sinh nhật</h3></a></li><li><a href="productsearch?idcate2=10195">Địa điểm, không gian</a></li><li><a href="productsearch?idcate2=10196">Trang trí, phông nền</a></li><li><a href="productsearch?idcate2=10197">Thiết bị giải trí</a></li><li><a href="productsearch?idcate2=10198">Nấu ăn, phục vụ</a></li><li><a href="productsearch?idcate2=10199">Dịch vụ hỗ trợ</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=65"><h3 class="list-links-title">Khai trương, lễ ra mắt</h3></a></li><li><a href="productsearch?idcate2=10200">Địa điểm, không gian</a></li><li><a href="productsearch?idcate2=10201">Thiết bị hỗ trợ</a></li><li><a href="productsearch?idcate2=10202">Đội ngũ phục vụ</a></li><li><a href="productsearch?idcate2=10203">Dịch vụ hỗ trợ</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=72"><h3 class="list-links-title">Hội chợ, triển lãm</h3></a></li><li><a href="productsearch?idcate2=10204">Địa điểm tổ chức</a></li><li><a href="productsearch?idcate2=10205">Thiết bị hỗ trợ</a></li><li><a href="productsearch?idcate2=10206">Đội ngũ quảng cáo, tiếp thị</a></li><li><a href="productsearch?idcate2=10207">Dịch vụ hỗ trợ</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=73"><h3 class="list-links-title">Cắm trại, đi phượt</h3></a></li><li><a href="productsearch?idcate2=10208">Địa điểm, không gian</a></li><li><a href="productsearch?idcate2=10210">Dụng cụ cắm trại</a></li><li><a href="productsearch?idcate2=10211">Thiết bị, trò chơi</a></li><li><a href="productsearch?idcate2=10212">Dịch vụ hỗ trợ</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=74"><h3 class="list-links-title">Xây dựng đồng đội</h3></a></li><li><a href="productsearch?idcate2=10213">Địa điểm, không gian</a></li><li><a href="productsearch?idcate2=10214">Thiết bị, trò chơi</a></li><li><a href="productsearch?idcate2=10215">Dịch vụ hỗ trợ</a></li></ul><hr class="hidden-md hidden-lg"></div></div><div class="row hidden-sm hidden-xs"><div class="col-md-12"><hr><a class="banner banner-1" href="#"><img src="../image_banner/bannerMaincate_eventshow.jpg" alt=""></a></div></div></div></li>
+                                        <li class="dropdown side-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span><i class="fa fa-automobile category-icon"></i>Xe - vận chuyển</span> <i class="fa fa-angle-right"></i></a><div class="custom-menu"><div class="row row-eq-height"><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=39"><h3 class="list-links-title">Xe sự kiện</h3></a></li><li><a href="productsearch?idcate2=44">Xe hoa</a></li><li><a href="productsearch?idcate2=46">Xe quảng cáo</a></li><li><a href="productsearch?idcate2=47">Xe dẫn đoàn</a></li><li><a href="productsearch?idcate2=51">Hội xe</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=40"><h3 class="list-links-title">Xe độc, lạ</h3></a></li><li><a href="productsearch?idcate2=53">Siêu xe</a></li><li><a href="productsearch?idcate2=48">Xe Sang</a></li><li><a href="productsearch?idcate2=54">Xe cổ</a></li><li><a href="productsearch?idcate2=49">Xe nhà di động</a></li><li><a href="productsearch?idcate2=55">Xe 3 bánh</a></li><li><a href="productsearch?idcate2=50">Xe ngựa</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=15"><h3 class="list-links-title">Xe 2 bánh </h3></a></li><li><a href="productsearch?idcate2=22">xe đạp</a></li><li><a href="productsearch?idcate2=23">Xe điện</a></li><li><a href="productsearch?idcate2=24">Xe Gắn máy</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=16"><h3 class="list-links-title">Xe Khách</h3></a></li><li><a href="productsearch?idcate2=56">Xe 4-5 chỗ</a></li><li><a href="productsearch?idcate2=57">Xe 4-5 chỗ (tự lái)</a></li><li><a href="productsearch?idcate2=17">Xe 7 chỗ</a></li><li><a href="productsearch?idcate2=58">Xe 7 chỗ (tự lái)</a></li><li><a href="productsearch?idcate2=16">Xe 9-16 chỗ</a></li><li><a href="productsearch?idcate2=18">Xe trên 16 chỗ</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=17"><h3 class="list-links-title">Xe chở hàng</h3></a></li><li><a href="productsearch?idcate2=59">Xe bán tải</a></li><li><a href="productsearch?idcate2=60">Xe tải nhẹ dưới 3,5 tấn</a></li><li><a href="productsearch?idcate2=61">Xe tải trên 3,5 tấn</a></li><li><a href="productsearch?idcate2=62">Xe công, đầu kéo</a></li><li><a href="productsearch?idcate2=10224">Xe siêu trường, siêu trọng</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=18"><h3 class="list-links-title">Xe Công trình</h3></a></li><li><a href="productsearch?idcate2=25">Xe cứu hộ, xe cẩu kéo</a></li><li><a href="productsearch?idcate2=26">Xe ben, xe tải cẩu</a></li><li><a href="productsearch?idcate2=63">Xe cần cẩu, xe thang nâng</a></li><li><a href="productsearch?idcate2=10225">Xe xúc, xe gầu</a></li><li><a href="productsearch?idcate2=10226">Xe ủi, xe lu</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=76"><h3 class="list-links-title">Xe nông nghiệp</h3></a></li><li><a href="productsearch?idcate2=10227">Máy kéo</a></li><li><a href="productsearch?idcate2=10228">Máy cày, máy bừa</a></li><li><a href="productsearch?idcate2=10229">Máy gặt đập liên hợp</a></li><li><a href="productsearch?idcate2=10230">Máy trồng cây</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=41"><h3 class="list-links-title">Tàu thuyền</h3></a></li><li><a href="productsearch?idcate2=64">Moto nước, Kayak, thuyền phao</a></li><li><a href="productsearch?idcate2=65">Cano, Du thuyền</a></li><li><a href="productsearch?idcate2=10232">Tàu du lịch</a></li><li><a href="productsearch?idcate2=10233">Ghe, xà lan</a></li><li><a href="productsearch?idcate2=10235">Tàu chở hàng</a></li></ul><hr class="hidden-md hidden-lg"></div></div><div class="row hidden-sm hidden-xs"><div class="col-md-12"><hr><a class="banner banner-1" href="#"><img src="../image_banner/bannerMaincate_Car_Rental.jpg" alt=""></a></div></div></div></li>
+                                        <li class="dropdown side-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span><i class="fa fa-home category-icon"></i>Bất động sản</span> <i class="fa fa-angle-right"></i></a><div class="custom-menu"><div class="row row-eq-height"><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=51"><h3 class="list-links-title">Văn phòng </h3></a></li><li><a href="productsearch?idcate2=116">Văn phòng dịch vụ</a></li><li><a href="productsearch?idcate2=117">Văn phòng chia sẻ</a></li><li><a href="productsearch?idcate2=10182">Tòa nhà văn phòng</a></li><li><a href="productsearch?idcate2=118">Văn phòng nhà phố</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=49"><h3 class="list-links-title">Căn hộ</h3></a></li><li><a href="productsearch?idcate2=111">Căn hộ cao cấp</a></li><li><a href="productsearch?idcate2=112">Căn hộ dịch vụ</a></li><li><a href="productsearch?idcate2=113">Chung cư</a></li><li><a href="productsearch?idcate2=10184">Căn hộ chia sẻ</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=50"><h3 class="list-links-title">Nhà ở</h3></a></li><li><a href="productsearch?idcate2=114">Biệt thự</a></li><li><a href="productsearch?idcate2=115">Nhà mặt tiền</a></li><li><a href="productsearch?idcate2=10185">Nhà trong hẻm</a></li><li><a href="productsearch?idcate2=10186">Phòng cho thuê</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=71"><h3 class="list-links-title">Nhà nghỉ, khách sạn</h3></a></li><li><a href="productsearch?idcate2=10181">Nhà nghỉ</a></li><li><a href="productsearch?idcate2=10188">Khách sạn</a></li><li><a href="productsearch?idcate2=10189">Khu nghỉ dưỡng</a></li><li><a href="productsearch?idcate2=10221">Trao đổi kỳ nghỉ</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=52"><h3 class="list-links-title">Cửa hàng</h3></a></li><li><a href="productsearch?idcate2=119">Cửa hàng nhà phố</a></li><li><a href="productsearch?idcate2=120">Cửa hàng trong TTTM</a></li><li><a href="productsearch?idcate2=121">Kiot, sạp trong chợ</a></li><li><a href="productsearch?idcate2=10183">Hội chợ, triển lãm</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=53"><h3 class="list-links-title">Nhà xưởng</h3></a></li><li><a href="productsearch?idcate2=122">Trong khu công nghiệp</a></li><li><a href="productsearch?idcate2=123">Ngoài khu công nghiệp</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=54"><h3 class="list-links-title">Kho bãi</h3></a></li><li><a href="productsearch?idcate2=10222">Bãi - kho ngoài trời</a></li><li><a href="productsearch?idcate2=124">Nhà Kho</a></li><li><a href="productsearch?idcate2=125">Kho chia sẻ</a></li></ul><hr class="hidden-md hidden-lg"></div><div class="col-md-3" style="margin-top:18px;"><ul class="list-links"><li><a href="productsearch?idcate1=75"><h3 class="list-links-title">Thuê đất, ao, mặt nước</h3></a></li><li><a href="productsearch?idcate2=10218">Trồng rừng</a></li><li><a href="productsearch?idcate2=10219">Nuôi thủy hải sản</a></li><li><a href="productsearch?idcate2=10220">Mục đích khác</a></li><li><a href="productsearch?idcate2=10217">Mục đích khác</a></li></ul><hr class="hidden-md hidden-lg"></div></div><div class="row hidden-sm hidden-xs"><div class="col-md-12"><hr><a class="banner banner-1" href="#"><img src="../image_banner/bannerMaincate_house.jpg" alt=""></a></div></div></div></li>*@
+                                    @if (ViewBag.tb_CategoryMain != null)
+                                    {
+                                        foreach (var mn in ViewBag.tb_CategoryMain)
+                                        {
+                                            <li class="dropdown side-dropdown">
+                                                <a class="dropdown-toggle" href="/productcate?MainCateID=@mn.MainCateID">
+                                                    @if (ViewBag.lang == "vi")
+                                                    {
+                                                        <span>
+                                                            <i class="fa fa-gear category-icon"></i>
+                                                            @mn.MainCateName
+                                                        </span>
+                                                    }
+
+                                                    else
+                                                    {
+                                                        <span>
+                                                            <i class="fa fa-gear category-icon"></i>
+                                                            @mn.Language
+                                                        </span>
+                                                    }
+
+                                                    <i class="fa fa-angle-right"></i>
+                                                </a>
+                                                @Html.Action("MenuSub1", "Partial", new { MainCateID = mn.MainCateID })
+                                            </li>
+                                        }
+                                    }
+
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li style="width: 80%; position: relative">
+                            <input onkeyup="autocompleSearch()" type="text" id="txtsearch" placeholder="@(ViewBag.lang == "vi"?"Tìm thuê dịch vụ / Sản phẩm":"Find to rent")">
+                            <div id="searchBox">
+
+                            </div>
+                            <a onclick="searchproduct()" class="search_fa">
+                                <i class=" fa fa-search"></i>
+                            </a>
+                            <ul id="ulsearch">
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col3">
+                    <ul id="loginbox">
+                    </ul>
+                </div>
+                <div class="clearfix">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="menu-mobile" class="hidden-md hidden-lg w">
+    <div class="headerd">
+        <div class="logomobile">
+            <a href="/">
+                <img src="/image_product/LogoIcons/Hirent.svg" class="img-responsive">
+            </a>
+        </div>
+        <a href="javascript:void(0)" data-id="menuss" data-parentid="menu-mobile" id="btn-close-menu-child"><i class="fa fa-times fa-lg"></i></a>
+    </div>
+    <div class="bodyd">
+        <ul class="menu-mobile-s no-ul">
+            @if (ViewBag.tb_CategoryMain != null)
+            {
+                foreach (HirentWeb2022.Models.tb_CategoryMain item in ViewBag.tb_CategoryMain)
+                {
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45">
+                        <a href="productcate?MainCateID=@item.MainCateID">
+                            @item.MainCateName
+                        </a>
+                        <small id="dmenuchildmible-menuchildmible-510" onclick="TogleChild('menuchildmible-@item.MainCateID')"><i class="fa fa-chevron-down mobiletoggle"></i></small>
+                        <ul id="menuchildmible-@item.MainCateID" class="no-ul menuchildmible">
+                            @Html.Action("MenuMobileSub1", "Partial", new { MainCateID = item.MainCateID })
+                        </ul>
+                    </li>
+                }
+            }
+
+
+        </ul>
+    </div>
+</div>
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  login_container" role="document">
+        <div class="modal-content modal-login">
+            <div class="modal-header">
+                <h5 class="modal-title modaltitle login_title" id="exampleModalLabel">@(ViewBag.lang == "vi"? "Đăng nhập" : "Login")</h5>
+                <button type="button" class="close modalclose" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="loginPopupForm">
+                    <div id="ctl00_formerrors" class="form-errors">
+                        <p id="ctl00_loginNotification"></p>
+                    </div>
+                    <div>
+                        <div class="form-group">
+
+                            <span class="login_span"> @(ViewBag.lang == "vi"? "Nhập Email" : "Email") </span>
+                            <input type="email" id="txtUserName" placeholder="@(ViewBag.lang == "vi"? "Nhập Email" : "Email")" class="form-control inputEmail">
+                        </div>
+                        <div class="form-group">
+                            <span class="login_span">@(ViewBag.lang == "vi"? "Nhập mật khẩu" : "Password")</span>
+                            <input type="password" id="txtPassword" placeholder="@(ViewBag.lang == "vi"? "Nhập mật khẩu" : "Password")" class="form-control inputPassword">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox text-left">
+                            <label>
+                                <input type="checkbox" name="remember" style=" position: relative; top:2px;">
+                                @(ViewBag.lang == "vi"? "Ghi nhớ tôi" : "Remember me")
+                            </label>
+                            <span class="right"><a onclick="callForgottenBtn()" id="forgotpassBtn">@(ViewBag.lang == "vi"? "Quên mật khẩu?" : "Forget password?")</a></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center" id="dn1">
+                        <a onclick="fndangnhap()" class="dangnhapngay">
+                            @(ViewBag.lang == "vi"? "Đăng nhập ngay" : "Login")
+                        </a>
+                        <a onclick="fnDangky()" class="dangky">
+                            @(ViewBag.lang == "vi"? "Chưa có tài khoản?" : "Don't have an account? ") <strong>@(ViewBag.lang == "vi"? "Đăng ký ở đây" : "Register here")</strong>
+                        </a>
+                    </div>
+
+                </div>
+                <div id="registerPopupForm">
+                    <div id="ctl00_formerrors" class="form-errors">
+                        <p id="ctl00_loginNotification"></p>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <span class="login_span">@(ViewBag.lang == "vi"? "Nhập Email" : "Email")</span>
+                            <input type="email" id="txtUserNamerg" placeholder="@(ViewBag.lang == "vi"? "Nhập Email" : "Email")" class="form-control inputEmail">
+                        </div>
+                        <div class="form-group">
+                            <span class="login_span">@(ViewBag.lang == "vi"? "Nhập mật khẩu" : "Password")</span>
+                            <input type="password" id="txtPasswordrg" placeholder="@(ViewBag.lang == "vi"? "Nhập mật khẩu" : "Password")" class="form-control inputPassword">
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <a onclick="fnDangkyngay()" class="dangkyngay">
+                            @(ViewBag.lang == "vi"? "Đăng ký" : "Register")
+                        </a>
+                        <a onclick="backLogin()" class="backlogin">
+                            @(ViewBag.lang == "vi"? "Quay lại" : "Back")
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    // Hàm debounce sử dụng setTimeout
+
+
+    // Hàm xử lý tìm kiếm (ví dụ)
+    function search(keyword) {
+        $.ajax({
+            url: '/Partial/Search',
+            type: 'GET',
+            data: { keyword: keyword },
+            success: function (data) {
+                $("#searchBox").html(data);
+            },
+            error: function (err) {
+                console.error('Lỗi khi tìm kiếm: ', err);
+            }
+        });
+    }
+    const searchInput = document.getElementById('txtsearch');
+    let debounceTimer;
+    searchInput.addEventListener('input', function () {
+        if (searchInput.value.length <2) {
+            $("#searchBox").hide();
+        }
+        else {
+            $("#searchBox").show();
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(function () {
+                search(searchInput.value);
+            }, 300); // Thời gian chờ 500ms (0.5 giây) trước khi gửi yêu cầu AJAX
+        }
+
+    });
+    function autocompleSearch() {
+        //var keyword = $("#txtsearch").val();
+        //if (keyword.length == 0) {
+        //    $("#searchBox").hide();
+        //}
+        //else {
+        //    $("#searchBox").show();
+        //    $.ajax({
+        //        url: '/Partial/Search',
+        //        type: 'GET',
+        //        data: { keyword: keyword },
+        //        success: function (data) {
+        //            $("#searchBox").html(data);
+        //        },
+        //        error: function (err) {
+        //            console.error('Lỗi khi tìm kiếm: ', err);
+        //        }
+        //    });
+        //}
+
+    }
+    $(document).ready(function () {
+        loadMenu();
+        $("#registerPopupForm").hide();
+        $('#txtsearch').on('keyup', function (event) {
+            // Kiểm tra xem người dùng có nhấn phím Enter hay không
+            if (event.keyCode === 13) {
+                // Gọi hàm tìm kiếm
+                searchproduct();
+            }
+        });
+    });
+
+    function searchproduct() {
+        location.href = "/tim-kiem?keysearch=" + $("#txtsearch").val();
+    }
+    function toogle_menu() {
+        $("#ulMainCateList").toggle();
+    }
+    function loadMenu() {
+
+        $.ajax({
+            url: '/Partial/LoadMenu',
+            dataType: 'html',
+            success: function (data, status, xhr) {
+                $("#loginbox").html(data);
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+    function openModalLoginForm() {
+        $("#modalLogin").modal("toggle");
+        $("#loginPopupForm").show();
+        $("#registerPopupForm").hide();
+    }
+    function logout() {
+
+        $.ajax({
+            url: '/Home/Logout',
+            dataType: 'html',
+            success: function (data, status, xhr) {
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+    function fndangnhap() {
+        if ($("#txtUserName").val() == '') {
+            //  alert("Vui lòng nhập thông tin!");
+            if ('@ViewBag.lang' === 'vi') {
+                showToast("Cảnh báo", "Vui lòng nhập thông tin!", 2);
+            }
+            else {
+                showToast("Warning", "Please enter information!", 2);
+            }
+            return false;
+        }
+        if ($("#txtPassword").val() == '') {
+            if ('@ViewBag.lang' === 'vi')
+            {
+               showToast("Cảnh báo", "Vui lòng nhập thông tin!", 2);
+            }
+            else
+            {
+               showToast("Warning", "Please enter information!", 2);
+            }
+            return false;
+        }
+        var param = {
+            "userName": $("#txtUserName").val(),
+            "passWord": $("#txtPassword").val()
+        }
+        $.ajax({
+            url: '/Home/Login',
+            dataType: 'html',
+            data: param,
+            success: function (data, status, xhr) {
+                if (data == 'True') {
+                    loadMenu();
+                    $("#modalLogin").modal("toggle");
+                    if ('@ViewBag.lang' === 'vi')
+                    {
+                        showToast("Thông báo", "Đăng nhập thành công!", 2);
+                    }
+                    else
+                    {
+                        showToast("Message", "Login successful!", 2);
+                    }
+                }
+                else {
+                   if ('@ViewBag.lang' === 'vi')
+                     {
+                        showToast("Cảnh báo", "Đăng nhập thất bại!", 2);
+                     }
+                     else
+                   {
+                       showToast("Warning", "Failed login!", 2);
+                     }
+                }
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+
+    const fnDangkyngay = () => {
+        if ($("#txtUserNamerg").val() == '') {
+            if ('@ViewBag.lang' === 'vi')
+{
+   showToast("Cảnh báo", "Vui lòng nhập thông tin!", 2);
+}
+else
+{
+   showToast("Warning", "Please enter information!", 2);
+}
+            return false;
+        }
+        if ($("#txtPasswordrg").val() == '') {
+           if ('@ViewBag.lang' === 'vi')
+{
+   showToast("Cảnh báo", "Vui lòng nhập thông tin!", 2);
+}
+else
+{
+   showToast("Warning", "Please enter information!", 2);
+}
+            return false;
+        }
+        var param = {
+            "userName": $("#txtUserNamerg").val(),
+            "passWord": $("#txtPasswordrg").val()
+        }
+        $.ajax({
+            url: '/Home/Register',
+            dataType: 'html',
+            data: param,
+            success: function (data, status, xhr) {
+                if (data == 'True')
+                {
+                     if ('@ViewBag.lang' === 'vi')
+                     {
+                          showToast("Thông báo", "Đăng ký thành công!",1);
+                     }
+                     else
+                     {
+                           showToast("Message", "Registration successful!", 2);
+                    }
+                    location.reload();
+                 }
+                 else {
+                    if ('@ViewBag.lang' === 'vi')
+                   {
+                      showToast("Cảnh báo", "Đăng ký thất bại!", 2);
+                   }
+                   else
+                 {
+                       showToast("Warning", "Registration failed!", 2);
+                   }
+                }
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+
+    const fnDangky = () => {
+        $("#loginPopupForm").hide();
+        $("#registerPopupForm").show();
+    }
+    const backLogin = () => {
+        $("#loginPopupForm").show();
+        $("#registerPopupForm").hide();
+    }
+    function setLanguage(_lang) {
+        var param = {
+            "lang": _lang
+        }
+        $.ajax({
+            url: '/Partial/setLanguage',
+            data: param,
+            dataType: 'text',
+            type: 'POST',
+            cache: false,
+            success: function (result) {
+                window.location.reload();
+            }
+        });
+    }
+
+</script>
+
+<script>
+    $('.autosearch-input').keypress(function (e) {
+        if (e.which == 13) {
+            window.location.href = "/tim-kiem"
+        }
+    });
+    $('#menu-mobile').removeClass('w');
+    function TogleChild(id) {
+        $("#dmenuchildmible-" + id).find("i").toggleClass("fa-chevron-down");
+        $("#dmenuchildmible-" + id).find("i").toggleClass("fa-chevron-up");
+        $("#" + id).slideToggle();
+        $this.css("z-index", "99999")
+    }
+    $("#btn-close-menu-child1").click(function () {
+        var str = $("#btn-close-menu-child1").attr("data-parentId");
+        $('#' + str).removeClass('w');
+        $('.bg-black').removeClass('bg-black-show');
+    });
+    $("#btn-close-menu-child").click(function () {
+        var str = $("#btn-close-menu-child").attr("data-parentId");
+        $('#' + str).removeClass('w');
+        $('.bg-black').removeClass('bg-black-show');
+        $(".btn-menu i").toggleClass("fa-bars");
+        $(".btn-menu i").toggleClass("fa-times");
+    });
+
+    function ShowMenu() {
+        $(".bg-black").toggleClass("bg-black-show");
+        $('#menu-mobile').toggleClass('w');
+        $(".btn-menu i").toggleClass("fa-bars");
+        $(".btn-menu i").toggleClass("fa-times");
+    }
+
+    $(document).on('click', function (event) {
+        if (!$(event.target).closest('.category-list').length && !$(event.target).is('#toggleButton') && !$(event.target).is('#lidanhmuc_span') && !$(event.target).is('#lidanhmuc_i')) {
+            $('.category-list').hide(); // Ẩn div nếu click ngoài
+        }
+    });
+       
+</script>
+
+<div id="loading">
+    <img src="~/Assets/Images/loading.gif" />
+</div>

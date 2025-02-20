@@ -1,0 +1,2260 @@
+﻿
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">
+                    @if (ViewBag.lang == "vi")
+                    {
+
+                        <span>
+                            Trang chủ
+                        </span>
+                    }
+                    else
+                    {
+                        <span>
+                            Home
+                        </span>
+                    }
+                </a>
+            </li>
+            <li>
+                @if (ViewBag.lang == "vi")
+                {
+                    @ViewBag.getmainname.MainCateName
+                }
+                else
+                {
+                    @ViewBag.getmainname.Language
+                }
+
+            </li>
+            <li>
+                @if (ViewBag.lang == "vi")
+                {
+                    @ViewBag.getmainname1.SubCate1Name
+                }
+                else
+                {
+                    @ViewBag.getmainname1.Language
+                }
+            </li>
+            <li>
+                @if (ViewBag.lang == "vi")
+                {
+                    @ViewBag.getmainname2.SubCate2Name
+                }
+                else
+                {
+                    @ViewBag.getmainname2.Language
+                }
+            </li>
+            <li>
+                @if (Model != null)
+                {
+                    foreach (var br in Model)
+                    {
+                        if (ViewBag.lang == "vi")
+                        {
+                            @br.ProductName
+                        }
+                        else
+                        {
+                            @ViewBag.Translate.ProductName_EN
+                        }
+                    }
+                }
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="container">
+    <div class="productdetail_box">
+        <div class="mycol5 ">
+            <div class="product-main-view popup-gallery">
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <div class="proddetail_image">
+                            <a href="@item.ProductAvatar" title="@item.ProductAvatar">
+                                <img src="@item.ProductAvatar" class="img-responsive" title="@item.ProductAvatar" />
+                            </a>
+                        </div>
+                    }
+                }
+                @if (ViewBag.tb_ProductGallery != null)
+                {
+                    foreach (var it in ViewBag.tb_ProductGallery)
+                    {
+                        <div class="proddetail_image">
+                            <a href="@it.ImagePath" title="@it.ImagePath">
+                                <img src="@it.ImagePath" class="img-responsive" title="@it.ImagePath" />
+                            </a>
+                        </div>
+                    }
+                }
+            </div>
+            <div>
+                <div class="product-main-view-detail">
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <div class="productchild">
+                                <a onclick="slickslide(0)">
+                                    <img src="@item.ProductAvatar" class="img-responsive" />
+                                </a>
+                            </div>
+                        }
+                    }
+                    @if (ViewBag.tb_ProductGallery != null)
+                    {
+                        var i = 1;
+                        foreach (var it in ViewBag.tb_ProductGallery)
+                        {
+
+                            <div class="productchild">
+                                <a onclick="slickslide(@i)">
+                                    <img src="@it.ImagePath" class="img-responsive" />
+                                </a>
+                            </div>
+                            i++;
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="mycol7">
+            @if (Model != null)
+            {
+                foreach (var item in (IEnumerable<HirentWeb2022.Models.tb_Product>)Model)
+                {
+                    <div class="product-body">
+                        <input value="@item.ProductID" type="hidden" id="txtProductID" />
+                        @{
+                            if (ViewBag.lang == "vi")
+                            {
+                                <h2 id="MainContent_productNameDb" class="productDetail-name">@item.ProductName</h2>
+                            }
+                            else
+                            {
+                                <h2 id="MainContent_productNameDb" class="productDetail-name">@ViewBag.Translate.ProductName_EN</h2>
+
+                            }
+                        }
+
+                        <div class="dvBriefDescription">
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12 productStatus1">
+                                    <p style="display: inline;"><span id="MainContent_pdNew">@(ViewBag.lang == "vi" ? "Còn mới" : "New")</span>:</p>
+                                    <div style="display: inline-block; width: 57px; font-weight: 600; color: #214F39;" class="dvProductValue">
+                                        <p id="MainContent_productPercentage" style="display: inline;">90</p>
+                                        <span>%</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12 productStatus" style="height:20px">
+                                    <div style="padding: 5px 0 5px; display: inline-block;">
+                                        <div style="width: 160px; display: inline-block;" class="ttspl">
+                                            <h3 class="productDetail-lable" style="display: inline;"><span id="MainContent_pdCodition">@(ViewBag.lang == "vi" ? "Số lượng có thể thuê" : "Quantity available")</span>:</h3>
+                                        </div>
+                                        <div style="display: inline-block;" class="ttspr">
+                                            <p id="MainContent_idStatus" style="display: inline; text-align: left">@item.Soluongton</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p id="MainContent_BriefDescription">
+                                @item.ShortDescription
+                            </p>
+                            <div class="myhr">
+
+                            </div>
+                            <div class="cuahang_box">
+                                <div class="cuahang_box_left">
+                                    <a onclick="toogle_cuahang()" style="cursor:pointer" class="btn_cuahang">
+                                        <strong class="wasehouse_info_title" id="ctl00_MainContent_cuahang">@(ViewBag.lang == "vi" ? "Cửa hàng :" : "Store :")</strong><span id="ctl00_MainContent_idWarehouse" class="tencuahang">@ViewBag.tb_WareHouse.WarehouseName.</span>
+                                    </a>
+                                </div>
+                                <div class="cuahang_box_right">
+                                    <a class="btn_cuahang" href="@ViewBag.tb_WareHouse.ChinhSach" target="_blank">
+                                        <strong>
+                                            <span class="tencuahang"><i style="margin-right:4px" class="fa fa-book"></i>  @(ViewBag.lang == "vi" ? "Chính sách cửa hàng" : "Store Policy")</span>
+                                        </strong>
+                                    </a>
+                                </div>
+                                <div class="clearfix">
+
+                                </div>
+                                <div class="cuahang_box_left">
+                                    <a style="cursor:pointer" class="btn_cuahang">
+                                        <strong class="wasehouse_info_title">@(ViewBag.lang == "vi" ? "Khu vực nhận hàng :" : "Delivery Area :")</strong><span class="wasehouse_info_title">@ViewBag.tb_WareHouse.WarehouseAddress</span>
+                                    </a>
+                                </div>
+                                <div class="cuahang_box_right">
+                                    <a class="btn_cuahang" onclick="togleMap()">
+                                        <strong>
+                                            <span class="tencuahang "><i style="margin-right:4px" class="fa fa-map-marker"></i>  @(ViewBag.lang == "vi" ? "Bản đồ vị trí" : "Location Map")</span>
+                                        </strong>
+                                    </a>
+                                </div>
+                                <div class="clearfix">
+
+                                </div>
+                                <div class="cuahang_box_left">
+                                    <a style="cursor:pointer" class="btn_cuahang">
+                                        <strong class="wasehouse_info_title">@(ViewBag.lang == "vi" ? "Làm việc các thứ :" : "Working Days :")</strong>
+                                        <span class="" style="color:black">
+                                            @if (ViewBag.ListTime != null)
+                                            {
+                                                foreach (HirentWeb2022.Models.tb_WareHouse_Time it in ViewBag.ListTime)
+                                                {
+                                                    <span class="wasehouse_info_title">@it.FromDayOfWeek</span>
+                                                }
+                                            }
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="cuahang_box_right">
+                                    <a class="btn_cuahang" onclick="tgTGLV()">
+                                        <strong>
+                                            <span class="tencuahang"><i style="margin-right:4px" class="fa fa-calendar"></i>  @(ViewBag.lang == "vi" ? "Thời gian làm việc" : "Working Time")</span>
+                                        </strong>
+                                    </a>
+                                </div>
+                                <div class="clearfix">
+
+                                </div>
+                            </div>
+                            <div class="myhr">
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="chonthutheo">
+                                        <span id="chonthuetheo">@(ViewBag.lang == "vi" ? "Chọn thuê theo :" : "Type rent for :")</span>
+                                    </div>
+                                    <div id="giatheogio" style="padding: 5px 0 5px;">
+                                        <div class="giorow">
+                                            <div class="colgioleft">
+                                                <div class="dvRadioPrice">
+                                                    <input checked type="radio" id="GiaChoChueTheoBlock" onchange="javascript: callMeOnChangeSelectRental(1)" name="rentalprice" value="1">
+                                                </div>
+                                                <div style="display: inline-block">
+                                                    <h3 class="productDetail-lable" style="display: inline;"><span id="pdRentforhour" style="display: inline-block;">@(ViewBag.lang == "vi" ? "Giờ" : "Hour")</span>:</h3>
+                                                </div>
+                                            </div>
+                                            <div class="colgioright">
+                                                <div class="pgio">
+                                                    @{ if (ViewBag.lang == "vi")
+                                                        {
+                                                            <p id="price_block_p" class="productDetail-price">@item.PricePerBlock</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p id="price_block_p" class="productDetail-price">@ViewBag.Translate.PricePerBlock_EN</p>
+                                                        }
+                                                    }
+
+                                                </div>
+                                                <span class="productDetail-price" style="display: none"></span>
+                                            </div>
+                                            <div class="clearfix">
+
+                                            </div>
+                                        </div>
+                                        <div id="giatheongay" class="giorow">
+                                            <div class="colgioleft">
+                                                <div class="dvRadioPrice">
+                                                    <input type="radio" id="GiaChoChueTheoNgay" onchange="javascript: callMeOnChangeSelectRental(2)" name="rentalprice" value="2">
+                                                </div>
+                                                <div style="display: inline-block;">
+                                                    <h3 class="productDetail-lable" style="display: inline;"><span id="pdRentforday" style="display:inline-block;">@(ViewBag.lang == "vi"? "Ngày" : "Day")</span>:</h3>
+                                                </div>
+                                            </div>
+                                            <div class="colgioright">
+                                                <div style="display: inline-block;">
+                                                    @{
+                                                        if (ViewBag.lang == "vi")
+                                                        {
+                                                            <p id="price_day_p" class="productDetail-price" style="text-align: right;">@item.PricePerDay</p>
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <p id="price_day_p" class="productDetail-price" style="text-align: right;">@ViewBag.Translate.PricePerDay_EN</p>
+
+                                                        }
+                                                    }
+                                                </div>
+                                                <span class="productDetail-price" style="display: none"></span>
+                                            </div>
+                                            <div class="clearfix">
+
+                                            </div>
+                                        </div>
+
+                                        <div id="giatheothang" class="giorow">
+                                            <div class="colgioleft">
+                                                <div class="dvRadioPrice">
+                                                    <input type="radio" id="GiaChoChueTheoThang" onchange="javascript: callMeOnChangeSelectRental(3)" name="rentalprice" value="3">
+                                                </div>
+                                                <div style="display: inline-block;">
+                                                    <h3 class="productDetail-lable" style="display: inline;"><span id="pdRentformonth">@(ViewBag.lang == "vi"? "Tháng" : "Month")</span>:</h3>
+                                                </div>
+                                            </div>
+                                            <div class="colgioright">
+                                                <div style="display: inline-block;">
+                                                    @{
+                                                        if (ViewBag.lang == "vi")
+                                                        {
+                                                            <p id="price_month_p" class="productDetail-price" style="text-align: right;">@item.PricePerMonth</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p id="price_month_p" class="productDetail-price" style="text-align: right;">@ViewBag.Translate.PricePerMonth_EN</p>
+                                                        }
+                                                    }
+                                                </div>
+                                                <div class="clearfix">
+                                                </div>
+                                                <span class="productDetail-price" style="display: none"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chonthutheo">
+                                @(ViewBag.lang == "vi"? "Chọn thời gian thuê :" : "Time for rent")
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="select_time_container">
+                                        <i class="fas fa-calendar"></i>   <input onclick="chontgThue()" placeholder="@(ViewBag.lang == "vi"? "Chọn thời gian thuê :" : "Time for rent")" class="text-center pickTime" />
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="tgthue ctgts">
+                                        <span id="ctl00_MainContent_thoigianthue">@(ViewBag.lang == "vi"? "Thời gian thuê :" : "Time for rent :")</span> <span style="margin-left:10px;color:red;font-weight:bold" id="sogio">
+                                            @(ViewBag.lang == "vi"? "Vui lòng chọn thời gian..." : "select time...")
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="dvBookTime" class="dvBookTime">
+
+                                <div class="row">
+                                    <div class="col-md-5 col-xs-12">
+
+                                        <div class="chonthutheo">
+                                            <span id="sanphamchinh">@(ViewBag.lang == "vi"? "Sản phẩm chính :" : "Main product")</span>
+                                        </div>
+                                        <div>
+                                            <div class="accessories-checkbox">
+                                                <input disabled onchange="lkchange(1)" type="checkbox" id="selectedAccessories1" name="selectedAccessories1" value="">
+                                            </div>
+                                            <h3 class="productDetail-lable-accessories" style="display: inline;">
+                                                @{
+                                                    if (ViewBag.lang == "vi")
+                                                    {
+                                                        <a href="../productdetail?productID=1052" target="_blank">@item.ProductName</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="../productdetail?productID=1052" target="_blank">@ViewBag.Translate.ProductName_EN</a>
+
+                                                    }
+                                                }
+
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7 col-xs-12">
+                                        <div class="row mg-30">
+                                            <div class="col-sm-4 col-xs-3 tct">
+                                                <span class="gttt1"><span id="pdNumber">@(ViewBag.lang == "vi"? "Số lượng :" : "Quantity")</span> :</span>
+                                            </div>
+                                            <div class="col-sm-4 col-xs-4 tct">
+                                                <span class="gttt1"><span id="pdRentCost">@(ViewBag.lang == "vi"? "Giá thuê" : "Price")</span> :</span>
+                                            </div>
+                                            <div class="col-sm-4 col-xs-5 tct">
+                                                <span style="" class="gttt2"><span id="pdProductValue">@(ViewBag.lang == "vi"? "Giá trị SP" : "Value")</span>:</span>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4 col-xs-4 text-center">
+                                                <div class="qty-input">
+
+                                                    <div class="myinput">
+                                                        <div class="asubtract">
+                                                            <a onclick="doSubtract('product_qty')">
+                                                                -
+                                                            </a>
+                                                        </div>
+                                                        <input class="input inputQuality" type="number" onchange="javascript:callMeOnChangeProductQty()" id="product_qty" min="1" max="100" value="0" fdprocessedid="tvki82">
+                                                        <div class="aplus">
+                                                            <a onclick="doPlus('product_qty')">
+                                                                +
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-xs-3 text-center">
+                                                <div class="dvPriceTamTinh dvPriceTamTinh-BookTime">
+                                                    <p style="display: inline" id="product_temp_p1">0</p>
+                                                    <span>đ</span>
+                                                    <input type="hidden" id="tongcha" value="0">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-xs-5 text-center">
+                                                <div class="dvProductValue dvProductValue-BookTime">
+                                                    <input name="giatrisanpham" type="text" id="giatrisanpham" style="display: none;" value="@item.ProductValue.Value">
+                                                    <p style="display: inline" id="product_value_p1">@item.ProductValue.Value.ToString("#,##0")</p>
+                                                    <span>đ</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="myhr">
+
+                            </div>
+                            <div id="ctl00_MainContent_dvProductAccessoryList" class="dvBookAccessory">
+                                <div class="col-md-6 col-xs-12 accessories-titleBar">
+                                    <p class="accessories-title"><span id="pdSelectAccom" runat="server">@(ViewBag.lang == "vi"? "Chọn thêm sản phẩm, phụ kiện đi kèm" : "Select additional products and accessories")</span> : </p>
+                                </div>
+                                <div class="clearfix">
+
+                                </div>
+                                @if (ViewBag.ListAcess != null)
+                                {
+                                    foreach (var it in (IEnumerable<HirentWeb2022.Models.tb_Product>)ViewBag.ListAcess)
+                                    {
+                                        <div class="row">
+                                            <div class="col-md-5 col-xs-12 BookAccessories-productName">
+                                                <div class="accessories-checkbox">
+                                                    <input onchange="lkchange(@it.ProductID)" type="checkbox" id="accessoriesCheckbox_@it.ProductID" class="selectedAccessories" value="@it.ProductID">
+                                                </div>
+                                                <h3 class="productDetail-lable-accessories" style="display:inline;">
+                                                    @if (ViewBag.lang == "vi")
+                                                    {
+                                                        <a data-name="@it.ProductName" href="../productdetail?productID=350" target="_blank">
+                                                            @it.ProductName
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+                                                        HirentWeb2022.Models.HirentEntities db = new HirentWeb2022.Models.HirentEntities();
+                                                        HirentWeb2022.Models.tb_Product_Translation tb_Product_Translation = db.tb_Product_Translation.Where(m => m.Idproduct == item.ProductID).FirstOrDefault();
+                                                        if (tb_Product_Translation != null)
+                                                        {
+                                                            <a data-name="@it.ProductName" href="../productdetail?productID=350" target="_blank">
+                                                                @tb_Product_Translation.ProductName_EN
+                                                            </a>
+                                                        }
+
+                                                    }
+
+                                                </h3>
+                                            </div>
+                                            <div class="col-md-7 col-xs-12">
+                                                <div class="row">
+                                                    <div class="col-sm-4 col-xs-4 text-center">
+                                                        <div class="qty-input">
+                                                            <div class="myinput">
+                                                                <div class="asubtract"><a onclick="doSubtract('access_qty_@it.ProductID')">-</a></div>
+                                                                <input disabled class="input inputQuality inputQtyAccessory" onchange="changeck('@it.ProductID')" type="number" id="access_qty_@it.ProductID" min="1" max="100" value="0" fdprocessedid="snl6g8">
+                                                                <div class="aplus"><a onclick="doPlus('access_qty_@it.ProductID')">+</a></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xs-3 text-center ">
+                                                        <div class="dvPriceTamTinh gtttc3" style="display: inline-block;">
+                                                            <p style="display: inline-block;" id="access_tempDisplay_@it.ProductID">0</p> <span>đ</span>
+                                                            <input type="hidden" style="display: inline-block;" id="tongcon_@it.ProductID">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xs-5 text-center">
+                                                        <div class="dvProductValue" style="display: inline-block;">
+                                                            <p datacheck="0" style="display: inline-block;" id="access_valueDisplay_@it.ProductID">@it.ProductValue.Value.ToString("#,##0")</p><span> đ</span>
+                                                            <input style="display: none;" id="access_value_@it.ProductID" value="@it.ProductValue" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                }
+
+                            </div>
+                            <div onclick="mdMoreStore()" class="pickTime" style="display: inline-block; padding: 6px 11px;">
+                                <i style="margin-right:5px" class="fas fa-plus"></i>
+                                @(ViewBag.lang == "vi"? "Chọn thêm sản phẩm cùng cửa hàng :" : "Choose more items from this store :")
+                            </div>
+                            <div id="addmorepd">
+
+                            </div>
+                            <div class="myhr">
+
+                            </div>
+                            <div class="dvBookSTotalpayment">
+                                <div class="row">
+                                    <div class="col-sm-5 text-right hidden-xs">
+                                        <p style="display: inline; top:5px; position: relative; font-size: 16px;">
+                                            <span id="ctl00_MainContent_pdTotal">@(ViewBag.lang == "vi"? "Tổng cộng :" : "Total :")</span>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="row productdetail-totalvalue">
+                                            <div class="col-sm-4 col-xs-3 text-center">
+                                                <p style="display: inline; top:5px; position: relative; font-size:14px;">
+                                                    <span id="ctl00_MainContent_totalplus">0</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-sm-4 col-xs-4">
+                                                <div class="dvPriceTamTinh dvPriceTamTinh-Total">
+                                                    <p id="total_product_deposit_p">0 đ </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-xs-5 text-right">
+                                                <div class="dvProductValue dvProductValue-Total" style="margin-right:6px;">
+                                                    <p id="total_product_value_p">0 đ</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+
+                                    </div>
+                                    <div class="col-sm-6 text-right">
+                                        <div class="product-btns">
+
+                                            <button id="ctl00_MainContent_btnmuahang" class="add-to-cart" style="" onclick="javascript:return goToCart()">
+
+                                                <i style=" font-size: 11px; top: -1px; position: relative; left: -3px;" class="fa-solid fa-cart-shopping"></i>  <span id="ctl00_MainContent_pdAddTocart">@(ViewBag.lang == "vi"? "THÊM VÀO GIỎ" : "ADD TO CART")</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            }
+        </div>
+        <div class="clearfix">
+
+        </div>
+        @if (Model != null)
+        {
+            foreach (var item in (IEnumerable<HirentWeb2022.Models.tb_Product>)Model)
+            {
+                <div class="fullDescription-tab-dynamic" role="tabpanel" data-example-id="togglable-tabs">
+                    <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a class="tabp" href="http://103.77.167.17:8011/productdetail.aspx?productID=348#tab_content_fullDescription" role="tab" id="fullDescription-tab" data-toggle="tab" aria-expanded="true"><span id="ctl00_MainContent_mtsp">@(ViewBag.lang == "vi"? "MÔ TẢ SẢN PHẨM" : "Product Description")</span></a>
+                        </li>
+                        <li role="presentation" class="">
+                            <a class="tabp" href="http://103.77.167.17:8011/productdetail.aspx?productID=348#tab_content_specification" role="tab" id="specification-tab" data-toggle="tab" aria-expanded="false"><span id="ctl00_MainContent_tskt">@(ViewBag.lang == "vi"? "THÔNG SỐ KỸ THUẬT" : "Technical Specifications")</span></a>
+                        </li>
+                        <li role="presentation" class="">
+                            <a class="tabp" href="http://103.77.167.17:8011/productdetail.aspx?productID=348#tab_content_userguide" role="tab" id="userGuide-tab" data-toggle="tab" aria-expanded="false"><span id="ctl00_MainContent_hdsd">@(ViewBag.lang == "vi"? "HD SỬ DỤNG" : "User Manual")</span></a>
+                        </li>
+                        <li role="presentation" class="">
+                            <a class="tabp" href="http://103.77.167.17:8011/productdetail.aspx?productID=348#tab_content_danhgia" role="tab" id="userGuide-danhgia" data-toggle="tab" aria-expanded="false"><span id="ctl00_MainContent_bcdg">@(ViewBag.lang == "vi"? "BÌNH CHỌN ĐÁNH GIÁ" : "Review")</span></a>
+                        </li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content_fullDescription" aria-labelledby="home-tab" style="margin-top: 20px">
+                            <!-- Tab Mo Ta San Pham -->
+                            @if (ViewBag.lang == "vi")
+                            {
+                                <p id="ctl00_MainContent_productDescriptionDb"></p><p>@Html.Raw(item.FullDescription)</p><p></p>
+
+                            }
+                            else
+                            {
+                                <p id="ctl00_MainContent_productDescriptionDb"></p><p>@Html.Raw(ViewBag.Translate.FullDescription_EN)</p><p></p>
+
+                            }
+
+                        </div>
+                        <!-- /Tab Mo Ta San Pham -->
+
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content_specification" aria-labelledby="profile-tab" style="margin-top: 20px">
+                            <!-- Tab Thong So Ky Thuat -->
+                            @if (ViewBag.lang == "vi")
+                            {
+                                <p id="ctl00_MainContent_productSpecificationDb"></p><p>@Html.Raw(item.ProductSpecification)</p><p></p>
+
+                            }
+                            else
+                            {
+                                <p id="ctl00_MainContent_productSpecificationDb"></p><p>@Html.Raw(ViewBag.Translate.ProductSpecification)</p><p></p>
+
+                            }
+                        </div>
+                        <!-- /Tab Thong So Ky Thuat -->
+
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content_userguide" aria-labelledby="profile-tab" style="margin-top: 20px">
+                            <!-- Tab Huong Dan Su Dung -->
+                            <h3 style="margin-bottom: 40px; font-size: 18px;"><span id="ctl00_MainContent_hdsdvmt">@(ViewBag.lang == "vi"? "HƯỚNG DẪN SỬ DỤNG SẢN PHẨM GỒM VIDEO VÀ MÔ TẢ" : "Product User Guide with Video and Description")</span></h3>
+                            <div id="ctl00_MainContent_productInstructionDb" class="col-md-5 col-sm-5 col-xs-12">
+                                @if (ViewBag.lang == "vi")
+                                {
+                                    <p>@Html.Raw(item.ProductInstruction)</p>
+                                }
+                                else
+                                {
+                                    <p>@Html.Raw(ViewBag.Translate.ProductInstruction)</p>
+                                }
+                            </div>
+
+                            @*<div id="ctl00_MainContent_productInstructionDbYoutube" class="col-md-7 col-sm-6 col-xs-12"><iframe width="380" height="300" src="./SAVINA website - Tools Rental websitedt_files/saved_resource.html" style="height:255px; width: 365px;"></iframe></div>*@
+                        </div>
+                        <script async="" defer="" crossorigin="anonymous" src="./SAVINA website - Tools Rental websitedt_files/sdk(2).js.download" nonce="0iEjjCsN"></script>
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content_danhgia" aria-labelledby="profile-tab" style="margin-top: 20px">
+                            <!-- Tab Thong So Ky Thuat -->
+                            <div id="fb-root"></div>
+                            <div class="fb-comments fb_iframe_widget fb_iframe_widget_fluid_desktop" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="" data-numposts="5" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=208417468085570&amp;container_width=0&amp;height=100&amp;href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2Fcomments%23configurator&amp;locale=en_US&amp;numposts=5&amp;sdk=joey&amp;version=v6.0&amp;width=550"><span style="vertical-align: bottom; width: 550px; height: 0px;"><iframe name="ff0d2743d7f521047" width="550px" height="100px" data-testid="fb:comments Facebook Social Plugin" title="fb:comments Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/v6.0/plugins/comments.php?app_id=208417468085570&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df243bbedd352deb2d%26domain%3D%26is_canvas%3Dfalse%26origin%3Dfile%253A%252F%252F%252Ffa69bceb0e49e0131%26relation%3Dparent.parent&amp;container_width=0&amp;height=100&amp;href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2Fcomments%23configurator&amp;locale=en_US&amp;numposts=5&amp;sdk=joey&amp;version=v6.0&amp;width=550" class="" style="border: none; visibility: visible; width: 550px; height: 0px;"></iframe></span></div>
+                        </div>
+                        <!-- /Tab Huong Dan Su Dung -->
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="modalTimepicker" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="chongiothuetitle">
+                @(ViewBag.lang == "vi" ? "CHỌN NGÀY GIỜ THUÊ" : "Select Date")
+            </div>
+            <div class="modal-body bodymb">
+
+                <div class="row">
+                    <div class="col-sm-6 celanderleft">
+                        <div class="col-md-12 celanderleft">
+                            <select class="monthselect" onchange="fn_monthselect()">
+                                <option value="1" id="op1">@(ViewBag.lang == "vi" ? "Tháng 1" : "January")</option>
+                                <option value="2" id="op2">@(ViewBag.lang == "vi" ? "Tháng 2" : "February")</option>
+                                <option value="3" id="op3">@(ViewBag.lang == "vi" ? "Tháng 3" : "March")</option>
+                                <option value="4" id="op4">@(ViewBag.lang == "vi" ? "Tháng 4" : "April")</option>
+                                <option value="5" id="op5">@(ViewBag.lang == "vi" ? "Tháng 5" : "May")</option>
+                                <option value="6" id="op6">@(ViewBag.lang == "vi" ? "Tháng 6" : "June")</option>
+                                <option value="7" id="op7">@(ViewBag.lang == "vi" ? "Tháng 7" : "July")</option>
+                                <option value="8" id="op8">@(ViewBag.lang == "vi" ? "Tháng 8" : "August")</option>
+                                <option value="9" id="op9">@(ViewBag.lang == "vi" ? "Tháng 9" : "September")</option>
+                                <option value="10" id="op10">@(ViewBag.lang == "vi" ? "Tháng 10" : "October")</option>
+                                <option value="11" id="op11">@(ViewBag.lang == "vi" ? "Tháng 11" : "November")</option>
+                                <option value="12" id="op12">@(ViewBag.lang == "vi" ? "Tháng 12" : "December")</option>
+                            </select>
+                            <select class="yearselect" onchange="fn_yearselect()" disabled>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2030">2030</option>
+                                <option value="2031">2031</option>
+                                <option value="2032">2032</option>
+                                <option value="2033">2033</option>
+                                <option value="2034">2034</option>
+                                <option value="2035">2035</option>
+                                <option value="2036">2036</option>
+                                <option value="2037">2037</option>
+                                <option value="2038">2038</option>
+                                <option value="2039">2039</option>
+                                <option value="2040">2040</option>
+                                <option value="2041">2041</option>
+                                <option value="2042">2042</option>
+                                <option value="2043">2043</option>
+                                <option value="2044">2044</option>
+                                <option value="2045">2045</option>
+                                <option value="2046">2046</option>
+                                <option value="2047">2047</option>
+                                <option value="2048">2048</option>
+                                <option value="2049">2049</option>
+                                <option value="2050">2050</option>
+                                <option value="2051">2051</option>
+                                <option value="2052">2052</option>
+                                <option value="2053">2053</option>
+                                <option value="2054">2054</option>
+                                <option value="2055">2055</option>
+                                <option value="2056">2056</option>
+                                <option value="2057">2057</option>
+                                <option value="2058">2058</option>
+                                <option value="2059">2059</option>
+                                <option value="2060">2060</option>
+                                <option value="2061">2061</option>
+                                <option value="2062">2062</option>
+                                <option value="2063">2063</option>
+                                <option value="2064">2064</option>
+                                <option value="2065">2065</option>
+                                <option value="2066">2066</option>
+                                <option value="2067">2067</option>
+                                <option value="2068">2068</option>
+                                <option value="2069">2069</option>
+                                <option value="2070">2070</option>
+                                <option value="2071">2071</option>
+                                <option value="2072">2072</option>
+                                <option value="2073">2073</option>
+                                <option value="2074">2074</option>
+                                <option value="2075">2075</option>
+                                <option value="2076">2076</option>
+                                <option value="2077">2077</option>
+                                <option value="2078">2078</option>
+                                <option value="2079">2079</option>
+                                <option value="2080">2080</option>
+                                <option value="2081">2081</option>
+                                <option value="2082">2082</option>
+                                <option value="2083">2083</option>
+                                <option value="2084">2084</option>
+                                <option value="2085">2085</option>
+                                <option value="2086">2086</option>
+                                <option value="2087">2087</option>
+                                <option value="2088">2088</option>
+                                <option value="2089">2089</option>
+                                <option value="2090">2090</option>
+                                <option value="2091">2091</option>
+                                <option value="2092">2092</option>
+                                <option value="2093">2093</option>
+                                <option value="2094">2094</option>
+                                <option value="2095">2095</option>
+                                <option value="2096">2096</option>
+                                <option value="2097">2097</option>
+                                <option value="2098">2098</option>
+                                <option value="2099">2099</option>
+                                <option value="2100">2100</option>
+                                <option value="2101">2101</option>
+                                <option value="2102">2102</option>
+                                <option value="2103">2103</option>
+                                <option value="2104">2104</option>
+                                <option value="2105">2105</option>
+                                <option value="2106">2106</option>
+                                <option value="2107">2107</option>
+                                <option value="2108">2108</option>
+                                <option value="2109">2109</option>
+                                <option value="2110">2110</option>
+                                <option value="2111">2111</option>
+                                <option value="2112">2112</option>
+                                <option value="2113">2113</option>
+                                <option value="2114">2114</option>
+                                <option value="2115">2115</option>
+                                <option value="2116">2116</option>
+                                <option value="2117">2117</option>
+                                <option value="2118">2118</option>
+                                <option value="2119">2119</option>
+                                <option value="2120">2120</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 celanderleft">
+                            <table class="dateTable dtLeft">
+                                <thead>
+                                    <tr>
+                                        <th id="tl2" class="datedisable3">
+                                            T2
+                                        </th>
+                                        <th id="tl3" class="datedisable3">
+                                            T3
+                                        </th>
+                                        <th id="tl4" class="datedisable3">
+                                            T4
+                                        </th>
+                                        <th id="tl5" class="datedisable3">
+                                            T5
+                                        </th>
+                                        <th id="tl6" class="datedisable3">
+                                            T6
+                                        </th>
+                                        <th id="tl7" class="datedisable3">
+                                            T7
+                                        </th>
+                                        <th id="tl8" class="datedisable3">
+                                            CN
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="ml1">1</td>
+                                        <td id="ml2">1</td>
+                                        <td id="ml3">1</td>
+                                        <td id="ml4">1</td>
+                                        <td id="ml5">1</td>
+                                        <td id="ml6">1</td>
+                                        <td id="ml7">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="ml8">1</td>
+                                        <td id="ml9">1</td>
+                                        <td id="ml10">1</td>
+                                        <td id="ml11">1</td>
+                                        <td id="ml12">1</td>
+                                        <td id="ml13">1</td>
+                                        <td id="ml14">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="ml15">1</td>
+                                        <td id="ml16">1</td>
+                                        <td id="ml17">1</td>
+                                        <td id="ml18">1</td>
+                                        <td id="ml19">1</td>
+                                        <td id="ml20">1</td>
+                                        <td id="ml21">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="ml22">1</td>
+                                        <td id="ml23">1</td>
+                                        <td id="ml24">1</td>
+                                        <td id="ml25">1</td>
+                                        <td id="ml26">1</td>
+                                        <td id="ml27">1</td>
+                                        <td id="ml28">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="ml29">1</td>
+                                        <td id="ml30">1</td>
+                                        <td id="ml31">1</td>
+                                        <td id="ml32">1</td>
+                                        <td id="ml33">1</td>
+                                        <td id="ml34">1</td>
+                                        <td id="ml35">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="ml36">1</td>
+                                        <td id="ml37">1</td>
+                                        <td id="ml38">1</td>
+                                        <td id="ml39">1</td>
+                                        <td id="ml40">1</td>
+                                        <td id="ml41">1</td>
+                                        <td id="ml42">1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 celanderleft">
+                        <div class="col-md-12 celanderleft">
+                            <select class="monthselect2" onchange="fn_monthselect2()">
+                                <option value="1">@(ViewBag.lang == "vi" ? "Tháng 1" : "January")</option>
+                                <option value="2">@(ViewBag.lang == "vi" ? "Tháng 2" : "February")</option>
+                                <option value="3">@(ViewBag.lang == "vi" ? "Tháng 3" : "March")</option>
+                                <option value="4">@(ViewBag.lang == "vi" ? "Tháng 4" : "April")</option>
+                                <option value="5">@(ViewBag.lang == "vi" ? "Tháng 5" : "May")</option>
+                                <option value="6">@(ViewBag.lang == "vi" ? "Tháng 6" : "June")</option>
+                                <option value="7">@(ViewBag.lang == "vi" ? "Tháng 7" : "July")</option>
+                                <option value="8">@(ViewBag.lang == "vi" ? "Tháng 8" : "August")</option>
+                                <option value="9">@(ViewBag.lang == "vi" ? "Tháng 9" : "September")</option>
+                                <option value="10">@(ViewBag.lang == "vi" ? "Tháng 10" : "October")</option>
+                                <option value="11">@(ViewBag.lang == "vi" ? "Tháng 11" : "November")</option>
+                                <option value="12">@(ViewBag.lang == "vi" ? "Tháng 12" : "December")</option>
+                            </select>
+                            <select class="yearselect2" disabled>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2030">2030</option>
+                                <option value="2031">2031</option>
+                                <option value="2032">2032</option>
+                                <option value="2033">2033</option>
+                                <option value="2034">2034</option>
+                                <option value="2035">2035</option>
+                                <option value="2036">2036</option>
+                                <option value="2037">2037</option>
+                                <option value="2038">2038</option>
+                                <option value="2039">2039</option>
+                                <option value="2040">2040</option>
+                                <option value="2041">2041</option>
+                                <option value="2042">2042</option>
+                                <option value="2043">2043</option>
+                                <option value="2044">2044</option>
+                                <option value="2045">2045</option>
+                                <option value="2046">2046</option>
+                                <option value="2047">2047</option>
+                                <option value="2048">2048</option>
+                                <option value="2049">2049</option>
+                                <option value="2050">2050</option>
+                                <option value="2051">2051</option>
+                                <option value="2052">2052</option>
+                                <option value="2053">2053</option>
+                                <option value="2054">2054</option>
+                                <option value="2055">2055</option>
+                                <option value="2056">2056</option>
+                                <option value="2057">2057</option>
+                                <option value="2058">2058</option>
+                                <option value="2059">2059</option>
+                                <option value="2060">2060</option>
+                                <option value="2061">2061</option>
+                                <option value="2062">2062</option>
+                                <option value="2063">2063</option>
+                                <option value="2064">2064</option>
+                                <option value="2065">2065</option>
+                                <option value="2066">2066</option>
+                                <option value="2067">2067</option>
+                                <option value="2068">2068</option>
+                                <option value="2069">2069</option>
+                                <option value="2070">2070</option>
+                                <option value="2071">2071</option>
+                                <option value="2072">2072</option>
+                                <option value="2073">2073</option>
+                                <option value="2074">2074</option>
+                                <option value="2075">2075</option>
+                                <option value="2076">2076</option>
+                                <option value="2077">2077</option>
+                                <option value="2078">2078</option>
+                                <option value="2079">2079</option>
+                                <option value="2080">2080</option>
+                                <option value="2081">2081</option>
+                                <option value="2082">2082</option>
+                                <option value="2083">2083</option>
+                                <option value="2084">2084</option>
+                                <option value="2085">2085</option>
+                                <option value="2086">2086</option>
+                                <option value="2087">2087</option>
+                                <option value="2088">2088</option>
+                                <option value="2089">2089</option>
+                                <option value="2090">2090</option>
+                                <option value="2091">2091</option>
+                                <option value="2092">2092</option>
+                                <option value="2093">2093</option>
+                                <option value="2094">2094</option>
+                                <option value="2095">2095</option>
+                                <option value="2096">2096</option>
+                                <option value="2097">2097</option>
+                                <option value="2098">2098</option>
+                                <option value="2099">2099</option>
+                                <option value="2100">2100</option>
+                                <option value="2101">2101</option>
+                                <option value="2102">2102</option>
+                                <option value="2103">2103</option>
+                                <option value="2104">2104</option>
+                                <option value="2105">2105</option>
+                                <option value="2106">2106</option>
+                                <option value="2107">2107</option>
+                                <option value="2108">2108</option>
+                                <option value="2109">2109</option>
+                                <option value="2110">2110</option>
+                                <option value="2111">2111</option>
+                                <option value="2112">2112</option>
+                                <option value="2113">2113</option>
+                                <option value="2114">2114</option>
+                                <option value="2115">2115</option>
+                                <option value="2116">2116</option>
+                                <option value="2117">2117</option>
+                                <option value="2118">2118</option>
+                                <option value="2119">2119</option>
+                                <option value="2120">2120</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 celanderleft">
+                            <table class="dateTable dtLeft">
+                                <thead>
+                                    <tr>
+                                        <th id="tr2" class="datedisable3">
+                                            T2
+                                        </th>
+                                        <th id="tr3" class="datedisable3">
+                                            T3
+                                        </th>
+                                        <th id="tr4" class="datedisable3">
+                                            T4
+                                        </th>
+                                        <th id="tr5" class="datedisable3">
+                                            T5
+                                        </th>
+                                        <th id="tr6" class="datedisable3">
+                                            T6
+                                        </th>
+                                        <th id="tr7" class="datedisable3">
+                                            T7
+                                        </th>
+                                        <th id="tr8" class="datedisable3">
+                                            CN
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="mr1">1</td>
+                                        <td id="mr2">1</td>
+                                        <td id="mr3">1</td>
+                                        <td id="mr4">1</td>
+                                        <td id="mr5">1</td>
+                                        <td id="mr6">1</td>
+                                        <td id="mr7">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="mr8">1</td>
+                                        <td id="mr9">1</td>
+                                        <td id="mr10">1</td>
+                                        <td id="mr11">1</td>
+                                        <td id="mr12">1</td>
+                                        <td id="mr13">1</td>
+                                        <td id="mr14">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="mr15">1</td>
+                                        <td id="mr16">1</td>
+                                        <td id="mr17">1</td>
+                                        <td id="mr18">1</td>
+                                        <td id="mr19">1</td>
+                                        <td id="mr20">1</td>
+                                        <td id="mr21">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="mr22">1</td>
+                                        <td id="mr23">1</td>
+                                        <td id="mr24">1</td>
+                                        <td id="mr25">1</td>
+                                        <td id="mr26">1</td>
+                                        <td id="mr27">1</td>
+                                        <td id="mr28">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="mr29">1</td>
+                                        <td id="mr30">1</td>
+                                        <td id="mr31">1</td>
+                                        <td id="mr32">1</td>
+                                        <td id="mr33">1</td>
+                                        <td id="mr34">1</td>
+                                        <td id="mr35">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="mr36">1</td>
+                                        <td id="mr37">1</td>
+                                        <td id="mr38">1</td>
+                                        <td id="mr39">1</td>
+                                        <td id="mr40">1</td>
+                                        <td id="mr41">1</td>
+                                        <td id="mr42">1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="row rowHour">
+                        <div class="col-sm-3">
+                            <span class="gionhan"><span id="thoigiannhan">@(ViewBag.lang == "vi" ? "Thời gian nhận:" : "Receiving time")</span> </span>
+                        </div>
+                        <div class="col-sm-1 col-xs-3">
+                            <select class="hourselectleft" onchange="fn_hourselectleft()" fdprocessedid="oq0nm9">
+                                <option value="0">0 </option>
+                                <option value="1">01 </option>
+                                <option value="2">02</option>
+                                <option value="3">03</option>
+                                <option value="4">04</option>
+                                <option value="5">05</option>
+                                <option value="6">06</option>
+                                <option value="7">07</option>
+                                <option value="8">08</option>
+                                <option value="9">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-1 col-xs-2">
+                            <span class="gionhan"><span id="gio1">@(ViewBag.lang == "vi" ? "Giờ" : "Hour")</span>  </span>
+                        </div>
+                        <div class="col-sm-1 col-xs-3 text-left">
+                            <select class="minuteselectleft" onchange="fn_minuteselectleft()" fdprocessedid="1mzu9x">
+                                <option value="0">00</option>
+                                <option value="5">05</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                                <option value="25">25</option>
+                                <option value="30">30</option>
+                                <option value="35">35</option>
+                                <option value="40">40</option>
+                                <option value="45">45</option>
+                                <option value="50">50</option>
+                                <option value="55">55</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-1 col-xs-2">
+                            <span class="gionhan"><span id="phut1">@(ViewBag.lang == "vi" ? "Phút" : "Minute")</span>  </span>
+                        </div>
+                    </div>
+                    <div class="row rowHour">
+                        <div class="col-sm-3 ">
+                            <span class="gionhan"><span id="thoigiantra">@(ViewBag.lang == "vi" ? "Thời gian  trả:" : "Return time:")</span></span>
+                        </div>
+                        <div class="col-sm-1 col-xs-3 text-left">
+                            <select class="hourselecright" onchange="fn_hourselecright()" fdprocessedid="r2u77i">
+                                <option value="0">0</option>
+                                <option value="1">01</option>
+                                <option value="2">02</option>
+                                <option value="3">03</option>
+                                <option value="4">04</option>
+                                <option value="5">05</option>
+                                <option value="6">06</option>
+                                <option value="7">07</option>
+                                <option value="8">08</option>
+                                <option value="9">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-1 col-xs-2">
+                            <span class="gionhan"><span id="gio2">@(ViewBag.lang == "vi" ? "Giờ" : "Hour")</span>  </span>
+                        </div>
+                        <div class="col-sm-1 col-xs-3">
+                            <select class="minuteselectright" onchange="fn_minuteselectright()" fdprocessedid="oszasl">
+                                <option value="0">00</option>
+                                <option value="5">05</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                                <option value="25">25</option>
+                                <option value="30">30</option>
+                                <option value="35">35</option>
+                                <option value="40">40</option>
+                                <option value="45">45</option>
+                                <option value="50">50</option>
+                                <option value="55">55</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-1 col-xs-2">
+                            <span class="gionhan"><span id="phut2">@(ViewBag.lang == "vi" ? "Phút" : "Minute")</span>  </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12  tal">
+                        <span id="spbox" style="display: inline-block;">
+                            <span id="tongthoigianthue"></span>
+                            <span id="spleft" class="spantungay"></span>
+                            <span class="sprightmd">~ </span>
+                            <span id="spright" class="spantungay"></span>
+                            <span id="sptotals"></span>
+                        </span>
+
+                        <a href="javascript:xacnhan()" class="btn_xacnhan">
+                            Ok
+                        </a>
+                        <div class="clearfix">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Thiết Lập Slide*@
+<script>
+    $('.product-main-view').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: false,
+        infinite: true,
+        speed: 300,
+        dots: false,
+        arrows: false,
+        responsive: [{
+            breakpoint: 991,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+            }
+        },
+        {
+            breakpoint: 640,
+            settings: {
+                dots: false,
+                arrows: false,
+                slidesToShow: 2,
+                slidesToScroll: 1,
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                dots: false,
+                arrows: false,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+            }
+        },
+        ]
+    });
+    $('.product-main-view-detail').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: false,
+        infinite: true,
+        speed: 300,
+        dots: false,
+        arrows: false,
+        responsive: [{
+            breakpoint: 991,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+            }
+        },
+        {
+            breakpoint: 640,
+            settings: {
+                dots: false,
+                arrows: true,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                dots: false,
+                arrows: true,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+            }
+        },
+        ]
+    });
+    function slickslide(id) {
+
+        $(".product-main-view").slickGoTo(id);
+    }
+</script>
+
+@*Thiết lập ngày*@
+<script>
+    function changeck(id) {
+
+    }
+    function xacnhan() {
+        $("#modalTimepicker").modal("toggle");
+        xacnhanngay();
+    }
+    $(document).ready(function () {
+
+        //Lấy tháng hiện tại
+        var ngayHienTai = new Date();
+         //Cho tháng, năm bên trái
+
+        var thangHienTai = ngayHienTai.getMonth() + 1; // Thêm 1 để chuyển từ 0-11 thành 1-12
+        $(".monthselect").val(thangHienTai).change();
+        var namHienTai = ngayHienTai.getFullYear();
+        $(".yearselect").val(namHienTai).change();
+
+         //Cho tháng, năm bên phải
+        //if (thangHienTai < 12) {
+        //    $(".monthselect2").val(thangHienTai + 1).change();
+        //}
+        //else {
+        //    $(".monthselect2").val(1).change();
+        //    $(".yearselect2").val(namHienTai + 1).change();
+        //}
+        disableMonth();
+        disableDate();
+        disableNgayNghi();
+
+    });
+    var arrayTime = @Html.Raw(Json.Encode(@ViewBag.ListWTime));
+    console.log(arrayTime)
+    function disableNgayNghi() {
+         var data ='@ViewBag.Fromdate';
+         var getsplit = data.split(',');
+
+        for (i = 0; i < getsplit.length; i++)
+        {
+            if (getsplit[i] != "")
+            {
+                $("#tl" + getsplit[i]).removeClass("datedisable3");
+                $("#tr" + getsplit[i]).removeClass("datedisable3");
+            }
+        }
+    }
+    function disableMonth() {
+        var ngayHienTai = new Date();
+        var namHienTai = ngayHienTai.getFullYear();
+        var thangHienTai = ngayHienTai.getMonth() + 1; // Thêm 1 để chuyển từ 0-11 thành 1-12
+        //Reset
+        for (i = 1; i < thangHienTai; i++) {
+            $(".monthselect option[value='" + i + "']").prop("disabled", false);
+        }
+        for (i = 1; i < parseInt($(".monthselect").val()) + 1; i++) {
+            $(".monthselect2 option[value='" + i + "']").prop("disabled", false);
+        }
+        //
+        if (parseInt($(".yearselect").val()) == namHienTai) {
+            for (i = 1; i < thangHienTai; i++) {
+                $(".monthselect option[value='"+i+"']").prop("disabled", true);
+            }
+        }
+        //
+        if (parseInt($(".yearselect2").val()) == namHienTai) {
+            for (i = 1; i < parseInt($(".monthselect").val()) + 1; i++) {
+                $(".monthselect2 option[value='" + i + "']").prop("disabled", true);
+            }
+        }
+    }
+    function disableDate() {
+        const today = new Date(2024,11,1);
+
+        // Lấy thứ trong tuần (0 = Chủ nhật, 1 = Thứ hai, ..., 6 = Thứ bảy)
+        let dayOfWeek = today.getDay();
+        if (dayOfWeek == 0) {
+            dayOfWeek = 7;
+        }
+        if (dayOfWeek == 7)
+            dayOfWeek = 0;
+        var ngayHienTai = new Date();
+        var namHienTai = ngayHienTai.getFullYear();
+        var thangHienTai = ngayHienTai.getMonth() + 1; // Thêm 1 để chuyển từ 0-11 thành 1-12
+        var ngay = ngayHienTai.getDate();
+        var thu = new Date(namHienTai, thangHienTai - 1, 1).getDay();
+        //Reset
+        for (i = 1; i <= 42; i++) {
+            $("#ml" + i).removeClass("disabledDate");
+        }
+        //
+        if (parseInt($(".yearselect").val()) == namHienTai && parseInt($(".monthselect").val()) == thangHienTai) {
+            for (i = thu; i < ngay + dayOfWeek+ thu - 1; i++) {
+
+                $("#ml"+i).addClass("disabledDate");
+            }
+        }
+    }
+    var firstClick = true;
+    function chontgThue() {
+        $("#modalTimepicker").modal("toggle");
+        if (firstClick == true) {
+            loadDate();
+            firstClick = false;
+        }
+
+    }
+    var isSlLeftchange = false;
+    function fn_monthselect() {
+        //Cho tháng, năm bên phải
+        var thangHienTai = parseInt($(".monthselect").val());
+        var namhientai = parseInt($(".yearselect").val());
+        if (thangHienTai < 12) {
+            $(".monthselect2").val(thangHienTai + 1).change();
+            $(".yearselect2").val(namhientai).change();
+        }
+        else {
+            $(".monthselect2").val(1).change();
+            $(".yearselect2").val(namhientai + 1).change();
+        }
+
+        isSlLeftchange = true;
+        loadDate();
+        disableMonth();
+        disableDate();
+    }
+    function fn_monthselect2() {
+        loadDate();
+    }
+    function fn_yearselect() {
+        //loadDate();
+    }
+    function loadDate() {
+        //
+
+        $(".dtLeft td").removeClass("khoanggiua");
+        $(".dtLeft td").removeClass("clickleft");
+        $(".dtLeft td").removeClass("clickright");
+        $(".dtLeft td").removeAttr("date");
+        $(".dtLeft td").removeAttr("data-date");
+        $(".dtLeft td").removeClass("blankdate");
+        //
+        var ngayHienTai = new Date();
+        var month = $(".monthselect").val();
+        var year = $(".yearselect").val();
+        var ngay = ngayHienTai.getDate();
+        //Lấy số ngày trong tháng
+        var soNgay = soNgayTrongThang(month, year);
+        //Lấy thứ ngày đầu tiên
+        var thu = new Date(year, month - 1, 1).getDay();
+        if (thu == 0) {
+            thu = 7;
+        }
+        //fil ngày cho Table Left
+
+        //Ngày về trước giá trị rỗng
+        for (var i = 1; i < thu; i++) {
+            $("#ml" + i).html('');
+            $("#ml" + i).addClass("blankdate");
+        }
+        var j = 1;
+         var data ='@ViewBag.Fromdate';
+        var getsplit = data.split(',');
+        //Ngày ở giữa
+        for (var i2 = thu; i2 < (soNgay + thu); i2++) {
+
+            var thuht = new Date(year, month - 1, j).getDay() + 1;
+            if (thuht == 1) {
+                thuht = 8;
+            }
+
+            $("#ml" + i2).html(j);
+            var specificDate = new Date(year, month-1, j); // Tháng 7 là tháng 8 trong JavaScript (đếm từ 0)
+            $("#ml" + i2).attr("data-date", specificDate)
+            $("#ml" + i2).attr("date", j + "/" + month + "/" + year)
+            j++;
+            //Disable thứ nghỉ
+            var hasngaynghi = true;
+            for (m = 0; m < getsplit.length; m++) {
+                if (getsplit[m] != "") {
+                    if (parseInt(getsplit[m]) == parseInt(thuht)) {
+                        hasngaynghi = false;
+                    }
+                }
+            }
+            if (hasngaynghi == true) {
+                $("#ml" + i2).addClass("datedisable");
+            }
+        }
+        //Ngày về sau giá trị rỗng
+        for (i = (soNgay + thu); i <= 42; i++) {
+            $("#ml" + i).html('');
+            $("#ml" + i).addClass("blankdate");
+        }
+
+          //fil ngày cho Table Right
+
+        //Ngày về trước giá trị rỗng
+
+        month = $(".monthselect2").val();
+        year = $(".yearselect2").val();
+        //Lấy số ngày trong tháng
+        soNgay = soNgayTrongThang(month, year);
+        //Lấy thứ ngày đầu tiên
+        thu = new Date(year, month - 1, 1).getDay();
+        if (thu == 0) {
+            thu = 7;
+        }
+
+        for (var i = 1; i < thu; i++) {
+            $("#mr" + i).html('');
+            $("#mr" + i).addClass("blankdate");
+        }
+        var j = 1;
+        //Ngày ở giữa
+        for (var i2 = thu; i2 < (soNgay + thu); i2++) {
+            var thuht = new Date(year, month - 1, j).getDay() + 1;
+            if (thuht == 1) {
+                thuht = 8;
+            }
+
+            $("#mr" + i2).html(j);
+            var specificDate = new Date(year, month-1, j); // Tháng 7 là tháng 8 trong JavaScript (đếm từ 0)
+            $("#mr" + i2).attr("data-date", specificDate);
+            $("#mr" + i2).attr("date", j + "/" + month + "/" + year)
+            j++;
+            //Disable thứ nghỉ
+            var hasngaynghi = true;
+            for (m = 0; m < getsplit.length; m++) {
+                if (getsplit[m] != "") {
+                    if (parseInt(getsplit[m]) == parseInt(thuht)) {
+                        hasngaynghi = false;
+                    }
+                }
+            }
+            if (hasngaynghi == true) {
+                $("#mr" + i2).addClass("datedisable");
+            }
+        }
+        //Ngày về sau giá trị rỗng
+        for (i = (soNgay + thu); i <= 42; i++) {
+            $("#mr" + i).html('');
+            $("#mr" + i).addClass("blankdate");
+        }
+    }
+    function soNgayTrongThang(thang, nam) {
+        return new Date(nam, thang, 0).getDate();
+    }
+</script>
+
+
+@*Thiết lập chọn*@
+<script>
+    var leftClick1 =null;
+    var leftClick2 = null;
+    var leftVal = 0;
+    var rightVal = 0;
+    var typeleft = "";
+    var typeright = "";
+    //
+    var fromDate = null;
+    var toDate = null;
+    var fromTime = null;
+    var toTime = null;
+    var fromMinus = null;
+    var toMinus = null;
+    var typeRent = 1;
+    var GiaThue = 0;
+    //
+    var totalGiaThue = 0;
+    var totalGiaTriSP = 0;
+    var totalSoLuong = 0;
+
+    function goToCart() {
+        if (fromDate == null || toDate == null) {
+           if ('@ViewBag.lang' === 'vi')
+{
+     showToast("Cảnh báo", "Vui lòng chọn thời gian thuê!",1);
+}
+else
+{
+     showToast("Warning", "Please select the rental period !", 1);
+}
+            return;
+        }
+
+        $.ajax({
+            url: '/Productdetail/AddToCart',
+            dataType: 'html',
+            type: "POST",
+            async: false,
+            success: function (data, status, xhr) {
+                if (data == 0) {
+                     if ('@ViewBag.lang' === 'vi')
+                     {
+                          showToast("Cảnh báo", "Vui lòng đăng nhập!",1);
+                     }
+                     else
+                     {
+                           showToast("Warning", "Please Login!",1);
+                     }
+                    $("#modalLogin").modal("toggle");
+                }
+                else {
+                    if (xacnhans == 1) {
+                        location.href = "/Order/YourCart?productID=" + '@ViewBag.productID' + "&pOrderId=" + data;
+                    }
+                    else {
+                          if ('@ViewBag.lang' === 'vi')
+                          {
+                               showToast("Cảnh báo", "Vui lòng chọn thời gian thuê!",1);
+                          }
+                          else
+                          {
+                               showToast("Warning", "Please select the rental period !", 1);
+                          }
+                        chontgThue();
+                    }
+                }
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+
+    function lkchange(id) {
+        if ($("#access_qty_" + id).val() == 0) {
+            $("#access_qty_" + id).val(1).change();
+        }
+
+        if ($("#accessoriesCheckbox_" + id).prop("checked") == false) {
+            $("#access_qty_" + id).val(0).change();
+            $("#tongcon_" + id).val(0);
+            $("#access_tempDisplay_" + id).html(0);
+            $("#access_valueDisplay_" + id).html(parseFloat(($("#access_value_" + id).val())).toLocaleString());
+        }
+        xacnhanngay();
+    }
+    var xacnhans = 0;
+    function xacnhanngay() {
+
+        if (fromDate == null) {
+           if ('@ViewBag.lang' === 'vi')
+            {
+                 showToast("Cảnh báo", "Vui lòng chọn thời gian thuê!",1);
+            }
+            else
+            {
+                 showToast("Warning", "Please select the rental period !", 1);
+                        }
+            return true;
+        }
+        if (toDate == null) {
+                       if ('@ViewBag.lang' === 'vi')
+            {
+                 showToast("Cảnh báo", "Vui lòng chọn thời gian thuê!",1);
+            }
+            else
+            {
+                 showToast("Warning", "Please select the rental period !", 1);
+                        }
+            return true;
+        }
+
+        xacnhans = 1;
+        //Tính giá trị cho sản phẩm chính
+        if ($("#product_qty").val() == 0) {
+            $("#product_qty").val(1).change();
+        }
+        var param = {
+            "FromDate": fromDate + "," + fromTime + "," + fromMinus,
+            "ToDate": toDate + "," + toTime + "," + toMinus,
+            "productId": $("#txtProductID").val(),
+            "chkChon": typeRent,
+            "type": 1,
+            "Qty": $("#product_qty").val()
+        }
+        $.ajax({
+            url: '/Productdetail/Capnhatxuly',
+            dataType: 'html',
+            data: param,
+            async:false,
+            success: function (data, status, xhr) {
+                var getSplitData = data.split(',');
+                $("#sogio").html(getSplitData[1]);
+                totalGiaThue = 0;
+                totalGiaTriSP = 0;
+                totalSoLuong = 0;
+
+                GiaThue = parseFloat(getSplitData[0]) * parseFloat($("#product_qty").val());
+                totalGiaThue += GiaThue;
+                $("#product_temp_p1").html(GiaThue.toLocaleString());
+                //Giá trị sản phẩm
+                var Giatrisp = parseFloat($("#giatrisanpham").val());
+                $("#product_value_p1").html((Giatrisp * $("#product_qty").val()).toLocaleString());
+                $("#selectedAccessories1").prop("checked", true);
+                totalSoLuong += parseFloat($("#product_qty").val());
+                totalGiaTriSP += Giatrisp * totalSoLuong;
+                //Tính giá trị cho sản phẩm phụ
+                $(".selectedAccessories").each(function () {
+                   // totalSoLuong = 0;
+                    var checked = $(this).prop("checked");
+                    var prodid = $(this).val();
+                    if (checked == true) {
+                        var param2 = {
+                            "FromDate": fromDate + "," + fromTime + "," + fromMinus,
+                            "ToDate": toDate + "," + toTime + "," + toMinus,
+                            "productId": prodid,
+                            "chkChon": typeRent,
+                            "type": 2,
+                            "Qty": $("#access_qty_" + prodid).val()
+                        }
+                        $.ajax({
+                            url: '/Productdetail/Capnhatxuly',
+                            dataType: 'html',
+                            data: param2,
+                            async: false,
+                            success: function (data, status, xhr) {
+
+                                GiaThue = parseFloat(data) * parseFloat($("#access_qty_" + prodid).val());
+                                totalGiaThue += GiaThue;
+                                $("#tongcon_" + prodid).val(data)
+                                $("#access_tempDisplay_" + prodid).html(GiaThue.toLocaleString());
+                               var totalSL = parseFloat($("#access_qty_" + prodid).val());
+                                //
+                                var Giatrisp = parseFloat($("#access_value_" + prodid).val());
+                                totalGiaTriSP += Giatrisp * totalSL;
+                                totalSoLuong += totalSL;
+                                if ($("#access_qty_" + prodid).val() > 0) {
+                                    $("#access_valueDisplay_" + prodid).html((Giatrisp * $("#access_qty_" + prodid).val()).toLocaleString());
+                                }
+                                if ($("#access_qty_" + prodid).val() == 0) {
+                                    $("#access_valueDisplay_" + prodid).html((Giatrisp).toLocaleString());
+                                }
+
+                            },
+                            error: function (xhr, status, error) {
+                                console.log(xhr);
+                            }
+                        });
+                    }
+                });
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+        $("#total_product_deposit_p").html(totalGiaThue.toLocaleString() + " <span>đ</span>");
+        $("#total_product_value_p").html(totalGiaTriSP.toLocaleString() + " <span>đ</span>");
+
+        $("#ctl00_MainContent_totalplus").html(totalSoLuong);
+
+    }
+    function callMeOnChangeProductQty() {
+      // xacnhanngay();
+    }
+    function doPlus(id) {
+        var currentValue = parseInt($("#" + id).val());
+        currentValue += 1;
+        $("#" + id).val(currentValue).change();
+        xacnhanngay();
+    }
+
+    function doSubtract(id) {
+        var currentValue = parseInt($("#" + id).val());
+        currentValue -= 1;
+        if (currentValue <= 0)
+            currentValue = 1;
+        $("#" + id).val(currentValue).change();
+        xacnhanngay();
+    }
+    function callMeOnChangeSelectRental(tp) {
+        typeRent = tp;
+        xacnhanngay();
+    }
+    function fn_hourselectleft() {
+        ChonThoiGian();
+    }
+    function fn_hourselecright() {
+        ChonThoiGian();
+    }
+    function fn_minuteselectleft() {
+        ChonThoiGian();
+    }
+    function fn_minuteselectright() {
+        ChonThoiGian();
+    }
+    function ChonThoiGian() {
+        fromTime = $(".hourselectleft").val();
+        toTime = $(".hourselecright").val();
+        fromMinus = $(".minuteselectleft").val();
+        toMinus = $(".minuteselectright").val();
+        $("#spleft").html(fromDate + " " + fromTime + ":" + fromMinus);
+        $("#spright").html(toDate + " " + toTime + ":" + toMinus);
+    }
+    $(".dtLeft td").click(function () {
+        //
+        $(".dtLeft td").removeClass("khoanggiua");
+        //
+        var getid = $(this).attr("id");
+        var dataval = $(this).attr("id").replace("ml", "").replace("mr","");
+
+        // This function will be executed when a "clickable" td is clicked
+        var getDataDate = $(this).attr("data-date");
+        var getdate = $(this).attr("date");
+        var timestamp = Date.parse(getDataDate);
+        var dateObject = new Date(timestamp);
+        //
+        if (leftClick1 == null)
+        {
+            leftClick1 = dateObject;
+            leftVal = dataval;
+            fromDate = getdate;
+            toDate = getdate;
+            $(this).addClass("clickleft");
+            if (getid.includes("ml")) {
+                typeleft = "l";
+            }
+            else {
+                typeleft = "r";
+            }
+
+        }
+        else {
+            if (leftClick2 == null) {
+
+                leftClick2 = dateObject;
+                rightVal = dataval;
+                if (getid.includes("ml")) {
+                    typeright = "l";
+                }
+                else {
+                    typeright = "r";
+                }
+                //Trường hợp 2 click
+                if (leftClick1 != leftClick2) {
+                    //Trường hợp ngày bắt đầu nhỏ hơn ngày kết thúc
+                    /*kiem tra xem ben phai hay trái*/
+
+                    //Lấy data-date
+                    if (leftClick1 < leftClick2) {
+                        toDate = getdate;
+                        $(this).addClass("clickright");
+                        //fill khoảng giữa
+                        //Nếu fill trong tháng trái
+
+                        if (typeleft == "l" && typeright=="l") {
+                            for (i = parseInt(leftVal)+1; i < parseInt(rightVal); i++) {
+                                $("#ml" + i).addClass("khoanggiua");
+                            }
+                        }
+                         //Nếu fill trong tháng phải
+                        if (typeleft == "r" && typeright == "r") {
+                            for (i = parseInt(leftVal) + 1; i < parseInt(rightVal); i++) {
+                                $("#mr" + i).addClass("khoanggiua");
+                            }
+                        }
+                        //Nếu fill giữa 2 khoảng
+
+                        if (typeleft == "l" && typeright == "r") {
+
+                             //Khoảng trái
+                            for (i = parseInt(leftVal) + 1; i < 42; i++) {
+                                if ($("#ml" + i).attr("data-date") !== undefined) {
+                                    $("#ml" + i).addClass("khoanggiua");
+                                }
+                            }
+                            //Khoảng phải
+                            for (i =1 ; i < parseInt(rightVal) ; i++) {
+                                if ($("#mr" + i).attr("data-date") !== undefined) {
+                                    $("#mr" + i).addClass("khoanggiua");
+                                }
+                            }
+                        }
+
+
+                    }
+                    else {
+                        //Trường hợp chọn trong tháng nhỏ hơn
+
+                        $(".clickleft").removeClass("clickleft");
+                        leftClick1 = dateObject;
+                        leftVal = dataval;
+                        fromDate = getdate;
+                        toDate = getdate;
+                        rightVal = 0;
+                        leftClick2 = null;
+                        $(this).addClass("clickleft");
+                        if (getid.includes("ml")) {
+                            typeleft = "l";
+                        }
+                        else {
+                            typeleft = "r";
+                        }
+                        typeright = "";
+                    }
+                }
+                //Trường hợp trùng click
+                if (leftClick1 == leftClick2) {
+                    leftClick1 = dateObject;
+                    leftVal = dataval;
+                    fromDate = getdate;
+                    toDate = null;
+                    rightVal = 0;
+                    leftClick2 = null;
+                    if (getid.includes("ml")) {
+                        typeleft = "l";
+                    }
+                    else {
+                        typeleft = "r";
+                    }
+                    typeright = "";
+                }
+            }
+            else {
+                //Trường hợp reset lại khi đã có 2 click
+                $(".clickleft").removeClass("clickleft");
+                $(".clickright").removeClass("clickright");
+                leftClick1 = dateObject;
+                $(this).addClass("clickleft");
+                leftClick2 = null;
+                leftVal = dataval;
+                fromDate = getdate;
+                toDate = getdate;
+                rightVal = 0;
+                if (getid.includes("ml")) {
+                    typeleft = "l";
+                }
+                else {
+                    typeleft = "r";
+                }
+                typeright = "";
+            }
+        }
+
+
+        //disable Time
+        //Lấy thứ
+
+        var ngayHienTai = new Date();
+        if (getid.includes("ml")) {
+            var month = $(".monthselect").val();
+            var year = $(".yearselect").val();
+        }
+        else {
+            var month = $(".monthselect2").val();
+            var year = $(".yearselect2").val();
+        }
+        var thuht = new Date(year, month - 1, parseInt($(this).html())).getDay() + 1;
+        if (thuht == 1) {
+            thuht = 8;
+        }
+        //MẶc định disable Hour
+        if (leftClick2 == null) {
+            $(".hourselectleft option").attr("disabled", true).addClass("optiondisable");
+            $(".hourselecright option").attr("disabled", true).addClass("optiondisable");
+            for (i = 0; i < arrayTime.length; i++) {
+                var hasDate = false;
+                var fromdate = arrayTime[i].FromDayOfWeek;
+                var getsplit = fromdate.split(",");
+                for (j = 0; j < getsplit.length; j++) {
+                    if (parseInt(getsplit[j]) == parseInt(thuht)) {
+
+                        var opentime = arrayTime[i].whOpenTime;
+                        var getOpenTime = parseInt(opentime.split(':')[0].replace("0", ""));
+                        var closetime = arrayTime[i].whCloseTime;
+                        var getcloseTime = parseInt(closetime.split(':')[0].replace("0", ""));
+                        for (o = getOpenTime; o < getcloseTime; o++) {
+
+                            $(".hourselectleft option[value='" + o + "']").attr("disabled", false);
+                            $(".hourselectleft option[value='" + o + "']").removeClass("optiondisable");
+                            //
+                            $(".hourselecright option[value='" + o + "']").attr("disabled", false);
+                            $(".hourselecright option[value='" + o + "']").removeClass("optiondisable");
+                        }
+                        //Phải clear hết
+                        $('.hourselectleft option').each(function (index) {
+                            $(this).removeAttr("selected");
+                        });
+                        $('.hourselecright option').each(function (index) {
+                            $(this).removeAttr("selected");
+                        });
+                        $(".hourselectleft option[value='" + getOpenTime + "']").attr('selected', 'selected').change();
+                        $(".hourselecright option[value='" + getOpenTime + "']").attr('selected', 'selected').change();
+                        //
+                        var opentime2 = arrayTime[i].whOpenTime2;
+                        var getOpenTime2 = parseInt(opentime2.split(':')[0].replace("0", ""));
+                        var closetime2 = arrayTime[i].whCloseTime2;
+                        var getcloseTime2 = parseInt(closetime2.split(':')[0].replace("0", ""));
+                        for (o = getOpenTime2; o <getcloseTime2; o++) {
+                            $(".hourselectleft option[value='" + o + "']").attr("disabled", false);
+                            $(".hourselectleft option[value='" + o + "']").removeClass("optiondisable");
+                            $(".hourselecright option[value='" + o + "']").attr("disabled", false);
+                            $(".hourselecright option[value='" + o + "']").removeClass("optiondisable");
+                        }
+                        //
+
+                    }
+                }
+            }
+        }
+        else {
+            $(".hourselecright option").attr("disabled", true).addClass("optiondisable");
+            for (i = 0; i < arrayTime.length; i++) {
+                var hasDate = false;
+                var fromdate = arrayTime[i].FromDayOfWeek;
+                var getsplit = fromdate.split(",");
+                for (j = 0; j < getsplit.length; j++) {
+                    if (parseInt(getsplit[j]) == parseInt(thuht)) {
+                        var opentime = arrayTime[i].whOpenTime;
+                        var getOpenTime = parseInt(opentime.split(':')[0].replace("0", ""));
+                        var closetime = arrayTime[i].whCloseTime;
+                        var getcloseTime = parseInt(closetime.split(':')[0].replace("0", ""));
+                        for (o = getOpenTime; o < getcloseTime; o++) {
+
+                            $(".hourselecright option[value='" + o + "']").attr("disabled", false);
+                            $(".hourselecright option[value='" + o + "']").removeClass("optiondisable");
+                        }
+                        //
+                        $(".hourselecright option[value='" + getOpenTime + "']").attr('selected', 'selected').change();
+                        var opentime2 = arrayTime[i].whOpenTime2;
+                        var getOpenTime2 = parseInt(opentime2.split(':')[0].replace("0", ""));
+                        var closetime2 = arrayTime[i].whCloseTime2;
+                        var getcloseTime2 = parseInt(closetime2.split(':')[0].replace("0", ""));
+                        for (o = getOpenTime2; o < getcloseTime2; o++) {
+                            $(".hourselecright option[value='" + o + "']").attr("disabled", false);
+                            $(".hourselecright option[value='" + o + "']").removeClass("optiondisable");
+                        }
+                        //
+
+                    }
+                }
+            }
+        }
+    });
+
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenStreetMap with Route</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map2">
+        @Html.Raw(ViewBag.tb_WareHouse.LocationMap)
+    </div>
+    <div id="maps">
+
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <script src="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js"></script>
+    <script src="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+<script>
+
+
+    // Kiểm tra xem trình duyệt có hỗ trợ Geolocation không
+    if ("geolocation" in navigator) {
+        // Lấy vị trí hiện tại của người dùng
+        navigator.geolocation.getCurrentPosition(function (position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            // Vị trí hiện tại đã được lấy, bạn có thể sử dụng nó để vẽ bản đồ hoặc thực hiện các tác vụ khác
+            console.log("Latitude:", latitude);
+            console.log("Longitude:", longitude);
+
+            const map = L.map('map').setView([latitude, longitude], 13); // Set vị trí bắt đầu
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+            }).addTo(map);
+
+            L.Routing.control({
+                waypoints: [
+                    L.latLng(latitude, longitude),
+                    /*  L.latLng(10.795343429364053, 106.70231708093797), // Vị trí hiện tại*/
+                    L.latLng(10.782546897412685, 106.70095497670803)
+                    /*L.latLng(11.60980219332944, 108.94720453663325) */
+                ],
+                routeWhileDragging: true
+            }).addTo(map);
+        });
+    } else {
+        console.log("Trình duyệt không hỗ trợ Geolocation.");
+    }
+
+
+
+
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.2.0/magnific-popup.min.css" integrity="sha512-lvaVbvmbHhG8cmfivxLRhemYlTT60Ly9Cc35USrpi8/m+Lf/f/T8x9kEIQq47cRj1VQIFuxTxxCcvqiQeQSHjQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.2.0/jquery.magnific-popup.min.js" integrity="sha512-fCRpXk4VumjVNtE0j+OyOqzPxF1eZwacU3kN3SsznRPWHgMTSSo7INc8aY03KQDBWztuMo5KjKzCFXI/a5rVYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $('.popup-gallery').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+            tLoading: 'Loading image #%curr%...',
+            mainClass: 'mfp-img-mobile',
+            gallery: {
+                enabled: true,
+                navigateByImgClick: true,
+                preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+            },
+            image: {
+                tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+                titleSrc: function (item) {
+                    return item.el.attr('title') + ' Hirent';
+                }
+            }
+        });
+
+
+    });
+    function togleMap() {
+        $('html, body').animate({
+            scrollTop: $("#map2").offset().top
+        }, 1000); // Thời gian cuộn (1000 ms = 1 giây)
+    }
+
+    function tgTGLV() {
+        $("#mdTGLV").modal("toggle");
+    }
+</script>
+
+
+<!-- Modal -->
+@Html.Action("WasehouseTime", "Productdetail",new { whId = ViewBag.tb_WareHouse.whId })
+<!-- Modal -->
+<div class="modal fade" id="mdStore" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="storemodal_box">
+              <div class="stormodal_left">
+                  <div class="stormodal_left_cate">
+                      @(ViewBag.lang == "vi"? "Danh mục" : "Category")
+                  </div>
+                  @if (ViewBag.Listmaincate != null)
+                  {
+                      <ul>
+                          <li>
+                              <a onclick="loadStoreProducts(0)">
+                                  @(ViewBag.lang == "vi"? "Tất cả" : "All")
+                              </a>
+                          </li>
+                          @foreach (HirentWeb2022.Models.tb_CategoryMain it in ViewBag.Listmaincate)
+                          {
+                              <li>
+                                  <a onclick="loadStoreProducts('@it.MainCateID')">
+                                      @it.MainCateName
+                                  </a>
+                              </li>
+                          }
+                      </ul>
+                  }
+              </div>
+              <div class="storemodal_right">
+                  <div class="modal-body">
+                      <div class="storemodal_right_left">
+                          @if (ViewBag.tb_WareHouse != null)
+                          {
+                              HirentWeb2022.Models.tb_WareHouse tb_WareHouse = (HirentWeb2022.Models.tb_WareHouse)ViewBag.tb_WareHouse;
+                              <img src="@tb_WareHouse.BannerImage" class="img-responsive" />
+                          }
+                      </div>
+                     <div class="storemodal_right_right">
+                         <ul>
+                             <li>
+                                 <a class="btn_cuahang" href="/image_Waswhouse/1. Chinh sach chung cua PACISOFT.pdf" target="_blank">
+                                     <strong>
+                                         <span class="tencuahang"><i style="margin-right:4px" class="fa fa-book"></i>  Chính sách cửa hàng</span>
+                                     </strong>
+                                 </a>
+                             </li>
+                             <li>
+                                 <a class="btn_cuahang" onclick="togleMap()">
+                                     <strong>
+                                         <span class="tencuahang "><i style="margin-right:4px" class="fa fa-map-marker"></i>  Bản đồ vị trí</span>
+                                     </strong>
+                                 </a>
+                             </li>
+                             <li>
+                                 <a class="btn_cuahang" onclick="tgTGLV()">
+                                     <strong>
+                                         <span class="tencuahang"><i style="margin-right:4px" class="fa fa-calendar"></i>  @(ViewBag.lang == "vi"? "Thời gian làm việc" : "Store time")</span>
+                                     </strong>
+                                 </a>
+                             </li>
+                         </ul>
+                     </div>
+                      <div class="clearfix">
+
+                      </div>
+                      <div id="storelistproduct">
+
+                      </div>
+                  </div>
+              </div>
+              <div class="clearfix" >
+
+              </div>
+          </div>
+           
+           
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        loadStoreProducts(0)
+    });
+    function mdMoreStore() {
+        $("#mdStore").modal("toggle");
+    }
+    function loadStoreProducts(id) {
+        var param = {
+            MainCateID:id
+        }
+        $.ajax({
+            url: '/Productdetail/ProductShopList',
+            dataType: 'html',
+            data: param,
+            type: "GET",
+            async: false,
+            success: function (data, status, xhr) {
+                $("#storelistproduct").html(data);
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+    var arrayListsl = [];
+    function slmore(dis) {
+        $(dis).toggleClass('md_productshop_title3');
+        //Update lại array
+        arrayListsl = [];
+        $('.md_productshop_title3').each(function () {
+            arrayListsl.push($(this).attr("data-id"));
+        });
+        var getsplit = "";
+        for (i = 0; i < arrayListsl.length; i++) {
+            getsplit += arrayListsl[i] + ',';
+        }
+
+        var param = {
+            id: getsplit
+        }
+        $.ajax({
+            url: '/Productdetail/ProductAddmore',
+            dataType: 'html',
+            data: param,
+            type: "GET",
+            async: false,
+            success: function (data, status, xhr) {
+                $("#addmorepd").html(data);
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+</script>

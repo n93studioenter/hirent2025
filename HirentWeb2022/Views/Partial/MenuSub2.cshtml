@@ -1,0 +1,22 @@
+﻿<ul class="list-links">
+    @if (ViewBag.tb_CategorySub2 != null)
+    {
+        foreach (HirentWeb2022.Models.tb_CategorySub2 item in ViewBag.tb_CategorySub2)
+        {
+
+            <li>
+                <a href="productcate?ProductSubCate2=@item.SubCate2ID">
+                    @if (ViewBag.lang == "vi")
+                    {
+                        @item.SubCate2Name
+                    }
+                    else
+                    {
+                        @item.Language
+                    }
+                </a>
+            </li>
+        }
+    }
+</ul>
+<hr class="hidden-md hidden-lg">

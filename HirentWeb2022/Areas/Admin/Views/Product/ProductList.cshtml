@@ -1,0 +1,184 @@
+﻿
+@{
+    ViewBag.Title = "Category_main";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="right_col" role="main" style="min-height: 700px;">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>DANH SÁCH SẢN PHẨM ĐANG CÓ</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Search!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <!-- Table  -->
+            <div class="x_panel">
+                <div class="x_title">
+                    <div class="col-md-6 col-sm-6 sol-xs-12">
+                        <p style="margin-bottom: 2px;">
+                            Số 1: SẢN PHẨM MỚI NHẤT
+                        </p>
+                        <p style="margin-bottom: 2px;">
+                            Số 2: NHIỀU NGƯỜI TÌM NHẤT
+                        </p>
+                        <p style="margin-bottom: 2px;">
+                            Số 3: SẢN PHẨM CHẤT LƯỢNG
+                        </p>
+                        <p style="margin-bottom: 2px;">
+                            Số 4: CÓ GIÁ THUÊ RẺ NHẤT
+                        </p>
+                    </div>
+                    <div class="col-md-6 col-sm-6 sol-xs-12">
+                        <p style="margin-bottom: 2px;">
+                            Số 5: SẢN PHẨM GẦN BẠN
+
+                        </p>
+                        <p style="margin-bottom: 2px;">
+                            Số 6: RAO VẶT MIỄN PHÍ
+
+                        </p>
+                        <p style="margin-bottom: 2px;">
+                            Số 7: SẢN PHẨM CHO TẶNG
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+
+                    <form method="post" action="./product_list" id="id4">
+
+                        <div class="container">
+                            <div class="row" style="margin-bottom: 20px;margin-top:25px;">
+
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <!-- 3 dropdownlist to select CATEGORY -->
+                                    <div class="form-group col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-12 col-sm-12 col-xs-12">Chọn Main Category</label>
+                                        <div class="col-md-12 col-sm-12 col-xs-12" id="dvMainCate">
+                                            <select id="sltMainCate" onchange="mainCateOnChange(this)" class="form-control"><option value="-1">Lựa chọn Main Category<!-- option --></option><option value="4">Dụng cụ, thiết bị<!-- option --></option><option value="5">Xe - vận chuyển<!-- option --></option><option value="6">Bất động sản<!-- option --></option><option value="8">Sách, tranh, hoa<!-- option --></option><option value="9">Thời trang - Phụ kiện<!-- option --></option><option value="11">Sự kiện, lễ hội<!-- option --></option><option value="14">Test<!-- option --></option></select>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-12 col-sm-12 col-xs-12">Chọn Sub Category 1</label>
+                                        <div class="col-md-12 col-sm-12 col-xs-12" id="dvSubCate1">
+                                            <select id="sltSubCate1" onchange="subCate1OnChange(this)" class="form-control"><option value="-1">Lựa chọn Sub Category 1<!-- option --></option></select>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-12 col-sm-12 col-xs-12">Chọn Sub Category 2</label>
+                                        <div class="col-md-12 col-sm-12 col-xs-12" id="dvSubCate2">
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- // 3 dropdownlist to select CATEGORY -->
+                            </div>
+                        </div>
+                    </form>
+                    <div>
+                        <input type="file" class="btn-group btn btn-info btn-xs upload" id="myUploadedFileExcel" accept="xls" style="display: inline-block">
+                        <span style="color: #999; font-style: italic;">Vui lòng đóng file trước khi import </span>
+                        <input id="pathexcel" type="hidden">
+                    </div>
+
+                    <div id="tblProductList" class="dvTblProductList">
+                        <div id="ContentPlaceHolder1_dvMainCateList" class="table-responsive">
+                            <div class="col-sm-12">
+                                <table id="datatable" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="STT: activate to sort column descending" style="width: 24px;">STT</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Bảng giá: activate to sort column ascending" style="width: 84px;">Bảng giá</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Mã sản phẩm: activate to sort column ascending" style="width: 51px;">Mã sản phẩm</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Tên sản phẩm : activate to sort column ascending" style="width: 168px;">Tên sản phẩm </th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Product name : activate to sort column ascending" style="width: 57px;">Product name </th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Số lượng tồn : activate to sort column ascending" style="width: 48px;">Số lượng tồn </th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Thuê theo giờ: activate to sort column ascending" style="width: 93px;">Thuê theo giờ</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Thuê theo ngày : activate to sort column ascending" style="width: 54px;">Thuê theo ngày </th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Hiển thị ở : activate to sort column ascending" style="width: 70px;">Hiển thị ở </th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Avatar : activate to sort column ascending" style="width: 78px;">Avatar </th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Thao tác : activate to sort column ascending" style="width: 201px;">Thao tác </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="number" id="slNK" placeholder="Nhập số lượng...">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" onclick="LuuNhapKho()">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Table -->
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        loaddata();
+
+    });
+    function loaddata() {
+
+        $(".loadding").show();
+        $.ajax({
+            url: '/Admin/Product/loadProduct',
+            data: null,
+            dataType: 'html',
+            type: 'GET',
+            cache: false,
+            success: function (result) {
+
+                //$('#datatable').DataTable();
+                $('#datatable').DataTable().destroy();
+                $("#tbody").html(result);
+                $('#datatable').DataTable({
+                    ordering: false  // Hủy chức năng sắp xếp
+                }).draw();
+
+                $(".loadding").hide();
+
+            }
+        });
+    }
+</script>

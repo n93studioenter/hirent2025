@@ -1,0 +1,70 @@
+﻿
+@{
+    Layout = null;
+}
+@if (Model != null)
+{
+    <ul id="ipProductAccessorySelection" style="display:none">
+        @foreach (var item in Model)
+        {
+            <li>
+
+                <a onclick="clicchk(@item.ProductID)" style="cursor:pointer">
+                    <div id="span_@item.ProductID" class="mycheckedspan">
+                        <div id="spanchild_@item.ProductID" class="">
+
+                        </div>
+                    </div>   <input class="mychecked" onclick="addlist(this)" data-id="@item.ProductID" data-name="@item.ProductName" type="checkbox" id="ip_@item.ProductID" /> <img style="width:40px;height:40px;object-fit:contain" src="@item.ProductAvatar" class="img-responsive" />   @item.ProductName
+                </a>
+            </li>
+        }
+    </ul>
+
+}
+<style>
+    #ipProductAccessorySelection {
+        margin: 0px;
+        padding: 0px;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 20%);
+        width: auto;
+        overflow-y: scroll;
+        max-height: 400px;
+        position: absolute;
+        left: 0px;
+        top: 100%;
+        z-index: 999999999;
+        background-color: white;
+    }
+
+        #ipProductAccessorySelection img {
+            display: inline-block !important;
+            margin: 0px 5px;
+        }
+
+        #ipProductAccessorySelection li {
+            display: block;
+            padding: 10px 10px;
+        }
+
+        #ipProductAccessorySelection a {
+            display: block;
+        }
+
+        #ipProductAccessorySelection input {
+            display: inline-block;
+        }
+</style>
+<script>
+    function clicchk(id) {
+        $("#ip_" + id).trigger("click");
+
+        if ($("#ip_" + id).prop("checked") == true) {
+            $("#spanchild_" + id).addClass("mycheckedspanafter");
+
+        }
+        else {
+            $("#spanchild_" + id).removeClass("mycheckedspanafter");
+
+        }
+    }
+</script>

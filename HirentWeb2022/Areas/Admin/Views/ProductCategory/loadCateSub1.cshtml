@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <tr>
+            <td class=" ">
+                <a href="#" class="btn btn-info btn-xs fontCatNumber" style="background-color:darkred;" onclick="btnChangeSort(this,'20')">@item.Sort</a>
+            </td>
+            <td>@item.SubCate1Name</td>
+            <td>@item.Language </td>
+            <td>@item.SubCate1Desc</td>
+        
+            <td>@item.MainCateName</td>
+            <td>
+                <a href="#" class="btn btn-info btn-xs" style="background-color: teal;" onclick="btnChangeDisable(this,'20','Dụng cụ sửa chữa')">Enable</a>
+            </td>
+            <td>7/16/2018 11:48:09 AM</td>
+            <td><a class="btn btn-info btn-xs purple" onclick="Edit(@item.SubCate1ID)"><i class="fa fa-edit"></i>&nbsp;Edit</a><span><a class="btn btn-danger btn-xs black" onclick="Delete(this,'20','Dụng cụ sửa chữa')"><i class="fa fa-edit"></i>&nbsp;Delete</a></span></td>
+           
+        </tr>
+    }
+}

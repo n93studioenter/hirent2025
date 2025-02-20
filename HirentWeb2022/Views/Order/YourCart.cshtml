@@ -1,0 +1,936 @@
+﻿@using HirentWeb2022.Models;
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="stepbox">
+                <ul>
+                    <li>
+                        <a class="adisable a1">1</a>
+                        <div><span id="ctl00_MainContent_chonsanpham">@(ViewBag.lang == "vi"? "Chọn sản phẩm" : "Select a product")</span></div>
+                    </li>
+                    <li>
+                        <a class="aactive a1">2</a>
+                        <div id="ctl00_MainContent_chondichvu">@(ViewBag.lang == "vi"? "Chọn dịch vụ" : "Choose a service")</div>
+                    </li>
+                    <li>
+                        <a class="adisable">3</a>
+                        <div id="ctl00_MainContent_xacnhandonhang">@(ViewBag.lang == "vi"? "Xác nhận đơn hàng" : "Confirm the order")</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model != null)
+{
+    foreach (var item in (IEnumerable<tb_ProductTermConditionDetails>)Model)
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- row -->
+                    <div class="chonhinhthucvc">
+                        <span id="ctl00_MainContent_chtvanchuyen">@(ViewBag.lang == "vi"? "Chọn hình thức vận chuyển, dịch vụ kèm theo" : "Select the shipping method, along with any additional services")</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-4 text-left">
+                            <div class="tendv">
+                                <span id="ctl00_MainContent_tendv">@(ViewBag.lang == "vi"? "Tên dịch vụ" : "Service name")</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-4 text-left">
+                            <div class="tendv">
+                                <span id="ctl00_MainContent_diengiai">@(ViewBag.lang == "vi"? "Diễn giải" : "Explanation")</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-4 text-left">
+                            <div class="tendv" style="text-align: right!important">
+                                <span id="ctl00_MainContent_giadichvutamtinh">@(ViewBag.lang == "vi"? "Giá dịch vụ tạm tính" : "Temporary service price")</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="steptitle">
+                        <span id="ctl00_MainContent_chondichvuvanchuyen">1.@(ViewBag.lang == "vi"? "chọn dịch vụ vận chuyển" : "Select a shipping service")</span>
+
+                    </div>
+                    <div class="steptitle_right">
+                        <span id="cpDelivery" data-value="0">0</span> <span>đ</span>
+                    </div>
+                    <div class="clearfix">
+
+                    </div>
+                    <div class="row myrow">
+                        <div class="col-sm-3 col-xs-12">
+                            <div class="radVanchuyen">
+                                <input data-text="tuvanchuyen" id="tuvanchuyen" type="radio" name="tvc" checked="checked" onclick="closeradcha()">
+                                <span onclick="closeradcha2()"><span id="ctl00_MainContent_sptuvanchuyen">@(ViewBag.lang == "vi"? "Tự vận chuyển" : "Self-delivery")</span></span>
+                            </div>
+                            <div class="radcha radVanchuyen">
+                                <input data-text="dichvuvanchuyen" id="dvvanchuyen" type="radio" name="tvc" onclick="clickradcha()"><span onclick="autoclickRad()"><span id="ctl00_MainContent_spdichvuvanchuyen">@(ViewBag.lang == "vi"? "Dịch vụ vận chuyển" : "Shipping service.")</span></span>
+                            </div>
+
+                            <div class="radcon " id="radDichVuVanChuyen">
+                                <div class="radVanchuyen">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <img src="~/Assets/Images/yourcart/giao hang.png" style="width: 45px;">
+                                        </div>
+                                        <div class="col-xs-9 myselect">
+                                            <input id="gtn" data-text="giaotannha" type="radio" name="tvch" onclick="Giaotannha()">
+
+                                            <span onclick="spGiaotannha()"><span>@(ViewBag.lang == "vi"? "Giao tận nhà" : "Home delivery")</span></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="radVanchuyen">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <img src="~/Assets/Images/yourcart/nhan hang.png" style="width: 45px;">
+                                        </div>
+                                        <div class="col-xs-9 myselect">
+                                            <input id="nttn" data-text="nhantratannha" type="radio" name="tvch" onclick="NhanTraTanNha()">
+
+                                            <span onclick="spNhanTraTanNha()"><span>@(ViewBag.lang == "vi"? "Nhận trả tận nhà" : "Pick up and drop off at home")</span></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="radVanchuyen">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <img src="~/Assets/Images/yourcart/giao va nhan tra.png" style="width: 45px;">
+                                        </div>
+                                        <div class="col-xs-9 myselect">
+                                            <input data-text="giaovanhantratannha" type="radio" name="tvch" onclick="GiaoVaNhanTraTanNha()" id="radchild">
+                                            <span class="gnttnmb" onclick="spGiaoVaNhanTraTanNha()"><span>@(ViewBag.lang == "vi"? "Giao và nhận trả tận nhà\r\n\r\n" : "Delivery and pick up at home")</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-1 col-xs-3" id="giavanchuyen"></div>
+                        <div class="col-sm-8 col-xs-12">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <div id="txtTuvanchuyen" class="boxvc">@item.Tuvanchuyen</div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div id="glv1">
+                                        <div class="glamviec">
+                                            <a onclick="tgTGLV()" style="display:block;">
+                                                <i class="fa fa-clock-o"></i><span>
+                                                    <span id="ctl00_MainContent_giolamviec">@(ViewBag.lang == "vi"? "Giờ làm việc" : "Working hours")</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="glamviec">
+                                            <a href="https://goo.gl/maps/2jzSGg1THTmEgNMP6" id="ctl00_MainContent_csch" target="_blank">
+                                                <i class="fa fa-map-marker"></i><span>
+                                                    <span id="ctl00_MainContent_bandovitri">@(ViewBag.lang == "vi"? "Bản đồ vị trí" : "Location map")</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contcon1">
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div id="txtCustommerAddress" class="boxvc boxdc">146m Nguyen Van Thu, P.Dakao, Q.1</div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div id="xndd">
+                                            <div>
+                                                <div class="glamviec">
+
+                                                    <button type="button" class="doidiadiem" data-toggle="modal" data-target="#modalAddress">
+                                                        <i class="fa fa-map-marker"></i><span id="ctl00_MainContent_doidiadiem">@(ViewBag.lang == "vi"? "Đổi địa điểm" : "Location map")</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row ">
+                                    <div class="col-sm-12">
+                                        <div id="txtGiaohangtannha" class="boxvc vcchung" style="">Thời gian giao hàng khoảng 15 phút. Giao hàng trong bán kính 3 km, nếu xa hơn sẽ tính thêm phụ thu 5.000 / km|6868</div>
+                                        <div id="txtNhantrtannha" class="boxvc vcchung" style="">Vui lòng trả hàng sớm trước 15 phút giờ shop đóng cửa. Nhận hàng trong bán kính 3 km, nếu xa hơn sẽ tính thêm phụ thu 5.000 / km|6868</div>
+                                        <div id="txtGiaovanhantrantannha" class="boxvc vcchung" style="">6868|6868</div>
+                                        <div id="vc6">
+                                            <input placeholder="@(ViewBag.lang == "vi"? "Vui lòng nhập ghi chú" : "Note")..." id="txtGhichuVanchuyen">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix">
+
+                        </div>       <hr />
+
+                    </div>
+
+                    <div class="steptitle">
+                        2.@(ViewBag.lang == "vi"? "Chọn dịch vụ khác" : "Choose another service")
+                    </div>
+                    <div class="steptitle_right">
+                        <span id="cpService" data-value="0">0</span> <span>đ</span>
+                    </div>
+                    <div class="clearfix">
+
+                    </div>
+                    <div class="row myrow">
+                        <div class="col-sm-3 col-xs-9">
+                            <div class="radVanchuyen2">
+                                <input id="radtulapdat" data-text="tulapdat" type="radio" name="tvc2" onclick="radTulapdat()" checked="checked">
+                                <span onclick="autoclickRad2('radTulapdat')"><span>@(ViewBag.lang == "vi"? "Tự lắp đặt" : "Self-installation")</span></span>
+                            </div>
+                            <div class="radVanchuyen2 mg-50">
+                                <input id="radhdsd" type="radio" name="tvc2" data-text="huongdansudung" onclick="radHdsd()">
+                                <span onclick="autoclickRad2('radHdsd')"><span>@(ViewBag.lang == "vi"? "Hướng dẫn sử dụng" : "Instructions for use")</span></span>
+                            </div>
+                            <div class="radcha2 radVanchuyen2">
+                                <input id="radthaolap" type="radio" data-text="" name="tvc2" onclick="radThaolap()">
+                                <span onclick="autoclickRad2('radThaolap')"><span>@(ViewBag.lang == "vi"? "Dịch vụ thợ tới tháo lắp" : "Service with installation")</span></span>
+                            </div>
+                            <div class="radcon2" style="">
+                                <div class="radVanchuyen2">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <img src="~/Assets/Images/yourcart/tho den lap.png" style="width: 45px;">
+
+                                        </div>
+                                        <div class="col-xs-9 myselect">
+                                            <input id="radThotoilap" type="radio" name="tvch2" data-text="thotoilap" onclick="radThotoilap()">
+                                            <span onclick="spradThotoilap()"><span id="ctl00_MainContent_thotoilap">@(ViewBag.lang == "vi"? "Thợ tới lắp " : "Technician for installation"):</span></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="radVanchuyen2">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <img src="~/Assets/Images/yourcart/tho den go.png" style="width: 45px;">
+
+                                        </div>
+                                        <div class="col-xs-9 myselect">
+                                            <input id="radThotoithao" type="radio" name="tvch2" data-text="thotoithao" onclick="radThotoithao()">
+                                            <span onclick="spradThotoithao()"><span id="ctl00_MainContent_thodenthao">@(ViewBag.lang == "vi"? "Thợ đến tháo" : "Technician for disassembly")</span></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="radVanchuyen2">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <img src="~/Assets/Images/yourcart/tho den lap va go.png" style="width: 45px;">
+
+                                        </div>
+                                        <div class="col-xs-9 myselect">
+                                            <input type="radio" name="tvch2" data-text="thodenlapvathao" onclick="radThodenlapvathao()" id="radThodenlapvathao">
+                                            <span onclick="spradThodenlapvathao()"><span id="ctl00_MainContent_thodenlapvathao">@(ViewBag.lang == "vi"? "Thợ đến lắp và tháo" : "Technician for installation and disassembly")</span></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-1 col-xs-3">
+
+                        </div>
+                        <div class="col-sm-8 col-xs-12">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div id="txtTulapdat" class="boxvc2">@item.Tulapdat</div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div id="txtHuongDanSuDung" class="boxvc2">@item.Huongdansudung</div>
+                                </div>
+
+                            </div>
+                            <div class="contcon">
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div id="txtCustomerAddress2" class="boxvc2"></div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div id="xndd2" style="">
+                                            <div>
+
+                                                <div class="glamviec">
+                                                    <button type="button" class="doidiadiem" data-toggle="modal" data-target="#modalAddress">
+                                                        <i class="fa fa-map-marker"></i>@(ViewBag.lang == "vi"? "Đổi địa điểm" : "Change location")
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div id="txtThotoilap" class="boxvc vcchung2">@item.Thotoilap</div>
+                                        <div id="txtThotoithao" class="boxvc vcchung2">@item.Thotoithao</div>
+                                        <div id="txtThotoilapvathao" class="boxvc vcchung2">@item.Thodenlapvathao</div>
+                                        <div id="vc62">
+                                            <input placeholder="@(ViewBag.lang == "vi"? "Vui lòng nhập ghi chú" : "Please enter a note.")..." id="txtGhichuLapDat">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+
+                        </div>
+                        <hr />
+
+                    </div>
+
+                </div>
+                <div class="">
+
+                    <div class="steptitle">
+                        <span style="color:black" class="tongcong"><span id="ctl00_MainContent_tongcong"> </span> </span>
+                    </div>
+                    <div class="steptitle_right">
+                        <span style="color:red;font-weight:bold;">@(ViewBag.lang == "vi"? "Tổng" : "Total") :</span>   <span style="color:red;font-weight:bold;" id="total_price" class="">0</span><span style="color:red;font-weight:bold;"> đ</span>
+                    </div>
+                </div>
+                <div class="clearfix">
+
+                </div>
+                <hr />
+                <div class="steptitle" style="margin-top: 50px;">
+                    <span id="ctl00_MainContent_chonhinhthucdatcoc">3.  @(ViewBag.lang == "vi"? "Chọn hình thức đặt cọc" : "Choose a deposit method") :</span>
+                </div>
+                <div class="clearfix">
+
+                </div>
+                <div class="col-md-12">
+                    <div class="row myrow">
+                        <div class="col-sm-6">
+                            <div id="ctl00_MainContent_div1">
+                                <input id="cbtm" type="radio" name="radCoc" checked="checked" onchange="deposit1()">
+                                <span onclick="autoclickRad('cbtm')"><span id="ctl00_MainContent_cocbangtienmat"> @(ViewBag.lang == "vi"? "Cọc bằng tiền mặt" : "Cash deposit") </span></span>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-2" style="text-align: right">
+                            <div data-value="@ViewBag.Product.ProductValue" class="giatrisanpham giacoc">@ViewBag.Product.ProductValue.ToString("#,##0") đ</div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div id="ctl00_MainContent_div2" style="margin-top: 10px; margin-bottom: 5px;">
+                                <input id="cbtmgt" type="radio" name="radCoc" onchange="deposit2()">
+                                <span style="cursor: pointer" onclick="autoclickRad('cbtmgt')"><span id="ctl00_MainContent_cocbangtienmatkethopgiayto">@(ViewBag.lang == "vi"? "Cọc bằng tiền mặt kết hợp giấy tờ" : "Cash deposit combined with documents")</span></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" id="deposit2Content">
+                            <div id="ctl00_MainContent_childDatcoc" style="margin-top: 10px;" class="">
+                                @if (ViewBag.deposit != null)
+                                {
+                                    var i = 0;
+                                    foreach (HirentWeb2022.Models.tb_Deposit it in ViewBag.deposit)
+                                    {
+
+
+                                        <div class="row">
+                                            <div class="col-xs-6 datcocrow">
+                                                @if (i == 0)
+                                                {
+                                                    <input type="radio" checked id="radFirst" name="radDeposit" onchange="getDeposit('@it.DepositId','@it.Prices')">
+
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" name="radDeposit" onchange="getDeposit('@it.DepositId','@it.Prices')">
+                                                }
+                                                @{
+                                                    var getsolit = it.DepositName.Split('|');
+                                                    <span>@(ViewBag.lang == "vi"? getsolit[0] : getsolit[1])</span>
+                                                }
+
+                                            </div>
+                                            <div class="col-xs-2" style="text-align: right;">
+                                                <div style="color:#00A352">-<span>@it.Prices.Value.ToString("#,##0")</span> đ</div>
+                                            </div>
+                                        </div>
+                                        i++;
+                                    }
+                                }
+                                <div class="row cocconlaibox">
+                                    <div class="col-xs-6 datcocrow cocconlaititle" >
+                                       
+                                        <span style="padding-left:25px">
+                                            @(ViewBag.lang == "vi"? "Số tiền cọc còn lại" : "Remaining deposit amount")
+                                        </span>
+
+                                    </div>
+                                    <div class="col-xs-2" style="text-align: right;">
+                                        <div class="giatrisanpham giacoc"><span id="sotienconlai">0</span> đ</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-sm-12">
+                            <div id="ctl00_MainContent_div2" style="margin-top: 10px; margin-bottom: 5px;">
+                                <input id="cbtmgt" type="radio" name="radCoc" onchange="deposit3()">
+                                <span style="cursor: pointer" onclick="autoclickRad('cbtmgt')">
+                                    <span id="ctl00_MainContent_cocbangtienmatkethopgiayto">
+                                        @(ViewBag.lang == "vi"? "Cọc bằng tiền mặt kết hợp giấy tờ và hợp đồng dân sự" : "Cash deposit combined with documents and a civil contract")
+                                    </span>
+                                </span>
+                            </div>
+                            <div id="deposit3Content" style="padding-left:30px;">
+                                <div>
+                                    <span>-@(ViewBag.lang == "vi"? "CMND/CCCD/Pastport" : "ID card/Pastport")</span>
+                                </div>
+                                <div class="row cocconlaibox">
+                                    <div class="col-sm-6">
+                                        <span>-@(ViewBag.lang == "vi"? "Số tiền Cọc hợp đồng" : "Contract deposit amount")</span>
+                                    </div>
+                                    <div class="col-sm-2" style="text-align: right">
+                                        <div class="giatrisanpham giacoc">
+                                            @ViewBag.Product.Cocbanggiaytovahopdongprice.ToString("#,##0") đ
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <div class="row cocconlaibox">
+                                    <div class="col-sm-6">
+                                        <span>-@(ViewBag.lang == "vi"? "Hợp đồng thuê" : "Lease agreement")</span>
+                                    </div>
+                                    <div class="col-sm-2" style="text-align: right">
+                                        <div class="btnhopdongthue" style="margin-top:0px;">
+                                            @{
+                                                HirentWeb2022.Models.HirentEntities db2 = new @HirentWeb2022.Models.HirentEntities();
+                                                HirentWeb2022.Models.tb_ProductTermConditionDetails tb_ProductTermConditionDetails = db2.tb_ProductTermConditionDetails.Where(m => m.ProductId == item.ProductId).FirstOrDefault();
+                                                HirentWeb2022.Models.tb_WareHouse tb_WareHouse = db2.tb_WareHouse.Find(tb_ProductTermConditionDetails.WarehouseId);
+                                                <a href="@tb_WareHouse.Hopdong" target="_blank">
+                                                    @(ViewBag.lang == "vi"? "Hợp đồng mẫu" : "Rental agreement")
+                                                </a>
+                                            }
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div id="ctl00_MainContent_div2" style="margin-top: 10px; margin-bottom: 5px;">
+                                <input id="cbtmgt" type="radio" name="radCoc" onchange="deposit4()">
+                                <span style="cursor: pointer" onclick="autoclickRad('cbtmgt')"><span id="ctl00_MainContent_cocbangtienmatkethopgiayto">@(ViewBag.lang == "vi"? "Cọc bằng tài sản" : "Property deposit")</span></span>
+                            </div>
+                            <div style="padding-left:25px;">
+
+                                <div id="deposit4Content">
+                                    @if (ViewBag.lang == "vi")
+                                    {
+                                        <div>
+                                            Hai bên thỏa thuận giá trị tài sản cung cấp đặt cọc khi nhìn thực tế. Tài sản cọc phải có giá trị hơn hoặc bằng giá trị sản phẩm thuê, và bên cho thuê không trả lại tiền chênh lệch, trừ khi bên cho thuê làm mất hoặc hư hỏng tài sản được đặt cọc thì bên thuê phải bồi thường theo giá trị 2 bên đã thỏa thuận trước đó.
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div>
+                                            The two parties agree on the value of the collateral asset provided as a deposit upon inspection. The collateral asset must have a value equal to or greater than the value of the rented product, and the lessor will not return the difference unless the lessor loses or damages the collateral asset. In that case, the lessee must compensate according to the value agreed upon by both parties beforehand.
+                                        </div>
+                                    }
+                                    <div style="margin-top:10px;">
+                                        <input checked type="radio" name="radDeposit3" onchange="getDeposit2(1)">
+                                        <span>@(ViewBag.lang == "vi"? "Đồng hồ, điện thoại, máy ảnh, laptop..." : "Watch, phone, camera, laptop...")</span>
+
+                                        <a onclick="guianhmau1()" class="guihinhmau" id="btnguianh1">
+                                            @(ViewBag.lang == "vi"? "Gửi hình mẫu" : "Upload image")
+                                        </a>
+                                        <input style="display:none;" type="file" class="btn-group btn btn-info btn-xs upload" id="uploadAvatar" accept="image/png, image/jpeg"><br>
+                                        <img id="hinhmau1" />
+                                        <div>
+                                            @{
+                                                if (ViewBag.lang == "vi")
+                                                {
+                                                    <textarea style=" width: 100%; padding: 10px 15px; border: 2px solid #00984d;" disabled>
+Vui lòng cho biết thông tin tài sản thế chấp để bên cửa hàng có chấp nhận tài sản này làm cọc hay không. Tên tài sản, đời máy, thông số kỹ thuật, giá mua mới, tỷ lệ % sử dụng, giá trị còn lại
+</textarea>
+                                                }
+                                                else
+                                                {
+                                                    <textarea style=" width: 100%; padding: 10px 15px; border: 2px solid #00984d;" disabled>
+Please provide the information about the collateral assets so that the store can determine whether to accept this asset as a deposit. Asset name, model year, technical specifications, purchase price, usage percentage, remaining value
+</textarea>
+                                                }
+                                            }
+
+                                        </div>
+                                    </div>
+                                    <div style="margin-top:10px;">
+                                        <input type="radio" name="radDeposit3" onchange="getDeposit2(2)">
+                                        <span>@(ViewBag.lang == "vi"? "Xe máy, ô tô(Có giấy đăng ký)..." : "Motorbike, car (with registration papers...")</span>
+                                        <a onclick="guianhmau2()" class="guihinhmau " id="btnguianh2">
+                                            @(ViewBag.lang == "vi"? "Gửi hình mẫu" : "Upload image")
+                                        </a>
+                                        <input style="display:none;" type="file" class="btn-group btn btn-info btn-xs upload" id="uploadAvatar2" accept="image/png, image/jpeg"><br>
+                                        <img id="hinhmau2" />
+                                    </div>
+                                    <div>
+                                        @{
+                                            if (ViewBag.lang == "vi")
+                                            {
+                                                <textarea style=" width: 100%; padding: 10px 15px; border: 2px solid #00984d;" disabled>
+Vui lòng cho biết thông tin tài sản thế chấp để bên cửa hàng có chấp nhận tài sản này làm cọc hay không. Tên tài sản, đời máy, thông số kỹ thuật, giá mua mới, tỷ lệ % sử dụng, giá trị còn lại
+</textarea>
+                                            }
+                                            else
+                                            {
+                                                <textarea style=" width: 100%; padding: 10px 15px; border: 2px solid #00984d;" disabled>
+Please provide the information about the collateral assets so that the store can determine whether to accept this asset as a deposit. Asset name, model year, technical specifications, purchase price, usage percentage, remaining value
+</textarea>
+                                            }
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 20px; text-align: right">
+                <div class="col-md-6 col-lg-6 col-md-offset-6">
+                    <input type="button" class="btn btn-sm btngreen" style="font-weight: 600;border-radius:0px" onclick="javascript: return proceedAddToCartStep3();" value="@(ViewBag.lang == "vi"? "TIẾP THEO" : "Next")">
+                </div>
+            </div>
+        </div>
+    }
+}
+@Html.Action("CustomerAddressInfo", "Partial")
+
+
+<script>
+    function getDeposit(id, price) {
+        var contain = $(".giatrisanpham").attr("data-value") - price;
+        $("#sotienconlai").html(contain.toLocaleString());
+        depositId = id;
+    }
+    var hinhthuc = 1;
+    var depositId = 0;
+    $("document").ready(function () {
+        hiddenAll();
+        $("#radFirst").prop('checked', true).trigger('change');
+        $("#btnguianh2").hide();
+    })
+    function hiddenAll() {
+        $("#deposit2Content").hide();
+        $("#deposit3Content").hide();
+        $("#deposit4Content").hide();
+    }
+    function getDeposit2(id) {
+        if (id == 1) {
+            $("#btnguianh1").show();
+            $("#btnguianh2").hide();
+        }
+        else {
+            $("#btnguianh1").hide();
+            $("#btnguianh2").show();
+        }
+    }
+    function deposit1() {
+        hinhthuc = 1;
+        hiddenAll();
+       
+    }
+    function deposit2() {
+        hinhthuc =2;
+        hiddenAll();
+        $("#deposit2Content").show();
+       
+    }
+    function deposit3() {
+        hinhthuc = 3;
+        hiddenAll();
+        $("#deposit3Content").show();
+    }
+    function deposit4() {
+        hinhthuc = 4;
+        hiddenAll();
+        $("#deposit4Content").show();
+    }
+    function guianhmau1() {
+        $("#uploadAvatar").trigger("click");
+    }
+    function guianhmau2() {
+        $("#uploadAvatar2").trigger("click");
+    }
+ var _URL = window.URL || window.webkitURL;
+ var _URL2 = window.URL || window.webkitURL;
+ $("#uploadAvatar").on('change', function () {
+     var file, img;
+
+     if ((file = this.files[0])) {
+         img = new Image();
+         img.onload = function () {
+             sendFile(file);
+         };
+         img.onerror = function () {
+             alert("Not a valid file:" + file.type);
+         };
+         img.src = _URL.createObjectURL(file);
+     }
+ });
+ function sendFile(file) {
+     var formData = new FormData();
+     formData.append('file', $('#uploadAvatar')[0].files[0]);
+     $.ajax({
+         url: "/Tools/UploadWasehouseBanner.ashx",
+         type: "POST",
+         data: formData,
+         success: function (status) {
+             if (status != 'error') {
+                 var my_path = "/image_Waswhouse/" + status;
+                 $("#hinhmau1").css("height", "100px");
+                 $("#hinhmau1").attr("src", my_path);
+                
+             }
+         },
+         processData: false,
+         contentType: false,
+         error: function () {
+             alert("Whoops something went wrong!");
+         }
+     });
+    }
+    $("#uploadAvatar2").on('change', function () {
+        var file, img;
+
+        if ((file = this.files[0])) {
+            img = new Image();
+            img.onload = function () {
+                sendFile2(file);
+            };
+            img.onerror = function () {
+                alert("Not a valid file:" + file.type);
+            };
+            img.src = _URL.createObjectURL(file);
+        }
+    });
+    function sendFile2(file) {
+        var formData = new FormData();
+        formData.append('file', $('#uploadAvatar2')[0].files[0]);
+        $.ajax({
+            url: "/Tools/UploadWasehouseBanner.ashx",
+            type: "POST",
+            data: formData,
+            success: function (status) {
+                if (status != 'error') {
+                    var my_path = "/image_Waswhouse/" + status;
+                    $("#hinhmau2").css("height", "100px");
+                    $("#hinhmau2").attr("src", my_path);
+                }
+            },
+            processData: false,
+            contentType: false,
+            error: function () {
+                alert("Whoops something went wrong!");
+            }
+        });
+    }
+    function formatNumber(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    var serviceId = 1;
+    var deliveryId = 1;
+    var priceDelivery = parseInt('@ViewBag.costVanChuyen');
+    var priceLap = parseInt('@ViewBag.costLaprap');
+    var priceThao = parseInt('@ViewBag.costThao');
+    $(document).ready(function () {
+        loadDanhsachdiachi();
+        $(".tab2").hide();
+        LoadMacDinh('@ViewBag.CustomerID');
+    });
+    function loadDanhsachdiachi() {
+        $.ajax({
+            url: '/Order/LoadListAddrress',
+            dataType: 'html',
+            type: "GET",
+            async: false,
+            success: function (data, status, xhr) {
+                $("#tbody").html(data);
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+    function LoadMacDinh() {
+         var param = {
+            "CustomerID": '@ViewBag.CustomerID',
+        }
+        $.ajax({
+            url: '/Order/LoadMacDinh',
+            dataType: 'html',
+            data:param,
+            type: "POST",
+            async: false,
+            success: function (data, status, xhr) {
+                $("#txtAddress").html(data)
+                //txtCustommerAddress
+                $("#txtCustommerAddress").html(data)
+                $("#txtCustomerAddress2").html(data)
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+    function insertAdress() {
+
+        var param = {
+            "ID": $("#txtcustomerid2").val(),
+            "CustomerID": '@ViewBag.CustomerID',
+            "Address": $("#txtAddress2").val(),
+            "FullName": $("#txtName2").val(),
+            "PhoneNumber": $("#txtPhone2").val(),
+            "provinces": $("#slProvinces").val(),
+            "districts": $("#slDistricts").val(),
+            "wards": $("#slWards").val(),
+        }
+        $.ajax({
+            url: '/Order/InsertAdress',
+            dataType: 'html',
+            data:param,
+            type: "POST",
+            async: false,
+            success: function (data, status, xhr) {
+                loadDanhsachdiachi();
+                $(".tab1").show();
+                $(".tab2").hide();
+                 LoadMacDinh('@ViewBag.CustomerID')
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+    function insertHuyAdress() {
+        $(".tab1").show();
+        $(".tab2").hide();
+    }
+    function themdiachi() {
+        $(".tab1").hide();
+        $(".tab2").show();
+        $("#txtName2").val('');
+        $("#txtAddress2").val('');
+        $("#txtPhone2").val('');
+        changeProvinces();
+    }
+    function autoclickRad2() {
+        $("#tuvanchuyen").trigger("click");
+    }
+    function autoclickRad() {
+        $("#dvvanchuyen").trigger("click");
+    }
+
+    function closeradcha(){
+        tuvanchuuyen();
+        deliveryId = 1;
+        twoService();
+        $("#cpDelivery").html(formatNumber(0));
+        $("#cpDelivery").attr("data-value", 0);
+    }
+    function closeradcha2() {
+        $("#tuvanchuyen").trigger("click");
+    }
+    function spGiaotannha() {
+        $("#gtn").trigger("click");
+    }
+    function spNhanTraTanNha() {
+        $("#nttn").trigger("click");
+    }
+    function spGiaoVaNhanTraTanNha() {
+        $("#radchild").trigger("click");
+    }
+    function clickradcha() {
+        dichvuvanchuyen();
+        $("#gtn").trigger("click");
+    }
+    function tuvanchuuyen() {
+        $("#txtCustommerAddress").hide();
+        $("#radDichVuVanChuyen").hide();
+        $("#txtGiaohangtannha").hide();
+        $("#txtNhantrtannha").hide();
+        $("#txtGiaovanhantrantannha").hide();
+        $("#txtGhichuVanchuyen").hide();
+        $(".luughichu").hide();
+        $("#xndd").hide();
+    }
+    function dichvuvanchuyen() {
+        $("#txtCustommerAddress").show();
+        $("#radDichVuVanChuyen").show();
+        $(".luughichu").show();
+        $("#txtGhichuVanchuyen").show();
+        $("#xndd").show();
+    }
+    function Giaotannha() {
+        $("#txtGiaohangtannha").show();
+        $("#txtNhantrtannha").hide();
+        $("#txtGiaovanhantrantannha").hide();
+        deliveryId = 2;
+        $("#cpDelivery").html(formatNumber(priceDelivery));
+        $("#cpDelivery").attr("data-value", priceDelivery);
+        twoService();
+    }
+    function NhanTraTanNha() {
+        $("#txtGiaohangtannha").hide();
+        $("#txtNhantrtannha").show();
+        $("#txtGiaovanhantrantannha").hide();
+        deliveryId = 3;
+        $("#cpDelivery").html(formatNumber(priceDelivery));
+        $("#cpDelivery").attr("data-value", priceDelivery);
+        twoService();
+    }
+    function GiaoVaNhanTraTanNha() {
+        $("#txtGiaohangtannha").hide();
+        $("#txtNhantrtannha").hide();
+        $("#txtGiaovanhantrantannha").show();
+        deliveryId = 4;
+        $("#cpDelivery").html(formatNumber(priceDelivery * 2));
+        $("#cpDelivery").attr("data-value", priceDelivery * 2);
+        twoService();
+    }
+    $(document).ready(function () {
+        tuvanchuuyen();
+        radTulapdat();
+    });
+    //Chọn Dịch Vụ Khác
+    function radTulapdat() {
+        $(".radcon2").hide();
+        $(".contcon").hide();
+
+        serviceId = 1;
+        $("#cpService").html(formatNumber(0));
+        $("#cpService").attr("data-value", 0);
+        twoService();
+    }
+    function radHdsd() {
+        $(".radcon2").hide();
+        $(".contcon").hide();
+        serviceId = 2;
+        $("#cpService").html(formatNumber(0));
+        $("#cpService").attr("data-value", 0);
+        twoService();
+    }
+    function radThaolap() {
+        $(".radcon2").show();
+        $(".contcon").show();
+        $("#radThotoilap").trigger("click");
+    }
+    function autoclickRad2(str) {
+        if (str == "radTulapdat") {
+            $("#radtulapdat").trigger("click");
+        }
+        if (str == "radHdsd") {
+            $("#radhdsd").trigger("click");
+        }
+        if (str == "radThaolap") {
+            $("#radthaolap").trigger("click");
+        }
+    }
+
+    function radThotoilap() {
+        $("#txtThotoilap").show();
+        $("#txtThotoithao").hide();
+        $("#txtThotoilapvathao").hide();
+        serviceId = 3;
+        $("#cpService").html(formatNumber(priceLap));
+        $("#cpService").attr("data-value", priceLap);
+        twoService();
+    }
+    function radThotoithao() {
+        $("#txtThotoilap").hide();
+        $("#txtThotoithao").show();
+        $("#txtThotoilapvathao").hide();
+
+        serviceId = 4;
+        $("#cpService").html(formatNumber(priceThao));
+        $("#cpService").attr("data-value", priceThao);
+        twoService();
+    }
+    function radThodenlapvathao() {
+        $("#txtThotoilap").hide();
+        $("#txtThotoithao").hide();
+        $("#txtThotoilapvathao").show();
+
+        serviceId = 5;
+        $("#cpService").html(formatNumber(priceLap + priceThao));
+        $("#cpService").attr("data-value", priceLap + priceThao);
+        twoService();
+    }
+    function spradThotoilap() {
+        $("#radThotoilap").trigger("click");
+    }
+    function spradThotoithao() {
+        $("#radThotoithao").trigger("click");
+    }
+    function spradThodenlapvathao() {
+        $("#radThodenlapvathao").trigger("click");
+    }
+
+    function twoService() {
+        var getdata = parseInt($("#cpDelivery").attr("data-value")) + parseInt($("#cpService").attr("data-value"));
+        $("#total_price").html(formatNumber(getdata));
+    }
+    function proceedAddToCartStep3() {
+        var param = {
+            "serviceId": serviceId,
+            "deliveryId": deliveryId,
+            "deliverydes": $("#txtGhichuVanchuyen").val(),
+            "servicedes": $("#txtGhichuLapDat").val(),
+            "pOrderId": '@ViewBag.pOrderId',
+            "hinhthuc": hinhthuc,
+            "depositId": depositId,
+            "Imagegc1": $("#hinhmau1").attr("src"),
+            "Imagegc2": $("#hinhmau2").attr("src"),
+
+        }
+        $.ajax({
+            url: '/Order/proceedAddToCartStep3',
+            dataType: 'html',
+            data:param,
+            type: "POST",
+            async: false,
+            success: function (data, status, xhr) {
+                location.href = "/order";
+            },
+            error: function (xhr, status, error) {
+                alert(status);
+            }
+        });
+    }
+    function tgTGLV() {
+        $("#mdTGLV").modal("toggle");
+    }
+</script>
+<style>
+    @@media (min-width: 768px) {
+        .modal-dialog {
+            width: 669px;
+            margin: 30px auto;
+        }
+    }
+</style>
+@Html.Action("WasehouseTime", "Productdetail", new { whId = ViewBag.whId })

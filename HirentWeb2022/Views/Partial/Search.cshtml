@@ -1,0 +1,38 @@
+﻿<ul>
+    @if (Model != null)
+    {
+        var getmodel = (HirentWeb2022.ViewModel.AutoCompleteSearch)Model;
+        if (getmodel != null && getmodel.productCateSearches.Count() > 0)
+        {
+            <li class="cophaiban">
+                Có phải bạn muốn tìm
+            </li>
+            foreach (var item in getmodel.productCateSearches)
+            {
+                <li>
+                    <a href="@item.url">
+                        @item.Name
+                    </a>
+                </li>
+            }
+        }
+
+        if (getmodel != null && getmodel.productSearches.Count() > 0)
+        {
+            {
+                <li class="spgoiy">
+                    Sản phẩm gợi ý
+                </li>
+                foreach (var item in getmodel.productSearches)
+                {
+                    <li class="childcomplete">
+                        <a href="@item.url">
+                         <img src="@item.Images"  class="img-responsive" height="50" width="50"/>   @item.Name
+                        </a>
+                    </li>
+                }
+            }
+
+        }
+    }
+</ul>

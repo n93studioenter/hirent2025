@@ -1,0 +1,221 @@
+﻿@using HirentWeb2022.ViewModel
+
+
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a href="/">
+                    @if (ViewBag.lang == "vi")
+                    {
+
+                        <span>
+                            Trang chủ
+                        </span>
+                    }
+                    else
+                    {
+                        <span>
+                            Home
+                        </span>
+                    }
+                </a>
+            </li>
+            @if (ViewBag.tb_CategoryMain != null && ViewBag.tb_CategorySub1.SubCate1Name == null && ViewBag.tb_CategorySub2.SubCate2Name == null)
+            {
+                if (ViewBag.lang == "vi")
+                {
+                    <li>
+                        <span>@ViewBag.tb_CategoryMain.MainCateName</span>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <span>@ViewBag.tb_CategoryMain.Language</span>
+                    </li>
+                }
+
+            }
+            else
+            {
+                if (ViewBag.tb_CategorySub1 != null && ViewBag.tb_CategorySub2.SubCate2Name == null)
+                {
+                    <li>
+                        @if (ViewBag.lang == "vi")
+                        {
+                            <a href="/productcate?MainCateID=@ViewBag.tb_CategoryMain.MainCateID">
+                                @ViewBag.tb_CategoryMain.MainCateName
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/productcate?MainCateID=@ViewBag.tb_CategoryMain.MainCateID">
+                                @ViewBag.tb_CategoryMain.Language
+                            </a>
+                        }
+
+                    </li>
+                    <li>
+                        @if (ViewBag.lang == "vi")
+                        {
+                            <span>
+                                @ViewBag.tb_CategorySub1.SubCate1Name
+                            </span>
+                        }
+                        else
+                        {
+                            <span>
+                                @ViewBag.tb_CategorySub1.Language
+                            </span>
+                        }
+                    </li>
+                }
+
+                if (ViewBag.tb_CategorySub2.SubCate2Name != null)
+                {
+                    <li>
+                        @if (ViewBag.lang == "vi")
+                        {
+                            <a href="/productcate?MainCateID=@ViewBag.tb_CategoryMain.MainCateID">
+                                @ViewBag.tb_CategoryMain.MainCateName
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/productcate?MainCateID=@ViewBag.tb_CategoryMain.MainCateID">
+                                @ViewBag.tb_CategoryMain.Language
+                            </a>
+                        }
+                    </li>
+                    <li>
+                        <a href="productcate?ProductSubCate1=@ViewBag.tb_CategorySub1.SubCate1ID">
+                            @if (ViewBag.lang == "vi")
+                            {
+                                @ViewBag.tb_CategorySub1.SubCate1Name
+                            }
+                            else
+                            {
+                                @ViewBag.tb_CategorySub1.Language
+                            }
+                        </a>
+                    </li>
+                    <li>
+                        @if (ViewBag.lang == "vi")
+                        {
+                            <span>  @ViewBag.tb_CategorySub2.SubCate2Name</span>
+                        }
+                        else
+                        {
+                            <span>  @ViewBag.tb_CategorySub2.Language</span>
+                        }
+
+                    </li>
+                }
+            }
+
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="dssp_title">
+        @(ViewBag.lang == "vi"? "Danh sách sản phẩm" : "Product list") 
+    </div>
+    <div class="totalproduct">
+        <span>@(ViewBag.lang == "vi"? "Có tổng cộng" : "There are")  </span>  <span>@ViewBag.Count</span> <span>  @(ViewBag.lang == "vi"? "sản phẩm" : "products") </span>
+    </div>
+    <div class="row">
+        @if (Model != null)
+        {
+            foreach (var item in (IEnumerable<ProductVM>)Model)
+            {
+
+
+                if (ViewBag.lang == "vi")
+                {
+                    <div class="col-md-15">
+                        <div class="index_productlistbox">
+                            <div class="product-btns">
+                                <span class="product-statuspercentage">Mới&nbsp;@item.tb_Product.StatusPercentage %</span>
+                            </div>
+                            <div class="index_productlistimage">
+                                <a href="/ProductDetail?productID=@item.tb_Product.ProductID">
+                                    <img src="@item.tb_Product.ProductAvatar" class="img-responsive" />
+                                </a>
+                            </div>
+                            <div class="index_productlistcontent">
+                                <div class="index_productlistcontent_title">
+                                    <a href="/ProductDetail?productID=@item.tb_Product.ProductID">
+                                        @item.tb_Product.ProductName
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="index_productpriceblock">
+                                @{
+                                    <span>@item.tb_Product.PricePerBlock</span>
+                                }
+                            </div>
+                            <div class="index_productpriceday">
+                                @{
+                                    <span>@item.tb_Product.PricePerDay</span>
+                                }
+                            </div>
+                            <div class="index_map">
+                                <i class="fas fa-map-marker"></i> <span>@item.tb_WareHouse.WarehouseName</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                }
+                else
+                {
+                    <div class="col-md-15">
+                        <div class="index_productlistbox">
+                            <div class="product-btns">
+                                <span class="product-statuspercentage">New&nbsp;@item.tb_Product.StatusPercentage %</span>
+                            </div>
+                            <div class="index_productlistimage">
+                                <a href="/ProductDetail?productID=@item.tb_Product.ProductID">
+                                    <img src="@item.tb_Product.ProductAvatar" class="img-responsive" />
+                                </a>
+                            </div>
+                            <div class="index_productlistcontent">
+                                <div class="index_productlistcontent_title">
+                                    <a href="/ProductDetail?productID=@item.tb_Product.ProductID">
+                                        @item.tb_Product_Translation.ProductName_EN
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="index_productpriceblock">
+                                @{
+                                    <span>@item.tb_Product_Translation.PricePerBlock_EN</span>
+                                }
+                            </div>
+                            <div class="index_productpriceday">
+                                @{
+                                    <span>@item.tb_Product_Translation.PricePerDay_EN</span>
+                                }
+                            </div>
+                            <div class="index_map">
+                                <i class="fas fa-map-marker"></i> <span>@item.tb_WareHouse.WarehouseName</span>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+            }
+        }
+    </div>
+</div>
+<style>
+    .index_productlistbox {
+        margin-bottom: 30px !important;
+        border-bottom: 3px solid #ffffff;
+    }
+
+        .index_productlistbox:hover {
+            border-bottom: 3px solid #214F39;
+        }
+</style>

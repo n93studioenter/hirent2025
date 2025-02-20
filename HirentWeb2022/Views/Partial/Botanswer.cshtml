@@ -1,0 +1,16 @@
+﻿<div class="helper_content_ai">
+    @{
+        if (Model != null)
+        {
+            if (!string.IsNullOrEmpty(Model.Answer))
+            {
+                <span> @Model.Answer</span>
+            }
+            else
+            {
+                <span>Xin lỗi, tôi không thể trả lời...</span>
+            }
+        }
+
+    }
+</div>

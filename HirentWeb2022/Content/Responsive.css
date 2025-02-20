@@ -1,0 +1,312 @@
+﻿.logomobile {
+}
+
+    .logomobile img {
+        width: 86px;
+    }
+
+@media only screen and (max-width: 640px) {
+    .col3 {
+        float: right;
+        width: auto;
+    }
+
+    .index_slide img {
+        height: auto;
+    }
+
+    .index_Category_right {
+        margin-bottom: 20px;
+        float: left;
+        width: 100%;
+        margin-left: 3%;
+        margin-top: 0px;
+    }
+
+    .col1 {
+        width: 40%;
+        float: left;
+    }
+
+    .header_logo {
+        height: 50px;
+        line-height: 50px;
+        text-align: left;
+        position: relative;
+        top: 7px;
+    }
+
+    .modal-login {
+        width: 91%;
+        top: 100px;
+        margin: 0px auto;
+        margin-left: 8px;
+    }
+
+    .col-md-15 {
+        width: 50%;
+        float: left;
+    }
+
+    .mobiletoggle {
+        position: absolute;
+        right: 0px;
+        color: white;
+        top: 8px;
+        height: 23px;
+        width: 23px;
+        text-align: center;
+        line-height: 22px;
+    }
+
+    .index_productlistcontent_title {
+        font-size: 12px;
+        min-height: 45px;
+        line-height: 15px;
+        margin-bottom: 5px;
+    }
+
+    #breadcrumb li {
+        font-size: 12px;
+    }
+
+        #breadcrumb li a {
+        }
+
+    .mycol5 {
+        width: 100%;
+    }
+
+    .mycol7 {
+        width: 100%;
+    }
+
+    .proddetail_image img {
+        height: 150px;
+    }
+
+    .colgioleft {
+        float: left;
+        width: 27%;
+    }
+
+    .colgioright {
+        float: left;
+        width: 63%;
+    }
+
+    .celanderleft {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    table.dateTable.dtLeft {
+        margin: 0px auto;
+    }
+
+    select.monthselect, select.yearselect, select.monthselect2, select.yearselect2 {
+        margin-left: 14px;
+        margin: 0px 0px;
+    }
+
+    .productStatus {
+        margin-bottom: 5px;
+    }
+
+    .dvProductValue {
+        width: 90%;
+        height: 15px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        border-radius: 8px;
+        font-size: 14px;
+        text-align: right;
+        color: #3c763d;
+    }
+
+    .dvBookAccessory {
+        display: block;
+        overflow: initial;
+    }
+
+    span#MainContent_pdNumber, span.gttt1, span.gttt2 {
+        font-size: 12px;
+    }
+
+    .asubtract {
+        width: 35%;
+    }
+
+    .aplus {
+        width: 35%;
+        right: -4px;
+    }
+
+    .product-btns button {
+        color: white;
+        padding: 8px 16px;
+        margin-top: -5px;
+        font-size: 11px;
+    }
+
+    .gionhan {
+        font-size: 12px;
+    }
+
+    .stepbox ul li {
+        display: inline-block;
+        padding: 0px 20px;
+        text-align: center;
+        width: 28%;
+    }
+
+        .stepbox ul li a {
+            border-radius: 50%;
+            display: block;
+            height: 30px;
+            width: 30px;
+            line-height: 30px;
+            font-size: 13px;
+            margin: 0px auto;
+        }
+
+    .a1:after {
+        position: absolute;
+        content: '';
+        width: 60px;
+        height: 2px;
+        top: 50%;
+        left: 93%;
+        background-color: #214F39;
+    }
+
+    .stepbox li div {
+        margin: 10px 0px;
+        font-weight: bold;
+        font-size: 9px;
+    }
+
+    .tendv {
+        font-size: 12px;
+        text-align: left;
+        font-weight: bold;
+        padding-right: 0px;
+        color: #0F9E5E;
+        margin-bottom: 10px;
+    }
+
+    .radcha {
+        margin-top: 3px;
+    }
+
+    .myrow span {
+        top: 2px;
+    }
+
+    span#thoigiannhan, span#thoigiantra {
+        font-size: 11px;
+        margin-bottom: 7px;
+        display: block;
+    }
+
+    .bodymb {
+        padding: 0px 21px !important;
+    }
+
+    .btn_xacnhan {
+        width: auto;
+    }
+
+    span#spbox {
+        text-align: left;
+        width: auto;
+        padding: 6px 13px;
+        float: left;
+        display: inline-block !important;
+        border: 1px solid #00A352;
+    }
+
+    .spantungay {
+        color: #214F39;
+        font-size: 11px;
+        padding: 5px 0px;
+        border: 1px saddlebrown;
+        font-weight: bold;
+        margin: 5px 0px;
+    }
+
+    .myrow span {
+        position: relative;
+        top: 1px;
+        font-size: 12px;
+        margin-bottom: 5px;
+        display: inline-block;
+    }
+
+    .boxvc, .boxvc2 {
+        font-size: 12px;
+    }
+
+    .glamviec {
+        width: 94%;
+        margin: 6px auto;
+    }
+
+    #vc6 input, #vc62 input {
+        width: 100%;
+    }
+
+    .radVanchuyen {
+        padding-left: 8px;
+    }
+
+    .radVanchuyen2.mg-50 {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .radVanchuyen2 {
+        margin-bottom: 4px;
+    }
+
+        .radVanchuyen2 img {
+            width: 32px !important;
+        }
+
+    input.btn.btn-sm.btn-success {
+        margin: 10px 28px;
+    }
+
+    .ttctsp {
+        font-size: 17px;
+    }
+
+    .vuilongxemttdh {
+        font-size: 14px;
+    }
+
+    .helper_container {
+        width: 90%;
+        right: 8%;
+    }
+
+    .login_container {
+        width: auto !important;
+    }
+
+    .col-slide-left {
+        width: 100%;
+    }
+
+    .col-slide-right {
+        display: none;
+    }
+
+    .from_register {
+        width: 100%;
+    }
+
+    #breadcrumb {
+        display: none;
+    }
+}

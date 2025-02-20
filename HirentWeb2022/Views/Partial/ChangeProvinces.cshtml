@@ -1,0 +1,18 @@
+﻿@{
+    foreach (HirentWeb2022.Models.district dt in Model)
+    {
+        if (ViewBag.lang == "vi")
+        {
+            <option value="@dt.code">@dt.full_name</option>
+        }
+        else
+        {
+            <option value="@dt.code">@dt.full_name_en</option>
+        }
+    }
+}
+
+<script>
+  
+   
+</script>

@@ -1,0 +1,119 @@
+﻿
+<div class="modal fade" id="mdTGLV" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style=" background-color: #10261b; color: white;">
+                <h5 class="modal-title" id="exampleModalLabel">@(ViewBag.lang == "vi"? "Thời gian hoạt động của cửa hàng" : "Store hours")</h5>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th width="19%">
+                                @(ViewBag.lang == "vi"? "Thứ" : "Day")
+                            </th>
+                            <th width="27%">
+                                @(ViewBag.lang == "vi"? "Buổi sáng" : "Morning")
+                            </th>
+                            <th width="27%">
+                                @(ViewBag.lang == "vi"? "Buổi chiều" : "Afternoon")
+                            </th>
+                            <th width="27%">
+                                @(ViewBag.lang == "vi"? "Buổi tối" : "Evening")
+                            </th>
+                        </tr>
+                        @{
+                            var getall = "";
+                            foreach (HirentWeb2022.Models.tb_WareHouse_Time it in ViewBag.ListTime)
+                            {
+                                getall += it.FromDayOfWeek;
+                            }
+                        }
+                        @for (int i = 2; i <= 8; i++)
+                        {
+                            <tr>
+
+                                @if (i == 8)
+                                {
+                                    if (getall.Contains(i.ToString()))
+                                    {
+                                        <td style=" position: relative; top: 2px;">
+                                            <span>@(ViewBag.lang == "vi"? "CN" : "Sunday")</span>
+                                        </td>
+                                    }
+                                    else
+                                    {
+
+                                        <td style=" position: relative; top: 2px;">
+                                            <strong style="color:red">@(ViewBag.lang == "vi"? "CN" : "Sunday")</strong>
+                                        </td>
+                                    }
+                                }
+                                else
+                                {
+                                    if (getall.Contains(i.ToString()))
+                                    {
+                                        <td style=" position: relative; top: 2px;">
+                                            @i
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td style=" position: relative; top: 2px;">
+                                            <strong style="color:red"> @i</strong>
+                                        </td>
+                                    }
+                                }
+                                @{
+                                    var hasrow = 0;
+                                }
+                                @foreach (HirentWeb2022.Models.tb_WareHouse_Time it in ViewBag.ListTime)
+                                {
+                                    var chk = getall.Contains(i.ToString());
+                                    if (it.FromDayOfWeek.Contains(i.ToString()))
+                                    {
+                                        hasrow += 1;
+                                        <td>
+                                            <div class="tdborder">
+                                                @it.whOpenTime- @it.whCloseTime
+                                            </div>
+
+                                        </td>
+                                        <td>
+                                            @if (it.whOpenTime2 != "")
+                                            {
+                                                <div class="tdborder">
+                                                    <span>@it.whOpenTime2-@it.whCloseTime2</span>
+                                                </div>
+                                            }
+
+
+                                        </td>
+                                        <td>
+                                            @if (it.whOpenTime3 != "")
+                                            {
+                                                <div class="tdborder">
+                                                    <span>@it.whOpenTime3-@it.whCloseTime3</span>
+                                                </div>
+                                            }
+
+
+                                        </td>
+                                    }
+
+                                }
+
+                                @*@if (hasrow != 0)
+                                {
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                }*@
+                            </tr>
+                        }
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
