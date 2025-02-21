@@ -345,11 +345,11 @@
             <PropertyRef Name="HomeMainBannerID" />
           </Key>
           <Property Name="HomeMainBannerID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BannerPath" Type="nvarchar" MaxLength="100" />
-          <Property Name="BannerDescription" Type="nvarchar" MaxLength="250" />
+          <Property Name="BannerPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="BannerDescription" Type="nvarchar" MaxLength="500" />
           <Property Name="BannerLandingpage" Type="ntext" />
           <Property Name="BannerUpload" Type="datetime" />
-          <Property Name="BannerHeader1" Type="nvarchar" MaxLength="100" />
+          <Property Name="BannerHeader1" Type="nvarchar" MaxLength="500" />
           <Property Name="BannerHeader2" Type="nvarchar" MaxLength="100" />
           <Property Name="SortArr" Type="int" />
         </EntityType>
@@ -922,14 +922,6 @@
           <Property Name="whId" Type="int" />
           <Property Name="DisplayOrder" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'hirent.dbo.Tinhthanhpho' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Tinhthanhpho">
-          <Property Name="MaTP" Type="nvarchar" MaxLength="255" />
-          <Property Name="Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="Type" Type="nvarchar" MaxLength="255" />
-          <Property Name="Slug" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
         <EntityType Name="wards">
           <Key>
             <PropertyRef Name="code" />
@@ -1436,11 +1428,11 @@ warning 6013: The table/view 'hirent.dbo.Tinhthanhpho' does not have a primary k
             <PropertyRef Name="HomeMainBannerID" />
           </Key>
           <Property Name="HomeMainBannerID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BannerPath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="BannerDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="BannerPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BannerDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="BannerLandingpage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="BannerUpload" Type="DateTime" Precision="3" />
-          <Property Name="BannerHeader1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BannerHeader1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="BannerHeader2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SortArr" Type="Int32" />
         </EntityType>

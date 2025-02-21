@@ -137,6 +137,7 @@
     <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SlideShowController.cs" />
     <Compile Include="Areas\Admin\Controllers\WarehouseController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -5089,6 +5090,8 @@
     <Content Include="Areas\Admin\Views\Warehouse\Warehouse_Deposit.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\MenuLeft.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\UserInfo.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\AccountManager.cshtml" />
+    <Content Include="Areas\Admin\Views\SlideShow\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -5146,6 +5149,7 @@
     <Content Include="Views\Partial\CustomerAddressInfo.cshtml" />
     <Content Include="Views\Partial\ChangeProvinces.cshtml" />
     <Content Include="Views\Partial\ChangeeDistricts.cshtml" />
+    <Content Include="Tools\UploadSlideShow.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

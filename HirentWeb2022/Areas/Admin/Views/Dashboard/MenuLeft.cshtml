@@ -41,11 +41,20 @@
         @if (ViewBag.PermissionID == 0)
         {
             <li>
+                <a><i class="fa fa-file-image-o"></i> Quản lý các tài khoản <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="/admin/Dashboard/AccountManager">Tạo tài khoản</a></li> 
+                </ul>
+            </li>
+        }
+        @if (ViewBag.PermissionID == 0)
+        {
+            <li>
                 <a><i class="fa fa-file-image-o"></i> Quản lý các banner <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="home_slider_management">Main slider trang Homepage</a></li>
-                    <li><a href="banner_management">Các banner quảng cáo</a></li>
-                    <li><a href="banner_mainCategory">Các banner của maincategory</a></li>
+                    <li><a href="/Admin/SlideShow/Index">Main slider trang Homepage</a></li>
+                    @*<li><a href="banner_management">Các banner quảng cáo</a></li>
+                    <li><a href="banner_mainCategory">Các banner của maincategory</a></li>*@
                 </ul>
             </li>
         }

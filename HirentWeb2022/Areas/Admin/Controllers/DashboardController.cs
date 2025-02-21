@@ -1,6 +1,7 @@
 ﻿using HirentWeb2022.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Web;
@@ -10,6 +11,57 @@ namespace HirentWeb2022.Areas.Admin.Controllers
 {
     public class DashboardController : Controller
     {
+        public ActionResult AccountManager()
+        {
+            var db = new HirentEntities();
+            var model = db.tb_LocalAccount.Where(m=>m.PermissionID!=0).ToList();
+            return View(model);
+        }
+
+        public JsonResult GetData(int LocalAccountID)
+        {
+
+            var db = new HirentEntities();
+            var account = db.tb_LocalAccount.Find(LocalAccountID);
+
+            return Json(account, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public bool SaveData(tb_LocalAccount tb_LocalAccount)
+        {
+            try
+            {
+                var db = new HirentEntities();
+                tb_LocalAccount.PermissionID = 1;
+                db.tb_LocalAccount.AddOrUpdate(tb_LocalAccount);
+                db.SaveChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
+
+        [HttpPost]
+        public bool DeleteData(int LocalAccountID)
+        {
+            try
+            {
+                var db = new HirentEntities();
+                var account = db.tb_LocalAccount.Find(LocalAccountID);
+                if (account != null)
+                {
+                    db.tb_LocalAccount.Remove(account);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         // GET: Admin/Dashboard
         public ActionResult Index()
         {
