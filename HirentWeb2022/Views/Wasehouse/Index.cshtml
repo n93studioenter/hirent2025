@@ -1,0 +1,370 @@
+﻿
+@using HirentWeb2022.ViewModel
+<div id="breadcrumb" style="margin-bottom:30px;">
+    <div class="container">
+        <div class="">
+
+        </div>
+        <ul class="breadcrumb">
+            <li>
+                <a href="/">
+                    @if (ViewBag.lang == "vi")
+                    {
+
+                        <span>
+                            Trang chủ
+                        </span>
+                    }
+                    else
+                    {
+                        <span>
+                            Home
+                        </span>
+                    }
+                </a>
+            </li>
+            <li>
+                <a href="/">
+                    @if (ViewBag.lang == "vi")
+                    {
+
+                        <span>
+                            Cửa hàng
+                        </span>
+                    }
+                    else
+                    {
+                        <span>
+                            Shop
+                        </span>
+                    }
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+<div style="background-color:#eee">
+    <div class="container">
+        <div class="storemodal_box">
+            <div class="storemodal_right_left2">
+                @if (ViewBag.tb_WareHouse != null)
+                {
+                    HirentWeb2022.Models.tb_WareHouse tb_WareHouse = (HirentWeb2022.Models.tb_WareHouse)ViewBag.tb_WareHouse;
+                    <img src="@tb_WareHouse.BannerImage" class="img-responsive" style="height:100px;" />
+                    <div class="storebackwhite">
+
+                    </div>
+                    <div class="storelogo">
+                        <img src="@tb_WareHouse.Images" class="img-responsive" style="height:100px;" />
+                    </div>
+                    <div class="storeName">
+                        @tb_WareHouse.WarehouseName
+                    </div>
+                }
+            </div>
+            <div class="storemodal_right_right2">
+                <ul>
+                    <li>
+                        <a class="btn_cuahang">
+                            <strong>
+                                <span class="tencuahang">
+                                    <svg enable-background="new 0 0 15 15" width="800px" height="800px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+
+                                        <g fill="none" fill-rule="evenodd">
+
+                                            <path d="m0 0h32v32h-32z" />
+
+                                            <path d="m16 0 13.8564065 8v16l-13.8564065 8-13.85640646-8v-16zm0 2.309-11.857 6.846v13.689l11.857 6.846 11.856-6.846v-13.689zm6.550845 8.3654304.9389431 1.7658952-6.5015238 3.4551048.0002619 7.7701392h-2l-.0002619-7.7691392-6.50100003-3.4561048.93894312-1.7658952 6.56205691 3.489z" fill="#000000" fill-rule="nonzero" />
+
+                                        </g>
+
+                                    </svg> @(ViewBag.lang == "vi" ? "Sản phẩm : " : "Products : ")
+                                </span>
+                            </strong>
+                            <strong>
+                                <span>
+                                    @ViewBag.ProductTotal
+                                </span>
+                            </strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn_cuahang" href="/image_Waswhouse/1. Chinh sach chung cua PACISOFT.pdf" target="_blank">
+                            <strong>
+                                <span class="tencuahang"><svg enable-background="new 0 0 15 15" width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 13h4v1H9zm13 7h-3v3H5.75A3.754 3.754 0 0 1 2 19.25V3.5C2 2.051 3.437 1 5.417 1H22zM18 6H5.416A4.175 4.175 0 0 1 3 5.318V19.25A2.753 2.753 0 0 0 5.75 22H18zm3-4H5.416C4.04 2 3 2.645 3 3.5S4.04 5 5.417 5H19v14h2zm-6 8H7v1h8z" /><path fill="none" d="M0 0h24v24H0z" /></svg> @(ViewBag.lang == "vi" ? "Chính sách cửa hàng" : "Store Policy")</span>
+                            </strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn_cuahang" onclick="togleMap()">
+                            <strong>
+                                <span class="tencuahang ">
+                                    <svg enable-background="new 0 0 15 15" fill="#000000" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 368.553 368.553" xml:space="preserve">
+<g>
+<g>
+<path d="M184.277,0c-71.683,0-130,58.317-130,130c0,87.26,119.188,229.855,124.263,235.883c1.417,1.685,3.504,2.66,5.705,2.67
+			c0.011,0,0.021,0,0.032,0c2.189,0,4.271-0.957,5.696-2.621c5.075-5.926,124.304-146.165,124.304-235.932
+			C314.276,58.317,255.96,0,184.277,0z M184.322,349.251C160.385,319.48,69.277,201.453,69.277,130c0-63.411,51.589-115,115-115
+			s115,51.589,115,115C299.276,203.49,208.327,319.829,184.322,349.251z" />
+<path d="M184.277,72.293c-30.476,0-55.269,24.793-55.269,55.269s24.793,55.269,55.269,55.269s55.269-24.793,55.269-55.269
+			S214.753,72.293,184.277,72.293z M184.277,167.83c-22.204,0-40.269-18.064-40.269-40.269s18.064-40.269,40.269-40.269
+			s40.269,18.064,40.269,40.269S206.48,167.83,184.277,167.83z" />
+	</g>
+<g>
+	</g>
+<g>
+	</g>
+<g>
+	</g>
+<g>
+	</g>
+<g>
+	</g>
+<g>
+	</g>
+<g>
+	</g>
+<g>
+	</g>
+<g>
+	</g>
+<g>
+	</g>
+<g>
+	</g>
+<g>
+	</g>
+<g>
+	</g>
+<g>
+	</g>
+<g>
+	</g>
+</g>
+</svg> @(ViewBag.lang == "vi" ? "Bản đồ vị trí" : "Location Map : ")
+                                </span>
+                            </strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn_cuahang" onclick="tgTGLV()">
+                            <strong>
+                                <span class="tencuahang">
+                                    <svg enable-background="new 0 0 15 15" fill="#000000" width="800px" height="800px" viewBox="0 0 100.353 100.353" id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                 
+<g>
+
+<path d="M32.286,42.441h-9.762c-0.829,0-1.5,0.671-1.5,1.5v9.762c0,0.828,0.671,1.5,1.5,1.5h9.762c0.829,0,1.5-0.672,1.5-1.5   v-9.762C33.786,43.113,33.115,42.441,32.286,42.441z M30.786,52.203h-6.762v-6.762h6.762V52.203z" />
+
+<path d="M55.054,42.441h-9.762c-0.829,0-1.5,0.671-1.5,1.5v9.762c0,0.828,0.671,1.5,1.5,1.5h9.762c0.828,0,1.5-0.672,1.5-1.5   v-9.762C56.554,43.113,55.882,42.441,55.054,42.441z M53.554,52.203h-6.762v-6.762h6.762V52.203z" />
+
+<path d="M77.12,42.441h-9.762c-0.828,0-1.5,0.671-1.5,1.5v9.762c0,0.828,0.672,1.5,1.5,1.5h9.762c0.828,0,1.5-0.672,1.5-1.5v-9.762   C78.62,43.113,77.948,42.441,77.12,42.441z M75.62,52.203h-6.762v-6.762h6.762V52.203z" />
+
+<path d="M32.286,64.677h-9.762c-0.829,0-1.5,0.672-1.5,1.5v9.762c0,0.828,0.671,1.5,1.5,1.5h9.762c0.829,0,1.5-0.672,1.5-1.5   v-9.762C33.786,65.349,33.115,64.677,32.286,64.677z M30.786,74.439h-6.762v-6.762h6.762V74.439z" />
+
+<path d="M55.054,64.677h-9.762c-0.829,0-1.5,0.672-1.5,1.5v9.762c0,0.828,0.671,1.5,1.5,1.5h9.762c0.828,0,1.5-0.672,1.5-1.5   v-9.762C56.554,65.349,55.882,64.677,55.054,64.677z M53.554,74.439h-6.762v-6.762h6.762V74.439z" />
+
+<path d="M77.12,64.677h-9.762c-0.828,0-1.5,0.672-1.5,1.5v9.762c0,0.828,0.672,1.5,1.5,1.5h9.762c0.828,0,1.5-0.672,1.5-1.5v-9.762   C78.62,65.349,77.948,64.677,77.12,64.677z M75.62,74.439h-6.762v-6.762h6.762V74.439z" />
+
+<path d="M89,13.394h-9.907c-0.013,0-0.024,0.003-0.037,0.004V11.4c0-3.268-2.658-5.926-5.926-5.926s-5.926,2.659-5.926,5.926v1.994   H56.041V11.4c0-3.268-2.658-5.926-5.926-5.926s-5.926,2.659-5.926,5.926v1.994H33.025V11.4c0-3.268-2.658-5.926-5.926-5.926   s-5.926,2.659-5.926,5.926v1.995c-0.005,0-0.01-0.001-0.015-0.001h-9.905c-0.829,0-1.5,0.671-1.5,1.5V92.64   c0,0.828,0.671,1.5,1.5,1.5H89c0.828,0,1.5-0.672,1.5-1.5V14.894C90.5,14.065,89.828,13.394,89,13.394z M70.204,11.4   c0-1.614,1.312-2.926,2.926-2.926s2.926,1.312,2.926,2.926v8.277c0,1.613-1.312,2.926-2.926,2.926s-2.926-1.312-2.926-2.926V11.4z    M50.115,8.474c1.613,0,2.926,1.312,2.926,2.926v8.277c0,1.613-1.312,2.926-2.926,2.926c-1.614,0-2.926-1.312-2.926-2.926v-4.643   c0.004-0.047,0.014-0.092,0.014-0.141s-0.01-0.094-0.014-0.141V11.4C47.189,9.786,48.501,8.474,50.115,8.474z M24.173,11.4   c0-1.614,1.312-2.926,2.926-2.926c1.613,0,2.926,1.312,2.926,2.926v8.277c0,1.613-1.312,2.926-2.926,2.926   c-1.614,0-2.926-1.312-2.926-2.926V11.4z M87.5,91.14H12.753V16.394h8.405c0.005,0,0.01-0.001,0.015-0.001v3.285   c0,3.268,2.659,5.926,5.926,5.926s5.926-2.658,5.926-5.926v-3.283h11.164v3.283c0,3.268,2.659,5.926,5.926,5.926   s5.926-2.658,5.926-5.926v-3.283h11.163v3.283c0,3.268,2.658,5.926,5.926,5.926s5.926-2.658,5.926-5.926V16.39   c0.013,0,0.024,0.004,0.037,0.004H87.5V91.14z" />
+
+</g>
+
+</svg>  @(ViewBag.lang == "vi"? "Thời gian làm việc" : "Store time")
+                                </span>
+                            </strong>
+                        </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a class="btn_cuahang" href="tel: @ViewBag.tb_WareHouse.Phone">
+                            <strong>
+                                <span class="tencuahang">
+                                    <svg enable-background="new 0 0 15 15" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_15_529)">
+                                            <rect width="24" height="24" fill="white" />
+                                            <path d="M2.01394 6.87134C1.34749 10.0618 3.85967 13.8597 7.01471 17.0147C10.1698 20.1698 13.9676 22.682 17.1581 22.0155C19.782 21.4674 21.1215 20.0697 21.8754 18.8788C22.1355 18.4678 22.0042 17.9344 21.6143 17.6436L17.9224 14.8897C17.5243 14.5928 16.9685 14.633 16.6174 14.9842L14.6577 16.9438C14.6577 16.9438 12.7529 16.3246 10.2288 13.8006C7.70482 11.2766 7.08564 9.37175 7.08564 9.37175L9.04529 7.4121C9.39648 7.06091 9.43671 6.5052 9.13975 6.10709L6.38585 2.4151C6.09505 2.02525 5.56163 1.89395 5.15068 2.15407C3.9597 2.90794 2.56203 4.24747 2.01394 6.87134Z" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_15_529">
+                                                <rect width="24" height="24" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg> @(ViewBag.lang == "vi" ? "Điện thoại : " : "Phone : ")
+                                </span>
+                            </strong>
+                            <strong>
+                                <span>
+                                    @ViewBag.tb_WareHouse.Phone
+                                </span>
+                            </strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn_cuahang" href="mailto:@ViewBag.tb_WareHouse.Email" ">
+                            <strong>
+                                <span class="tencuahang">
+                                    <svg enable-background="new 0 0 15 15" width="800px" height="800px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000000"><rect x="8" y="12" width="48" height="40" /><polyline points="56 20 32 36 8 20" /></svg> @(ViewBag.lang == "vi" ? "Email : " : "Email : ")
+                                </span>
+                            </strong>
+                            <strong>
+                                <span>
+                                    @ViewBag.tb_WareHouse.Email
+                                </span>
+                            </strong>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix">
+
+            </div>
+            <div id="storelistproduct">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="store_menuleft_Categorybox">
+                    <div class="store_menuleft_Categorytitle">
+                        <svg width="800px" height="800px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 1H1V3H3V1Z" fill="#000000" />
+                            <path d="M3 5H1V7H3V5Z" fill="#000000" />
+                            <path d="M1 9H3V11H1V9Z" fill="#000000" />
+                            <path d="M3 13H1V15H3V13Z" fill="#000000" />
+                            <path d="M15 1H5V3H15V1Z" fill="#000000" />
+                            <path d="M15 5H5V7H15V5Z" fill="#000000" />
+                            <path d="M5 9H15V11H5V9Z" fill="#000000" />
+                            <path d="M15 13H5V15H15V13Z" fill="#000000" />
+                        </svg>  @(ViewBag.lang == "vi" ? "Danh mục" : "Catergory")
+                    </div>
+                    <ul>
+                        @if (ViewBag.Listcate != null)
+                        {
+                            <li>
+                                <a href="/wasehouse/index?whid=@ViewBag.tb_WareHouse.whId">@(ViewBag.lang == "vi" ? "Tất cả" : "All")</a>
+                            </li>
+                            foreach (HirentWeb2022.Models.tb_CategoryMain it in ViewBag.Listcate)
+                            {
+
+                                <li>
+                                    <a href="/wasehouse/index?whid=@ViewBag.tb_WareHouse.whId&cateid&MainCateID=@it.MainCateID">
+                                        @it.MainCateName
+                                    </a>
+                                </li>
+                            }
+
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10">
+                @if (Model != null)
+                {
+                    foreach (var item in (IEnumerable<ProductVM>)Model)
+                    {
+
+                        if (ViewBag.lang == "vi")
+                        {
+                            <div class="col-md-15">
+                                <div class="index_productlistbox">
+                                    <div class="product-btns">
+                                        <span class="product-statuspercentage">Mới&nbsp;@item.tb_Product.StatusPercentage %</span>
+                                    </div>
+                                    <div class="index_productlistimage">
+                                        <a href="/ProductDetail?productID=@item.tb_Product.ProductID">
+                                            <img src="@item.tb_Product.ProductAvatar" class="img-responsive" />
+                                        </a>
+                                    </div>
+                                    <div class="index_productlistcontent">
+                                        <div class="index_productlistcontent_title">
+                                            <a href="/ProductDetail?productID=@item.tb_Product.ProductID">
+                                                @item.tb_Product.ProductName
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="index_productpriceblock">
+                                        @{
+                                            <span>@item.tb_Product.PricePerBlock</span>
+                                        }
+                                    </div>
+                                    <div class="index_productpriceday">
+                                        @{
+                                            <span>@item.tb_Product.PricePerDay</span>
+                                        }
+                                    </div>
+                                    <div class="index_map">
+                                        <i class="fas fa-map-marker"></i> <span>@item.tb_WareHouse.WarehouseName</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        }
+                        else
+                        {
+                            <div class="col-md-15">
+                                <div class="index_productlistbox">
+                                    <div class="product-btns">
+                                        <span class="product-statuspercentage">New&nbsp;@item.tb_Product.StatusPercentage %</span>
+                                    </div>
+                                    <div class="index_productlistimage">
+                                        <a href="/ProductDetail?productID=@item.tb_Product.ProductID">
+                                            <img src="@item.tb_Product.ProductAvatar" class="img-responsive" />
+                                        </a>
+                                    </div>
+                                    <div class="index_productlistcontent">
+                                        <div class="index_productlistcontent_title">
+                                            <a href="/ProductDetail?productID=@item.tb_Product.ProductID">
+                                                @item.tb_Product_Translation.ProductName_EN
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="index_productpriceblock">
+                                        @{
+                                            <span>@item.tb_Product_Translation.PricePerBlock_EN</span>
+                                        }
+                                    </div>
+                                    <div class="index_productpriceday">
+                                        @{
+                                            <span>@item.tb_Product_Translation.PricePerDay_EN</span>
+                                        }
+                                    </div>
+                                    <div class="index_map">
+                                        <i class="fas fa-map-marker"></i> <span>@item.tb_WareHouse.WarehouseName</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="map2">
+    <iframe src="@ViewBag.tb_WareHouse.LocationMap"
+            width="600"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"></iframe>
+</div>
+@Html.Action("WasehouseTime", "Productdetail", new { whId = ViewBag.tb_WareHouse.whId })
+<script>
+    function tgTGLV() {
+        $("#mdTGLV").modal("toggle");
+    }
+    function togleMap() {
+        $('html, body').animate({
+            scrollTop: $("#map2").offset().top
+        }, 1000); // Thời gian cuộn (1000 ms = 1 giây)
+    }
+</script>

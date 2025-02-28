@@ -174,7 +174,7 @@
                             </div>
                             <div class="cuahang_box">
                                 <div class="cuahang_box_left">
-                                    <a onclick="toogle_cuahang()" style="cursor:pointer" class="btn_cuahang">
+                                    <a href="/wasehouse/index?whid=@ViewBag.tb_WareHouse.whId"  class="btn_cuahang">
                                         <strong class="wasehouse_info_title" id="ctl00_MainContent_cuahang">@(ViewBag.lang == "vi" ? "Cửa hàng :" : "Store :")</strong><span id="ctl00_MainContent_idWarehouse" class="tencuahang">@ViewBag.tb_WareHouse.WarehouseName.</span>
                                     </a>
                                 </div>
@@ -189,14 +189,14 @@
 
                                 </div>
                                 <div class="cuahang_box_left">
-                                    <a style="cursor:pointer" class="btn_cuahang">
-                                        <strong class="wasehouse_info_title">@(ViewBag.lang == "vi" ? "Khu vực nhận hàng :" : "Delivery Area :")</strong><span class="wasehouse_info_title">@ViewBag.tb_WareHouse.WarehouseAddress</span>
+                                    <a class="btn_cuahang">
+                                        <strong class="wasehouse_info_title">@(ViewBag.lang == "vi" ? "Khu vực nhận hàng : " : "Delivery Area : ")</strong><span class="wasehouse_info_title">@ViewBag.tb_WareHouse.WarehouseAddress</span>
                                     </a>
                                 </div>
                                 <div class="cuahang_box_right">
                                     <a class="btn_cuahang" onclick="togleMap()">
                                         <strong>
-                                            <span class="tencuahang "><i style="margin-right:4px" class="fa fa-map-marker"></i>  @(ViewBag.lang == "vi" ? "Bản đồ vị trí" : "Location Map")</span>
+                                            <span class="tencuahang "><i style="margin-right:4px" class="fa fa-map-marker"></i>  @(ViewBag.lang == "vi" ? "Bản đồ vị trí" : "Location Map : ")</span>
                                         </strong>
                                     </a>
                                 </div>
@@ -204,14 +204,31 @@
 
                                 </div>
                                 <div class="cuahang_box_left">
-                                    <a style="cursor:pointer" class="btn_cuahang">
-                                        <strong class="wasehouse_info_title">@(ViewBag.lang == "vi" ? "Làm việc các thứ :" : "Working Days :")</strong>
+                                    <a  class="btn_cuahang">
+                                        <strong class="wasehouse_info_title">@(ViewBag.lang == "vi" ? "Làm việc các thứ : " : "Working Days :")</strong>
                                         <span class="" style="color:black">
                                             @if (ViewBag.ListTime != null)
                                             {
                                                 foreach (HirentWeb2022.Models.tb_WareHouse_Time it in ViewBag.ListTime)
                                                 {
-                                                    <span class="wasehouse_info_title">@it.FromDayOfWeek</span>
+                                                    var getsplit = it.FromDayOfWeek.ToString().Split(',');
+                                                    foreach (var it2 in getsplit)
+                                                    {
+                                                        if (!string.IsNullOrEmpty(it2))
+                                                        {
+                                                            if (it2 == "8")
+                                                            {
+                                                                <span class="wasehouse_info_title">@(ViewBag.lang == "vi" ? "Chủ nhật" : "Sunday")</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="wasehouse_info_title">@(it2+",")</span>
+                                                            }
+                                                        }
+
+
+                                                    }
+
                                                 }
                                             }
                                         </span>
@@ -2032,7 +2049,13 @@ else
 </head>
 <body>
     <div id="map2">
-        @Html.Raw(ViewBag.tb_WareHouse.LocationMap)
+        @*@Html.Raw(ViewBag.tb_WareHouse.LocationMap)*@
+        <iframe src="@ViewBag.tb_WareHouse.LocationMap"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"></iframe>
     </div>
     <div id="maps">
 
@@ -2165,14 +2188,14 @@ else
                              <li>
                                  <a class="btn_cuahang" href="/image_Waswhouse/1. Chinh sach chung cua PACISOFT.pdf" target="_blank">
                                      <strong>
-                                         <span class="tencuahang"><i style="margin-right:4px" class="fa fa-book"></i>  Chính sách cửa hàng</span>
+                                         <span class="tencuahang"><i style="margin-right:4px" class="fa fa-book"></i>  @(ViewBag.lang == "vi" ? "Chính sách cửa hàng" : "Store Policy")</span>
                                      </strong>
                                  </a>
                              </li>
                              <li>
                                  <a class="btn_cuahang" onclick="togleMap()">
                                      <strong>
-                                         <span class="tencuahang "><i style="margin-right:4px" class="fa fa-map-marker"></i>  Bản đồ vị trí</span>
+                                         <span class="tencuahang "><i style="margin-right:4px" class="fa fa-map-marker"></i>  @(ViewBag.lang == "vi" ? "Bản đồ vị trí" : "Location Map : ")</span>
                                      </strong>
                                  </a>
                              </li>

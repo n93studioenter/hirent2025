@@ -145,6 +145,7 @@
     <Compile Include="Controllers\PartialController.cs" />
     <Compile Include="Controllers\ProductdetailController.cs" />
     <Compile Include="Controllers\ProductListController.cs" />
+    <Compile Include="Controllers\WasehouseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -363,6 +364,7 @@
     <Compile Include="ViewModel\Sub1Info.cs" />
     <Compile Include="ViewModel\Sub2Info.cs" />
     <Compile Include="ViewModel\VM_Chatbot.cs" />
+    <Compile Include="ViewModel\VM_ProductWasehouse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Images\ai_helper.png" />
@@ -5150,6 +5152,7 @@
     <Content Include="Views\Partial\ChangeProvinces.cshtml" />
     <Content Include="Views\Partial\ChangeeDistricts.cshtml" />
     <Content Include="Tools\UploadSlideShow.ashx" />
+    <Content Include="Views\Wasehouse\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

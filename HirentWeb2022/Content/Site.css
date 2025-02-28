@@ -3712,10 +3712,8 @@ input#MainContent_iddrpk, input#iddrpk2 {
     color: #214f39;
     font-size: 14px;
     text-align: center;
-    padding: 5px 20px;
     margin-left: 10px;
     border-radius: 10px 10px 0px 10px;
-    cursor: pointer;
 }
 
 .khuvucnhanhang {
@@ -5016,6 +5014,12 @@ div#exampleModal6 {
 .btn_cuahang {
 }
 
+    .btn_cuahang svg {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+    }
+
 div#exampleModal7 {
     z-index: 99999999;
 }
@@ -6048,6 +6052,7 @@ section#slide {
 .cuahang_box_left {
     float: left;
     width: 50%;
+    margin-bottom: 5px;
 }
 
 .cuahang_box_right {
@@ -6098,8 +6103,76 @@ section#slide {
 
 .storemodal_right_right {
     float: right;
-    width: 30%;
+    width: 50%;
 }
+
+.storemodal_right_left2 {
+    float: left;
+    width: 35%;
+    height: 120px;
+    position: relative;
+    border-radius: 5px;
+}
+
+    .storemodal_right_left2 img {
+        width: 100%;
+        object-fit: cover;
+        height: 100% !important;
+        border-radius: 5px;
+    }
+
+.storeName {
+    position: absolute;
+    left: 33%;
+    top: 30%;
+    color: white;
+    z-index: 999;
+    z 'FONT-VARIANT: JIS90';
+    z 'FONT-VARIANT: JIS90';
+    z 'FONT-VARIANT: JIS90';
+    z 'FONT-VARIANT: JIS90';
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+.storelogo {
+    position: absolute;
+    left: 7%;
+    top: 16%;
+    width: 69px;
+    z-index: 999999;
+}
+
+    .storelogo img {
+        border-radius: 50%;
+    }
+
+.storebackwhite {
+    width: 100%;
+    height: 100%;
+    background-color: #00000069;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 99;
+    border-radius: 5px;
+}
+
+.storemodal_right_right2 {
+    float: right;
+    width: 65%;
+    display: flex;
+}
+
+    .storemodal_right_right2 ul {
+        display: inline-block;
+        width: 41%;
+        padding: 0px 10px;
+    }
+
+    .storemodal_right_right2 li {
+        margin: 5px 0px;
+    }
 
 .stormodal_left ul {
     margin: 0px;
@@ -6289,4 +6362,43 @@ div#addmorepd {
 .priceGreen {
     color: #214F39;
     float: right;
+}
+
+.store_menuleft_Categorytitle {
+    margin-bottom: 10px;
+}
+
+    .store_menuleft_Categorytitle svg {
+        width: 18px;
+        height: 15px;
+        margin-right: 5px;
+    }
+
+.store_menuleft_Categorybox {
+    box-shadow: -1px 4px 10px -6px rgb(2 2 2 / 0.54);
+    background-color: white;
+    padding: 10px 10px;
+}
+
+    .store_menuleft_Categorybox ul {
+        margin: 0px;
+        padding: 0px;
+    }
+
+        .store_menuleft_Categorybox ul li {
+            display: block;
+            border-top: 1px solid #eee;
+            padding: 10px 0px;
+        }
+
+            .store_menuleft_Categorybox ul li a {
+                color: black;
+                font-weight: 200;
+                text-transform: capitalize;
+                display: block;
+            }
+
+.storemodal_box {
+    background-color: white;
+    margin-bottom: 20px;
 }

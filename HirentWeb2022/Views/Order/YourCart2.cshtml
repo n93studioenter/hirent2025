@@ -352,7 +352,7 @@
                                         </td>
                                         <td class="text-right">
                                             @{
-                                                var value = item.tb_Pre_Order_Details.TotalDelivery.Value + item.tb_Pre_Order_Details.TotalInstall.Value;
+                                                var value = item.tb_Pre_Order_Details.TotalDelivery.HasValue? (item.tb_Pre_Order_Details.TotalDelivery.Value + item.tb_Pre_Order_Details.TotalInstall.Value):0;
 
                                             }
                                             <span class="priceRed">@value.ToString("#,##0")</span>
