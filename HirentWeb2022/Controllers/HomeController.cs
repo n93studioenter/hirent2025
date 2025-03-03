@@ -1,4 +1,5 @@
-﻿using HirentWeb2022.Models;
+﻿using DocumentFormat.OpenXml.Office.CustomUI;
+using HirentWeb2022.Models;
 using HirentWeb2022.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,33 @@ namespace HirentWeb2022.Controllers
     public class HomeController : Controller
     {
         public static List<ProductVM> Products { get; set; }
+        public void DeleteOrder()
+        {
+            HirentEntities db = new HirentEntities();
+            int customerId = 49;
+            var lstOrder = db.tb_Pre_Order.Where(m => m.customerId == customerId).ToList();
+            foreach(var item in lstOrder)
+            {
+                var getOrderDetail = db.tb_Pre_Order_Details.Where(m => m.pOrderId == item.pOrderId).FirstOrDefault();
+                if (getOrderDetail!=null)
+                {
+                    db.tb_Pre_Order_Details.Remove(getOrderDetail);
+                }
+            }
+            foreach (var item in lstOrder)
+            {
+                var getOrderaccompanying = db.tb_Pre_Order_accompanying.Where(m => m.pOrderId == item.pOrderId).FirstOrDefault();
+                if (getOrderaccompanying != null)
+                {
+                    db.tb_Pre_Order_accompanying.Remove(getOrderaccompanying);
+                }
+            }
+            foreach (var item in lstOrder)
+            {
+                db.tb_Pre_Order.Remove(item);
+            }
+            db.SaveChanges();
+        }
         public void LevenshteinDistance()
         {
             string question = "mèo";

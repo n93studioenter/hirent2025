@@ -181,7 +181,9 @@
                                 <div class="cuahang_box_right">
                                     <a class="btn_cuahang" href="@ViewBag.tb_WareHouse.ChinhSach" target="_blank">
                                         <strong>
-                                            <span class="tencuahang"><i style="margin-right:4px" class="fa fa-book"></i>  @(ViewBag.lang == "vi" ? "Chính sách cửa hàng" : "Store Policy")</span>
+                                            <span class="tencuahang"><svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 19V6.2C4 5.0799 4 4.51984 4.21799 4.09202C4.40973 3.71569 4.71569 3.40973 5.09202 3.21799C5.51984 3 6.0799 3 7.2 3H16.8C17.9201 3 18.4802 3 18.908 3.21799C19.2843 3.40973 19.5903 3.71569 19.782 4.09202C20 4.51984 20 5.0799 20 6.2V17H6C4.89543 17 4 17.8954 4 19ZM4 19C4 20.1046 4.89543 21 6 21H20M9 7H15M9 11H15M19 17V21" stroke="#214f39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</svg>  @(ViewBag.lang == "vi" ? "Chính sách cửa hàng" : "Store Policy")</span>
                                         </strong>
                                     </a>
                                 </div>
@@ -194,9 +196,17 @@
                                     </a>
                                 </div>
                                 <div class="cuahang_box_right">
-                                    <a class="btn_cuahang" onclick="togleMap()">
+                                    <a style="cursor:pointer" class="btn_cuahang" onclick="togleMap()">
                                         <strong>
-                                            <span class="tencuahang "><i style="margin-right:4px" class="fa fa-map-marker"></i>  @(ViewBag.lang == "vi" ? "Bản đồ vị trí" : "Location Map : ")</span>
+                                            <span class="tencuahang ">
+                                                <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0036 14.0035C14.4889 14.0035 16.5036 11.9887 16.5036 9.50347C16.5036 7.01819 14.4889 5.00347 12.0036 5.00347C9.51831 5.00347 7.50359 7.01819 7.50359 9.50347C7.50359 11.9887 9.51831 14.0035 12.0036 14.0035ZM12.0036 12.0071C10.6209 12.0071 9.5 10.8862 9.5 9.50347C9.5 8.12077 10.6209 6.99988 12.0036 6.99988C13.3863 6.99988 14.5072 8.12077 14.5072 9.50347C14.5072 10.8862 13.3863 12.0071 12.0036 12.0071Z" fill="#214f39" />
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M21.272 11.5818C22.5649 5.78816 18.0052 0.00354004 12 0.00354004C5.99649 0.00354004 1.43639 5.7961 2.72816 11.5825C3.72523 16.2821 7.7572 20.8465 10.1636 23.2269C11.1942 24.2463 12.8058 24.2463 13.8364 23.2269C16.2429 20.8464 20.2752 16.2816 21.272 11.5818ZM12 2.00354C16.7124 2.00354 20.3368 6.58981 19.32 11.1462C18.8316 13.3355 17.7359 15.3015 16.4501 17.119C15.1064 19.0184 13.5829 20.6644 12.4299 21.805C12.1786 22.0536 11.8214 22.0536 11.5701 21.805C10.4171 20.6645 8.89379 19.0186 7.55009 17.1193C6.26419 15.3017 5.16886 13.3361 4.68011 11.1467C3.66438 6.59682 7.29012 2.00354 12 2.00354Z" fill="#214f39" />
+                                                </svg>
+                                                <span>
+                                                    @(ViewBag.lang == "vi" ? "Bản đồ vị trí" : "Location Map : ")
+                                                </span>
+                                            </span>
                                         </strong>
                                     </a>
                                 </div>
@@ -237,7 +247,18 @@
                                 <div class="cuahang_box_right">
                                     <a class="btn_cuahang" onclick="tgTGLV()">
                                         <strong>
-                                            <span class="tencuahang"><i style="margin-right:4px" class="fa fa-calendar"></i>  @(ViewBag.lang == "vi" ? "Thời gian làm việc" : "Working Time")</span>
+                                            <span class="tencuahang" style="cursor:pointer">
+                                                <svg width="800px" height="800px" viewBox="-1 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                                                    <title>calendar</title>
+                                                    <desc>Created with Sketch Beta.</desc>
+                                                    <defs></defs>
+                                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                                                        <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-309.000000, -359.000000)" fill="#214f39">
+                                                            <path d="M323,383 L325,383 L325,385 L323,385 L323,383 Z M323,387 L325,387 C326.104,387 327,386.104 327,385 L327,383 C327,381.896 326.104,381 325,381 L323,381 C321.896,381 321,381.896 321,383 L321,385 C321,386.104 321.896,387 323,387 L323,387 Z M315,383 L317,383 L317,385 L315,385 L315,383 Z M315,387 L317,387 C318.104,387 319,386.104 319,385 L319,383 C319,381.896 318.104,381 317,381 L315,381 C313.896,381 313,381.896 313,383 L313,385 C313,386.104 313.896,387 315,387 L315,387 Z M323,375 L325,375 L325,377 L323,377 L323,375 Z M323,379 L325,379 C326.104,379 327,378.104 327,377 L327,375 C327,373.896 326.104,373 325,373 L323,373 C321.896,373 321,373.896 321,375 L321,377 C321,378.104 321.896,379 323,379 L323,379 Z M315,375 L317,375 L317,377 L315,377 L315,375 Z M315,379 L317,379 C318.104,379 319,378.104 319,377 L319,375 C319,373.896 318.104,373 317,373 L315,373 C313.896,373 313,373.896 313,375 L313,377 C313,378.104 313.896,379 315,379 L315,379 Z M337,367 L311,367 L311,365 C311,363.896 311.896,363 313,363 L317,363 L317,364 C317,364.553 317.447,365 318,365 C318.553,365 319,364.553 319,364 L319,363 L329,363 L329,364 C329,364.553 329.447,365 330,365 C330.553,365 331,364.553 331,364 L331,363 L335,363 C336.104,363 337,363.896 337,365 L337,367 L337,367 Z M337,387 C337,388.104 336.104,389 335,389 L313,389 C311.896,389 311,388.104 311,387 L311,369 L337,369 L337,387 L337,387 Z M335,361 L331,361 L331,360 C331,359.448 330.553,359 330,359 C329.447,359 329,359.448 329,360 L329,361 L319,361 L319,360 C319,359.448 318.553,359 318,359 C317.447,359 317,359.448 317,360 L317,361 L313,361 C310.791,361 309,362.791 309,365 L309,387 C309,389.209 310.791,391 313,391 L335,391 C337.209,391 339,389.209 339,387 L339,365 C339,362.791 337.209,361 335,361 L335,361 Z M331,375 L333,375 L333,377 L331,377 L331,375 Z M331,379 L333,379 C334.104,379 335,378.104 335,377 L335,375 C335,373.896 334.104,373 333,373 L331,373 C329.896,373 329,373.896 329,375 L329,377 C329,378.104 329.896,379 331,379 L331,379 Z M331,383 L333,383 L333,385 L331,385 L331,383 Z M331,387 L333,387 C334.104,387 335,386.104 335,385 L335,383 C335,381.896 334.104,381 333,381 L331,381 C329.896,381 329,381.896 329,383 L329,385 C329,386.104 329.896,387 331,387 L331,387 Z" id="calendar" sketch:type="MSShapeGroup"></path>
+                                                        </g>
+                                                    </g>
+                                                </svg>  @(ViewBag.lang == "vi" ? "Thời gian làm việc" : "Working Time")
+                                            </span>
                                         </strong>
                                     </a>
                                 </div>
@@ -2180,34 +2201,70 @@ else
                           @if (ViewBag.tb_WareHouse != null)
                           {
                               HirentWeb2022.Models.tb_WareHouse tb_WareHouse = (HirentWeb2022.Models.tb_WareHouse)ViewBag.tb_WareHouse;
-                              <img src="@tb_WareHouse.BannerImage" class="img-responsive" />
+                              <img src="@tb_WareHouse.BannerImage" class="img-responsive" style="height:100px;" />
+                              <div class="storebackwhite">
+
+                              </div>
+                              <div class="storelogo">
+                                  <img src="@tb_WareHouse.Images" class="img-responsive"  />
+                              </div>
+                              <div class="storeName">
+                                  @tb_WareHouse.WarehouseName
+                              </div>
                           }
                       </div>
-                     <div class="storemodal_right_right">
-                         <ul>
-                             <li>
-                                 <a class="btn_cuahang" href="/image_Waswhouse/1. Chinh sach chung cua PACISOFT.pdf" target="_blank">
-                                     <strong>
-                                         <span class="tencuahang"><i style="margin-right:4px" class="fa fa-book"></i>  @(ViewBag.lang == "vi" ? "Chính sách cửa hàng" : "Store Policy")</span>
-                                     </strong>
-                                 </a>
-                             </li>
-                             <li>
-                                 <a class="btn_cuahang" onclick="togleMap()">
-                                     <strong>
-                                         <span class="tencuahang "><i style="margin-right:4px" class="fa fa-map-marker"></i>  @(ViewBag.lang == "vi" ? "Bản đồ vị trí" : "Location Map : ")</span>
-                                     </strong>
-                                 </a>
-                             </li>
-                             <li>
-                                 <a class="btn_cuahang" onclick="tgTGLV()">
-                                     <strong>
-                                         <span class="tencuahang"><i style="margin-right:4px" class="fa fa-calendar"></i>  @(ViewBag.lang == "vi"? "Thời gian làm việc" : "Store time")</span>
-                                     </strong>
-                                 </a>
-                             </li>
-                         </ul>
-                     </div>
+                      <div class="storemodal_right_right hidden">
+                          <ul>
+                             
+                              <li>
+                                  <a class="btn_cuahang" href="/image_Waswhouse/1. Chinh sach chung cua PACISOFT.pdf" target="_blank">
+                                      <strong>
+                                          <span class="tencuahang">
+                                              <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                  <path d="M4 19V6.2C4 5.0799 4 4.51984 4.21799 4.09202C4.40973 3.71569 4.71569 3.40973 5.09202 3.21799C5.51984 3 6.0799 3 7.2 3H16.8C17.9201 3 18.4802 3 18.908 3.21799C19.2843 3.40973 19.5903 3.71569 19.782 4.09202C20 4.51984 20 5.0799 20 6.2V17H6C4.89543 17 4 17.8954 4 19ZM4 19C4 20.1046 4.89543 21 6 21H20M9 7H15M9 11H15M19 17V21" stroke="#214f39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                              </svg>@(ViewBag.lang == "vi" ? "Chính sách cửa hàng" : "Store Policy")
+                                          </span>
+                                      </strong>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a class="btn_cuahang" onclick="togleMap()">
+                                      <strong>
+                                          <span class="tencuahang ">
+                                              <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0036 14.0035C14.4889 14.0035 16.5036 11.9887 16.5036 9.50347C16.5036 7.01819 14.4889 5.00347 12.0036 5.00347C9.51831 5.00347 7.50359 7.01819 7.50359 9.50347C7.50359 11.9887 9.51831 14.0035 12.0036 14.0035ZM12.0036 12.0071C10.6209 12.0071 9.5 10.8862 9.5 9.50347C9.5 8.12077 10.6209 6.99988 12.0036 6.99988C13.3863 6.99988 14.5072 8.12077 14.5072 9.50347C14.5072 10.8862 13.3863 12.0071 12.0036 12.0071Z" fill="#214f39" />
+                                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M21.272 11.5818C22.5649 5.78816 18.0052 0.00354004 12 0.00354004C5.99649 0.00354004 1.43639 5.7961 2.72816 11.5825C3.72523 16.2821 7.7572 20.8465 10.1636 23.2269C11.1942 24.2463 12.8058 24.2463 13.8364 23.2269C16.2429 20.8464 20.2752 16.2816 21.272 11.5818ZM12 2.00354C16.7124 2.00354 20.3368 6.58981 19.32 11.1462C18.8316 13.3355 17.7359 15.3015 16.4501 17.119C15.1064 19.0184 13.5829 20.6644 12.4299 21.805C12.1786 22.0536 11.8214 22.0536 11.5701 21.805C10.4171 20.6645 8.89379 19.0186 7.55009 17.1193C6.26419 15.3017 5.16886 13.3361 4.68011 11.1467C3.66438 6.59682 7.29012 2.00354 12 2.00354Z" fill="#214f39" />
+                                              </svg>
+                                              <span>
+                                                  @(ViewBag.lang == "vi" ? "Bản đồ vị trí" : "Location Map : ")
+                                              </span>
+                                          </span>
+                                      </strong>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a class="btn_cuahang" onclick="tgTGLV()">
+                                      <strong>
+                                          <span class="tencuahang">
+                                              <svg width="800px" height="800px" viewBox="-1 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                                                  <title>calendar</title>
+                                                  <desc>Created with Sketch Beta.</desc>
+                                                  <defs></defs>
+                                                  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                                                      <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-309.000000, -359.000000)" fill="#214f39">
+                                                          <path d="M323,383 L325,383 L325,385 L323,385 L323,383 Z M323,387 L325,387 C326.104,387 327,386.104 327,385 L327,383 C327,381.896 326.104,381 325,381 L323,381 C321.896,381 321,381.896 321,383 L321,385 C321,386.104 321.896,387 323,387 L323,387 Z M315,383 L317,383 L317,385 L315,385 L315,383 Z M315,387 L317,387 C318.104,387 319,386.104 319,385 L319,383 C319,381.896 318.104,381 317,381 L315,381 C313.896,381 313,381.896 313,383 L313,385 C313,386.104 313.896,387 315,387 L315,387 Z M323,375 L325,375 L325,377 L323,377 L323,375 Z M323,379 L325,379 C326.104,379 327,378.104 327,377 L327,375 C327,373.896 326.104,373 325,373 L323,373 C321.896,373 321,373.896 321,375 L321,377 C321,378.104 321.896,379 323,379 L323,379 Z M315,375 L317,375 L317,377 L315,377 L315,375 Z M315,379 L317,379 C318.104,379 319,378.104 319,377 L319,375 C319,373.896 318.104,373 317,373 L315,373 C313.896,373 313,373.896 313,375 L313,377 C313,378.104 313.896,379 315,379 L315,379 Z M337,367 L311,367 L311,365 C311,363.896 311.896,363 313,363 L317,363 L317,364 C317,364.553 317.447,365 318,365 C318.553,365 319,364.553 319,364 L319,363 L329,363 L329,364 C329,364.553 329.447,365 330,365 C330.553,365 331,364.553 331,364 L331,363 L335,363 C336.104,363 337,363.896 337,365 L337,367 L337,367 Z M337,387 C337,388.104 336.104,389 335,389 L313,389 C311.896,389 311,388.104 311,387 L311,369 L337,369 L337,387 L337,387 Z M335,361 L331,361 L331,360 C331,359.448 330.553,359 330,359 C329.447,359 329,359.448 329,360 L329,361 L319,361 L319,360 C319,359.448 318.553,359 318,359 C317.447,359 317,359.448 317,360 L317,361 L313,361 C310.791,361 309,362.791 309,365 L309,387 C309,389.209 310.791,391 313,391 L335,391 C337.209,391 339,389.209 339,387 L339,365 C339,362.791 337.209,361 335,361 L335,361 Z M331,375 L333,375 L333,377 L331,377 L331,375 Z M331,379 L333,379 C334.104,379 335,378.104 335,377 L335,375 C335,373.896 334.104,373 333,373 L331,373 C329.896,373 329,373.896 329,375 L329,377 C329,378.104 329.896,379 331,379 L331,379 Z M331,383 L333,383 L333,385 L331,385 L331,383 Z M331,387 L333,387 C334.104,387 335,386.104 335,385 L335,383 C335,381.896 334.104,381 333,381 L331,381 C329.896,381 329,381.896 329,383 L329,385 C329,386.104 329.896,387 331,387 L331,387 Z" id="calendar" sketch:type="MSShapeGroup"></path>
+                                                      </g>
+                                                  </g>
+                                              </svg> 
+                                              <span>
+                                                  @(ViewBag.lang == "vi"? "Thời gian làm việc" : "Store time")
+                                              </span>
+                                          </span>
+                                      </strong>
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
                       <div class="clearfix">
 
                       </div>

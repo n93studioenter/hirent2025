@@ -6,6 +6,46 @@
     }
 
 @media only screen and (max-width: 640px) {
+    .ordermobile_box {
+        background-color: white;
+        margin-bottom: 20px;
+        padding: 10px 10px;
+        margin-top: 10px;
+        border-radius: 10px;
+    }
+
+    .ordermobile_inerbox {
+        display: flex;
+        margin: 5px 0px;
+    }
+
+    .ordermobile_prodimg {
+        width: 50%;
+    }
+
+    .ordermobile_left {
+        width: 50%;
+    }
+
+    .ordermobile_right {
+        width: 50%;
+    }
+
+    .ordermobile_protitle {
+        width: 50%;
+    }
+
+    .ordermobile_prodimg img {
+    }
+
+    .versiondestop {
+        display: none;
+    }
+
+    .versiondmobile {
+        display: block;
+    }
+
     .col3 {
         float: right;
         width: auto;
@@ -183,7 +223,7 @@
     .stepbox li div {
         margin: 10px 0px;
         font-weight: bold;
-        font-size: 9px;
+        font-size: 6px;
     }
 
     .tendv {
@@ -308,5 +348,71 @@
 
     #breadcrumb {
         display: none;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    span#sanphamchinh {
+        margin-top: 16px;
+        display: block;
+    }
+
+    .wasehouse_info_title {
+        font-size: 12px;
+    }
+
+    .tencuahang {
+        font-size: 11px;
+    }
+
+    .btn_cuahang svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .stormodal_left {
+        display: none;
+    }
+
+    .storemodal_right {
+        float: right;
+        width: 100%;
+    }
+
+    #mdStore .modal-dialog {
+        width: 100% !important;
+    }
+
+    .md_productshop_left {
+        width: auto;
+    }
+
+    .md_productshop_right {
+        width: auto;
+    }
+
+    .md_productshop_title {
+        width: auto;
+        margin: 10px 0px;
+    }
+
+    .md_productshop_right {
+        padding: 0px;
+    }
+
+    .md_productshop_title2 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 7px;
+    }
+
+    .steptitle {
+        width: 65%;
+    }
+
+    .steptitle_right {
+        float: left;
+        width: 35%;
+        text-align: right;
     }
 }

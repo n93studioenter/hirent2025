@@ -63,6 +63,14 @@ a {
     color: #FFF239;
 }
 
+.versiondestop {
+    display: block;
+}
+
+.versiondmobile {
+    display: none;
+}
+
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
     input [type='checkbox'], input[type='radio'] {
         --active: #214F39;
@@ -3505,7 +3513,7 @@ select.hourselectleft, select.minuteselectleft, select.hourselecright, select.mi
 }
 
 .btn_xacnhan {
-    background-color: #009441;
+    background-color: #10271c;
     color: white;
     text-transform: capitalize;
     display: inline-block;
@@ -3514,7 +3522,6 @@ select.hourselectleft, select.minuteselectleft, select.hourselecright, select.mi
     margin-top: 0px;
     float: right;
     line-height: 30px;
-    border-radius: 5px;
     width: 15%;
     padding: 0px 20px;
     font-size: 15px;
@@ -5012,12 +5019,13 @@ div#exampleModal6 {
 }
 
 .btn_cuahang {
+    display: block;
 }
 
     .btn_cuahang svg {
         width: 20px;
         height: 20px;
-        margin-right: 5px;
+        margin-right: 6px;
     }
 
 div#exampleModal7 {
@@ -5398,6 +5406,7 @@ div#MainContent_vc22 {
     box-shadow: 1px 2px 4px 0px #636363;
     padding: 10px 10px;
     margin-bottom: 50px;
+    background-color: white;
 }
 
     .ordercontents th {
@@ -6058,6 +6067,9 @@ section#slide {
 .cuahang_box_right {
     float: left;
     width: 50%;
+    margin-bottom: 5px;
+    position: relative;
+    top: -6px;
 }
 
 .wasehouse_info_title {
@@ -6094,7 +6106,8 @@ section#slide {
 
 .storemodal_right_left {
     float: left;
-    width: 70%;
+    width: 100%;
+    position: relative;
 }
 
     .storemodal_right_left img {
@@ -6240,6 +6253,7 @@ section#slide {
     color: white;
     font-size: 12px;
     padding: 5px 5px;
+    cursor: pointer;
 }
 
 .md_productshop_title3 {

@@ -33,7 +33,7 @@
                     <div class="chonhinhthucvc">
                         <span id="ctl00_MainContent_chtvanchuyen">@(ViewBag.lang == "vi"? "Chọn hình thức vận chuyển, dịch vụ kèm theo" : "Select the shipping method, along with any additional services")</span>
                     </div>
-                    <div class="row">
+                    <div class="row hidden-xs">
                         <div class="col-sm-3 col-xs-4 text-left">
                             <div class="tendv">
                                 <span id="ctl00_MainContent_tendv">@(ViewBag.lang == "vi"? "Tên dịch vụ" : "Service name")</span>
@@ -298,7 +298,7 @@
                     </div>
 
                 </div>
-                <div class="">
+                <div class="col-md-12">
 
                     <div class="steptitle">
                         <span style="color:black" class="tongcong"><span id="ctl00_MainContent_tongcong"> </span> </span>
@@ -311,30 +311,39 @@
 
                 </div>
                 <hr />
-                <div class="steptitle" style="margin-top: 50px;">
-                    <span id="ctl00_MainContent_chonhinhthucdatcoc">3.  @(ViewBag.lang == "vi"? "Chọn hình thức đặt cọc" : "Choose a deposit method") :</span>
-                </div>
-                <div class="clearfix">
-
-                </div>
                 <div class="col-md-12">
-                    <div class="row myrow">
-                        <div class="col-sm-6">
+                    <div class="steptitle" style="margin-top: 50px;">
+                        <span id="ctl00_MainContent_chonhinhthucdatcoc">3.  @(ViewBag.lang == "vi"? "Chọn hình thức đặt cọc" : "Choose a deposit method") :</span>
+                    </div>
+                    <div class="clearfix">
+
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-xs-7 col-sm-7">
                             <div id="ctl00_MainContent_div1">
                                 <input id="cbtm" type="radio" name="radCoc" checked="checked" onchange="deposit1()">
                                 <span onclick="autoclickRad('cbtm')"><span id="ctl00_MainContent_cocbangtienmat"> @(ViewBag.lang == "vi"? "Cọc bằng tiền mặt" : "Cash deposit") </span></span>
                             </div>
 
                         </div>
-                        <div class="col-sm-2" style="text-align: right">
+                        <div class="col-sm-2 col-xs-5" style="text-align: left">
                             <div data-value="@ViewBag.Product.ProductValue" class="giatrisanpham giacoc">@ViewBag.Product.ProductValue.ToString("#,##0") đ</div>
                         </div>
+
+                    </div>
+                    <div class="row">
                         <div class="col-sm-12">
                             <div id="ctl00_MainContent_div2" style="margin-top: 10px; margin-bottom: 5px;">
                                 <input id="cbtmgt" type="radio" name="radCoc" onchange="deposit2()">
                                 <span style="cursor: pointer" onclick="autoclickRad('cbtmgt')"><span id="ctl00_MainContent_cocbangtienmatkethopgiayto">@(ViewBag.lang == "vi"? "Cọc bằng tiền mặt kết hợp giấy tờ" : "Cash deposit combined with documents")</span></span>
                             </div>
                         </div>
+
+                    </div>
+                    <div class="row">
                         <div class="col-sm-12" id="deposit2Content">
                             <div id="ctl00_MainContent_childDatcoc" style="margin-top: 10px;" class="">
                                 @if (ViewBag.deposit != null)
@@ -345,7 +354,7 @@
 
 
                                         <div class="row">
-                                            <div class="col-xs-6 datcocrow">
+                                            <div class="col-xs-6 col-sm-6 datcocrow">
                                                 @if (i == 0)
                                                 {
                                                     <input type="radio" checked id="radFirst" name="radDeposit" onchange="getDeposit('@it.DepositId','@it.Prices')">
@@ -361,7 +370,7 @@
                                                 }
 
                                             </div>
-                                            <div class="col-xs-2" style="text-align: right;">
+                                            <div class="col-xs-6 col-sm-2" style="text-align: right;">
                                                 <div style="color:#00A352">-<span>@it.Prices.Value.ToString("#,##0")</span> đ</div>
                                             </div>
                                         </div>
@@ -369,14 +378,14 @@
                                     }
                                 }
                                 <div class="row cocconlaibox">
-                                    <div class="col-xs-6 datcocrow cocconlaititle" >
-                                       
+                                    <div class="col-xs-6 col-sm-6 datcocrow cocconlaititle">
+
                                         <span style="padding-left:25px">
                                             @(ViewBag.lang == "vi"? "Số tiền cọc còn lại" : "Remaining deposit amount")
                                         </span>
 
                                     </div>
-                                    <div class="col-xs-2" style="text-align: right;">
+                                    <div class="col-xs-6 col-sm-2" style="text-align: right;">
                                         <div class="giatrisanpham giacoc"><span id="sotienconlai">0</span> đ</div>
                                     </div>
                                 </div>
@@ -407,7 +416,7 @@
                                         </div>
                                     </div>
                                 </div>
-                               
+
                                 <div class="row cocconlaibox">
                                     <div class="col-sm-6">
                                         <span>-@(ViewBag.lang == "vi"? "Hợp đồng thuê" : "Lease agreement")</span>
@@ -427,7 +436,7 @@
                                         </div>
                                     </div>
                                 </div>
-                              
+
                             </div>
                         </div>
                         <div class="col-sm-12">
@@ -515,7 +524,7 @@ Please provide the information about the collateral assets so that the store can
                     <input type="button" class="btn btn-sm btngreen" style="font-weight: 600;border-radius:0px" onclick="javascript: return proceedAddToCartStep3();" value="@(ViewBag.lang == "vi"? "TIẾP THEO" : "Next")">
                 </div>
             </div>
-        </div>
+        </div> 
     }
 }
 @Html.Action("CustomerAddressInfo", "Partial")
@@ -552,13 +561,13 @@ Please provide the information about the collateral assets so that the store can
     function deposit1() {
         hinhthuc = 1;
         hiddenAll();
-       
+
     }
     function deposit2() {
         hinhthuc =2;
         hiddenAll();
         $("#deposit2Content").show();
-       
+
     }
     function deposit3() {
         hinhthuc = 3;
@@ -604,7 +613,7 @@ Please provide the information about the collateral assets so that the store can
                  var my_path = "/image_Waswhouse/" + status;
                  $("#hinhmau1").css("height", "100px");
                  $("#hinhmau1").attr("src", my_path);
-                
+
              }
          },
          processData: false,
